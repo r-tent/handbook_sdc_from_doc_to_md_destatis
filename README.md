@@ -13,7 +13,7 @@ Then, we split the single .md file to multiple .qmd (quarto) files with the R sc
 This script splits the .md file at each h1 level (chapters) but this behavior could be changed (for example h2 level) to deal with smaller files. 
 The script replaces the .wmf files by the .png files.
 
-- Website of this V0: [](https://julienjamme.quarto.pub/sdc_handbook/)  
+- Website of this V0: [https://julienjamme.quarto.pub/sdc_handbook/](https://julienjamme.quarto.pub/sdc_handbook/)  
 - PDF version in _book/ directory. 
 
 It remains at least to:
