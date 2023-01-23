@@ -1,0 +1,29 @@
+project:
+  type: book
+
+book:
+  title: "SDC_handbook"
+  author: "Jane Doe"
+  date: "20/01/2023"
+  chapters:
+    - index.qmd
+    - Introduction.qmd
+    - Regulations_a_general_Background.qmd
+    - Microdata.qmd
+    - Magnitude_tabular_data.qmd
+    - Frequency_tables.qmd
+    - Remote_access_issues.qmd
+    - Glossary.qmd
+    - Final_index.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+
+

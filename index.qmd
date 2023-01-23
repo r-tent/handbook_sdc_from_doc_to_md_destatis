@@ -1,0 +1,263 @@
+# ESSNet S D C\
+A Network of Excellence in the European Statistical System**
+
+**in the field of Statistical Disclosure Control**
+
+17-10: reactions Jobst-Andrea (Ch6) included
+
+23-10: Jane's chapter 1 + 6 (licencing)
+
+07-11 Josep's chapter 3 included
+
+11-11 Jane's Freq-tables included
+
+15-11 Eric's Chapter 2
+
+17-11 Josep/Matthias comments
+
+20-11 Second round of Josep/Matthias comments.
+
+20-11 Chapter 4 by Sarah
+
+20-11 Guidelines by Sarah (Ch6)
+
+21-11 Risk models by Luisa
+
+22-11 Revision Ch5 by Jane
+
+25-22 New Ch4 + Ch6.6 by Sarah
+
+27-11 Helen's remarks
+
+27-11 Andreja's remarks
+
+28-11 Luisa's examples
+
+**version 1.01 March 2007**
+
+> 5/3/07 Sarah page on singeltons.\
+> Page numbers index not correct
+>
+> Version 1.1 December 2008
+>
+> 14-11 Eric update Chapter 2
+>
+> 20-12 Keith Ch freq-tables
+>
+> 22-12 Sarah Ch Magn Tables
+>
+> 5-1-2009 Ingegerd Freq-tables
+>
+> 5-1 Luisa Ch 3
+>
+> July Josep cs
+>
+> 23-9 Caroline cs
+
+**Handbook on\
+Statistical Disclosure Control**
+
+**Version 1.2\
+**
+
+**\
+Anco Hundepool**
+
+**Josep Domingo-Ferrer**
+
+**Luisa Franconi**
+
+**Sarah Giessing**
+
+**Rainer Lenz**
+
+**Jane Naylor**
+
+**Eric Schulte Nordholt**
+
+**Giovanni Seri**
+
+**Peter-Paul De Wolf**
+
+Jan 2010
+
+**Table of Contents**
+
+[1 Introduction 7](#introduction)
+
+[1.1 Preface 7](#preface)
+
+[1.2 Introduction 8](#introduction-1)
+
+[1.3 Concepts and Definitions 9](#concepts-and-definitions)
+
+[1.4 An approach to Statistical Disclosure Control 11](#an-approach-to-statistical-disclosure-control)
+
+[1.5 The chapters of the handbook 14](#the-chapters-of-the-handbook)
+
+[1.6 References 14](#references)
+
+[2 Regulations, a general Background 15](#regulations-a-general-background)
+
+[2.1 Introduction 15](#introduction-2)
+
+[2.2 Ethical codes 16](#ethical-codes)
+
+[2.3 Laws 21](#laws)
+
+[2.4 References 23](#references-1)
+
+[3 Microdata 24](#__RefHeading___Toc252364470)
+
+[3.1 Introduction 24](#introduction-3)
+
+[3.2 A roadmap to the release of a microdata file 25](#a-roadmap-to-the-release-of-a-microdata-file)
+
+[3.2.1 Need of confidentiality protection 27](#need-of-confidentiality-protection)
+
+[3.2.2 Characteristics and uses of microdata 27](#characteristics-and-uses-of-microdata)
+
+[3.2.3 Disclosure risk 29](#disclosure-risk)
+
+[3.2.4 SDC-methods 31](#sdc-methods)
+
+[3.2.5 Implementation 33](#implementation)
+
+[3.3 Risk assessment 34](#risk-assessment)
+
+[3.3.1 Overview 34](#overview)
+
+[3.3.2 Disclosure risk scenarios 36](#disclosure-risk-scenarios)
+
+[3.3.3 Concepts and notation 38](#concepts-and-notation)
+
+[3.3.4 ARGUS threshold rule 40](#argus-threshold-rule)
+
+[3.3.5 ARGUS individual risk methodology 41](#argus-individual-risk-methodology)
+
+[3.3.6 The Poisson model with log-linear modelling 45](#the-poisson-model-with-log-linear-modelling)
+
+[3.3.7 SUDA 47](#suda)
+
+[3.3.8 Record Linkage 48](#record-linkage)
+
+[3.3.9 References 50](#references-2)
+
+[3.4 Microdata protection methods 53](#microdata-protection-methods)
+
+[3.4.1 Overview of concepts and methods 53](#overview-of-concepts-and-methods)
+
+[3.4.2 Perturbative masking 55](#perturbative-masking)
+
+[3.4.3 Non-perturbative masking 61](#non-perturbative-masking)
+
+[3.4.4 Noise addition 66](#noise-addition-1)
+
+[3.4.5 Microaggregation: further details 70](#microaggregation-further-details)
+
+[3.4.6 PRAM 79](#pram-1)
+
+[3.4.7 Synthetic microdata 82](#synthetic-microdata)
+
+[3.5 Information loss in microdata protection 96](#information-loss-in-microdata-protection)
+
+[3.5.1 Introduction 96](#introduction-4)
+
+[3.5.2 Information loss measures for continuous data 97](#information-loss-measures-for-continuous-data)
+
+[3.5.3 Information loss measures for categorical data 100](#information-loss-measures-for-categorical-data)
+
+[3.5.4 References 102](#references-7)
+
+[3.6 Software 103](#software)
+
+[3.6.1 µ-ARGUS 103](#µ-argus)
+
+[3.7 Introductory example: rules at Statistics Netherlands 105](#introductory-example-rules-at-statistics-netherlands)
+
+[3.8 Further examples 107](#further-examples)
+
+[3.8.1 Labour Force Survey 108](#labour-force-survey)
+
+[3.8.2 Community Innovation Survey 109](#community-innovation-survey)
+
+[3.8.3 References 112](#references-8)
+
+[4 Magnitude tabular data 113](#magnitude-tabular-data)
+
+[4.1 Introduction 113](#introduction-5)
+
+[4.2 Disclosure Control Concepts for Magnitude Tabular Data 117](#disclosure-control-concepts-for-magnitude-tabular-data)
+
+[4.2.1 Sensitive Cells in Magnitude Tables 117](#sensitive-cells-in-magnitude-tables)
+
+[4.2.2 Secondary tabular data protection methods 128](#secondary-tabular-data-protection-methods)
+
+[4.3 The τ‑ARGUS Implementation of Cell Suppression: Methodological Background, Guidance and Recommendations 131](#the-τargus-implementation-of-cell-suppression-methodological-background-guidance-and-recommendations)
+
+[4.3.1 Setting up a Tabular Data Protection Problem in Practice 132](#setting-up-a-tabular-data-protection-problem-in-practice)
+
+[4.3.2 Evaluation of Secondary Cell Suppression algorithms offered by τ‑ARGUS 137](#evaluation-of-secondary-cell-suppression-algorithms-offered-by-τargus)
+
+[4.3.3 Processing table protection efficiently 144](#processing-table-protection-efficiently)
+
+[4.3.4 Introductive Example 150](#introductive-example)
+
+[4.4 Methodological concepts of secondary cell suppression algorithms in τ‑ARGUS 152](#methodological-concepts-of-secondary-cell-suppression-algorithms-in-τargus)
+
+[4.4.1 Optimal 152](#optimal)
+
+[4.4.2 Modular 155](#modular)
+
+[4.4.3 Network 156](#network)
+
+[4.4.4 Hypercube 157](#hypercube)
+
+[4.5 Controlled Tabular AdjustmentControlled Tabular Adjustment 159](#controlled-tabular-adjustmentcontrolled-tabular-adjustment)
+
+[4.6 References 161](#references-9)
+
+[5 Frequency tables 164](#frequency-tables)
+
+[5.1 Introduction 164](#introduction-6)
+
+[5.2 Disclosure risks 164](#disclosure-risks)
+
+[5.3 Methods 173](#methods)
+
+[5.4 Rounding 177](#rounding-1)
+
+[5.5 Information loss 183](#information-loss)
+
+[5.6 Software 185](#software-1)
+
+[5.6.1 Introduction 185](#introduction-7)
+
+[5.6.2 Optimal, first feasible and RAPID solutions 187](#optimal-first-feasible-and-rapid-solutions)
+
+[5.6.3 Protection provided by controlled rounding 187](#protection-provided-by-controlled-rounding)
+
+[5.7 References 188](#references-10)
+
+[6 Remote access issues 190](#remote-access-issues)
+
+[6.1 Introduction 190](#introduction-8)
+
+[6.2 Research centres 190](#research-centres)
+
+[6.3 Remote execution 191](#remote-execution)
+
+[6.4 Remote access 192](#remote-access)
+
+[6.5 Licensing 194](#licensing)
+
+[6.6 Confidentiality protection of the analysis results 194](#confidentiality-protection-of-the-analysis-results)
+
+[6.6.1 Rules for designing programs for controlled teleprocessing using microdata of official statistics in Germany 194](#rules-for-designing-programs-for-controlled-teleprocessing-using-microdata-of-official-statistics-in-germany)
+
+[6.7 References 200](#references-11)
+
+[7 Glossary 201](#glossary)
+
+[8 Index 214](#index)
+
