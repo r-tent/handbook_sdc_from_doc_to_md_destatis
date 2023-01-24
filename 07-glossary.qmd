@@ -4,7 +4,7 @@ In 2005 Mark Elliot (University of Manchester), Anco Hundepool (Statistics Nethe
 
 The underlined links in this glossary refer to other term in this glossary. This handbook contains also an index, but to avoid misleading cross references we have not indexed this glossary.
 
-**A**
+## A {-}
 
 **Ambiguity rule:** Synonym of [[(p,q) rule]{.underline}](#(p,q)_rule).
 
@@ -22,7 +22,7 @@ The underlined links in this glossary refer to other term in this glossary. This
 
 []{#Attribution .anchor}**Attribution:** Attribution is the association or disassociation of a particular attribute with a particular population unit.
 
-B
+## B {-}
 
 **Barnardisation:** A method of disclosure control for tables of counts that involves randomly adding or subtracting 1 from some cells in the table.
 
@@ -32,7 +32,7 @@ B
 
 []{#Bounds .anchor}**Bounds:** The range of possible values of a cell in a table of frequency counts where the cell value has been perturbed or suppressed. Where only margins of tables are released it is possible to infer bounds for the unreleased joint distribution. One method for inferring the bounds across a table is known as the [[Shuttle algorithm]{.underline}](#Shuttle_algorithm).
 
-**C**
+## C {-}
 
 []{#Calculated_interval .anchor}**Calculated interval:** The interval containing possible values for a suppressed cell in a table, given the table structure and the values published.
 
@@ -52,7 +52,7 @@ B
 
 []{#Conventional_rounding .anchor}**Conventional rounding:** A disclosure control method for tables of counts. When using conventional rounding, each count is rounded to the nearest multiple of a fixed base. For example, using a base of 5, counts ending in 1 or 2 are rounded down and replaced by counts ending in 0 and counts ending in 3 or 4 are rounded up and replaced by counts ending in 5. Counts ending between 6 and 9 are treated similarly. Counts with a last digit of 0 or 5 are kept unchanged. When rounding to base 10, a count ending in 5 may always be rounded up, or it may be rounded up or down based on a rounding convention.
 
-**D**
+## D {-}
 
 **Data divergence:** The sum of all differences between two datasets (data-data divergence) or between a single dataset and reality (data-world divergence). Sources of data divergence include: data ageing, response errors, coding or data entry errors, differences in coding and the effect of disclosure control.
 
@@ -100,23 +100,23 @@ B
 
 []{#Dominance_rule .anchor}**Dominance rule:** Synonym of [[(n,k) rule]{.underline}](#(n,k)_rule).
 
-**E**
+## E {-}
 
 []{#Exact_disclosure .anchor}**Exact disclosure:** Exact disclosure occurs if a user is able to determine the exact attribute for an individual entity from released information.
 
-**F**
+## F {-}
 
 []{#Formal_identifier .anchor}**Formal identifier:** Any variable or set of variables which is structurally unique for every population unit, for example a population registration number. If the formal identifier is known to the [[intruder]{.underline}](#Intruder), [[identification]{.underline}](#Identification) of a target individual is directly possible for him or her, without the necessity to have additional knowledge before studying the [[microdata]{.underline}](#Microdata). Some combinations of variables such as name and address are pragmatic formal identifiers, where non-unique instances are empirically possible, but with negligible probability.
 
-**G**
+## G {-}
 
 []{#Global_recoding .anchor}**Global recoding:** Problems of confidentiality can be tackled by changing the structure of data. Thus, rows or columns in tables can be combined into larger class intervals or new groupings of characteristics. This may be a simpler solution than the [[suppression]{.underline}](#Suppression) of individual items, but it tends to reduce the descriptive and analytical value of the table. This protection technique may also be used to protect [[microdata]{.underline}](#Microdata).
 
-**H**
+## H {-}
 
 **HITAS:** A heuristic approach to [[cell suppression]{.underline}](#Cell_suppression) in hierarchical tables.
 
-**I**
+## I {-}
 
 []{#Identification .anchor}**Identification:** Identification is the association of a particular record within a set of data with a particular population unit.
 
@@ -138,15 +138,15 @@ B
 
 []{#Intruder .anchor}**Intruder:** A data user who attempts to link a respondent to a [[microdata]{.underline}](#Microdata) record or make [[attribution]{.underline}](#Attribution)s about particular population units from aggregate data. Intruders may be motivated by a wish to discredit or otherwise harm the [[NSI]{.underline}](#NSI), the survey or the government in general, to gain notoriety or publicity, or to gain profitable knowledge about particular respondents.
 
-**J**
+## J {-}
 
-**K**
+## K {-}
 
 []{#Key .anchor}**Key:** A set of [[key variable]{.underline}](#Key_variable)s.
 
 []{#Key_variable .anchor}**Key variable:** A variable in common between two datasets, which may therefore be used for linking records between them. A key variable can either be a [[formal identifier]{.underline}](#Formal_identifier) or a [[quasi-identifier]{.underline}](#Quasi-identifier).
 
-**L**
+## L {-}
 
 **Licensing agreement:** A permit, issued under certain conditions, for researchers to use confidential data for specific purposes and for specific periods of time. This agreement consists of contractual and ethical obligations, as well as penalties for improper disclosure or use of identifiable information. These penalties can vary from withdrawal of the license and denial of access to additional data sets to the forfeiting of a deposit paid prior to the release of a [[microdata]{.underline}](#Microdata) file. A licensing agreement is almost always combined with the signing of a contract. This contract includes a number of requirements: specification of the intended use of the data; instruction not to release the [[microdata]{.underline}](#Microdata) file to another recipient; prior review and approval by the releasing agency for all user outputs to be published or disseminated; terms and location of access and enforceable penalties.
 
@@ -156,7 +156,7 @@ B
 
 **Lower bound:** The lowest possible value of a cell in a table of frequency counts where the cell value has been perturbed or suppressed.
 
-**M**
+## M {-}
 
 []{#Macrodata .anchor}**Macrodata:** Synonym of [[tabular data]{.underline}](#Tabular_data).
 
@@ -166,13 +166,13 @@ B
 
 **Minimal unique:** A combination of variable values that are unique in the [[microdata]{.underline}](#Microdata) set at hand and contain no proper subset with this property (so it is a minimal set with the [[uniqueness]{.underline}](#Uniqueness) property).
 
-**N**
+## N {-}
 
 []{#NSI .anchor}**NSI(s):** Abbreviation for National Statistical Institute(s).
 
 []{#(n,k)_rule .anchor}**(n,k) rule:** A cell is regarded as confidential, if the n largest units contribute more than k % to the cell total, e.g. n=2 and k=85 means that a cell is defined as risky if the two largest units contribute more than 85 % to the cell total. The n and k are given by the statistical authority. In some [[NSI]{.underline}](#NSI)s the values of n and k are confidential.
 
-**O**
+## O {-}
 
 **On-site facility:** A facility that has been established on the premises of several [[NSI]{.underline}](#NSI)s. It is a place where external researchers can be permitted access to potentially disclosive data under contractual agreements which cover the maintenance of confidentiality, and which place strict controls on the uses to which the data can be put. The on-site facility can be seen as a \' [[safe setting]{.underline}](#Safe_setting)\' in which confidential data can be analysed. The on-site facility itself would co[[nsi]{.underline}](#NSI)st of a secure hermetic working and data storage environment in which the confidentiality of the data for research can be ensured. Both the physical and the IT aspects of [[security]{.underline}](#Security) would be considered here. The on-site facility also includes administrative and support facilities to external users, and ensures that the agreed conditions for access to the data were complied with.
 
@@ -180,7 +180,7 @@ B
 
 **Oversuppression:** A situation that may occur during the application of the technique of [[cell suppression]{.underline}](#Cell_suppression). This denotes the fact that more information has been suppressed than strictly necessary to maintain confidentiality.
 
-**P**
+## P {-}
 
 []{#Partial_disclosure .anchor}**Partial disclosure:** Synonym of [[approximate disclosure]{.underline}](#Approximate_disclosure).
 
@@ -216,11 +216,11 @@ The limits of what constitutes \"too few\" or \"dominance\" vary between statist
 
 **Probability based disclosures (approximate or exact):** Sometimes although a fact is not disclosed with certainty, the published data can be used to make a statement that has a high probability of being correct.
 
-**Q**
+## Q {-}
 
 []{#Quasi-identifier .anchor}**Quasi-identifier:** Variable values or combinations of variable values within a dataset that are not structural uniques but might be empirically unique and therefore in principle uniquely identify a population unit.
 
-**R**
+## R {-}
 
 **Randomized response:** Randomized response is a technique used to collect sensitive information from individuals in such a way that survey interviewers and those who process the data do not know which of two alternative questions the respondent has answered.
 
@@ -256,7 +256,8 @@ The limits of what constitutes \"too few\" or \"dominance\" vary between statist
 
 **R-U map:** A graphical representation of the trade off between [[disclosure risk]{.underline}](#Disclosure_risk) and [[data utility]{.underline}](#Data_utility).
 
-**S**
+## S {-}
+
 
 []{#Safe_data .anchor}**Safe data:** [[Microdata]{.underline}](#Microdata) or [[macrodata]{.underline}](#Macrodata) that have been protected by suitable [[Statistical Disclosure Control]{.underline}](#Statistical_Disclosure_Control) methods.
 
@@ -312,7 +313,7 @@ The limits of what constitutes \"too few\" or \"dominance\" vary between statist
 
 **Synthetic substitution:** See [[Controlled Tabular Adjustment]{.underline}](#Controlled_Tabular_Adjustment).
 
-**T**
+## T {-}
 
 **Table server:** A form of [[remote data laboratory]{.underline}](#Remote_data_laboratory) designed to release safe tables.
 
@@ -328,7 +329,7 @@ The limits of what constitutes \"too few\" or \"dominance\" vary between statist
 
 []{#Top_and_bottom_coding .anchor}**Top and bottom coding:** It consists in setting top-codes or bottom-codes on quantitative variables. A top-code for a variable is an upper limit on all published values of that variable. Any value greater than this upper limit is replaced by the upper limit or is not published on the [[microdata]{.underline}](#Microdata) file at all. Similarly, a bottom-code is a lower limit on all published values for a variable. Different limits may be used for different quantitative variables, or for different subpopulations.
 
-**U**
+## U {-}
 
 **Union unique:** A [[sample unique]{.underline}](#Sample_unique) that is also [[population unique]{.underline}](#Population_unique). The proportion of [[sample unique]{.underline}](#Sample_unique)s that are union uniques is one measure of file level [[disclosure risk]{.underline}](#Disclosure_risk).
 
@@ -336,17 +337,17 @@ The limits of what constitutes \"too few\" or \"dominance\" vary between statist
 
 []{#Upper_bound .anchor}**Upper bound:** The highest possible value of a cell in a table of frequency counts where the cell value has been perturbed or suppressed.
 
-**V**
+## V {-}
 
 []{#Virtual_safe_setting .anchor}**Virtual safe setting:** Synonym of [[remote data laboratory]{.underline}](#Remote_data_laboratory).
 
-**W**
+## W {-}
 
 **Waiver approach:** Instead of suppressing [[tabular data]{.underline}](#Tabular_data), some agencies ask respondents for permission to publish cells even though doing so may cause these respondents' sensitive information to be estimated accurately. This is referred to as the waiver approach. Waivers are signed records of the respondents' granting permission to publish such cells. This method is most useful with small surveys or sets of tables involving only a few cases of dominance, where only a few waivers are needed. Of course, respondents must believe that their data are not particularly sensitive before they will sign waivers.
 
-**X**
+## X {-}
 
-**Y**
+## Y {-}
 
-**Z**
+## Z {-}
 
