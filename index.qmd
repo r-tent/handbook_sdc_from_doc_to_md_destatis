@@ -1,263 +1,132 @@
-# ESSNet S D C\
-A Network of Excellence in the European Statistical System**
+# Introduction
 
-**in the field of Statistical Disclosure Control**
+> *High level description of why we need to consider SDC\
+> Overview of process one must go through when protecting outputs\
+> The trade-off between SDC measures, information loss and risk.\
+> Description of different types of outputs\
+> How handbook should be used\
+> Also mention the glossary\
+> Author: Jane and Luisa*
 
-17-10: reactions Jobst-Andrea (Ch6) included
+## Preface
 
-23-10: Jane's chapter 1 + 6 (licencing)
+In 2006 Eurostat took the initiative of setting up Centres of Excellence (CENEX). The idea behind this scheme is to combine the strengths of the leading National Statistical Institutes (NSIs) in Europe on a certain topic. Often in several NSIs small isolated groups are working on specific topics. Other NSIs even lack the resources to pay enough attention to certain methodological issues. This situation led to the Eurostat initiative on Centres of Excellence. A CENEX could bring together the knowledge on a certain topic at a higher level by supporting the research in the leading countries and to spread this work to the other NSIs. Statistical Disclosure Control (SDC) was selected as a pilot topic. One of the reasons for selecting SDC was a longer tradition in the field of SDC with respect to European cooperation, like the EU framework projects SDC and CASC.
 
-07-11 Josep's chapter 3 included
+One of the tasks of this CENEX-project (grant agreement No 25200.2005.001-2005.619) was to write a handbook on Statistical Disclosure Control. The writing of the handbook was coordinated by Anco Hundepool, who also wrote parts of the software. Jane Longhurst and Luisa Franconi wrote the introduction chapter 1, while Eric Schulte Nordholt wrote the regulation chapter 2. Josep Domingo-Ferrer was responsible for the microdata chapter 3 with contributions by Anco Hundepool, Luisa Franconi, Jane Longhurst and Peter-Paul de Wolf. Sarah Giessing was responsible for the magnitude chapter 4 and Jane Longhurst for the frequency chapter 5. The remote access chapter 6 was written by Anco Hundepool and Jane Longhurst. But various other CENEX partners contributed smaller parts. Glòria Pujol Crespo and Caroline Tudor did valuable proofreading. Also the work of the ESSNet-partners, who did the cumbersome task of proofreading and helping with valuable comments, must be acknowledged.
 
-11-11 Jane's Freq-tables included
+The authors see this version of the handbook only as an intermediate version of a book that hopefully will be used and expanded in the future. Therefore we will appreciate your comments and suggestions for improvements. Please send your comments to Anco Hundepool, Statistics Netherlands, P.O. Box 24500, 2490 HA The Hague, The Netherlands, email: [[aj.hundepool\@cbs.nl]{.underline}](mailto:aj.hundepool@cbs.nl?subject=SDC-Handbook).
 
-15-11 Eric's Chapter 2
+## Introduction
 
-17-11 Josep/Matthias comments
+National Statistical Institutes (NSIs) publish a wide range of trusted, high quality statistical outputs. To achieve their objective of supplying society with rich statistical information these outputs are as detailed as possible. However, this objective conflicts with the obligation NSIs have to protect the confidentiality of the information provided by the respondents. Statistical Disclosure Control (SDC) or Statistical Disclosure Limitation (SDL) seeks to protect statistical data in such a way that they can be released without giving away confidential information that can be linked to specific individuals or entities.
 
-20-11 Second round of Josep/Matthias comments.
+In addition to official statistics there are several other areas of application of SDC techniques, including:
 
-20-11 Chapter 4 by Sarah
+-   *Health information*. This is one of the most sensitive areas regarding privacy.
 
-20-11 Guidelines by Sarah (Ch6)
+```{=html}
+<!-- -->
+```
+-   *E-commerce*. Electronic commerce results in the automated collection of large amounts of consumer data. This wealth of information is very useful to companies, which are often interested in sharing it with their subsidiaries or partners. Such consumer information transfer is subject to strict regulations.
 
-21-11 Risk models by Luisa
+This handbook aims to provide technical guidance on statistical disclosure control for NSIs on how to approach this problem of balancing the need to provide users with statistical outputs and the need to protect the confidentiality of respondents. Statistical disclosure control should be combined with other tools (administrative, legal, IT) in order to define a proper data dissemination strategy based on a risk management approach.
 
-22-11 Revision Ch5 by Jane
+A data dissemination strategy offers many different statistical outputs covering a range of different topics for many types of users. Different outputs require different approaches to SDC and different mixture of tools.
 
-25-22 New Ch4 + Ch6.6 by Sarah
+Tabular data protection is the oldest and best established part of SDC, because tabular data have been the traditional output of NSIs. The goal here is to publish static aggregate information, i.e. tables, in such a way that no confidential information on specific individuals among those to which the table refers can be inferred. In the majority of cases confidentiality protection is achieved only by statistical tools due to the absence of legal and IT restrictions.
 
-27-11 Helen's remarks
+The scenario here is a database to which the user can submit statistical queries (sums, averages etc.). The aggregate information obtained as a result of successive queries should not allow him to infer information on specific individuals. The mixture of tools here may vary according to the setting and the data provided.
 
-27-11 Andreja's remarks
+In recent years, with the widespread use of personal computers and the public demand for data, microdata (that is data sets containing for each respondent the scores on a number of variables) are being disseminated to users in universities, research institutes and interest groups (Unece, 2006). Microdata protection is the youngest subdiscipline and has experienced continuous evolution in the last years. If microdata are freely disseminated then statistical disclosure limitation methods will be very severe to protect confidentiality of respondents; if, on the other hand, legal restrictions are in place (such as Commission Regulation 831/2002, see section 2.3) a different amount of information may be released.
 
-28-11 Luisa's examples
+The need to allow access to microdata has encouraged the creation of Microdata Laboratories (Safe Centres) in many NSI. Due to an IT protected environment, legal and administrative restrictions users may analyse detailed microdata. Checking the output of these analyses to avoid confidentiality breaches is another field which is developing in SDC research.
 
-**version 1.01 March 2007**
+This handbook provides guidance on how to protect confidentiality for all of these types of output using statistical methods.
 
-> 5/3/07 Sarah page on singeltons.\
-> Page numbers index not correct
->
-> Version 1.1 December 2008
->
-> 14-11 Eric update Chapter 2
->
-> 20-12 Keith Ch freq-tables
->
-> 22-12 Sarah Ch Magn Tables
->
-> 5-1-2009 Ingegerd Freq-tables
->
-> 5-1 Luisa Ch 3
->
-> July Josep cs
->
-> 23-9 Caroline cs
+This first chapter provides a brief introduction to some of the key concepts and definitions involved with this field of work as well as a high level overview of how to approach problems associated with confidentiality.
 
-**Handbook on\
-Statistical Disclosure Control**
+## Concepts and Definitions
 
-**Version 1.2\
-**
+A disclosure occurs when a person or organisation recognises or learns something that they did not know already about another person or organisation, via released data. There are two types of disclosure risk; identity disclosure and attribute disclosure.
 
-**\
-Anco Hundepool**
+Identity disclosure occurs with the association of a respondent's identity with a disseminated data record containing confidential information. (Duncan, et al (2001)).
 
-**Josep Domingo-Ferrer**
+Attribute disclosure occurs with the association of either an attribute value in the disseminated data or an estimated attribute value based on the disseminated data with the respondent. (Duncan, et al (2001)).
 
-**Luisa Franconi**
+Some NSIs may also be concerned with the perception of disclosure risk. For example if small values appear in tabular output users may perceive that no (or insufficient) protection has been applied. More emphasis has been placed on this type of disclosure risk in recent years because of declining response rates and decreasing data quality.
 
-**Sarah Giessing**
+Statistical disclosure control (SDC) techniques can be defined as the set of methods to reduce the risk of disclosing information on individuals, businesses or other organisations. SDC methods minimise the risk of disclosure to an acceptable level while releasing as much information as possible. There are two types of SDC methods; perturbative and non-perturbative methods.
 
-**Rainer Lenz**
+Perturbative methods falsify the data before publication by introducing an element of error purposely for confidentiality reasons. Non-perturbative methods reduce the amount of information released by suppression or aggregation of data.
 
-**Jane Naylor**
+A wide range of different SDC methods are available for different types of outputs. There are two types of tabular output; magnitude and frequency tables.
 
-**Eric Schulte Nordholt**
+In a magnitude table each cell value represents the sum of a particular response, across all respondents that belong to that cell. Magnitude tables are commonly used for business or economic data providing, for example, turnover of all businesses of a particular industry within a region.
 
-**Giovanni Seri**
+In a frequency table each cell value represents the number of respondents that fall into that cell. Frequency tables are commonly used for Census or social data providing, for example the number of individuals within a region who are unemployed.
 
-**Peter-Paul De Wolf**
+Microdata, or unit record data, is the form from which all other data outputs are derived and is the primary form that data is stored in. While in the past NSIs simply derived outputs of other forms, more and more, microdata is becoming a key output by itself.
 
-Jan 2010
+NSIs should aim to determine optimal SDC methods and solutions that minimize disclosure risk while maximizing the utility of the data. Figure 1 -1 contains an R-U confidentiality map developed by Duncan, et. al. (2001) where R is a quantitative measure of disclosure risk and U is a quantitative measure of data utility.
 
-**Table of Contents**
+Figure 1‑1: R-U Confidentiality map
 
-[1 Introduction 7](#introduction)
+In the lower left hand quadrant of the graph low disclosure risk is achieved but also low utility, where no data is released at all. In the upper right hand quadrant of the graph high disclosure risk is realised but also high utility, represented by the point where the original data is released. The NSI must set the maximum tolerable disclosure risk based on standards, policies and guidelines. The goal in this disclosure risk--data utility decision problem is to then find the balance in maintaining the utility of the data but reducing the risk below the maximum tolerable threshold.
 
-[1.1 Preface 7](#preface)
+## An approach to Statistical Disclosure Control
 
-[1.2 Introduction 8](#introduction-1)
+This section describes the approach that a data provider within an NSI should take in order to meet data users' needs while managing confidentiality risks. A general framework for addressing the question of confidentiality protection for different statistical outputs is proposed based on the following five key stages and we outline how the handbook provides guidance on the different aspects of this process.
 
-[1.3 Concepts and Definitions 9](#concepts-and-definitions)
+-   Why is confidentiality protection needed?
 
-[1.4 An approach to Statistical Disclosure Control 11](#an-approach-to-statistical-disclosure-control)
+```{=html}
+<!-- -->
+```
+-   What are the key characteristics and uses of the data?
 
-[1.5 The chapters of the handbook 14](#the-chapters-of-the-handbook)
+```{=html}
+<!-- -->
+```
+-   What disclosure risks need to be protected against?
 
-[1.6 References 14](#references)
+```{=html}
+<!-- -->
+```
+-   Disclosure control methods
 
-[2 Regulations, a general Background 15](#regulations-a-general-background)
+```{=html}
+<!-- -->
+```
+-   Implementation
 
-[2.1 Introduction 15](#introduction-2)
+There are three main reasons why confidentiality protection is needed for statistical outputs.
 
-[2.2 Ethical codes 16](#ethical-codes)
+-   It is a fundamental principle for Official Statistics that the statistical records of individual persons, businesses or events used to produce Official Statistics are strictly confidential, and are to be used only for statistical purposes. Principle 6 of the UN Economic Commission report \'Fundamental Principles for Official Statistics\', April 1992 states:\
+    \'Individual data collected by statistical agencies for statistical compilation, whether they refer to natural or legal persons, are to be strictly confidential and used exclusively for statistical purposes\'. The disclosure control methods applied for the outputs from an NSI should meet the requirements of this principle.
 
-[2.3 Laws 21](#laws)
+-   There may be legislation that places a legal obligation on an NSI to protect individual business and personal data. In addition where public statements are made about the protection of confidentiality or pledges are made to respondents of business or social surveys these place a duty of confidence on the NSI that the NSI must legally comply with.
 
-[2.4 References 23](#references-1)
+-   One of the reasons why the data collected by NSIs is of such high quality is that data suppliers or respondents have confidence and trust in the NSI to preserve the confidentiality of individual information. It is essential that this confidence and trust is maintained and that identifiable information is held securely, only used for statistical purposes and not revealed in published outputs.
 
-[3 Microdata 24](#__RefHeading___Toc252364470)
+More information on regulations and legislation is provided in Chapter 2.
 
-[3.1 Introduction 24](#introduction-3)
+When considering confidentiality protection of a statistical output it is important to understand the key characteristics of the data since all of these factors influence both disclosure risks and appropriate disclosure control methods. This includes knowing the type of data, e.g. full population or sample survey; sample design, an assessment of quality e.g. the level of non-response and coverage of the data; variables and whether they are categorical or continuous; type of outputs, e.g. microdata, magnitude or frequency tables. Producers of statistics should design publications according to the needs of users, as a first priority. It is therefore vital to identify the main users of the statistics, and understand why they need the figures and how they will use them. This is necessary to ensure that the design of the output is relevant and the amount of disclosure protection used has the least possible adverse impact on the usefulness of the statistics. Section 3.2 addresses some examples on how to carry out this initial analysis.
 
-[3.2 A roadmap to the release of a microdata file 25](#a-roadmap-to-the-release-of-a-microdata-file)
+Disclosure risk assessment then combines the understanding gained above with a method to identify situations where there is a likelihood of disclosure. Risk is a function of likelihood (related to the design of the output), and impact of disclosure (related to the nature of the underlying data). In order to be explicit about the disclosure risks to be managed one should consider a range of potentially disclosive situations or scenarios and take action to prevent them. A disclosure scenario describes (i) which information is potentially available to an 'intruder' and (ii) how the intruder would use the information to identify an individual. A range of intruder scenarios should be determined for different outputs to provide an explicit statement of what the disclosure risks are, and what elements of the output pose an unacceptable risk of disclosure. Issues in developing disclosure scenarios are provided in section 3.3.2. Risk assessment methods for microdata are covered in section 3.3 and different rules applied to assess the risk of magnitude and frequency tables are described in Chapter 4 and 5 respectively.
 
-[3.2.1 Need of confidentiality protection 27](#need-of-confidentiality-protection)
+Once an assessment of risk has been undertaken an NSI must then take steps to manage any identified risks. The risk within the data is not entirely eliminated but is reduced to an acceptable level, this can be achieved either through the application of statistical disclosure control methods or through the controlled use of outputs, or through a combination of both. Several factors must be balanced through the choice of approach. Some measure of information loss and impact on main uses of the data can be used to compare alternatives. Any method must be implemented within a given production system so available software and efficiency within demanding production timetables must be considered. Statistical disclosure control methods used to reduce the risk of microdata, magnitude tables and frequency tables are covered in chapter 3, 4 and 5 respectively. Chapter 6 provides information on how disclosure risk can be managed by restricting access.
 
-[3.2.2 Characteristics and uses of microdata 27](#characteristics-and-uses-of-microdata)
+The final stage in this approach to a disclosure control problem is implementation of the methods and dissemination of the statistics. This will include identification of the software to be used along with any options and parameters. The proposed guidance will allow data providers to set disclosure control rules and select appropriate disclosure control methods to protect different types of outputs. The most important consideration is maintaining confidentiality but these decisions will also accommodate the need for clear, consistent and practical solutions that can be implemented within a reasonable time and using available resources. The methods used will balance the loss of information against the likelihood of individuals' information being disclosed. Data providers should be open and transparent in this process and document their decisions and the whole risk assessment process so that these can be reviewed. Users should be aware that a dataset has been assessed for disclosure risk, and whether methods of protection have been applied. For quality purposes, users of a dataset should be provided with an indication of the nature and extent of any modification due to the application of disclosure control methods. Any technique(s) used may be specified, but the level of detail made available should not be sufficient to allow the user to recover disclosive data. Each chapter of the handbook provides details of software that can be used to assess and manage disclosure risk of the different statistical outputs.
 
-[3.2.3 Disclosure risk 29](#disclosure-risk)
+## The chapters of the handbook
 
-[3.2.4 SDC-methods 31](#sdc-methods)
+This book starts with an overview of regulations describing the legal underpinning of Statistical Disclosure Control in Chapter 2. Microdata are covered in Chapter 3, magnitude tables are addressed in Chapter 4 and Chapter 5 provides guidance for frequency tables. Chapter 6 describes the confidentiality problems associated with microdata access issues. Within each section different approaches to assessing and managing disclosure risks are described and the advantages and disadvantages of different SDC methods are discussed. Where appropriate recommendations are made for best practice.
 
-[3.2.5 Implementation 33](#implementation)
+In Chapter 7 a glossary of statistical terms used in Statistical Disclosure Control has been included.
 
-[3.3 Risk assessment 34](#risk-assessment)
+## References
 
-[3.3.1 Overview 34](#overview)
+Duncan, G., Keller-McNulty, S., and Stokes, S. (2001) *Disclosure Risk vs. Data Utility: the R-U Confidentiality Map,* Technical Report LA-UR-01-6428, Statistical Sciences Group, Los Alamos, N.M.: Los Alamos National Laboratory
 
-[3.3.2 Disclosure risk scenarios 36](#disclosure-risk-scenarios)
-
-[3.3.3 Concepts and notation 38](#concepts-and-notation)
-
-[3.3.4 ARGUS threshold rule 40](#argus-threshold-rule)
-
-[3.3.5 ARGUS individual risk methodology 41](#argus-individual-risk-methodology)
-
-[3.3.6 The Poisson model with log-linear modelling 45](#the-poisson-model-with-log-linear-modelling)
-
-[3.3.7 SUDA 47](#suda)
-
-[3.3.8 Record Linkage 48](#record-linkage)
-
-[3.3.9 References 50](#references-2)
-
-[3.4 Microdata protection methods 53](#microdata-protection-methods)
-
-[3.4.1 Overview of concepts and methods 53](#overview-of-concepts-and-methods)
-
-[3.4.2 Perturbative masking 55](#perturbative-masking)
-
-[3.4.3 Non-perturbative masking 61](#non-perturbative-masking)
-
-[3.4.4 Noise addition 66](#noise-addition-1)
-
-[3.4.5 Microaggregation: further details 70](#microaggregation-further-details)
-
-[3.4.6 PRAM 79](#pram-1)
-
-[3.4.7 Synthetic microdata 82](#synthetic-microdata)
-
-[3.5 Information loss in microdata protection 96](#information-loss-in-microdata-protection)
-
-[3.5.1 Introduction 96](#introduction-4)
-
-[3.5.2 Information loss measures for continuous data 97](#information-loss-measures-for-continuous-data)
-
-[3.5.3 Information loss measures for categorical data 100](#information-loss-measures-for-categorical-data)
-
-[3.5.4 References 102](#references-7)
-
-[3.6 Software 103](#software)
-
-[3.6.1 µ-ARGUS 103](#µ-argus)
-
-[3.7 Introductory example: rules at Statistics Netherlands 105](#introductory-example-rules-at-statistics-netherlands)
-
-[3.8 Further examples 107](#further-examples)
-
-[3.8.1 Labour Force Survey 108](#labour-force-survey)
-
-[3.8.2 Community Innovation Survey 109](#community-innovation-survey)
-
-[3.8.3 References 112](#references-8)
-
-[4 Magnitude tabular data 113](#magnitude-tabular-data)
-
-[4.1 Introduction 113](#introduction-5)
-
-[4.2 Disclosure Control Concepts for Magnitude Tabular Data 117](#disclosure-control-concepts-for-magnitude-tabular-data)
-
-[4.2.1 Sensitive Cells in Magnitude Tables 117](#sensitive-cells-in-magnitude-tables)
-
-[4.2.2 Secondary tabular data protection methods 128](#secondary-tabular-data-protection-methods)
-
-[4.3 The τ‑ARGUS Implementation of Cell Suppression: Methodological Background, Guidance and Recommendations 131](#the-τargus-implementation-of-cell-suppression-methodological-background-guidance-and-recommendations)
-
-[4.3.1 Setting up a Tabular Data Protection Problem in Practice 132](#setting-up-a-tabular-data-protection-problem-in-practice)
-
-[4.3.2 Evaluation of Secondary Cell Suppression algorithms offered by τ‑ARGUS 137](#evaluation-of-secondary-cell-suppression-algorithms-offered-by-τargus)
-
-[4.3.3 Processing table protection efficiently 144](#processing-table-protection-efficiently)
-
-[4.3.4 Introductive Example 150](#introductive-example)
-
-[4.4 Methodological concepts of secondary cell suppression algorithms in τ‑ARGUS 152](#methodological-concepts-of-secondary-cell-suppression-algorithms-in-τargus)
-
-[4.4.1 Optimal 152](#optimal)
-
-[4.4.2 Modular 155](#modular)
-
-[4.4.3 Network 156](#network)
-
-[4.4.4 Hypercube 157](#hypercube)
-
-[4.5 Controlled Tabular AdjustmentControlled Tabular Adjustment 159](#controlled-tabular-adjustmentcontrolled-tabular-adjustment)
-
-[4.6 References 161](#references-9)
-
-[5 Frequency tables 164](#frequency-tables)
-
-[5.1 Introduction 164](#introduction-6)
-
-[5.2 Disclosure risks 164](#disclosure-risks)
-
-[5.3 Methods 173](#methods)
-
-[5.4 Rounding 177](#rounding-1)
-
-[5.5 Information loss 183](#information-loss)
-
-[5.6 Software 185](#software-1)
-
-[5.6.1 Introduction 185](#introduction-7)
-
-[5.6.2 Optimal, first feasible and RAPID solutions 187](#optimal-first-feasible-and-rapid-solutions)
-
-[5.6.3 Protection provided by controlled rounding 187](#protection-provided-by-controlled-rounding)
-
-[5.7 References 188](#references-10)
-
-[6 Remote access issues 190](#remote-access-issues)
-
-[6.1 Introduction 190](#introduction-8)
-
-[6.2 Research centres 190](#research-centres)
-
-[6.3 Remote execution 191](#remote-execution)
-
-[6.4 Remote access 192](#remote-access)
-
-[6.5 Licensing 194](#licensing)
-
-[6.6 Confidentiality protection of the analysis results 194](#confidentiality-protection-of-the-analysis-results)
-
-[6.6.1 Rules for designing programs for controlled teleprocessing using microdata of official statistics in Germany 194](#rules-for-designing-programs-for-controlled-teleprocessing-using-microdata-of-official-statistics-in-germany)
-
-[6.7 References 200](#references-11)
-
-[7 Glossary 201](#glossary)
-
-[8 Index 214](#index)
+Trewin, D et al. (2006) *Principles and guidelines of good practice for managing statistical confidentiality and microdata access*, UNECE United Nations Economic commission for Europe: [[http://www.unece.org/stats/documents/tfcm.htm]{.underline}](http://www.unece.org/stats/documents/tfcm.htm)
 

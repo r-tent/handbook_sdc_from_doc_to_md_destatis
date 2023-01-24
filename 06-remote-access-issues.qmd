@@ -119,249 +119,158 @@ From the viewpoint of the research data centres, the individual items are maximu
 
 #### Programming example in SPSS
 
-> \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*.
->
-> \*\*\* open log file.
->
-> set journal on.
->
-> set journal=\"path\\log_name of program code.jnl\".
->
-> set printback=on.
->
-> \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*.
->
-> \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*.
->
-> \*\*\* project title: Women and Work in Germany
->
-> \*\*\* data: Micro Census 1985
->
-> \*\*\*
->
-> \*\*\* name of program code: name of program code.sps
->
-> \*\*\* date of creation: date
->
-> \*\*\* author: name
->
-> \*\*\* e-mail: e-mail address
->
-> \*\*\* phone: phone number
->
-> \*\*\*
->
-> \*\*\* name of output file: name of program code.spo
->
-> \*\*\*
->
-> \*\*\* statistical software: SPSS version 13.0
->
-> \*\*\*
->
-> \*\*\* outline: analysis of multiple person numbers, data check
->
-> \*\*\*
->
-> \*\*\* variables:
->
-> \*\*\* ef1: Land
->
-> \*\*\* ef2: administrative district
->
-> \*\*\* ef3: sample district number
->
-> \*\*\* ef4: household number
->
-> \*\*\* ef5: person number
->
-> \*\*\* ef6: family number
->
-> \*\*\* ef23: age
->
-> \*\*\* ef26: population group
->
-> \*\*\* ef27: population in private households
->
-> \*\*\* ef28: population at family residence
->
-> \*\*\* ef38: marital status.
->
-> \*\*\*
->
-> \*\*\* created variables:
->
-> \*\*\* persnr: person number
->
-> \*\*\* famnr: family number
->
-> \*\*\* hhnr: household number
->
-> \*\*\* nrdiff: consistency of household number
->
-> \*\*\* and family number
->
-> \*\*\* piddiff: test on unique person number
->
-> \*\*\*
->
-> \*\*\* weighting variable:
->
-> \*\*\* gew1: weighting variable from ef253
->
-> \*\*\*
->
-> \*\*\*
->
-> \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*.
->
-> \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*.
->
-> \*(1)\*\*\* original data: mc95org.
->
-> FILE HANDLE mz85org /Name=\'path\\mc_1985.sav\'.
->
-> \*\*\*\* save new variables: mc85working.
->
-> FILE HANDLE mc85working /Name=\'path\\mc_1985_working_1.sav\'.
->
-> \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*.
->
-> \*(2)\*\*\* read data.
->
-> GET FILE=mc85org.
->
-> \*\*\*\* select private households (ef27 eq 1) at main residence (ef26 lt 3) and
->
-> \*\*\*\* at family residence ef28 eq 1.
->
-> SELECT IF (ef27 EQ 1) & (ef26 LT 3) & (ef28 EQ 1).
->
-> \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*.
->
-> \*(3)\*\*\* generate household and family number from ef1-ef6.
->
-> \*\*\*\* pers ef1-ef5
->
-> \*\*\*\* hh ef1-ef4
->
-> \*\*\*\* fam ef1-ef4 + ef6.
->
-> SORT CASES BY ef1 ef2 ef3 ef4 ef5.
->
-> COMPUTE persnr=(ef1\*10000000000)+(ef2\*1000000000)+(ef3\*100000)+(ef4\*1000)+(ef5\*10).
->
-> EXE.
->
-> SORT CASES BY ef1 ef2 ef3 ef4 .
->
-> COMPUTE hhnr=(ef1\*10000000000)+(ef2\*1000000000)+(ef3\*100000)+(ef4\*1000).
->
-> EXE.
->
-> SORT CASES BY ef1 ef2 ef3 ef4 ef6.
->
-> COMPUTE famnr=(ef1\*10000000000)+(ef2\*1000000000)+(ef3\*100000)+(ef4\*1000)+(ef6\*1).
->
-> EXE.
->
-> \*\*\*\* labeling.
->
-> VARIABLE LABELS persnr \'person number\'.
->
-> VARIABLE LABELS hhnr \'household number\'.
->
-> VARIABLE LABELS famnr \'family number\'.
->
-> \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*.
->
-> \*(4)\*\*\* weighting.
->
-> \*\*\*\* multiply the weighting variable by 0.1.
->
-> COMPUTE gew=(ef253 \* 0.1).
->
-> EXE.
->
-> WEIGHT BY gew .
->
-> \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*.
->
-> \*(5)\*\*\*compare household number (hhnr) - family number (famnr) - person number (persnr).
->
-> COMPUTE nrdiff=0.
->
-> \*\*\*\* if family number (famnr) unequal household number (hhnr) then consistency of hausehold number and family number (nrdiff) = 1.
->
-> DO IF famnr NE hhnr.
->
-> COMPUTE nrdiff=1.
->
-> END IF.
->
-> \*\*\*\* labeling.
->
-> VARIABLE LABELS nrdiff \'consistency of household number and family number\'.
->
-> VALUE LABELS nrdiff 1 \'household number and family number inconsistent\'
->
-> 0 \'household number and family number consistent.
->
-> TITLE \"output no. 1: constistency of household number and family number\".
->
-> FREQ VAR=nrdiff.
->
-> \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*.
->
-> \*(6)\*\*\* test on unique person number (persnr).
->
-> SORT CASES BY persnr.
->
-> COMPUTE piddiff=0.
->
-> EXE.
->
-> \*\*\*\* if person number (persnr) is equal to previous person number, then test on unique person numbers (piddiff) = 1.
->
-> IF persnr EQ LAG(persnr) piddiff=1.
->
-> EXE.
->
-> \*\*\*\* labeling.
->
-> VARIABLE LABELS piddiff \'test on unique person number\'.
->
-> VALUE LABELS piddiff 1\'multiple person number\'
->
-> 0\'unique person number\'.
->
-> TITLE \"output no. 2: multiple person numbers\".
->
-> FREQ VAR=piddiff.
->
-> \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*.
->
-> \*(7)\*\*\* user defined table (counts)
->
-> \*\*\*\* mean and valid cases (N) of age (ef23) by marital status (ef38).
->
-> CTABLES
->
-> /VLABELS VARIABLES=ef38 ef23 DISPLAY=DEFAULT
->
-> /TABLE ef23 \[MEAN, VALIDN F40.0\] BY ef38
->
-> /CATEGORIES VARIABLES=ef38 ORDER=A KEY=VALUE EMPTY=EXCLUDE
->
-> /TITLES
->
-> TITLE= \'output no. 3: cross table age and marital status\'.
->
-> \*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*.
->
-> \*(8)\*\*\* save new variables.
->
-> SAVE OUTFILE=mc85working.
+```
+***************************************************************************.
+*** open log file.                            
+set journal on.
+set journal="path\log_name of program code.jnl". 
+set printback=on.
+
+***************************************************************************.
+***************************************************************************.
+***					project title:	Women and Work in Germany		
+***								data:	Micro Census 1985
+***                                                                     
+***      name of program code:	name of program code.sps               
+***          date of creation:	date                           
+***                    author:	name                            
+***                    e-mail:	e-mail address                 
+***                     phone:	phone number
+***                                                                     
+***       name of output file:	name of program code.spo                           
+***                                                                     
+***		 statistical software:	SPSS version 13.0                   
+***                                                                    
+***      					 outline:	analysis of multiple person numbers, data check 	
+***                                                                     
+***      				  variables:			      			
+***									ef1:	Land	
+***									ef2:	administrative district             
+***									ef3:	sample district number        
+***									ef4:	household number        
+***									ef5:	person number
+***									ef6:	family number
+***									ef23:	age
+***									ef26:	population group        
+***									ef27:	population in private households 
+***									ef28:	population at family residence
+***									ef38:	marital status.
+***                                                                      
+***				created variables:     
+***								persnr: person number            
+***								 famnr: family number             
+***				      		  hhnr: household number             
+***              			nrdiff: consistency of household number 
+***                             and family number                               
+***             		  piddiff: test on unique person number                   
+***
+***			   weighting variable: 
+***								  gew1: weighting variable from ef253
+***                                                                     
+***                                                                     
+***************************************************************************.
+***************************************************************************.
+
+
+*(1)*** original data: mc95org.
+FILE HANDLE mz85org /Name='path\mc_1985.sav'.
+
+**** save new variables: mc85working.
+FILE HANDLE mc85working /Name='path\mc_1985_working_1.sav'.
+
+
+***************************************************************************.
+*(2)*** read data.
+GET FILE=mc85org.
+
+**** select private households (ef27 eq 1) at main residence (ef26 lt 3) and 
+**** at family residence ef28 eq 1.
+SELECT IF (ef27 EQ 1) & (ef26 LT 3) & (ef28 EQ 1).
+
+
+***************************************************************************.
+*(3)*** generate household and family number from ef1-ef6.
+**** pers ef1-ef5
+**** hh ef1-ef4
+**** fam ef1-ef4 + ef6.
+SORT CASES BY ef1 ef2 ef3 ef4 ef5.
+COMPUTE persnr=(ef1*10000000000)+(ef2*1000000000)+(ef3*100000)+(ef4*1000)+(ef5*10).
+EXE.
+
+SORT CASES BY ef1 ef2 ef3 ef4 .
+COMPUTE hhnr=(ef1*10000000000)+(ef2*1000000000)+(ef3*100000)+(ef4*1000).
+EXE.
+
+SORT CASES BY ef1 ef2 ef3 ef4 ef6.
+COMPUTE famnr=(ef1*10000000000)+(ef2*1000000000)+(ef3*100000)+(ef4*1000)+(ef6*1).
+EXE.
+
+**** labeling.
+VARIABLE LABELS persnr 'person number'.
+VARIABLE LABELS hhnr 'household number'.
+VARIABLE LABELS famnr 'family number'.
+
+
+***************************************************************************.
+*(4)*** weighting.
+**** multiply the weighting variable by 0.1.
+COMPUTE gew=(ef253 * 0.1).
+EXE.
+
+WEIGHT BY gew .
+***************************************************************************.
+*(5)***compare household number (hhnr)  - family number (famnr) - person number (persnr).
+COMPUTE nrdiff=0.
+
+**** if family number (famnr) unequal household number (hhnr) then consistency of hausehold number and family number (nrdiff) = 1.
+DO IF famnr NE hhnr.
+	COMPUTE nrdiff=1.
+END IF.
+
+**** labeling.
+VARIABLE LABELS nrdiff 'consistency of household number and family number'.
+VALUE LABELS nrdiff	1 'household number and family number inconsistent'
+								0 'household number and family number consistent. 		
+
+TITLE "output no. 1: constistency of household number and family number".
+FREQ VAR=nrdiff.
+
+
+***************************************************************************.
+*(6)*** test on unique person number (persnr).
+SORT CASES BY persnr.
+COMPUTE piddiff=0.
+EXE.
+
+**** if person number (persnr) is equal to previous person number, then test on unique person numbers (piddiff) = 1.
+IF persnr EQ LAG(persnr) piddiff=1.
+EXE.
+
+**** labeling.
+VARIABLE LABELS piddiff	'test on unique person number'.
+VALUE LABELS piddiff 	1'multiple person number'
+	             				0'unique person number'. 
+
+TITLE "output no. 2: multiple person numbers".	
+FREQ VAR=piddiff.
+
+
+***************************************************************************.
+*(7)*** user defined table (counts)
+**** mean and valid cases (N) of age (ef23) by marital status (ef38).
+
+CTABLES
+  /VLABELS VARIABLES=ef38 ef23 DISPLAY=DEFAULT
+  /TABLE ef23 [MEAN, VALIDN F40.0] BY ef38
+  /CATEGORIES VARIABLES=ef38 ORDER=A KEY=VALUE EMPTY=EXCLUDE
+  /TITLES
+   TITLE= 'output no. 3: cross table age and marital status'.
+
+
+***************************************************************************.
+*(8)*** save new variables.
+SAVE OUTFILE=mc85working.
+```
 
 ## References
 
