@@ -21,7 +21,3 @@ bibliography: references.bib
 format:
   html:
     theme: cosmo
-  pdf:
-    pdf-engine: latexmk
-    pdf-engine-opt: -xelatex
-    documentclass: scrreprt
