@@ -1,0 +1,1 @@
+\[ r _ { i } = \mathrm { E } \left( \frac { 1 } { F _ { k } } \mid f _ { k } \right) = \sum _ { h \geq f _ { k } } \frac { 1 } { h } \operatorname { Pr } \left( F _ { k } = h \mid f _ { k } \right) \]
