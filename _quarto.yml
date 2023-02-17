@@ -8,14 +8,14 @@ book:
   date: "20/01/2023"
   chapters:
     - index.qmd
-    - 02-regulations.qmd
-    - 03-microdata.qmd
-    - 04-magnitude-tabular-data.qmd
-    - 05-frequency-tables.qmd
-    - 06-remote-access-issues.qmd
-    - 07-glossary.qmd
-    - 08-final-index.qmd
-    - 09-references.qmd
+    - 02-regulations_with_tex.qmd
+    - 03-microdata_with_tex.qmd
+    - 04-magnitude-tabular-data_with_tex.qmd
+    - 05-frequency-tables_with_tex.qmd
+    - 06-remote-access-issues_with_tex.qmd
+    - 07-glossary_with_tex.qmd
+    - 08-final-index_with_tex.qmd
+    - 09-references_with_tex.qmd
 bibliography: references.bib
 
 format:
