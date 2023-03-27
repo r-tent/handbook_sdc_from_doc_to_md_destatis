@@ -268,7 +268,7 @@ Observing the values of the key on individual $i \in s$ will classify such indiv
 
 According to the concept of re-identification disclosure given above, we define the (base) individual risk of disclosure of unit *i* in the sample as its probability of re-identification under the worst case scenario. Therefore the risk *r~i~* that we get is certainly not smaller than the actual risk, the individual risk is a conservative estimate of the actual risk:
 
-\[ r _ { i } = \operatorname { Pr } \left( i \text { correctly linked with } i ^ { * } \mid s , P \text {, worst case scenario } \right) \](3.2.3.1)
+$r _ { i } = \operatorname { Pr } \left( i \text { correctly linked with } i ^ { * } \mid s , P \text {, worst case scenario } \right)$(3.2.3.1)
 
 $\tau_{1} = \sum_{k}^{}\frac{1}{F_{k}}$All of the methods based on keys in the population described in this chapter aim to estimate this individual per-record disclosure risk measure that can be formulated as 1/*F~k~*. The population frequencies *F~k~* are unknown parameters and therefore need to be estimated from the sample. A global file-level disclosure risk measure can be calculated by aggregating the individual disclosure risk measures over the sample:
 
@@ -296,7 +296,7 @@ If a key is considered unsafe according to this rule, protection is required. Th
 
 If a distinction between units rare in the sample from a unit rare in the population wants to be made then an inferential step may be followed. In the initial proposal by Benedetti and Franconi (1998), further developed in Franconi and Polettini (2004) and implemented in μ‑ARGUS, the uncertainty on *F~k~* is accounted for in a Bayesian fashion by introducing the distribution of the population frequencies given the sample frequencies. The individual risk of disclosure is then measured as the (posterior) mean of 1/*F~k~* with respect to the distribution of *F~k~*\|*f~k~*:![](Images/media/image2.png){width="1.575in" height="0.17222222222222222in"}
 
-\[ r _ { i } = \mathrm { E } \left( \frac { 1 } { F _ { k } } \mid f _ { k } \right) = \sum _ { h \geq f _ { k } } \frac { 1 } { h } \operatorname { Pr } \left( F _ { k } = h \mid f _ { k } \right) \]. (3.2.5.1)
+$r _ { i } = \mathrm { E } \left( \frac { 1 } { F _ { k } } \mid f _ { k } \right) = \sum _ { h \geq f _ { k } } \frac { 1 } { h } \operatorname { Pr } \left( F _ { k } = h \mid f _ { k } \right)$. (3.2.5.1)
 
 where the posterior distribution of *F~k~*\|*f~k~* is negative binomial with success probability *p~k~* and number of successes *f~k~*. As the risk is a function of *f~k~* and *p~k\ ~*its estimate can be obtained by estimating *p~k~*. Benedetti and Franconi (1998) propose to use
 
@@ -336,13 +336,13 @@ The household risk makes use of the same framework defined for the individual ri
 
 The *household risk* is defined as the probability that *at least* one individual in the household is re-identified. For a given household *g* of size \|*g*\|, whose members are labelled *i*~1~, ..., *i*~\|*g*\|~, the household risk is:
 
-\[ r ^ { h } ( g ) = \operatorname { Pr } \left( i _ { 1 } \cup i _ { 2 } \cup \ldots \cup i _ { | g | } \text { re-identified } \right) \])
+$r ^ { h } ( g ) = \operatorname { Pr } \left( i _ { 1 } \cup i _ { 2 } \cup \ldots \cup i _ { | g | } \text { re-identified } \right)$)
 
-and is the same for all the individuals in household *g* and equals \[ r _ { g } ^ { h } \].
+and is the same for all the individuals in household *g* and equals $r _ { g } ^ { h }$.
 
-Since all the individuals in a given household have the same household risk, the expected number of re‑identified records in household *g* equals \[ | g | r _ { g } ^ { h } \]. The re‑identification rate in a hierarchical file can be then defined as $\xi^{h} = 1/n\sum_{}^{}{|g|r_{g}^{h}}$, where *G* is the total number of households in the file. The re‑identification rate can be used to define a threshold $r^{h \ast}$ on the household risk $r^{h}$*,* much in the same way as for the individual risk. For the mathematical details see Polettini (2004) and the Argus manual (Hundepool *et al.*, 2004).
+Since all the individuals in a given household have the same household risk, the expected number of re‑identified records in household *g* equals $| g | r _ { g } ^ { h }$. The re‑identification rate in a hierarchical file can be then defined as $\xi^{h} = 1/n\sum_{}^{}{|g|r_{g}^{h}}$, where *G* is the total number of households in the file. The re‑identification rate can be used to define a threshold $r^{h \ast}$ on the household risk $r^{h}$*,* much in the same way as for the individual risk. For the mathematical details see Polettini (2004) and the Argus manual (Hundepool *et al.*, 2004).
 
-Note that the household risk \[ r _ { g } ^ { h } \]of household *g* is computed by the individual risks of its household members. For a given household, it might happen that a household is unsafe (\[ r _ { g } ^ { h } \] exceeds the threshold) because just one of its members, *i*, say, has a high value $r_{i}$ of the individual risk. To protect the households, the followed approach is therefore to protect individuals in households, first protecting those individuals who contribute most to the household risk. For this reason, inside *unsafe households*, detection of *unsafe individuals* is needed. In other words, the threshold on the household risk $r^{h}$ has to be transformed into a threshold on the individual risk $r_{i}$. To this aim, it can be noticed that the household risk is bounded by the sum of the individual risks of the members of the household: $r_{g}^{h} \leq \sum_{}^{}r_{i_{j}}$.
+Note that the household risk $r _ { g } ^ { h }$of household *g* is computed by the individual risks of its household members. For a given household, it might happen that a household is unsafe ($r _ { g } ^ { h }$ exceeds the threshold) because just one of its members, *i*, say, has a high value $r_{i}$ of the individual risk. To protect the households, the followed approach is therefore to protect individuals in households, first protecting those individuals who contribute most to the household risk. For this reason, inside *unsafe households*, detection of *unsafe individuals* is needed. In other words, the threshold on the household risk $r^{h}$ has to be transformed into a threshold on the individual risk $r_{i}$. To this aim, it can be noticed that the household risk is bounded by the sum of the individual risks of the members of the household: $r_{g}^{h} \leq \sum_{}^{}r_{i_{j}}$.
 
 Consider to apply a threshold $r^{h \ast}$ on the household risk. In order for household *g* to be classified safe (i.e. $r_{g}^{h} < r^{h \ast}$) it is *sufficient* that all of its components have individual risk less than $\delta_{g} = r^{h \ast}/|g|$.
 
@@ -360,9 +360,9 @@ Suppose one computes the risk using the household size as the only identifying v
 
 ### The Poisson model with log-linear modelling
 
-As defined in Skinner and Elamir (2004), assuming that the \[ F _ { k } \] are independently Poisson distributed with means \[ \left\{ \lambda _ { k } \right\} \] and assuming a Bernoulli sampling scheme with equal selection probably \[ \pi \], then \[ f _ { k } \] and \[ F _ { k } - f _ { k } \] are independently Poisson distributed as: \[ f _ { k } \mid \lambda _ { k } \sim \operatorname { Pois } \left( \pi \lambda _ { k } \right) \] and \[ F _ { k } - f _ { k } \mid \lambda _ { k } \sim \operatorname { Pois } \left( ( 1 - \pi ) \lambda _ { k } \right) \] . The individual risk measure for a sample unique is defined as \[ r _ { k } = E _ { \lambda _ { k } } \left( \frac { 1 } { F _ { k } } \mid f _ { k } = 1 \right) \] which is equal to: \[ r _ { k } = \frac { 1 } { \lambda _ { k } ( 1 - \pi ) } \left[ 1 - e ^ { - \lambda _ { k } ( 1 - \pi ) } \right] \] ![](Images/media/image18.png){width="1.575in" height="0.17222222222222222in"}
+As defined in Skinner and Elamir (2004), assuming that the $F _ { k }$ are independently Poisson distributed with means $\left\{ \lambda _ { k } \right\}$ and assuming a Bernoulli sampling scheme with equal selection probably $\pi$, then $f _ { k }$ and $F _ { k } - f _ { k }$ are independently Poisson distributed as: $f _ { k } \mid \lambda _ { k } \sim \operatorname { Pois } \left( \pi \lambda _ { k } \right)$ and $F _ { k } - f _ { k } \mid \lambda _ { k } \sim \operatorname { Pois } \left( ( 1 - \pi ) \lambda _ { k } \right)$ . The individual risk measure for a sample unique is defined as $r _ { k } = E _ { \lambda _ { k } } \left( \frac { 1 } { F _ { k } } \mid f _ { k } = 1 \right)$ which is equal to: $r _ { k } = \frac { 1 } { \lambda _ { k } ( 1 - \pi ) } \left[ 1 - e ^ { - \lambda _ { k } ( 1 - \pi ) } \right]$ ![](Images/media/image18.png){width="1.575in" height="0.17222222222222222in"}
 
-In this approach the parameters $\left\{ \lambda_{k} \right\}$ are estimated by taking into account the structure and dependencies in the data through log-linear modelling. Assuming that the sample frequencies $f_{k}$ are independently Poisson distributed with a mean of $u_{k} = \text{πλ}_{k}$, a log-linear model for the $u_{k}$ can be expressed as: $\text{log}(u_{k}) = x_{k}^{'}\beta$ where $x_{k}$ is a design vector denoting the main effects and interactions of the model for the key variables. Using standard procedures, such as iterative proportional fitting, we obtain the Poisson maximum-likelihood estimates for the vector $\beta$ and calculate the fitted values: ${\hat{u}}_{k} = \text{exp}(x_{k}^{'}\hat{\beta})$. The estimate for ${\hat{\lambda}}_{k}$ is equal to $\frac{{\hat{u}}_{k}}{\pi}$ which is substituted for \[ \lambda _ { k } \] in the above formula for $r_{k}$. The individual disclosure risk measures can be aggregated to obtain a global (file-level) measure:
+In this approach the parameters $\left\{ \lambda_{k} \right\}$ are estimated by taking into account the structure and dependencies in the data through log-linear modelling. Assuming that the sample frequencies $f_{k}$ are independently Poisson distributed with a mean of $u_{k} = \text{πλ}_{k}$, a log-linear model for the $u_{k}$ can be expressed as: $\text{log}(u_{k}) = x_{k}^{'}\beta$ where $x_{k}$ is a design vector denoting the main effects and interactions of the model for the key variables. Using standard procedures, such as iterative proportional fitting, we obtain the Poisson maximum-likelihood estimates for the vector $\beta$ and calculate the fitted values: ${\hat{u}}_{k} = \text{exp}(x_{k}^{'}\hat{\beta})$. The estimate for ${\hat{\lambda}}_{k}$ is equal to $\frac{{\hat{u}}_{k}}{\pi}$ which is substituted for $\lambda _ { k }$ in the above formula for $r_{k}$. The individual disclosure risk measures can be aggregated to obtain a global (file-level) measure:
 
 ${\hat{\tau}}_{2} = \sum_{k \in \text{SU}}^{}{\hat{r} =}\sum_{k \in \text{SU}}^{}{\frac{1}{{\hat{\lambda}}_{k}(1 - \pi)}\lbrack 1 - e^{- {\hat{\lambda}}_{k}(1 - \pi)}\rbrack}$
 
@@ -382,7 +382,7 @@ The Special Uniques Detection Algorithm (SUDA) (Elliot et.al., 2005) is a softwa
 
 SUDA grades and orders records within a microdata file according to the level of risk. The method assigns a per record matching probability to a sample unique based on the number and size of minimal uniques. The DIS Measure (Skinner and Elliot, 2000) is the conditional probability of a correct match given a unique match:
 
-> \[ p ( c m \mid u m ) = \frac { \sum _ { k = 1 } ^ { K } I \left( f _ { k } = 1 \right) } { \sum _ { k = 1 } ^ { K } F _ { k } I \left( f _ { k } = 1 \right) } \])
+> $p ( c m \mid u m ) = \frac { \sum _ { k = 1 } ^ { K } I \left( f _ { k } = 1 \right) } { \sum _ { k = 1 } ^ { K } F _ { k } I \left( f _ { k } = 1 \right) }$)
 
 and is estimated by a simple sample-based measure which is approximately unbiased without modelling assumptions. Elliot (2005) describes a heuristic which combines the DIS measure with scores resulting from the algorithm (i.e., SUDA scores). This method known as DIS-SUDA produces estimates of intruder confidence in a match against a given record being correct. This is closely related to the probability that the match is correct and is heuristically linked to the estimate of
 
@@ -606,31 +606,31 @@ With the exception of the not very practical method of Sullivan(1989), noise add
 
 One main challenge regarding additive noise with constant variance is that on one hand small values are strongly perturbed and on the other large values are weakly perturbed. For instance, in a business microdata set the large enterprises \-- which are much easier to re-identify than the smaller ones \-- remain still high at risk after noise addition. A possible way out is given by the multiplicative noise approach explained below.![](Images/media/image27.png){width="1.575in" height="0.17222222222222222in"}
 
-Let \[ X \] be the matrix of the original data and \[ W \] the matrix of continuous perturbation variables with expectation 1 and variance \[ \sigma _ { w } ^ { 2 } > 0 \]. The corresponding anonymised data \[ X ^ { a } \] is then obtained as
+Let $X$ be the matrix of the original data and $W$ the matrix of continuous perturbation variables with expectation 1 and variance $\sigma _ { w } ^ { 2 } > 0$. The corresponding anonymised data $X ^ { a }$ is then obtained as
 
-> \[ \left( X ^ { a } \right) _ { i j } : = w _ { i j } \cdot X _ { i j } \])
+> $\left( X ^ { a } \right) _ { i j } : = w _ { i j } \cdot X _ { i j }$)
 
-for each pair \[ ( i , j ) \].
+for each pair $( i , j )$.
 
-The following approach has been suggested by Höhne (2004). In a first step, for each record it is randomly decided whether its values are increased or decreased, each with 0.5-probability. This is done using the main factors \[ 1 - f \] and \[ 1 + f \]. In order to avoid that all values of some record are perturbed with the same noise, these main factors are themselves perturbed with some additive noise \[ s \left( \text { where } s < \frac { f } { 2 } \right) \]. The following transformation is needed to preserve the first and second moments of the distribution:
+The following approach has been suggested by Höhne (2004). In a first step, for each record it is randomly decided whether its values are increased or decreased, each with 0.5-probability. This is done using the main factors $1 - f$ and $1 + f$. In order to avoid that all values of some record are perturbed with the same noise, these main factors are themselves perturbed with some additive noise $s \left( \text { where } s < \frac { f } { 2 } \right)$. The following transformation is needed to preserve the first and second moments of the distribution:
 
-> \[ x _ { i } ^ { a ^ { R } } : = \frac { \sigma _ { X } } { \sigma _ { X ^ { a } } } \left( x _ { i } ^ { a } - \mu _ { X ^ { a } } \right) + \mu _ { X } \],
+> $x _ { i } ^ { a ^ { R } } : = \frac { \sigma _ { X } } { \sigma _ { X ^ { a } } } \left( x _ { i } ^ { a } - \mu _ { X ^ { a } } \right) + \mu _ { X }$,
 
-where \[ \mu _ { X } \] and \[ \mu _ { X ^ { a } } \] define the average of the original and anonymised variables, \[ \sigma _ { X } \] and \[ \sigma _ { X ^ { a } } \] the corresponding standard deviations, respectively.
+where $\mu _ { X }$ and $\mu _ { X ^ { a } }$ define the average of the original and anonymised variables, $\sigma _ { X }$ and $\sigma _ { X ^ { a } }$ the corresponding standard deviations, respectively.
 
-Particularly if the original data follow a strongly skewed distribution, the deviations using this method may strongly depend on the configuration of the noise factors for some few, but large values. That is, despite consistency, means and sums might be unsatisfactorily reproduced. For this reason, (Höhne, 2004) suggests a slight modification of the method. At first, we generate normal distributed random variables \[ W _ { i } \] with expectation greater than zero and \'small\' variance, s.t. the realisation of \[ W _ { i } \] yields a positive value. Afterwards, the data is sorted in descending order by the variable under consideration. Then, the record with the largest entry in this variable is diminished by
+Particularly if the original data follow a strongly skewed distribution, the deviations using this method may strongly depend on the configuration of the noise factors for some few, but large values. That is, despite consistency, means and sums might be unsatisfactorily reproduced. For this reason, (Höhne, 2004) suggests a slight modification of the method. At first, we generate normal distributed random variables $W _ { i }$ with expectation greater than zero and \'small\' variance, s.t. the realisation of $W _ { i }$ yields a positive value. Afterwards, the data is sorted in descending order by the variable under consideration. Then, the record with the largest entry in this variable is diminished by
 
-> \[ X _ { 1 } ^ { a } = \left( 1 - W _ { 1 } \right) X _ { 1 } \].
+> $X _ { 1 } ^ { a } = \left( 1 - W _ { 1 } \right) X _ { 1 }$.
 
-The records \[ X _ { 2 } , \ldots , X _ { n - 1 } \] are now perturbed as follows:
+The records $X _ { 2 } , \ldots , X _ { n - 1 }$ are now perturbed as follows:
 
-> \[ X _ { i } ^ { a } = \left( 1 - W _ { i } \right) X _ { i } , \text { if } \sum _ { k = 1 } ^ { i - 1 } X _ { k } ^ { a } > \sum _ { k = 1 } ^ { i - 1 } X _ { k } \])
+> $X _ { i } ^ { a } = \left( 1 - W _ { i } \right) X _ { i } , \text { if } \sum _ { k = 1 } ^ { i - 1 } X _ { k } ^ { a } > \sum _ { k = 1 } ^ { i - 1 } X _ { k }$)
 >
-> \[ X _ { i } ^ { a } = \left( 1 + W _ { i } \right) X _ { i } , \text { if } \sum _ { k = 1 } ^ { i - 1 } X _ { k } ^ { a } \leq \sum _ { k = 1 } ^ { i - 1 } X _ { k } \].
+> $X _ { i } ^ { a } = \left( 1 + W _ { i } \right) X _ { i } , \text { if } \sum _ { k = 1 } ^ { i - 1 } X _ { k } ^ { a } \leq \sum _ { k = 1 } ^ { i - 1 } X _ { k }$.
 
-Hence, means and sums are preserved and the diminishing and enlarging effects of single values cancel out each other. For the remaining record \[ X _ { n } \] we set
+Hence, means and sums are preserved and the diminishing and enlarging effects of single values cancel out each other. For the remaining record $X _ { n }$ we set
 
-> \[ X _ { n } ^ { a } = X _ { n } - \left( \sum _ { k = 1 } ^ { n - 1 } X _ { k } ^ { a } - \sum _ { k = 1 } ^ { n - 1 } X _ { k } \right) \])
+> $X _ { n } ^ { a } = X _ { n } - \left( \sum _ { k = 1 } ^ { n - 1 } X _ { k } ^ { a } - \sum _ { k = 1 } ^ { n - 1 } X _ { k } \right)$)
 
 in order to preserve the overall sum.
 

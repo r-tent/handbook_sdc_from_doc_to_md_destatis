@@ -142,7 +142,7 @@ Unlike the (1,*k*)-dominance rule, both the (2,*k*)‑dominance rule and *p*% �
 
 We will show in the following that, according to both types of concentration rules, an aggregate total (e.g. cell value) *X* is considered as sensitive, if it provides an upper estimate for one of the individual contributions that is relatively close to this contribution.
 
-Assuming that there are no coalitions of respondents, i.e. there are no intruders knowing more than one of the contributions. Then the closest upper estimate of any other contribution can be obtained by the second largest contributor, when it subtracts its own contribution $x_{2}$from the aggregate total (e.g. cell value) *X* to estimate the largest contribution (${\hat{x}}_{1} = X - x_{2}$) as seen in example 1. All other scenarios of a contributor subtracting its own value from the total, to estimate another, result in larger error. In the, rather unlikely, scenario that \[ n - 1 ( n > 2 ) \] respondents pool their data in order to disclose the contribution of another, the closest upper estimate of any other contribution can be obtained by the coalition of respondents 2, 3,...*n* when they estimate ${\hat{x}}_{1} = X - x_{2} - x_{3} - \text{.}\text{.}\text{.} - x_{n}$.
+Assuming that there are no coalitions of respondents, i.e. there are no intruders knowing more than one of the contributions. Then the closest upper estimate of any other contribution can be obtained by the second largest contributor, when it subtracts its own contribution $x_{2}$from the aggregate total (e.g. cell value) *X* to estimate the largest contribution (${\hat{x}}_{1} = X - x_{2}$) as seen in example 1. All other scenarios of a contributor subtracting its own value from the total, to estimate another, result in larger error. In the, rather unlikely, scenario that $n - 1 ( n > 2 )$ respondents pool their data in order to disclose the contribution of another, the closest upper estimate of any other contribution can be obtained by the coalition of respondents 2, 3,...*n* when they estimate ${\hat{x}}_{1} = X - x_{2} - x_{3} - \text{.}\text{.}\text{.} - x_{n}$.
 
 The question is now, how to determine whether such an estimate is 'relatively close'.
 
@@ -151,11 +151,11 @@ Application of the *p*%-rule yields that the upper estimate ${\hat{x}}_{1}$ will
 When we adapt relation (1) in table 1 (see definition of the (n,*k*)-rule) to the case of *n* = 2, subtract both sides from *X* and then divide by *X* the result is\
 $(X - x_{2}) - x_{1} < (\text{100} - k)/\text{100} \cdot X$ (3)
 
-In this formulation, the (2*,k*)-rule looks very similar to the formulation of the *p*%-rule given by (2). Both rules define an aggregate to be sensitive, when the estimate \[ \hat { x } _ { 1 } = X - x _ { 2 } \] does not overestimate the true value of \[ x _ { 1 } \]'sufficiently'. The difference between both rules is in how they determine this 'sufficiency'. According to the *p* %-rule, it is expressed as a rate (i.e. *p *%) of the true value of the largest contribution \[ x _ { 1 } \], while according to the (2,*k*) ‑rule, it is expressed as a rate (i.e. *100-k* %) of the aggregate total *X*. Considering this, the concept of the *p*%-rule seems to be more natural than that of the (2,*k*)-rule.
+In this formulation, the (2*,k*)-rule looks very similar to the formulation of the *p*%-rule given by (2). Both rules define an aggregate to be sensitive, when the estimate $\hat { x } _ { 1 } = X - x _ { 2 }$ does not overestimate the true value of $x _ { 1 }$'sufficiently'. The difference between both rules is in how they determine this 'sufficiency'. According to the *p* %-rule, it is expressed as a rate (i.e. *p *%) of the true value of the largest contribution $x _ { 1 }$, while according to the (2,*k*) ‑rule, it is expressed as a rate (i.e. *100-k* %) of the aggregate total *X*. Considering this, the concept of the *p*%-rule seems to be more natural than that of the (2,*k*)-rule.
 
 (2,*k*)-rules correspond to *p%*-rules in the following way:
 
-If *k* is set to \[ 100 \cdot \frac { 100 } { 100 + p } \] then
+If *k* is set to $100 \cdot \frac { 100 } { 100 + p }$ then
 
 A any aggregate, which is safe according to the\
 (2,*k*)‑rule, is also safe according to the *p%*-rule (this will be proven below), but
@@ -173,48 +173,48 @@ Thus, a (2,80)‑dominance rule would be replaced by a *p* %‑rule with *p* = 
 
 If we also derive *p* from this formula, when replacing a (1,*k*)‑dominance rule, we will obtain a much larger number of sensitive cells. In addition to the cells which are unsafe according to the (1,*k*)-dominance rule which will then also be unsafe according to the *p* %‑rule, there will be cells which were safe according to the (1,*k*)‑dominance rule, but are not safe according to the *p* %‑rule, because the rule correctly considers the insider knowledge of a large second largest contributor. We could then put up with this increase in the number of sensitive cells. Alternatively, we could consider the number of sensitive cells that we used to assign (with the (1,*k*)-dominance rule) as a kind of a maximum-prize we are prepared to 'pay' for data protection. In that case we will reduce the parameter *p*. The effect will be that some of the cells we used to consider as sensitive according to the (1,*k*)-dominance rule will now not be sensitive. But this would be justified because those cells are less sensitive as the cells which are unsafe according to the *p* %-rule, but are not according to the former (1,*k*)-dominance-rule.
 
-Let *p* = 10, then \[ k = 100 \cdot \frac { 100 } { 100 + p } \] = 90.9, let the total value of a table cell be *X* = 110 000 , let the largest two contributions be \[ x _ { 1 } \] = 52 000 , and \[ x _ { 2 } \] = 50 000 .
+Let *p* = 10, then $k = 100 \cdot \frac { 100 } { 100 + p }$ = 90.9, let the total value of a table cell be *X* = 110 000 , let the largest two contributions be $x _ { 1 }$ = 52 000 , and $x _ { 2 }$ = 50 000 .
 
-Then \[ \hat { x } = X - x _ { 2 } \] = 110 000 − 50 000 = 60 000 
+Then $\hat { x } = X - x _ { 2 }$ = 110 000 − 50 000 = 60 000 
 
 ![](Images/media/image147.png){width="1.4159722222222222in" height="0.4465277777777778in"}![](Images/media/image148.png){width="1.5298611111111111in" height="0.4465277777777778in"}\
-e.g. the upper estimate \[ \hat { x } = X - x _ { 2 } \] will overestimate
+e.g. the upper estimate $\hat { x } = X - x _ { 2 }$ will overestimate
 
 the true value by 15.4 %. So the aggregate is safe according to the *p* %-rule at *p* = 10.
 
-On the other hand the two largest contributions are \[ x _ { 1 } + x _ { 2 } \]= 102 000. As 102 000  \> \[ \frac { 100 } { 100 + p } \cdot X \] = 100 000  the aggregate is not safe according to the (2,*k*)-rule.
+On the other hand the two largest contributions are $x _ { 1 } + x _ { 2 }$= 102 000. As 102 000  \> $\frac { 100 } { 100 + p } \cdot X$ = 100 000  the aggregate is not safe according to the (2,*k*)-rule.
 
 own contribution from the aggregate total. Example 1 provides an instance.
 
-For an aggregate which is safe according to the (2,*k*)‑rule with \[ k = 100 \cdot \frac { 100 } { 100 + p } \ldots ( i ) \text { and } ( i i ) \])
+For an aggregate which is safe according to the (2,*k*)‑rule with $k = 100 \cdot \frac { 100 } { 100 + p } \ldots ( i ) \text { and } ( i i )$)
 
 will hold:
 
-*(i)* \[ x _ { 1 } \leq \frac { k } { 100 } \cdot X = \frac { 100 } { 100 + p } \cdot X \] , and
+*(i)* $x _ { 1 } \leq \frac { k } { 100 } \cdot X = \frac { 100 } { 100 + p } \cdot X$ , and
 
-*(ii)* \[ \frac { \left( X - x _ { 2 } \right) - x _ { 1 } } { X } \geq 1 - \frac { k } { 100 } = 1 - \frac { 100 } { 100 + p } = \frac { p } { 100 + p } \] (c.f. (3) ). Equal to (*ii*) is
+*(ii)* $\frac { \left( X - x _ { 2 } \right) - x _ { 1 } } { X } \geq 1 - \frac { k } { 100 } = 1 - \frac { 100 } { 100 + p } = \frac { p } { 100 + p }$ (c.f. (3) ). Equal to (*ii*) is
 
 \(iii\) ![](Images/media/image155.png){width="1.832638888888889in" height="0.4465277777777778in"}
 
-From (*i*) it follows that \[ \frac { p } { 100 + p } \cdot \frac { X } { x _ { 1 } } \geq \frac { p } { 100 } \]
+From (*i*) it follows that $\frac { p } { 100 + p } \cdot \frac { X } { x _ { 1 } } \geq \frac { p } { 100 }$
 
-And hence from (*iii*) : \[ \frac { \left( X - x _ { 2 } \right) - x _ { 1 } } { x _ { 1 } } \geq \frac { p } { 100 + p } \cdot \frac { X } { x _ { 1 } } \geq \frac { p } { 100 } \]
+And hence from (*iii*) : $\frac { \left( X - x _ { 2 } \right) - x _ { 1 } } { x _ { 1 } } \geq \frac { p } { 100 + p } \cdot \frac { X } { x _ { 1 } } \geq \frac { p } { 100 }$
 
-A well known extension of the *p* %--rule is the so called prior‑posterior (i)%‑rule. With the extended rule, one can formally account for general knowledge about individual contributions assumed to be around *prior* to the publication, in particular that the second largest contributor can estimate the smaller contributions \[ X _ { R } : = \sum _ { i > 2 } x _ { 1 } \] to within *q* %. An aggregate is then considered unsafe when the second largest respondent could estimate the largest contribution \[ x _ { 1 } \] to within *p* percent of \[ x _ { 1 } \] , by subtracting her own contribution and this estimate ${\hat{X}}_{R}$ from the cell total, e.g. when $|\left( X - x_{2} \right) - x_{1} - {\hat{X}}_{R}| < \frac{p}{\text{100}} \cdot x_{1}$. Because $\left( X - x_{2} \right) - x_{1} = X_{R}$, the left hand side is assumed to be less than $\frac{q}{\text{100}} \cdot X_{R}$. So the aggregate is considered to be sensitive, if $X_{R} < \frac{p}{q} \cdot x_{1}$. Evidently, it is actually the ratio *p/q* which determines which cells are considered safe, or unsafe. Therefore, any (*p,q*)‑rule with *q* \< 100 can also be expressed as \[ ( p * , q * ) \]‑rule, with \[ q * = 100 \], e.g. choose
+A well known extension of the *p* %--rule is the so called prior‑posterior (i)%‑rule. With the extended rule, one can formally account for general knowledge about individual contributions assumed to be around *prior* to the publication, in particular that the second largest contributor can estimate the smaller contributions $X _ { R } : = \sum _ { i > 2 } x _ { 1 }$ to within *q* %. An aggregate is then considered unsafe when the second largest respondent could estimate the largest contribution $x _ { 1 }$ to within *p* percent of $x _ { 1 }$ , by subtracting her own contribution and this estimate ${\hat{X}}_{R}$ from the cell total, e.g. when $|\left( X - x_{2} \right) - x_{1} - {\hat{X}}_{R}| < \frac{p}{\text{100}} \cdot x_{1}$. Because $\left( X - x_{2} \right) - x_{1} = X_{R}$, the left hand side is assumed to be less than $\frac{q}{\text{100}} \cdot X_{R}$. So the aggregate is considered to be sensitive, if $X_{R} < \frac{p}{q} \cdot x_{1}$. Evidently, it is actually the ratio *p/q* which determines which cells are considered safe, or unsafe. Therefore, any (*p,q*)‑rule with *q* \< 100 can also be expressed as $( p * , q * )$‑rule, with $q * = 100$, e.g. choose
 
 > $p^{} = :\text{100} \cdot p/q$ (4)
 
-Of course we can also adapt the (*n,k*)-dominance rule to account for *q* % relative a priori bounds: Let e.g. *n* = 2 . According to (3) above, an aggregate should then be considered unsafe when the second largest respondent could estimate the largest contribution $x_{1}$ to within (100 -- *k*) percent of *X* , by subtracting her own contribution and the estimate ${\hat{X}}_{R}$ from the cell total, e.g. when $|\left( X - x_{2} \right) - x_{1} - {\hat{X}}_{R}| < (\text{100} - k)/\text{100} \cdot X$. Just as in the case of the *p%*-rule, we see that the aggregate is sensitive, when $X_{R} < (\text{100} - k)/q \cdot X$, and that for given parameters *k* and *q* the parameter *k\** corresponding to \[ q * = 100 \] should be chosen such that
+Of course we can also adapt the (*n,k*)-dominance rule to account for *q* % relative a priori bounds: Let e.g. *n* = 2 . According to (3) above, an aggregate should then be considered unsafe when the second largest respondent could estimate the largest contribution $x_{1}$ to within (100 -- *k*) percent of *X* , by subtracting her own contribution and the estimate ${\hat{X}}_{R}$ from the cell total, e.g. when $|\left( X - x_{2} \right) - x_{1} - {\hat{X}}_{R}| < (\text{100} - k)/\text{100} \cdot X$. Just as in the case of the *p%*-rule, we see that the aggregate is sensitive, when $X_{R} < (\text{100} - k)/q \cdot X$, and that for given parameters *k* and *q* the parameter *k\** corresponding to $q * = 100$ should be chosen such that
 
 $(\text{100} - k \ast )/\text{100} = (\text{100} - k)/q$ (5)
 
 For a more analytical discussion of sensitivity rules the interested reader is referred to (Cox, 2001), for more generalized formulations considering coalitions to (Loeve, 2001)
 
-When disclosure risk has to be assessed for a variable that can take not only positive, but also negative values, we suggest to reduce the value of *p* (or increase *k*, for the dominance-rule, resp.). It may even be adequate to take that reduction even to the extent of replacing a concentration rule by a minimum frequency rule. This recommendation is motivated by the following consideration: Above, we have explained that the *p%*‑rule is equivalent to a (*p,q*)-rule with *q *= 100. When contributions may take negative, as well as positive values, it makes sense to assume that the bound *q~-~* for the relative deviation of *a priori* estimates ${\hat{X}}_{R}$ exceeds 100 %. This can be expressed as \[ q _ { - } = f * 100 \]*,* with \[ f > 1 \]. According to (4) the *p* parameter *p~f~* for the case of negative/positive data should be chosen as \[ p _ { f } = 100 * p / q - = 100 * p / ( f * 100 ) = p / f < p \]*.* That means particularly that for large *f* the *p*%-rule with corresponding parameter \[ p _ { f } \] is asymptotically equal to the minimum frequency rule (c.f. the remark just below table 1).
+When disclosure risk has to be assessed for a variable that can take not only positive, but also negative values, we suggest to reduce the value of *p* (or increase *k*, for the dominance-rule, resp.). It may even be adequate to take that reduction even to the extent of replacing a concentration rule by a minimum frequency rule. This recommendation is motivated by the following consideration: Above, we have explained that the *p%*‑rule is equivalent to a (*p,q*)-rule with *q *= 100. When contributions may take negative, as well as positive values, it makes sense to assume that the bound *q~-~* for the relative deviation of *a priori* estimates ${\hat{X}}_{R}$ exceeds 100 %. This can be expressed as $q _ { - } = f * 100$*,* with $f > 1$. According to (4) the *p* parameter *p~f~* for the case of negative/positive data should be chosen as $p _ { f } = 100 * p / q - = 100 * p / ( f * 100 ) = p / f < p$*.* That means particularly that for large *f* the *p*%-rule with corresponding parameter $p _ { f }$ is asymptotically equal to the minimum frequency rule (c.f. the remark just below table 1).
 
-In case of the dominance rule, because of (4) , \[ k _ { f } \] can be determined by \[ \left( 100 - k _ { f } \right) / 100 = ( 100 - k ) / ( 100 \cdot f ) \], and because \[ f > 1 \] this means that \[ k _ { f } > k \]. For large *f* the dominance rule with parameter \[ k _ { f } \] will be asymptotically equal to the minimum frequency rule.
+In case of the dominance rule, because of (4) , $k _ { f }$ can be determined by $\left( 100 - k _ { f } \right) / 100 = ( 100 - k ) / ( 100 \cdot f )$, and because $f > 1$ this means that $k _ { f } > k$. For large *f* the dominance rule with parameter $k _ { f }$ will be asymptotically equal to the minimum frequency rule.
 
-Sometimes, respondents authorize publication of an aggregate even if this publication might cause a risk of disclosure for their contributions. Such authorizations are also referred to as '*waivers*'. When *s* is the largest respondent from which no such waiver has been obtained, and *r* is the largest respondent except for *s* then for any pair *(i,j*), \[ i \neq j \] of respondents, where no waiver has been obtained from *j*, it holds $x_{i} + x_{j} \leq x_{r} + x_{s}$. Therefore, we will be able to deal with such a situation properly, if we reformulate the concentration rules as
+Sometimes, respondents authorize publication of an aggregate even if this publication might cause a risk of disclosure for their contributions. Such authorizations are also referred to as '*waivers*'. When *s* is the largest respondent from which no such waiver has been obtained, and *r* is the largest respondent except for *s* then for any pair *(i,j*), $i \neq j$ of respondents, where no waiver has been obtained from *j*, it holds $x_{i} + x_{j} \leq x_{r} + x_{s}$. Therefore, we will be able to deal with such a situation properly, if we reformulate the concentration rules as
 
 $X - x_{s} - x_{r} < p/\text{100}x_{s}$ , for the *p%*-rule, and
 
@@ -271,9 +271,9 @@ $x_{1}^{s} + \text{.}\text{.}\text{.} + x_{n}^{s} > \frac{k}{\text{100}} \cdot \
 
 It is also important to note in this context that sampling weight should be kept confidential, because otherwise we must replace (6) by
 
-> \[ \hat { X } - w _ { 2 } x _ { 2 } ^ { s } - w _ { 1 } x _ { 1 } ^ { s } < \frac { p } { 100 } \cdot x _ { 1 } ^ { s } \] (6a),
+> $\hat { X } - w _ { 2 } x _ { 2 } ^ { s } - w _ { 1 } x _ { 1 } ^ { s } < \frac { p } { 100 } \cdot x _ { 1 } ^ { s }$ (6a),
 
-where \[ w _ { i } \] (i=1,2) denote the sampling weights. Obviously, according to (6a) more aggregates will be sensitive.
+where $w _ { i }$ (i=1,2) denote the sampling weights. Obviously, according to (6a) more aggregates will be sensitive.
 
 Considering this as the basic idea of secondary protection, after section 4.2.1 we assume for the remainder of the chapter margins and overall totals always to be part of a table.
 
@@ -291,9 +291,9 @@ When a table is protected by cell suppression, by making use of the linear relat
 
 For this table the following linear relations hold:
 
-Using linear programming methodology, it is possible to derive systematically for any suppressed cell in a table an upper bound \[ \left( X ^ { \max } \right) \] and a lower bound \[ \left( X _ { 11 } ^ { \min } \right) \] for the set of feasible values. In the example above, for cell (1,1) these bounds are \[ \left( X _ { 11 } ^ { \min } \right) \] = 3 and \[ X _ { 11 } ^ { \max } \] = 6 .
+Using linear programming methodology, it is possible to derive systematically for any suppressed cell in a table an upper bound $\left( X ^ { \max } \right)$ and a lower bound $\left( X _ { 11 } ^ { \min } \right)$ for the set of feasible values. In the example above, for cell (1,1) these bounds are $\left( X _ { 11 } ^ { \min } \right)$ = 3 and $X _ { 11 } ^ { \max }$ = 6 .
 
-In this simple instance, however, we do not need linear programming technology to derive this result: Because of the first column relation (C1) \[ X _ { 11 } \] must be less or equal 6, and because of the second row relation (R2) \[ X _ { 21 } \] must be less or equal 3. Therefore, and because of the first column relation (R1) \[ X _ { 11 } \] must be at least 3.
+In this simple instance, however, we do not need linear programming technology to derive this result: Because of the first column relation (C1) $X _ { 11 }$ must be less or equal 6, and because of the second row relation (R2) $X _ { 21 }$ must be less or equal 3. Therefore, and because of the first column relation (R1) $X _ { 11 }$ must be at least 3.
 
 A general mathematical statement for the linear programming problem to compute upper and lower bounds for the suppressed entries of a table is given in Fischetti and Salazar (2000).
 
@@ -305,7 +305,7 @@ Table 4‑9: Upper protection levels
 
 If the distance between upper bound of the feasibility interval and true value of a sensitive cell is below the upper protection level computed according to the formulas of table 4.2, then this upper bound could be used to derive an estimate for individual contributions of the sensitive cell that is too close according to the safety rule employed, which can easily be proven along the lines of Cox (1981).
 
-Cell X = 330 with 3 contributions of distinct respondents$x_{1}\text{=300,}$ $x_{2}\text{=20,}$ $x_{3}\text{=10}$ is confidential (or 'unsafe') according to the (1,85)- dominance rule. If the feasible upper bound $X^{\text{max}}$ for this confidential cell value is less than $\text{100}/\text{85} \cdot x_{1} = \text{352}\text{.}\text{94}$ , then it will provide an upper estimate for the largest contribution \[ x _ { 1 } \] which is too close according to the (1,85)-dominance rule.
+Cell X = 330 with 3 contributions of distinct respondents$x_{1}\text{=300,}$ $x_{2}\text{=20,}$ $x_{3}\text{=10}$ is confidential (or 'unsafe') according to the (1,85)- dominance rule. If the feasible upper bound $X^{\text{max}}$ for this confidential cell value is less than $\text{100}/\text{85} \cdot x_{1} = \text{352}\text{.}\text{94}$ , then it will provide an upper estimate for the largest contribution $x _ { 1 }$ which is too close according to the (1,85)-dominance rule.
 
 Example 5 proves the formula given in table 4.2 for the case of the p%-rule:
 
@@ -519,7 +519,7 @@ The question is then, which protection levels (c.f. 4.2.2) to assign to those 'm
 
 After processing T2 in this fashion, T3 is processed. In addition to the *S~113~* cells, here we also have to consider as additional suppressions *S~213~* cells, i.e. the subset of secondary suppressions selected for Table T2 during the first iteration which are identical to a cell in T3.
 
-In this way, when processing table T*i* (*i* = 1,2,3) in iteration step *k~0~* ,we consider as additional suppressions $\underset{k < k_{0}}{}\left( S_{1\text{ki}} \cup S_{2\text{ki}} \cup S_{3\text{ki}} \right) \cup \underset{j < i}{}S_{\text{jk}_{0}i}$ , while we may try to avoid (by weighting, or by setting cell status to 'protected') that those cells that the tables have in common, i.e. the cells of \[ T i _ { j } ( j \neq i ) \], and that are not already contained in the set of additional suppressions are selected as secondary suppressions. Note that we assign 0 % protection levels to cells in *S~iki~*, the set of secondary suppression which have been assigned to the current table in a previous step *k* of the iteration. The process is continued until for each of the tables the set of additional suppressions that has to be considered when processing the table in this step is identical to the set considered in the previous step.
+In this way, when processing table T*i* (*i* = 1,2,3) in iteration step *k~0~* ,we consider as additional suppressions $\underset{k < k_{0}}{}\left( S_{1\text{ki}} \cup S_{2\text{ki}} \cup S_{3\text{ki}} \right) \cup \underset{j < i}{}S_{\text{jk}_{0}i}$ , while we may try to avoid (by weighting, or by setting cell status to 'protected') that those cells that the tables have in common, i.e. the cells of $T i _ { j } ( j \neq i )$, and that are not already contained in the set of additional suppressions are selected as secondary suppressions. Note that we assign 0 % protection levels to cells in *S~iki~*, the set of secondary suppression which have been assigned to the current table in a previous step *k* of the iteration. The process is continued until for each of the tables the set of additional suppressions that has to be considered when processing the table in this step is identical to the set considered in the previous step.
 
 The necessary modifications of cell properties like cell status, or cell costs can be achieved relatively easily using the a priori file facility of τ-ARGUS. The general concept of this file is outlined in the following
 
@@ -618,7 +618,7 @@ For the singleton problem there is a procedure included in the modular solution.
 
 The network flows package for cell suppression (NF CSP) provided by the Dept. of Statistics and Operations Research of the Universitat Politècnica de Catalunya implements a fast heuristic for the protection of statistical data in two dimensional tables with one hierarchical dimension. The method sensibly combines and improves ideas of previous approaches for the secondary cell suppression problem in two-dimensional tables. Details about the heuristic can be found in (Castro, 2003a) and (Castro, 2003b)
 
-Network flow heuristics for secondary cell suppression build on the fact, that a suppressed cell in a two-dimensional table is safe from exact disclosure if, and only if, the cell is contained in a 'cycle', or 'alternating path' of suppressed cells, where a cycle is defined to be a sequence of non-zero cells with indices $\left\{ (i_{0}\text{,j}_{0})\text{,\ }(i_{1}\text{,j}_{0})\text{,\ }(i_{1}\text{,j}_{1})\text{,\ }(i_{2}\text{,\ j}_{1}),\text{.}\text{.}\text{.},(i_{n}\text{,j}_{n})\text{,\ }(i_{0}\text{,j}_{n}) \right\}$, where all \[ i _ { k } \] and \[ j _ { l } \] for *k* = 0,1,\...,*n* , and *l* = 0,1,\....,*n* respectively (*n*: length of the path), are different, e.g. $i_{k_{l}}$ ≠ $i_{k_{2}}$ unless $k_{1}$ = $k_{2}$ , and $j_{l_{1}}$ ≠ $\ j_{l_{2}}$ unless $l_{1}$ = $l_{2}$ .
+Network flow heuristics for secondary cell suppression build on the fact, that a suppressed cell in a two-dimensional table is safe from exact disclosure if, and only if, the cell is contained in a 'cycle', or 'alternating path' of suppressed cells, where a cycle is defined to be a sequence of non-zero cells with indices $\left\{ (i_{0}\text{,j}_{0})\text{,\ }(i_{1}\text{,j}_{0})\text{,\ }(i_{1}\text{,j}_{1})\text{,\ }(i_{2}\text{,\ j}_{1}),\text{.}\text{.}\text{.},(i_{n}\text{,j}_{n})\text{,\ }(i_{0}\text{,j}_{n}) \right\}$, where all $i _ { k }$ and $j _ { l }$ for *k* = 0,1,\...,*n* , and *l* = 0,1,\....,*n* respectively (*n*: length of the path), are different, e.g. $i_{k_{l}}$ ≠ $i_{k_{2}}$ unless $k_{1}$ = $k_{2}$ , and $j_{l_{1}}$ ≠ $\ j_{l_{2}}$ unless $l_{1}$ = $l_{2}$ .
 
 The NF CSP heuristic is based on the solution of a sequence of shortest-path subproblems that guarantee a feasible pattern of suppressions (i.e., one that satisfies the protection levels of sensitive cells). Hopefully, this feasible pattern will be close to the optimal one. In the ARGUS implementation solutions of the shortest-path subproblems are computed by either of two network flows optimization solvers also implemented by Universitat Politècnica de Catalunya.
 

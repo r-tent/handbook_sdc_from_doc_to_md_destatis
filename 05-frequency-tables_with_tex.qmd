@@ -443,21 +443,21 @@ In Zero-restricted Controlled Rounding cell counts are left unchanged if they ar
 
 For example, consider rounding a cell value of 7 when the rounding base equals 5. In zero-restricted rounding, the solution can be either 5 or 10. If 1 step is allowed, the solution can be 0, 5, 10 or 15. In general, let *z* be the integer to be rounded in base *b*, then this number can be written as
 
-\[ z = u b + r \],
+$z = u b + r$,
 
 where *ub* is the lower adjacent multiple of *b* (hence *u* is the floor value of *z/b*) and *r* is the remainder. In the zero-restricted solution the rounded value, *a*, can take values:
 
-\[ \left\{ \begin{array} { l } a = u b \text { if } r = 0 \\ a = \left\{ \begin{array} { c } u b \\ ( u + 1 ) b \end{array} \text { if } r \neq 0 \right. \end{array} \right. \])
+$\left\{ \begin{array} { l } a = u b \text { if } r = 0 \\ a = \left\{ \begin{array} { c } u b \\ ( u + 1 ) b \end{array} \text { if } r \neq 0 \right. \end{array} \right.$)
 
 If *K* steps are allowed, then *a*, can take values:
 
-\[ \left\{ \begin{array} { l } a = \max \{ 0 , ( u + j ) \} b , j = - K , \ldots , K , \text { if } r = 0 \\ a = \max \{ 0 , ( u + j ) \} b , j = - K , \ldots , ( K + 1 ) , \text { if } r \neq 0 \end{array} \right. \])
+$\left\{ \begin{array} { l } a = \max \{ 0 , ( u + j ) \} b , j = - K , \ldots , K , \text { if } r = 0 \\ a = \max \{ 0 , ( u + j ) \} b , j = - K , \ldots , ( K + 1 ) , \text { if } r \neq 0 \end{array} \right.$)
 
 ### Optimal, first feasible and RAPID solutions
 
 For a given table there can exist more than one controlled rounded solution, and any of these solutions is a *feasible* solution. The Controlled Rounding Program embedded in τ‑ARGUS determines the *optimal* solution by minimising the sum of the absolute distances of the rounded values, from the original ones. Denoting the cell values, including the totals and sub-totals, with *z*~i~ and the corresponding rounded values with *a*~i~, the function that is minimised is
 
-\[ \sum _ { i = 1 } ^ { N } \left| z _ { i } - a _ { i } \right| \],
+$\sum _ { i = 1 } ^ { N } \left| z _ { i } - a _ { i } \right|$,
 
 where *N* is the number of cells in a table (including the marginal ones). The optimisation procedure for controlled rounding is a rather complex one (*NP*-complete program), so finding the optimal solution may take a long time for large tables. In fact, the algorithm iteratively builds different rounded tables until it finds the optimal solution. In order to limit the time required to obtain a solution, the algorithm can be stopped when the first feasible solution is found. In many cases, this solution is quite close to the optimal one and it can be found in significantly less time.
 
@@ -479,7 +479,7 @@ For example, if the rounding base is *b*=5 and the rounded value is *a*=0, a use
 
 undefined)
 
-For example, assume that for controlled rounding with *b*=5 and *K*=1, *a*=15, then a user can determine that \[ z \in [ 6,24 ] \].
+For example, assume that for controlled rounding with *b*=5 and *K*=1, *a*=15, then a user can determine that $z \in [ 6,24 ]$.
 
 **Very large tables.\
 **The procedure implemented in τ‑ARGUS is capable of rounding tables up to 150K cells on an average computer. However for larger tables a partitioning procedure is available, which allows much larger tables to be rounded. Tables with over six million cells have been successfully rounded this way.
