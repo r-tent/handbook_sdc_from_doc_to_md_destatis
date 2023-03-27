@@ -1,2 +1,2 @@
 cd ./Images/media
-for file in *.wmf; do libreoffice --headless --convert-to png $file.wmf; done
+for fil in *.wmf; do libreoffice --headless --convert-to png $fil.wmf; done
