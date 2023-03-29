@@ -186,7 +186,7 @@ Documentation is an essential part of any dissemination strategy both for auditi
 
 ### Overview
 
-> **SECTION 3.2.1 LUISA COULD PERHAPS ADD SOMETHING IN THIS SECTION FROM THE MATERIALS IN THE INTRODUCTION OF THE RECORD LINKAGE PDF, SECTION 1 OF THAT PDF (remark by Josep)**
+<!--**SECTION 3.2.1 LUISA COULD PERHAPS ADD SOMETHING IN THIS SECTION FROM THE MATERIALS IN THE INTRODUCTION OF THE RECORD LINKAGE PDF, SECTION 1 OF THAT PDF (remark by Josep)**-->
 
 Microdata has many analytical advantages over aggregated data, but also poses more serious disclosure issues because of the many variables that are disseminated in one file. For microdata, disclosure occurs when there is a possibility that an individual can be re-identified by an intruder using information contained in the file, and when on the basis of that, confidential information is obtained. Microdata are released only after taking out directly identifying variables, such as names, addresses, and identity numbers. However, other variables in the microdata can be used as indirect identifying variables. For individual microdata this are variables such as gender, age, occupation, place of residence, country of birth, family structure, etc. and for business microdata variables such as economic activity, number of employees, etc. These (indirect) identifying variables are mainly publicly available variables or variables that are present in public databases such as registers.
 

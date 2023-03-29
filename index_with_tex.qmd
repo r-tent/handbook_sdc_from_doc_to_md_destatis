@@ -1,5 +1,6 @@
 # Introduction
 
+<!--
 > *High level description of why we need to consider SDC\
 > Overview of process one must go through when protecting outputs\
 > The trade-off between SDC measures, information loss and risk.\
@@ -7,6 +8,7 @@
 > How handbook should be used\
 > Also mention the glossary\
 > Author: Jane and Luisa*
+-->
 
 ## Preface
 
@@ -24,9 +26,6 @@ In addition to official statistics there are several other areas of application 
 
 -   *Health information*. This is one of the most sensitive areas regarding privacy.
 
-```{=html}
-<!-- -->
-```
 -   *E-commerce*. Electronic commerce results in the automated collection of large amounts of consumer data. This wealth of information is very useful to companies, which are often interested in sharing it with their subsidiaries or partners. Such consumer information transfer is subject to strict regulations.
 
 This handbook aims to provide technical guidance on statistical disclosure control for NSIs on how to approach this problem of balancing the need to provide users with statistical outputs and the need to protect the confidentiality of respondents. Statistical disclosure control should be combined with other tools (administrative, legal, IT) in order to define a proper data dissemination strategy based on a risk management approach.
