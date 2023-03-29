@@ -72,7 +72,7 @@ Another disclosure risk involves learning a new attribute about an identifiable 
 
 Table 5.3 below shows respondents in a particular area broken down by hours worked and income.
 
-**Table 5.3:** Martial status by hours worked
+**Table 5.3:** Marital status by hours worked
 
   -------------------------- ------------------ --------------- -------------
                              **Hours worked**                   
@@ -95,8 +95,8 @@ The table also highlights another type of group attribute disclosure referred to
 > Differencing involves an intruder using multiple overlapping tables and subtraction to gather additional information about the differences between them. A disclosure by differencing occurs when this comparison of two or more tables enables a small cell (0, 1, or 2) to be calculated. Disclosures by differencing can result from three different scenarios which will be explained in turn:
 >
 > **Disclosure by *geographical differencing*** may result when there are several published tables from the same dataset and they relate to similar geographical areas. If these tables are compared they can reveal a new, previously unpublished table for the differenced area. For instance, 2001 Output Areas (OA) are similar in geographical size to 1991 Enumeration Districts (ED), and a new differenced table may be created for the remaining area. A fictitious example of this is presented below Tables 5.4 to 5.6.
->
-> **Table 5.4:** Single Person households and hours worked in Area A (2001OA definition)
+
+**Table 5.4:** Single Person households and hours worked in Area A (2001OA definition)
 
   --------------------- ---------------------------------- ------------------------------------
                         **Single Person Household Male**   **Single Person Household Female**
@@ -108,7 +108,7 @@ The table also highlights another type of group attribute disclosure referred to
   15 or less            39                                 49
   --------------------- ---------------------------------- ------------------------------------
 
-> **Table 5.5:** Single Person households and income band in Area A (1991 ED definition)
+**Table 5.5:** Single Person households and income band in Area A (1991 ED definition)
 
   --------------------- --------------------------------- ------------------------------------
                         **Single Person Household Male\   **Single Person Household Female**
@@ -134,27 +134,41 @@ The table also highlights another type of group attribute disclosure referred to
   15 or less            0                                 0
   --------------------- --------------------------------- ------------------------------------
 
-> The above example demonstrates how simple subtraction of the geographical data in Table 5.4 from Table 5.5 can produce disclosive information for the area in Table 5.6.
+The above example demonstrates how simple subtraction of the geographical data in Table 5.4 from Table 5.5 can produce disclosive information for the area in Table 5.6.
 
 **Disclosure by *linking*** can occur when published tables relating to the same base population are linked by common variables. These new linked tables were not published by the NSI and therefore may reveal the statistical disclosure control methods applied and/or unsafe cell counts.
 
-> A fictitious example of disclosure by linking is provided below in Tables 5.7 to 5.10, which are linked by employment status and whether or not the respondents live in the area.
->
-> **Table 5.7:** Area of Residence or Workplace
+A fictitious example of disclosure by linking is provided below in Tables 5.7 to 5.10, which are linked by employment status and whether or not the respondents live in the area.
+
+**Table 5.7:** Area of Residence or Workplace
+
+|         	| **Number working in area** 	| **Number living in area** 	| **Living and working area** 	|
+|---------	|----------------------------	|---------------------------	|-----------------------------	|
+| Area A  	|             49             	|            102            	|              22             	|
 
 Table 5.8: Employment status in Area A
 
-> Table 5.9: Males working and living in Area A
->
-> abl
->
-> Table 5.10: New differenced table (via linking)
->
-> D
->
-> Comb
->
-> Table 5.10 shows the new data which can be derived by combining and differencing the totals from the existing tables. The linked table discloses the female living and working in Area A as a unique.
+|              	| **Number of Persons** 	|
+|--------------	|:---------------------:	|
+| Employed     	|           85          	|
+| Not employed 	|           17          	|
+| Total        	|          102          	|
+
+Table 5.9: Males working and living in Area A
+
+|       	| Living and working in Area A  	| Living in Area A and working elsewhere  	| Working in Area A and living elsewhere 	|
+|-------	|:-----------------------------:	|:---------------------------------------:	|:--------------------------------------:	|
+| Males 	|               21              	|                    58                   	|                   23                   	|
+
+Table 5.10: New differenced table (via linking)
+
+|         	| **Living and working in Area A** 	| **Living in Area A and working elsewhere** 	| **Working in Area A and living elsewhere** 	|
+|---------	|:--------------------------------:	|:------------------------------------------:	|:------------------------------------------:	|
+| Males   	|                21                	|                     58                     	|                     23                     	|
+| Females 	|                 1                	|                      5                     	|                      4                     	|
+| Total	   	|                22                	|                     63                     	|                     27                     	|
+
+Table 5.10 shows the new data which can be derived by combining and differencing the totals from the existing tables. The linked table discloses the female living and working in Area A as a unique.
 
 Importantly, when linked tables are produced from the same dataset it is not sufficient to consider the protection for each table separately. If a cell requires protection in one table then it will require protection in all tables, otherwise the protection in the first table could be undone.
 
@@ -228,19 +242,13 @@ Table redesign methods used to reduce the risk of disclosure include;
 
 -   aggregating to a higher level geography or to a larger population subgroup
 
-```{=html}
-<!-- -->
-```
+
 -   applying table thresholds
 
-```{=html}
-<!-- -->
-```
+
 -   collapsing or grouping categories of variables (reducing the level of detail)
 
-```{=html}
-<!-- -->
-```
+
 -   applying a minimum average cell size to released tables.
 
 The advantages of table redesign methods are that original counts in the data are not damaged and the tables are additive with consistent totals. In addition, the method is simple to implement and easy to explain to users. However, the detail in the table will be greatly reduced, and if many tables do not pass the release criteria it may lead to user discontent.
@@ -292,13 +300,26 @@ Care must be taken when combining rounded tables to create user-defined areas. C
 There are several alternative rounding methods including; conventional rounding, random rounding, controlled rounding, and semi-controlled rounding, which are outlined below. Each method is flexible in terms of the choice of the base for rounding, although common choices are 3 and 5. All rounded values (other than zeros) will then be integer multiples of 3 or 5, respectively.
 
 > When using conventional rounding, each cell is rounded to the nearest multiple of the base. The marginal totals and table totals are rounded independently from the internal cells. An example of conventional rounding is provided below; Table 5.15 shows counts of males and females in different areas, while Table 5.16 shows the same information rounded to a base of 5.
->
-> **Table 5.16:** Population counts by sex
->
-> T
->
-> **Table 5.17:** Population counts by sex (conventional rounding)
->
+
+**Table 5.16:** Population counts by sex
+
+|        	| **Male** 	| **Female** 	| **Total** 	|
+|--------	|:--------:	|:----------:	|:---------:	|
+| Area A 	|     1    	|      0     	|     1     	|
+| Area B 	|     3    	|      3     	|     6     	|
+| Area C 	|    12    	|     20     	|     32    	|
+| Total  	|    16    	|     23     	|     39    	|
+
+
+**Table 5.17:** Population counts by sex (conventional rounding)
+
+|        	| **Male** 	| **Female** 	| **Total** 	|
+|--------	|:--------:	|:----------:	|:---------:	|
+| Area A 	|     0    	|      0     	|     0     	|
+| Area B 	|     5    	|      5     	|     5     	|
+| Area C 	|    10    	|     20     	|     35    	|
+| Total  	|    15    	|     25     	|     40    	|
+
 > Table 5.1
 >
 > The example shows the Males unsafe cell in Area A in Table 5.16 is protected by the rounding process in Table 5.17.
