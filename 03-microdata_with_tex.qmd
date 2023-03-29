@@ -1156,7 +1156,7 @@ In this section a short theoretical description of PRAM is given. For a detailed
 
 Let *ξ* denote a categorical variable in the original file to which PRAM will be applied and let *X* denote the same variable in the perturbed file. Moreover, assume that *ξ*, and hence *X* as well, has *K* categories, labelled 1, ..., *K*. The probabilities that define PRAM are denoted as
 
-> $p_{\text{kl}} = P(X = l|\xi = k)$,
+$$p_{\text{kl}} = P(X = l|\xi = k)$$
 
 i.e., the probability that an original score *ξ* = *k* is changed into the score *X* = *l*. These so called transition probabilities are defined for all *k*, *l* = 1, ..., *K.\
 *Using these transition probabilities as entries of a *K* × *K* matrix, we obtain a Markov matrix that we will call the PRAM-matrix, denoted by **P**.
@@ -1167,17 +1167,17 @@ To illustrate the ideas, suppose that the variable *ξ* is gender, with scores *
 
 More generally, the effect of PRAM on one-dimensional frequency tables is that
 
-> $E(T_{X}|\xi) = P^{t}T_{\xi}$,
+$$E(T_{X}|\xi) = P^{t}T_{\xi}$$
 
 where *T~ξ~* = (*T~ξ~*(1), ..., *T~ξ~*(*Κ*))^t^ denotes the frequency table according to the original microdata file and *T~X~* the frequency table according to the perturbed microdata file. A conditionally unbiased estimator of the frequency table in the original file is then given by
 
-> ${\hat{T}}_{\xi} = \left( P^{- 1} \right)^{t}T_{X}$.
+$${\hat{T}}_{\xi} = \left( P^{- 1} \right)^{t}T_{X}$$
 
 This can be extended to two-dimensional frequency tables, by vectorizing such tables. The corresponding PRAM-matrix is then given by the Kronecker product of the PRAM-matrices of the individual dimensions.
 
 Alternatively, one could use the two-dimensional frequency tables[^1] **T***~ξη~* for the original data and **T***~XY~* for the perturbed data directly in matrix notation:
 
-> ${\hat{T}}_{\text{ξη}} = \left( P_{X}^{- 1} \right)^{t}T_{\text{XY}}P_{Y}^{- 1}$,
+$${\hat{T}}_{\text{ξη}} = \left( P_{X}^{- 1} \right)^{t}T_{\text{XY}}P_{Y}^{- 1}$$
 
 where **P***~X~* denotes the PRAM-matrix corresponding to the categorical variable *X* and **P***~Y~* denotes the PRAM-matrix corresponding to the categorical variable *Y*.
 
@@ -1259,7 +1259,7 @@ We next sketch the operation of the original proposal by Rubin. Consider an orig
 
 Fienberg (1994) proposed generating synthetic microdata by using bootstrap methods. Later, in Fienberg, Makov and Steele (1998), this approach was used for categorical data.![](Images/media/image75.png){width="0.2in" height="0.2in"}
 
-The bootstrap approach bears some similarity to the data distortion by probability distribution and the multiple-imputation methods described above. Given an original microdata set $X$ with *p* variables, the data protector computes its empirical *p*-variate cumulative distribution function (c.d.f.) $F$. Now, rather than distorting the original data to obtain masked data, the data protector alters (or "smoothes") the c.d.f. $F$to derive a similar c.d.f. $F$\'. Finally, $F^{'}$ is sampled to obtain a synthetic microdata set $Z$.
+The bootstrap approach bears some similarity to the data distortion by probability distribution and the multiple-imputation methods described above. Given an original microdata set $X$ with *p* variables, the data protector computes its empirical *p*-variate cumulative distribution function (c.d.f.) $F$. Now, rather than distorting the original data to obtain masked data, the data protector alters (or "smoothes") the c.d.f. $F$to derive a similar c.d.f. $F^{'}$. Finally, $F^{'}$ is sampled to obtain a synthetic microdata set $Z$.
 
 #### Synthetic data by Latin Hypercube Sampling
 
@@ -1315,15 +1315,15 @@ A more ambitious goal is to come up with a data matrix $y_{C}^{'}$ such that, wh
 
 The algorithm proposed in Burridge (2004) to get $y_{C}^{'}$ is as follows
 
-1\. Generate provisional new "data" $\overset{\sim}{y}$ (this will be an *n*×*p* matrix).
+1. Generate provisional new "data" $\overset{\sim}{y}$ (this will be an *n*×*p* matrix).
 
-2\. Calculate provisional new residuals $\overset{\sim}{r}$ by fitting the multiple regression model to each column of $\overset{\sim}{y}$.
+2. Calculate provisional new residuals $\overset{\sim}{r}$ by fitting the multiple regression model to each column of $\overset{\sim}{y}$.
 
-3\. Define new residuals ${\overset{\sim}{r}}^{'}$ as a transformation of $\overset{\sim}{r}$ so that ${\overset{\sim}{r}}^{T}{\overset{\sim}{r}}^{'} = n\hat{\Sigma}$. This is easily done as follows:
+3. Define new residuals ${\overset{\sim}{r}}^{'}$ as a transformation of $\overset{\sim}{r}$ so that ${\overset{\sim}{r}}^{T}{\overset{\sim}{r}}^{'} = n\hat{\Sigma}$. This is easily done as follows:
 
-\(a\) Let $L$ and $L_{O}$ be the lower triangular matrices in the Cholesky factorizations $n\hat{\Sigma} = \text{LL}^{T}$ and ${\overset{\sim}{r}}^{T}\overset{\sim}{r} = L_{O}L_{O}^{T}$.
+(a) Let $L$ and $L_{O}$ be the lower triangular matrices in the Cholesky factorizations $n\hat{\Sigma} = \text{LL}^{T}$ and ${\overset{\sim}{r}}^{T}\overset{\sim}{r} = L_{O}L_{O}^{T}$.
 
-\(b\) Define ${\overset{\sim}{r}}^{'} = \overset{\sim}{r}L_{O}^{- T}L^{T}$. It is easily verified that ${\overset{\sim}{r}}^{}{\overset{\sim}{r}}^{'} = n\hat{\Sigma}$.
+(b) Define ${\overset{\sim}{r}}^{'} = \overset{\sim}{r}L_{O}^{- T}L^{T}$. It is easily verified that ${\overset{\sim}{r}}^{}{\overset{\sim}{r}}^{'} = n\hat{\Sigma}$.
 
 Define
 
@@ -1335,18 +1335,20 @@ Information preservation in IPSO-C is as follows.
 
 **Proof:** The expression of the MLE estimate of $\hat{B}$ obtained from $\left( y_{C}^{'},x \right)$ is
 
-$\begin{matrix}
-{\hat{B}}_{C} = \left( x^{T}x \right)^{- 1}x^{T}y_{C}^{'} = \left( x^{T}x \right)^{- 1}x^{T}\left( x\hat{B} + {\overset{\sim}{r}}^{'} \right) \\
-\hat{B} + \left( x^{T}x \right)^{- 1}x^{T}\overset{\sim}{r}L_{O}^{T}L^{T} = \hat{B} + \left( x^{T}x \right)^{- 1}x^{T}\left( \overset{\sim}{y} - x\overset{\sim}{B} \right)L_{O}^{T}L^{T} = \\
-\hat{B} + \left( \overset{\sim}{B} - \overset{\sim}{B} \right)L_{O}^{T}L^{T} = \hat{B} \\
-\end{matrix}$
+$$\begin{align}
+{\hat{B}}_{C} &= \left( x^{T}x \right)^{- 1}x^{T}y_{C}^{'} = \left( x^{T}x \right)^{- 1}x^{T}\left( x\hat{B} + {\overset{\sim}{r}}^{'} \right) \\
+&= \hat{B} + \left( x^{T}x \right)^{- 1}x^{T}\overset{\sim}{r}L_{O}^{T}L^{T} = \hat{B} + \left( x^{T}x \right)^{- 1}x^{T}\left( \overset{\sim}{y} - x\overset{\sim}{B} \right)L_{O}^{T}L^{T} \\
+&= \hat{B} + \left( \overset{\sim}{B} - \overset{\sim}{B} \right)L_{O}^{T}L^{T} = \hat{B} \\
+\end{align}$$
 
 Using that ${\hat{B}}_{C} = \hat{B}$, the expression of the MLE estimate of $\hat{\Sigma}$ obtained from $\left( y_{C}^{'},x \right)$ is
 
-$\begin{matrix}
-{\hat{\Sigma}}_{C} = \frac{\left( y_{C}^{'},x\hat{B} \right)^{T}\left( y_{C}^{'},x\hat{B} \right)}{n} = \\
-\frac{\left( x\hat{B} + {\overset{\sim}{r}}^{'} - x\hat{B} \right)^{T}\left( x\hat{B} + {\overset{\sim}{r}}^{'} - x\hat{B} \right)}{n} = \frac{{\overset{\sim}{r}}^{}{\overset{\sim}{r}}^{'}}{n} = \hat{\Sigma} \\
-\end{matrix}$
+$$\begin{align}
+{\hat{\Sigma}}_{C} &= \frac{\left( y_{C}^{'},x\hat{B} \right)^{T}\left( y_{C}^{'},x\hat{B} \right)}{n}\\
+&= \frac{\left( x\hat{B} + {\overset{\sim}{r}}^{'} - x\hat{B} \right)^{T}\left( x\hat{B} + {\overset{\sim}{r}}^{'} - x\hat{B} \right)}{n} \\ 
+&= \frac{{\overset{\sim}{r}}^{}{\overset{\sim}{r}}^{'}}{n} \\ 
+&= \hat{\Sigma}
+\end{align}$$
 
 where in the last equality we have used the property required on ${\overset{\sim}{r}}^{'}$.
 
@@ -1362,51 +1364,51 @@ Closely related to multiply imputed, partially synthetic microdata is model-base
 
 #### Muralidhar-Sarathy hybrid generator
 
-> Hybrid data are a mixture of original data and synthetic data. Let V an original data set whose attributes are numerical and fall into confidential attributes ![](Images/media/image79.png){width="0.8958333333333334in" height="0.25in"} and non-confidential attributes![](Images/media/image80.png){width="0.90625in" height="0.25in"}. Let V' be a hybrid data set obtained from V, whose attributes are ![](Images/media/image81.png){width="0.9270833333333334in" height="0.25in"} (hybrid versions of X) and Y.![](Images/media/image82.png){width="1.575in" height="0.17291666666666666in"}
->
-> Muralidhar and Sarathy (2008) proposed a procedure (called MS in the sequel) for generating hybrid data as follows
->
-> ![](Images/media/image83.png){width="2.4895833333333335in" height="0.28125in"}
->
-> MS can yield hybrid data preserving the means and covariances of original data. To that end, the following equalities must be satisfied:
->
-> ![](Images/media/image84.png){width="1.6458333333333333in" height="0.4583333333333333in"}
->
-> ![](Images/media/image85.png){width="1.34375in" height="0.28125in"}
->
-> ![](Images/media/image86.png){width="4.134722222222222in" height="0.4166666666666667in"}
->
-> where I is the identity matrix and ![](Images/media/image87.png){width="0.1875in" height="0.25in"} is the covariance matrix of the noise terms e.
->
-> Thus, ![](Images/media/image88.png){width="8.333333333333333e-2in" height="0.25in"} completely specifies the procedure. The authors of MS admit that ![](Images/media/image89.png){width="8.333333333333333e-2in" height="0.25in"} must be selected carefully to ensure that ![](Images/media/image90.png){width="0.21875in" height="0.25in"}is positive semidefinite. They consider three options for specifying the ![](Images/media/image91.png){width="8.333333333333333e-2in" height="0.25in"} matrix:
+Hybrid data are a mixture of original data and synthetic data. Let V an original data set whose attributes are numerical and fall into confidential attributes $X (=X_1\dots X_L)$ and non-confidential attributes $Y (=Y_1\dots Y_L)$. Let V' be a hybrid data set obtained from V, whose attributes are $X (=X'_1\dots X'_L)$ (hybrid versions of X) and Y.![](Images/media/image82.png){width="0.2in" height="0.2in"}
 
-(1) Take ![](Images/media/image92.png){width="8.333333333333333e-2in" height="0.25in"} as a diagonal matrix with all values in the diagonal being equal. In this case, ![](Images/media/image93.png){width="0.21875in" height="0.25in"}is positive semidefinite and the value of the hybrid attribute ![](Images/media/image94.png){width="0.16666666666666666in" height="0.25in"}depends only on![](Images/media/image95.png){width="0.15625in" height="0.25in"}, but not on ![](Images/media/image96.png){width="0.125in" height="0.2604166666666667in"} for ![](Images/media/image97.png){width="0.28125in" height="0.25in"}. All confidential attributes![](Images/media/image98.png){width="0.15625in" height="0.25in"} are perturbed at the same level.
+Muralidhar and Sarathy (2008) proposed a procedure (called MS in the sequel) for generating hybrid data as follows
 
-(2) Take ![](Images/media/image99.png){width="8.333333333333333e-2in" height="0.25in"} as a diagonal matrix, with values in the diagonal being not all equal. In this case, ![](Images/media/image100.png){width="0.16666666666666666in" height="0.25in"}still depends only on ![](Images/media/image101.png){width="0.15625in" height="0.25in"}, but not on ![](Images/media/image102.png){width="0.125in" height="0.2604166666666667in"} for ![](Images/media/image103.png){width="0.28125in" height="0.25in"}. The differences are that the confidential attributes are perturbed at different levels and there is no guarantee that ![](Images/media/image104.png){width="0.21875in" height="0.25in"} is positive semidefinite, so it may be necessary to try several values of ![](Images/media/image105.png){width="8.333333333333333e-2in" height="0.25in"} until positive semidefiniteness is achieved.
+$$X'_j = \gamma + X_j\alpha^T + Y_j\beta^T + e_i, j = 1, \dots, n$$
 
-(3) Taking ![](Images/media/image106.png){width="8.333333333333333e-2in" height="0.25in"} as a non-diagonal matrix does not guarantee positive semidefiniteness either and the authors of MS do not see any advantage in it, although it would be the only way to have ![](Images/media/image107.png){width="0.16666666666666666in" height="0.25in"} depend on several attributes among![](Images/media/image108.png){width="0.6666666666666666in" height="0.25in"}. With ![](Images/media/image109.png){width="0.10416666666666667in" height="0.25in"}-Microhybrid, the dependence of ![](Images/media/image110.png){width="0.16666666666666666in" height="0.25in"}on the original confidential attributes is the one provided by the underlying IPSO method.
+MS can yield hybrid data preserving the means and covariances of original data. To that end, the following equalities must be satisfied:
+
+$\beta^T = \sum_{YY}^{-1} \sum_{YX} (I-\alpha^T)$
+
+$\gamma = (I-\alpha) \bar{X} - \beta \bar{Y}$
+
+$\sum_{ee} = (\sum_{XX} - \sum_{XY}\sum_{YY}^{-1}\sum_{YX}) - \alpha (\sum_{XX} - \sum_{XY}\sum_{YY}^{-1}\sum_{YX}) \alpha^T$
+
+where I is the identity matrix and $\sum_{ee}$ is the covariance matrix of the noise terms $e$.
+
+Thus, $\alpha$ completely specifies the procedure. The authors of MS admit that $\alpha$ must be selected carefully to ensure that $\sum_{ee}$ is positive semidefinite. They consider three options for specifying the $\alpha$ matrix:
+
+(1) Take $\alpha$ as a diagonal matrix with all values in the diagonal being equal. In this case, $\sum_{ee}$ is positive semidefinite and the value of the hybrid attribute $X_i'$ depends only on $X_i$, but not on $X_j$ for $j \neq i$. All confidential attributes $X_i$ are perturbed at the same level.
+
+(2) Take $\alpha$ as a diagonal matrix, with values in the diagonal being not all equal. In this case, $X_i'$ still depends only on $X_i$, but not on $X_j$ for $j \neq i$. The differences are that the confidential attributes are perturbed at different levels and there is no guarantee that $\sum_{ee}$ is positive semidefinite, so it may be necessary to try several values of $\alpha$ until positive semidefiniteness is achieved.
+
+(3) Taking $\alpha$ as a non-diagonal matrix does not guarantee positive semidefiniteness either and the authors of MS do not see any advantage in it, although it would be the only way to have $X_i'$ depend on several attributes among $(X_1 \dots X_L)$. With $\mathbb{R}^{-}$-Microhybrid, the dependence of $X_i'$ on the original confidential attributes is the one provided by the underlying IPSO method.
 
 #### Microaggregation-based hybrid data
 
-> In (Domingo-Ferrer and González-Nicolás, 2009) an alternative procedure to generate hybrid data based on microaggregation was proposed. Let *V* be an original data set consisting of *n* records. On input an integer parameter![](Images/media/image111.png){width="0.7708333333333334in" height="0.25in"}, the procedure described in this section generates a hybrid data set ![](Images/media/image112.png){width="0.13541666666666666in" height="0.25in"}. The greater *k*, the more synthetic is ![](Images/media/image113.png){width="0.13541666666666666in" height="0.25in"}. Extreme cases are: i) *k* = 1, which yields ![](Images/media/image114.png){width="0.13541666666666666in" height="0.25in"} = *V* (the output data are exactly the original input data); and ii) *k* = *n*, which yields a completely synthetic output data set ![](Images/media/image115.png){width="0.13541666666666666in" height="0.25in"}.![](Images/media/image116.png){width="0.2in" height="0.2in"}
->
-> The procedure calls two algorithms:
+In (Domingo-Ferrer and González-Nicolás, 2009) an alternative procedure to generate hybrid data based on microaggregation was proposed. Let *V* be an original data set consisting of *n* records. On input an integer parameter $k \in \{1,\dots,n\}$, the procedure described in this section generates a hybrid data set $V'$. The greater *k*, the more synthetic is $V'$. Extreme cases are: i) *k* = 1, which yields $V'$ = *V* (the output data are exactly the original input data); and ii) *k* = *n*, which yields a completely synthetic output data set $V'$.![](Images/media/image116.png){width="0.2in" height="0.2in"}
 
--   A generic synthetic data generator S(C,![](Images/media/image117.png){width="0.14583333333333334in" height="0.25in"}, *parms*), that is, an algorithm which, given an original data (sub)set C, generates a synthetic data (sub)set ![](Images/media/image118.png){width="0.11458333333333333in" height="0.25in"} preserving the statistics or parameters or models of C specified in *parms*.
+The procedure calls two algorithms:
+
+-   A generic synthetic data generator $S(C,C', parms)$, that is, an algorithm which, given an original data (sub)set C, generates a synthetic data (sub)set $C'$ preserving the statistics or parameters or models of C specified in *parms*.
 
 -   A microaggregation heuristic, which, on input a set or *n* records and parameter *k*, partitions the set of records into clusters containing between *k* and 2*k* − 1 records. Cluster creation attempts to maximize intra-cluster homogeneity.
 
-> **Procedure 1 (*Microhybrid* (V,V', *parms*, *k*))**
+**Procedure 1 (*Microhybrid* (V,V', *parms*, *k*))**
 
-(1) Call microaggregation(V, *k*). Let ![](Images/media/image119.png){width="0.5416666666666666in" height="0.25in"}for some *k* be the resulting clusters of records.
+(1) Call microaggregation(V, *k*). Let $C_1,\dots,C_k$ for some *k* be the resulting clusters of records.
 
-(2) For *i* = 1, \..., *k* call S(![](Images/media/image120.png){width="0.11458333333333333in" height="0.25in"}, ![](Images/media/image121.png){width="0.13541666666666666in" height="0.25in"}, *parms*).
+(2) For $i = 1, \dots, k$ call $S(C_i,C_{i}', parms)$.
 
-(3) Output a hybrid dataset ![](Images/media/image122.png){width="0.13541666666666666in" height="0.25in"} whose records are those in the clusters ![](Images/media/image123.png){width="0.5104166666666666in" height="0.25in"}.
+(3) Output a hybrid dataset $V'$ whose records are those in the clusters $C_{1}',\dots,C_{k}'$ .
 
-> At Step 1 of procedure Microhybrid above, clusters containing between *k* and 2*k* −1 records are created. Then at Step 2, a synthetic version of each cluster is generated. At Step 3, the original records in each cluster are replaced by the records in the corresponding synthetic cluster (instead of replacing them with the average record of the cluster, as done in conventional microaggregation).
->
-> The Microhybrid procedure bears some resemblance to the condensation approach proposed by (Aggarwal and Yu, 2004); however, Microhybrid is more general because:
+At Step 1 of procedure Microhybrid above, clusters containing between *k* and 2*k* −1 records are created. Then at Step 2, a synthetic version of each cluster is generated. At Step 3, the original records in each cluster are replaced by the records in the corresponding synthetic cluster (instead of replacing them with the average record of the cluster, as done in conventional microaggregation).
+
+The Microhybrid procedure bears some resemblance to the condensation approach proposed by (Aggarwal and Yu, 2004); however, Microhybrid is more general because:
 
 -   It can be applied to any data type (condensation is designed for numerical data only);
 
@@ -1416,7 +1418,7 @@ Closely related to multiply imputed, partially synthetic microdata is model-base
 
 -   Instead of using an ad hoc clustering heuristic like condensation, Microhybrid can use any of the best microaggregation heuristics cited above, which should yield higher within-cluster homogeneity and thus less information loss.
 
-> We justify here the role of parameter *k* in Microhybrid:
+We justify here the role of parameter *k* in Microhybrid:
 
 -   If *k* = 1, and *parms* include preserving the mean of each attribute in the original clusters, the output is the same original data set, because the procedure creates *n* clusters (as many as the number of original records). With *k* = 1, even variable-size heuristics will yield all clusters of size 1, because the maximum intra-cluster similarity is obtained when clusters consist all of a single record.
 
@@ -1424,9 +1426,9 @@ Closely related to multiply imputed, partially synthetic microdata is model-base
 
 -   For intermediate values of *k*, several clusters are obtained at Step 1, whose parameters *parms* are preserved by the synthetic clusters generated at Step 2. As *k* decreases, the number of clusters (whose parameters are preserved in the data output at Step 3) increases, which causes the output data to look more and more like the original data. Each cluster can be regarded as a constraint on the synthetic data generation: the more constraints, the less freedom there is for generating synthetic data, and the output resembles more the original data. This is why the output data can be called hybrid.
 
-> It must be noted here that, depending on the synthetic generator used, there may be a lower bound for *k* higher than 1. For example, if using IPSO (see section 3.4.7.5) with ![](Images/media/image124.png){width="0.17708333333333334in" height="0.25in"} confidential attributes and ![](Images/media/image125.png){width="0.17708333333333334in" height="0.25in"} non-confidential attributes, it turns out that *k* must be at least 2![](Images/media/image126.png){width="0.17708333333333334in" height="0.25in"} + ![](Images/media/image127.png){width="0.17708333333333334in" height="0.25in"} + 1; otherwise there are not enough degrees of freedom for the generator to work.
->
-> Note that the choice of parameter *k* is more straightforward than the choice of ![](Images/media/image128.png){width="8.333333333333333e-2in" height="0.25in"} in the MS procedure above. Also, for the case of numerical microdata, Microhybrid can offer, in addition to mean and covariance exact preservation, approximate preservation of third-order and fourth-order moments, and also approximate preservation of all moments up to order four in randomly chosen subdomains of the dataset. Details are given in the above-referenced paper describing Microhybrid.
+It must be noted here that, depending on the synthetic generator used, there may be a lower bound for *k* higher than 1. For example, if using IPSO (see section 3.4.7.5) with $|X|$ confidential attributes and $|Y|$ non-confidential attributes, it turns out that *k* must be at least $2|X|+|Y|+1$; otherwise there are not enough degrees of freedom for the generator to work.
+
+Note that the choice of parameter *k* is more straightforward than the choice of $\alpha$ in the MS procedure above. Also, for the case of numerical microdata, Microhybrid can offer, in addition to mean and covariance exact preservation, approximate preservation of third-order and fourth-order moments, and also approximate preservation of all moments up to order four in randomly chosen subdomains of the dataset. Details are given in the above-referenced paper describing Microhybrid.
 
 #### Other hybrid microdata approaches
 
@@ -1522,14 +1524,11 @@ Defining what a generic information loss measure is can be a tricky issue. Rough
 
 -   A protected microdata set is an *analytically valid* microdata set if it approximately preserves the following with respect to the original data (some conditions apply only to continuous variables):
 
-7.  Means and covariances on a small set of subdomains (subsets of records and/or variables)
+25.  Means and covariances on a small set of subdomains (subsets of records and/or variables)
 
-```{=html}
-<!-- -->
-```
-27. Marginal values for a few tabulations of the data
+26. Marginal values for a few tabulations of the data
 
-28. At least one distributional characteristic
+27. At least one distributional characteristic
 
 -   A microdata set is an *analytically interesting microdata set,* if six variables on important subdomains are provided that can be validly analyzed.\
     More precise conditions of analytical validity and analytical interest cannot be stated without taking specific data uses into account. As imprecise as they may be, the above definitions suggest some possible measures:
@@ -1564,12 +1563,14 @@ Matrix discrepancy can be measured in at least three ways:
 
 Table 3 -7 summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, *p* is the number of variables, *n* the number of records, and components of matrices are represented by the corresponding lowercase letters (*e.g.* $x_{\text{ij}}$ is a component of matrix $X$). Regarding $X - X^{'}$ measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant $\overline{X} - \overline{X^{'}}$. Similarly, for $V - V^{'}$measures, it would also be sensible to use them to compare only the variances of the variables, *i.e.* to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant $S - S^{'}$).
 
+<!-- TODO = rewrite the table 3.7 -->
+
 Table 3‑7*:* Information loss measures for continuous microdata
 
   ------- ----------------------- --------------------- -----------------------
           **Mean square error**   **Mean abs. error**   **Mean variation**
 
-                                                        
+  $X-X$   
 
                                                         
 
@@ -1604,7 +1605,11 @@ Comparison of matrices $X$ and $X^{'}$ for categorical data requires the definit
 
 For a nominal variable $V$ (a categorical variable taking values over an unordered set), the only permitted operation is comparison for equality. This leads to the following distance definition:
 
-![](Images/media/image131.png){width="1.6909722222222223in" height="0.6256944444444444in"}
+
+$$dv(c,c')=\begin{cases}
+0, & \text{if $c=c'$}\\
+1, & \text{if $c \neq c'$}
+\end{cases}$$
 
 where $c$ is a category in an original record and $c^{'}$ is the category which has replaced *c* in the corresponding protected record.
 
@@ -1692,7 +1697,7 @@ Many of the methods described previously in the methodology section can be appli
 
 μ‑ARGUS is a flexible interactive program that will guide you through the process of data protection. In a typically μ‑ARGUS run you will typically go through the following steps, given that the microdata set is ready.
 
-8.  **Meta data**. μ‑ARGUS needs to know the structure of the data set. Not only the general aspects but also additional SDC-specific information. As there is till now no suitable flexible standard for meta data allowing us to specify also the SDC-specific parts of the meta data, we have to rely on the ARGUS meta data format.\
+28.  **Meta data**. μ‑ARGUS needs to know the structure of the data set. Not only the general aspects but also additional SDC-specific information. As there is till now no suitable flexible standard for meta data allowing us to specify also the SDC-specific parts of the meta data, we have to rely on the ARGUS meta data format.\
     This can be prepared (partially) externally or it can be specified interactively during a μ‑ARGUS session.
 
 ```{=html}
@@ -1720,9 +1725,9 @@ Many of the methods described previously in the methodology section can be appli
 
 33. **Generate the safe micro file.** During this process all data transformations specified above. This is also the moment that all remaining unsafe combinations will be protected by local suppressions. Also an extensive report will be generated.
 
-> When the above scheme has been followed a safe microdata file has been generated. μ‑ARGUS is capable of handling very large datasets. Only during the first phase, when the datafile is explored and the frequency tables are computed some heavy computations are performed. This might take some time depending on the size of the datafile. However all the real SDC-work (global recoding and the other methods named under 4 and 5 above) are done at the level of the information prepared during this first phase. This will be done very quickly. Only in the final phase when the protected datafile is made, the operation might be time consuming depending on the size of the datafile.
->
-> This architecture of μ‑ARGUS has the advantage that all real SDC-work, that will be done interactively, will have a very quick response time. Inspecting the results of various recodings is easy and simple.
+When the above scheme has been followed a safe microdata file has been generated. μ‑ARGUS is capable of handling very large datasets. Only during the first phase, when the datafile is explored and the frequency tables are computed some heavy computations are performed. This might take some time depending on the size of the datafile. However all the real SDC-work (global recoding and the other methods named under 4 and 5 above) are done at the level of the information prepared during this first phase. This will be done very quickly. Only in the final phase when the protected datafile is made, the operation might be time consuming depending on the size of the datafile.
+
+This architecture of μ‑ARGUS has the advantage that all real SDC-work, that will be done interactively, will have a very quick response time. Inspecting the results of various recodings is easy and simple.
 
 ## Introductory example: rules at Statistics Netherlands
 
@@ -1732,18 +1737,15 @@ However as an introduction we will describe here the method/set of rules current
 
 For the microdata for researchers Statistics Netherlands uses the following set of rules:
 
-9.  Direct identifiers should not be released and therefore should be removed from the microdata set.
+34.  Direct identifiers should not be released and therefore should be removed from the microdata set.
 
-```{=html}
-<!-- -->
-```
-34. The indirect identifiers are subdivided into extremely identifying variables, very identifying variables and identifying variables. Only direct regional variables are considered to be extremely identifying. Very identifying variable are very visible variables like gender, ethnicity etc. Each combination of values of an extremely identifying variable, a very identifying variable and an identifying variable should occur at least 100 times in the population.
+35. The indirect identifiers are subdivided into extremely identifying variables, very identifying variables and identifying variables. Only direct regional variables are considered to be extremely identifying. Very identifying variable are very visible variables like gender, ethnicity etc. Each combination of values of an extremely identifying variable, a very identifying variable and an identifying variable should occur at least 100 times in the population.
 
-35. The maximum level of detail for occupation, firm and level of education is determined by the most detailed direct regional variable. This rule does not replace rule 2, but is instead a practical extension of that rule.
+36. The maximum level of detail for occupation, firm and level of education is determined by the most detailed direct regional variable. This rule does not replace rule 2, but is instead a practical extension of that rule.
 
-36. A region that can be distinguished in the microdata should contain at least 10 000 inhabitants.
+37. A region that can be distinguished in the microdata should contain at least 10 000 inhabitants.
 
-37. If the microdata concern panel data direct regional data should not be released. This rule prevents the disclosure of individual information by using the panel character of the microdata.
+38. If the microdata concern panel data direct regional data should not be released. This rule prevents the disclosure of individual information by using the panel character of the microdata.
 
 If these rules are violated, global recoding and local suppression are applied to achieve a safe file. Both global recoding and local suppression lead to information loss, because either less detailed information is provided or some information is not given at all. A balance between global recoding and local suppression should always be found in order to make the information loss due to the statistical disclosure control measures as low as possible. It is recommended to start by recoding some variables globally until the number of unsafe combinations that has to be protected is sufficiently low. Then the remaining unsafe combinations have to be protected by local suppressions.
 
@@ -1751,28 +1753,25 @@ For business microdata these rules are not appropriate. Opposite to personal mic
 
 The software package μ‑ARGUS (Hundepool et al, 2005) is also of help in producing public use microdata files. For the public use microdata files Statistics Netherlands uses the following set of rules:
 
-10. The microdata must be at least one year old before they may be released.
+38. The microdata must be at least one year old before they may be released.
 
-```{=html}
-<!-- -->
-```
-38. Direct identifiers should not be released. Also direct regional variables, nationality, country of birth and ethnicity should not be released.
+39. Direct identifiers should not be released. Also direct regional variables, nationality, country of birth and ethnicity should not be released.
 
-39. Only one kind of indirect regional variables (e.g. the size class of the place of residence) may be released. The combinations of values of the indirect regional variables should be sufficiently scattered, i.e. each area that can be distinguished should contain at least 200 000 persons in the target population and, moreover, should consist of municipalities from at least six of the twelve provinces in the Netherlands. The number of inhabitants of a municipality in an area that can be distinguished should be less than 50 % of the total number of inhabitants in that area.
+40. Only one kind of indirect regional variables (e.g. the size class of the place of residence) may be released. The combinations of values of the indirect regional variables should be sufficiently scattered, i.e. each area that can be distinguished should contain at least 200 000 persons in the target population and, moreover, should consist of municipalities from at least six of the twelve provinces in the Netherlands. The number of inhabitants of a municipality in an area that can be distinguished should be less than 50 % of the total number of inhabitants in that area.
 
-40. The number of identifying variables in the microdata is at most 15.
+41. The number of identifying variables in the microdata is at most 15.
 
-41. Sensitive variables should not be released.
+42. Sensitive variables should not be released.
 
-42. It should be impossible to derive additional identifying information from the sampling weights.
+43. It should be impossible to derive additional identifying information from the sampling weights.
 
-43. At least 200 000 persons in the population should score on each value of an identifying variable.
+44. At least 200 000 persons in the population should score on each value of an identifying variable.
 
-44. At least 1 000 persons in the population should score on each value of the crossing of two identifying variables.
+45. At least 1 000 persons in the population should score on each value of the crossing of two identifying variables.
 
-45. For each household from which more than one person participated in the survey we demand that the total number of households that correspond to any particular combination of values of household variables is at least five in the microdata.
+46. For each household from which more than one person participated in the survey we demand that the total number of households that correspond to any particular combination of values of household variables is at least five in the microdata.
 
-46. The records of the microdata should be released in random order.
+47. The records of the microdata should be released in random order.
 
 According to this set of rules the public use files are protected much more severely than the microdata for research. Note that for the microdata for research it is necessary to check certain trivariate combinations of values of identifying variables and for the public use files it is sufficient to check bivariate combinations, but the thresholds are much higher. However, for public use files it is not allowed to release direct regional variables. When no direct regional variable is released in a microdata set for research, then only some bivariate combinations of values of identifying variables should be checked according to the statistical disclosure control rules. For the corresponding public use files all the bivariate combinations of values of identifying variables should be checked.
 
@@ -1784,17 +1783,17 @@ In this section we provide examples based on real surveys of the various steps d
 
 The Labour Force Survey[^2] is one of the surveys subject to Regulation EC 831/2002 on access to microdata for scientific purposes. The Labour Force Survey (LFS) is the main data source for the analysis of the labour market, employment, unemployment as well as the conditions and the level of involvement at the labour market. Some of the main observed variables are:
 
-1\. demographic variable: (gender, year of birth, marital status, relationship to reference person, place of residence);
+1. demographic variable: (gender, year of birth, marital status, relationship to reference person, place of residence);
 
-2\. labour status: (labour status during the reference week, etc.);
+2. labour status: (labour status during the reference week, etc.);
 
-3\. employment characteristics of the main job: (professional status, economic activity of local unit, country of place of work, etc.);
+3. employment characteristics of the main job: (professional status, economic activity of local unit, country of place of work, etc.);
 
-4\. education and training;
+4. education and training;
 
-5\. income;
+5. income;
 
-6\. technical item relating to the interview.
+6. technical item relating to the interview.
 
 The sampling designs in the EU-LFS[^3] are extremely varied. Most NSIs employ some kind of multistage stratified random sampling design, especially those that do not have central population register available.
 
