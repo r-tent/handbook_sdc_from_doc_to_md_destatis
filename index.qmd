@@ -1,5 +1,6 @@
 # Introduction
 
+<!--
 > *High level description of why we need to consider SDC\
 > Overview of process one must go through when protecting outputs\
 > The trade-off between SDC measures, information loss and risk.\
@@ -7,6 +8,7 @@
 > How handbook should be used\
 > Also mention the glossary\
 > Author: Jane and Luisa*
+-->
 
 ## Preface
 
