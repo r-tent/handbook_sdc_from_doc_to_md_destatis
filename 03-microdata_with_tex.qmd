@@ -883,6 +883,8 @@ Unfortunately, neither variances nor correlation coefficients are preserved:
 
 $V\left( Z_{j} \right) = V\left( X_{j} \right) + \text{αV}\left( X_{j} \right) = (1 + \alpha)V\left( X_{j} \right)$
 
+$\rho (z_j, z_l)=\frac{Cov(Z_j, Z_l)}{\sqrt{V(X_j)V(X_l)}} = \frac{1}{1+\alpha} \rho(x_j, x_l),\forall j \neq l$
+
 #### Masking by correlated noise addition
 
 Correlated noise addition also preserves means and additionally allows preservation of correlation coefficients. The difference with the previous method is that the covariance matrix of the errors is now proportional to the covariance matrix of the original data, *i.e.* $\varepsilon \sim  (0,\Sigma)$, where $\Sigma_{\varepsilon} = \text{αΣ}$.![](Images/media/image61.png){width="0.2in" height="0.2in"}
