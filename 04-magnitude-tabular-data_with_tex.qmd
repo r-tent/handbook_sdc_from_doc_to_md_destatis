@@ -291,7 +291,7 @@ Within this section we explain the methodological background of secondary tabula
 
 At the end of the section we give a brief comparison of secondary cell suppression, partial suppression and controlled tabular adjustment as alternative disclosure limitation techniques.
 
-When a table is protected by cell suppression, by making use of the linear relation between published and suppressed cell values in a table with suppressed entries, it is always possible for any particular suppressed cell of a table to derive upper and lower bounds for its true value. This holds for either tables with non-negative values, and those tables containing negative values as well, when it is assumed that instead of zero, some other (possibly tight) lower bound for any cell is available to data users in advance of publication. The interval given by these bounds is called the '*feasibility interval'*. Example 3[^6] illustrates the computation of the feasibility interval in the case of a simple two-dimensional table where all cells may only assume non-negative values:
+When a table is protected by cell suppression, by making use of the linear relation between published and suppressed cell values in a table with suppressed entries, it is always possible for any particular suppressed cell of a table to derive upper and lower bounds for its true value. This holds for either tables with non-negative values, and those tables containing negative values as well, when it is assumed that instead of zero, some other (possibly tight) lower bound for any cell is available to data users in advance of publication. The interval given by these bounds is called the '*feasibility interval'*. Example 3[^6] (@tbl-example-3) illustrates the computation of the feasibility interval in the case of a simple two-dimensional table where all cells may only assume non-negative values:
 
 | **Example** 	| **1 ** 	| **2 ** 	| **Total** 	|
 |-------------	|:------:	|:------:	|:---------:	|
@@ -299,6 +299,8 @@ When a table is protected by cell suppression, by making use of the linear relat
 | **2**       	|    $X_{21}$    	|    $X_{22}$    	|     3     	|
 | **3**       	|    3   	|    3   	|     6     	|
 | **Total**   	|    9   	|    7   	|     16    	|
+
+: Example 3 {#tbl-example-3}
 
 [^6]: Geurts, 1992, Table 10, p 20
 
@@ -322,13 +324,21 @@ In principle, a set of suppressions (the '*suppression pattern*') should only be
 
 Note that we recommend using protection levels of zero when instead of a concentration rule only a minimum frequency rule has been used for primary disclosure risk assessment. As explained in 4.2.1, minimum frequency rules (instead of concentration rules) should only be used, if it is enough to prevent exact disclosure only. And in such a case, a protection level of zero should be enough. Using τ-ARGUS this can be achieved by setting the parameter 'minimum frequency range' to zero.
 
-Table 4‑9: Upper protection levels
+| Sensitivity rule 	|              Upper protection level              	|
+|------------------	|:------------------------------------------------:	|
+| (1,k)-rule       	|                  $100/k x_1 - X$                 	|
+| (n,k)-rule       	| $100 / k ⋅ (x_{1} + x_{2} + \cdots + x_{n}) − X$ 	|
+| p%-rule          	|      $p / 100 ⋅ x_{1} − (X − x_{1} − x_{2})$     	|
+| (p,q)-rule       	|       $p / q ⋅ x_{1} − (X − x_{1} − x_{2})$      	|
 
-If the distance between upper bound of the feasibility interval and true value of a sensitive cell is below the upper protection level computed according to the formulas of table 4.2, then this upper bound could be used to derive an estimate for individual contributions of the sensitive cell that is too close according to the safety rule employed, which can easily be proven along the lines of Cox (1981).
+: Upper protection levels {#tbl-upper-protection-levels}
+
+
+If the distance between upper bound of the feasibility interval and true value of a sensitive cell is below the upper protection level computed according to the formulas of @tbl-upper-protection-levels, then this upper bound could be used to derive an estimate for individual contributions of the sensitive cell that is too close according to the safety rule employed, which can easily be proven along the lines of Cox (1981).
 
 Cell X = 330 with 3 contributions of distinct respondents$x_{1}\text{=300,}$ $x_{2}\text{=20,}$ $x_{3}\text{=10}$ is confidential (or 'unsafe') according to the (1,85)- dominance rule. If the feasible upper bound $X^{\text{max}}$ for this confidential cell value is less than $\text{100}/\text{85} \cdot x_{1} = \text{352}\text{.}\text{94}$ , then it will provide an upper estimate for the largest contribution $x _ { 1 }$ which is too close according to the (1,85)-dominance rule.
 
-Example 5 proves the formula given in table 4.2 for the case of the p%-rule:
+Example 5 proves the formula given in @tbl-upper-protection-levels for the case of the p%-rule:
 
 Let X + U be the upper bound of the feasibility interval for a cell with cell value X . The second largest respondent can then deduce an upper bound $x_{1}^{U}$by subtracting its own contribution from that upper bound: $x_{1}^{U} = X + U - x_{2}$. According to the definition of the p%-rule proper protection means that $x_{1}^{U} \geq \left( 1 + \frac{p}{\text{100}} \right) \cdot x_{1}$. So, if the feasibility interval provides upper protection, it must hold that $U \geq \left( 1 + \frac{p}{\text{100}} \right) \cdot x_{1} - X + x_{2} =$=$p/\text{100} \cdot x_{1} - \left( X - x_{1} - x_{2} \right)$.
 
