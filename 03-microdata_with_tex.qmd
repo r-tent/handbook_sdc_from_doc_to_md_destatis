@@ -1035,13 +1035,11 @@ Table 3‑6: Example: 3-anonymous version of the SME dataset after optimal micro
 
 #### Fixed vs. variable group size 
 
-Classical microaggregation algorithms (Defays and Nanopoulos, 1993) required that all groups except perhaps one be of size *k*; allowing groups to be of size $k$depending on the structure of data was termed *data-oriented microaggregation* (Mateo-Sanz and Domingo-Ferrer, 1999), (Domingo-Ferrer and Mateo-Sanz, 2002). Figure 3 -2 illustrates the advantages of variable-sized groups. If classical fixed-size microaggregation with $k = 3$ is used, we obtain a partition of the data into three groups, which looks rather unnatural for the data distribution given. On the other hand, if variable-sized groups are allowed then the five data on the left can be kept in a single group and the four data on the right in another group; such a variable-size grouping yields more homogeneous groups, which implies lower information loss.![](Images/media/image65.png){width="0.2in" height="0.2in"}
+Classical microaggregation algorithms (Defays and Nanopoulos, 1993) required that all groups except perhaps one be of size *k*; allowing groups to be of size $k$depending on the structure of data was termed *data-oriented microaggregation* (Mateo-Sanz and Domingo-Ferrer, 1999), (Domingo-Ferrer and Mateo-Sanz, 2002). @fig-fixed-vs-variable-sized-group illustrates the advantages of variable-sized groups. If classical fixed-size microaggregation with $k = 3$ is used, we obtain a partition of the data into three groups, which looks rather unnatural for the data distribution given. On the other hand, if variable-sized groups are allowed then the five data on the left can be kept in a single group and the four data on the right in another group; such a variable-size grouping yields more homogeneous groups, which implies lower information loss.![](Images/media/image65.png){width="0.2in" height="0.2in"}
 
-However, except for specific cases such as the one depicted in Figure 3 -2, the small gain in within-group homogeneity obtained with variable-sized groups hardly justifies the higher computational overhead of this option with respect to fixed-sized groups. This is particularly evident for multivariate data, as noted by Sande (2002).
+However, except for specific cases such as the one depicted in @fig-fixed-vs-variable-sized-group, the small gain in within-group homogeneity obtained with variable-sized groups hardly justifies the higher computational overhead of this option with respect to fixed-sized groups. This is particularly evident for multivariate data, as noted by Sande (2002).
 
-> ![](Images/media/image66.png){width="3.8in" height="2.4in"}
-
-Figure 3‑2: Variable-sized groups versus fixed-sized groups
+![Variable-sized groups versus fixed-sized groups](Images/media/image66.png){#fig-fixed-vs-variable-sized-group width="3.8in" height="2.4in"}
 
 #### Exact optimal vs. heuristic microaggregation
 
