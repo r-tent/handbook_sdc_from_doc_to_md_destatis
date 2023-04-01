@@ -711,7 +711,7 @@ The NF CSP heuristic is based on the solution of a sequence of shortest-path sub
 
 However the current implementation of the network flows do (not yet) protect against the singleton problem.
 
-### Hypercube <!-- {#hypercube .Opmaakprofiel-Kop-3-+-Na:--3-pt} -->
+### Hypercube {#hypercube}
 
 In order to ensure tractability also of big applications, τ−ARGUS interfaces with the GHM*ITER* hypercube method of R. D. Repsilber of the Landesamt für Datenverarbeitung und Statistik in Nordrhein-Westfalen/Germany, offering a quick heuristic solution. The method has been described in depth in (Repsilber, 1994), or (Repsilber, 2002). For a briefer description see (Giessing and Repsilber, 2002).
 
