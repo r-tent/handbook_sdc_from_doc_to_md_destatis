@@ -293,7 +293,24 @@ At the end of the section we give a brief comparison of secondary cell suppressi
 
 When a table is protected by cell suppression, by making use of the linear relation between published and suppressed cell values in a table with suppressed entries, it is always possible for any particular suppressed cell of a table to derive upper and lower bounds for its true value. This holds for either tables with non-negative values, and those tables containing negative values as well, when it is assumed that instead of zero, some other (possibly tight) lower bound for any cell is available to data users in advance of publication. The interval given by these bounds is called the '*feasibility interval'*. Example 3[^6] illustrates the computation of the feasibility interval in the case of a simple two-dimensional table where all cells may only assume non-negative values:
 
+| **Example** 	| **1 ** 	| **2 ** 	| **Total** 	|
+|-------------	|:------:	|:------:	|:---------:	|
+| **1**       	|    $X_{11}$    	|    $X_{12}$    	|     7     	|
+| **2**       	|    $X_{21}$    	|    $X_{22}$    	|     3     	|
+| **3**       	|    3   	|    3   	|     6     	|
+| **Total**   	|    9   	|    7   	|     16    	|
+
+[^6]: Geurts, 1992, Table 10, p 20
+
 For this table the following linear relations hold:
+
+$\begin{align}
+X_{11} + X_{12} &= 7 (R1) \\
+X_{21} + X_{22} &= 3 (R2) \\
+X_{11} + X_{21} &= 6 (C1) \\
+X_{12} + X_{22} &= 4 (C2) \\
+\text{with} X_{ij} \geq 0, \forall (i,j)
+\end{align}$
 
 Using linear programming methodology, it is possible to derive systematically for any suppressed cell in a table an upper bound $\left( X ^ { \max } \right)$ and a lower bound $\left( X _ { 11 } ^ { \min } \right)$ for the set of feasible values. In the example above, for cell (1,1) these bounds are $\left( X _ { 11 } ^ { \min } \right)$ = 3 and $X _ { 11 } ^ { \max }$ = 6 .
 
