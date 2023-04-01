@@ -96,11 +96,9 @@ Let us reconsider the example once more. Assume this time that in region X there
 
 The presumption of the sensitivity of a variable often matters in the choice of a particular protection method. For example, especially in the case of tables presenting business magnitude information many agencies decide that this kind of information must be protected also against the kind of approximate disclosure illustrated by example 1d above, because it is so sensitive.
 
-Considering the above explained intruder scenarios statistical agencies have developed some '*safety rules*' (also referred to as '*sensitivity rules'* or *'sensitivity measures*'), measures to assess disclosure risks. We will now introduce the most popular rules, starting with an overview presenting formal representation of these rules in table 4.1. After that, the rules (or rather, classes of rules) will be discussed in detail. We explain in which situations it may make sense to use those rules, using simple examples for illustration where necessary.
+Considering the above explained intruder scenarios statistical agencies have developed some '*safety rules*' (also referred to as '*sensitivity rules'* or *'sensitivity measures*'), measures to assess disclosure risks. We will now introduce the most popular rules, starting with an overview presenting formal representation of these rules in @tbl-sensitivity-rules. After that, the rules (or rather, classes of rules) will be discussed in detail. We explain in which situations it may make sense to use those rules, using simple examples for illustration where necessary.
 
-Table 4.1 briefly presents the most common sensitivity rules. Throughout this chapter we denote $x_{1} \geq x_{2} \geq \text{.}\text{.}\text{.} \geq x_{N}$ the ordered contributions by respondents 1,2,...,*N*, respectively, to a cell with cell total (or cell value) $X = \sum_{i \leq N}^{}x_{i}$
-
-Table 4‑8: Sensitivity rules
+@tbl-sensitivity-rules briefly presents the most common sensitivity rules. Throughout this chapter we denote $x_{1} \geq x_{2} \geq \text{.}\text{.}\text{.} \geq x_{N}$ the ordered contributions by respondents 1,2,...,*N*, respectively, to a cell with cell total (or cell value) $X = \sum_{i \leq N}^{}x_{i}$
 
   ---------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   **Rule**                     **Definition**
@@ -113,6 +111,9 @@ Table 4‑8: Sensitivity rules
 
   ***p*%-rule**                the cell total minus the 2 largest contributions$x_{1}$and$x_{2}$ is less than *p* % of the largest contribution, e.g. $X - x_{2} - x_{1} < p/\text{100}x_{1}$[^5] (2)
   ---------------------------- ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+: Sensitivity rules {#tbl-sensitivity-rules}
+
 
 Note that the dominance rule is not defined for *k*=100, neither is the *p*%-rule for *p* = 0. Both are asymptotically equal to minimum frequency rules for *k*→100, or *p*→0 respectively.
 
@@ -259,7 +260,7 @@ It should be noted here that with the above procedure it may happen that a cell 
 
 On the other hand, there is a certain tendency for overprotection associated to the above procedure, e.g. there is a chance that according to the above procedure an aggregate is unsafe, when in fact it is not: Assume the sequence of values in the full population to be 100, 50, 50, 1, 1. Assume we have sampled (with unequal probabilities) the unit with value 100 with a sampling weight of 2 associated to it, and one of the units with value 1 with a sampling weight of 3. According to the above procedure two values of 100 would be considered as largest contribution for an estimated cell total of 203 which according to for instance a *p%*-rule would be considered as sensitive for any *p*\>3 . But in fact, even the second largest unit in the population with a value of 50 will overestimate the value 100 of the largest unit by about 50 % when it subtracts her own contribution from the population estimate of 203.
 
-This tendency for overprotection can be avoided, when, instead of the above procedure, in the case of sample surveys we replace for instance for the *p%* ‑rule the formulation (2) of table 4.1 by the following
+This tendency for overprotection can be avoided, when, instead of the above procedure, in the case of sample surveys we replace for instance for the *p%* ‑rule the formulation (2) of @tbl-sensitivity-rules by the following
 
 $\hat{X} - x_{2}^{s} - x_{1}^{s} < \frac{p}{\text{100}} \cdot x_{1}^{s}$ (6)
 
