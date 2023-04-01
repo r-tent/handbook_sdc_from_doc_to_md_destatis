@@ -1323,7 +1323,7 @@ The algorithm proposed in Burridge (2004) to get $y_{C}^{'}$ is as follows
 
 (a) Let $L$ and $L_{O}$ be the lower triangular matrices in the Cholesky factorizations $n\hat{\Sigma} = \text{LL}^{T}$ and ${\overset{\sim}{r}}^{T}\overset{\sim}{r} = L_{O}L_{O}^{T}$.
 
-(b) Define ${\overset{\sim}{r}}^{'} = \overset{\sim}{r}L_{O}^{- T}L^{T}$. It is easily verified that ${\overset{\sim}{r}}^{}{\overset{\sim}{r}}^{'} = n\hat{\Sigma}$.
+(b) Define ${\overset{\sim}{r}}^{'} = \overset{\sim}{r}L_{O}^{- T}L^{T}$. It is easily verified that ${\overset{\sim}{r}}^{T}{\overset{\sim}{r}}^{'} = n\hat{\Sigma}$.
 
 Define
 
