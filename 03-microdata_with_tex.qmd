@@ -306,7 +306,7 @@ $$r _ { i } = \mathrm { E } \left( \frac { 1 } { F _ { k } } \mid f _ { k } \rig
 
 where the posterior distribution of *F~k~*\|*f~k~* is negative binomial with success probability *p~k~* and number of successes *f~k~*. As the risk is a function of *f~k~* and *p~k\ ~*its estimate can be obtained by estimating *p~k~*. Benedetti and Franconi (1998) propose to use
 
-${\hat{p}}_{k} = f{}_{k}/\sum_{}^{}w_{i}$, (3.2.5.2)
+${\hat{p}}_{k} = f{}_{k}/\sum_{i:k(i)=k}^{}w_{i}$, (3.2.5.2)
 
 where $\sum_{}^{}w_{i}$ is an estimate of *F~k~* based on the sampling design weights *w~i~*, possibly calibrated (Deville and Särndal, 1992).
 
