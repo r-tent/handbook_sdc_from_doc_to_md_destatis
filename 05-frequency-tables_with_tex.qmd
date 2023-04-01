@@ -22,9 +22,7 @@ Identification as a disclosure risk involves finding yourself or another individ
 
 However, identification or self-identification can lead to the discovery of rareness, or even uniqueness, in the population of the statistic, which is something an individual might not have known about themselves before. This is most likely to occur where a cell has a small value, e.g. a 1, or where it becomes in effect a population of 1 through subtraction or deduction using other available information. For certain types of information, rareness or uniqueness may encourage others to seek out the individual. The threat or reality of such a situation could cause harm or distress to the individual, or may lead them to claim that the statistics offer inadequate disclosure protection for them, and therefore others.
 
-Identification or self-identification may occur from any cells with a count of 1, i.e. representing one statistical unit. Table 5 .13 presents an example of a low-dimensional table in a particular area where identification may occur.
-
-Table 5.13: Marital status by sex
+Identification or self-identification may occur from any cells with a count of 1, i.e. representing one statistical unit. @tbl-mar-by-sex presents an example of a low-dimensional table in a particular area where identification may occur.
 
   --------------------------- ------------ --------------- ---------------
   **Marital Status**          **Male**     **Female**      **Total**
@@ -38,15 +36,15 @@ Table 5.13: Marital status by sex
   Total                       48           22              70
   --------------------------- ------------ --------------- ---------------
 
+: Marital status by sex {#tbl-mar-by-sex}
+
 The existence of a 1 in the highlighted cell indicates that the female who is single is at risk from being identified from the table.
 
 Identification itself poses a relatively low disclosure risk, but its tendency to lead to other types of disclosure, together with the perception issues it raises means several NSIs choose to protect against identification disclosure. Section 5.3 discusses protection methods which tend to focus on reducing the number of small cells in tables.
 
 Attribute disclosure involves the uncovering of new information about a person through the use of published data. An individual attribute disclosure occurs when someone who has some information about an individual could, with the help of data from the table (or from a different table with a common attribute), discover details that were not previously known to them. This is most likely to occur where there is a cell containing a 1 in the margin of the table and the corresponding row or column is dominated by zeros. The individual is identified on the basis of some of the variables spanning the table and a new attribute is then revealed about the individual from other variables. Note that identification is a necessary precondition for individual attribute disclosure to occur, and should therefore be avoided.
 
-This type of disclosure is a particular problem when many tables are released from one data set. If an intruder can identify an individual then additional tables provide more detail about that person. In continuation of the example shown in Table 5 .13, the cell disclosing the single female as unique will ultimately turn into a marginal cell in a higher dimensional table such as Table 5 .14 below and her number of hours worked is revealed.
-
-Table 5.14: Marital status and sex by hours worked
+This type of disclosure is a particular problem when many tables are released from one data set. If an intruder can identify an individual then additional tables provide more detail about that person. In continuation of the example shown in @tbl-mar-by-sex, the cell disclosing the single female as unique will ultimately turn into a marginal cell in a higher dimensional table such as @tbl-mar-sex-hours below and her number of hours worked is revealed.
 
   ---------------------------------- ------------------ ----------- ---------------- ------------------ ----------- ---------------- -----------
   **Marital status/ Hours worked**   **Male**                                        **Female**                                      **Total**
@@ -62,6 +60,8 @@ Table 5.14: Marital status and sex by hours worked
   Total                              35                 10          3                16                 5           **1**            70
   ---------------------------------- ------------------ ----------- ---------------- ------------------ ----------- ---------------- -----------
 
+: Marital status and sex by hours worked {#tbl-mar-sex-hours}
+
 The table shows how attribute disclosure arises due to the zeros dominating the column of the single female, and it is learned that she is in the lowest income band.
 
 The occurrence of a 2 in the table could also lead to identification if one individual contributed to the cell and therefore could identify the other individual in the cell.
@@ -70,9 +70,7 @@ An example of potential attribute disclosure from the 2001 UK Census data, invol
 
 Another disclosure risk involves learning a new attribute about an identifiable group or learning a group does not have a particular attribute. This is termed group attribute disclosure, and it can occur when all respondents fall into a subset of categories for a particular variable, i.e. where a row or column contains mostly zeros and a small number of cells that are non-zero. This type of disclosure is a much neglected thread to the disclosure protection of frequency tables, and in contrast to individual attribute disclosure, it does not require individual identification. In order to protect against group attribute disclosure it is essential to introduce ambiguity in the zeros and ensure that all respondents do not fall into just one or a few categories.
 
-Table 5.3 below shows respondents in a particular area broken down by hours worked and income.
-
-**Table 5.3:** Marital status by hours worked
+@tbl-mar-hours below shows respondents in a particular area broken down by hours worked and income.
 
   -------------------------- ------------------ --------------- -------------
                              **Hours worked**                   
@@ -88,15 +86,15 @@ Table 5.3 below shows respondents in a particular area broken down by hours work
   Total                      13                 3               16
   -------------------------- ------------------ --------------- -------------
 
+: Marital status by hours worked {#tbl-mar-hours}
+
 From the table we can see that all married individuals work full time, therefore any individual in that area who is married will have their hours worked disclosed.
 
 The table also highlights another type of group attribute disclosure referred to as 'within group disclosure'. This occurs for the divorced group and results from all respondents falling into two response categories for a particular variable, where one of these response categories has a cell value of 1. In this case, the divorced person who works part time knows that all other divorced individuals work full time.
 
 > Differencing involves an intruder using multiple overlapping tables and subtraction to gather additional information about the differences between them. A disclosure by differencing occurs when this comparison of two or more tables enables a small cell (0, 1, or 2) to be calculated. Disclosures by differencing can result from three different scenarios which will be explained in turn:
 >
-> **Disclosure by *geographical differencing*** may result when there are several published tables from the same dataset and they relate to similar geographical areas. If these tables are compared they can reveal a new, previously unpublished table for the differenced area. For instance, 2001 Output Areas (OA) are similar in geographical size to 1991 Enumeration Districts (ED), and a new differenced table may be created for the remaining area. A fictitious example of this is presented below Tables 5.4 to 5.6.
-
-**Table 5.4:** Single Person households and hours worked in Area A (2001OA definition)
+> **Disclosure by *geographical differencing*** may result when there are several published tables from the same dataset and they relate to similar geographical areas. If these tables are compared they can reveal a new, previously unpublished table for the differenced area. For instance, 2001 Output Areas (OA) are similar in geographical size to 1991 Enumeration Districts (ED), and a new differenced table may be created for the remaining area. A fictitious example of this is presented below in @tbl-single-hh-hours,@tbl-single-hh-income and @tbl-differenced-table.
 
   --------------------- ---------------------------------- ------------------------------------
                         **Single Person Household Male**   **Single Person Household Female**
@@ -108,7 +106,7 @@ The table also highlights another type of group attribute disclosure referred to
   15 or less            39                                 49
   --------------------- ---------------------------------- ------------------------------------
 
-**Table 5.5:** Single Person households and income band in Area A (1991 ED definition)
+: Single Person households and hours worked in Area A (2001OA definition) {#tbl-single-hh-hours}
 
   --------------------- --------------------------------- ------------------------------------
                         **Single Person Household Male\   **Single Person Household Female**
@@ -121,7 +119,7 @@ The table also highlights another type of group attribute disclosure referred to
   15 or less            39                                49
   --------------------- --------------------------------- ------------------------------------
 
-> **Table 5.6:** New differenced table (via geographical differencing)
+: Single Person households and income band in Area A (1991 ED definition) {#tbl-single-hh-income}
 
   --------------------- --------------------------------- ------------------------------------
                         **Single Person Household Male\   **Single Person Household Female**
@@ -134,19 +132,20 @@ The table also highlights another type of group attribute disclosure referred to
   15 or less            0                                 0
   --------------------- --------------------------------- ------------------------------------
 
-The above example demonstrates how simple subtraction of the geographical data in Table 5.4 from Table 5.5 can produce disclosive information for the area in Table 5.6.
+: New differenced table (via geographical differencing) {#tbl-differenced-table}
+
+The above example demonstrates how simple subtraction of the geographical data in @tbl-single-hh-hours from @tbl-single-hh-income can produce disclosive information for the area in @tbl-differenced-table.
 
 **Disclosure by *linking*** can occur when published tables relating to the same base population are linked by common variables. These new linked tables were not published by the NSI and therefore may reveal the statistical disclosure control methods applied and/or unsafe cell counts.
 
-A fictitious example of disclosure by linking is provided below in Tables 5.7 to 5.10, which are linked by employment status and whether or not the respondents live in the area.
-
-**Table 5.7:** Area of Residence or Workplace
+A fictitious example of disclosure by linking is provided below in @tbl-residence-workplace to @tbl-differenced-table-linking, which are linked by employment status and whether or not the respondents live in the area.
 
 |         	| **Number working in area** 	| **Number living in area** 	| **Living and working area** 	|
 |---------	|----------------------------	|---------------------------	|-----------------------------	|
 | Area A  	|             49             	|            102            	|              22             	|
 
-Table 5.8: Employment status in Area A
+: Area of Residence or Workplace {#tbl-residence-workplace}
+
 
 |              	| **Number of Persons** 	|
 |--------------	|:---------------------:	|
@@ -154,13 +153,13 @@ Table 5.8: Employment status in Area A
 | Not employed 	|           17          	|
 | Total        	|          102          	|
 
-Table 5.9: Males working and living in Area A
+: Employment status in Area A {#tbl-employment-status}
 
 |       	| Living and working in Area A  	| Living in Area A and working elsewhere  	| Working in Area A and living elsewhere 	|
 |-------	|:-----------------------------:	|:---------------------------------------:	|:--------------------------------------:	|
 | Males 	|               21              	|                    58                   	|                   23                   	|
 
-Table 5.10: New differenced table (via linking)
+: Males working and living in Area A {#tbl-males-work-live-A}
 
 |         	| **Living and working in Area A** 	| **Living in Area A and working elsewhere** 	| **Working in Area A and living elsewhere** 	|
 |---------	|:--------------------------------:	|:------------------------------------------:	|:------------------------------------------:	|
@@ -168,15 +167,17 @@ Table 5.10: New differenced table (via linking)
 | Females 	|                 1                	|                      5                     	|                      4                     	|
 | Total	   	|                22                	|                     63                     	|                     27                     	|
 
-Table 5.10 shows the new data which can be derived by combining and differencing the totals from the existing tables. The linked table discloses the female living and working in Area A as a unique.
+: New differenced table (via linking) {#tbl-differenced-table-linking}
+
+@tbl-differenced-table-linking shows the new data which can be derived by combining and differencing the totals from the existing tables. The linked table discloses the female living and working in Area A as a unique.
 
 Importantly, when linked tables are produced from the same dataset it is not sufficient to consider the protection for each table separately. If a cell requires protection in one table then it will require protection in all tables, otherwise the protection in the first table could be undone.
 
 > The last type of disclosure by differencing involves **differencing of *sub-population tables****.* Sub populations are specific groups which data may be subset into before a table is produced (e.g. a table of fertility may use a sub-population of females). Differencing can occur when a published table definition corresponds to a sub-population of another published table, resulting in the production of a new, previously unpublished table. If the total population is known and the subpopulation of females is gathered from another table, the number of males can be deduced.
 >
-> Tables based on categorical variables which have been recoded in different ways may also result in this kind of differencing. To reduce the disclosure risk resulting from having many different versions of variables, most NSIs have a set of standard classifications which they use to release data. An example using the number of hours worked is shown below in Tables 5.11 to 5.13.
->
-> **Table 5.11**: Hours worked by sex in Area A
+> Tables based on categorical variables which have been recoded in different ways may also result in this kind of differencing. To reduce the disclosure risk resulting from having many different versions of variables, most NSIs have a set of standard classifications which they use to release data. An example using the number of hours worked is shown below in Tables @tbl-hours-sex-A to @tbl-differenced-table-subpop.
+
+: Hours worked by sex in Area A {#tbl-hours-sex-A}
 
   ------------ ----------- ------------- ------------- ------------- -------------
                **\<20**    **20 - 39**   **40 - 59**   **60 - 69**   **Over 70**
@@ -186,7 +187,6 @@ Importantly, when linked tables are produced from the same dataset it is not suf
   Female       10          38            51            42            32
   ------------ ----------- ------------- ------------- ------------- -------------
 
-> **Table 5.12:** Hours worked by sex in Area A
 
   ------------ ----------- ------------- ------------- ------------- -------------
                **\<25**    **25 - 39**   **40 - 59**   **60 - 69**   **Over 70**
@@ -196,7 +196,7 @@ Importantly, when linked tables are produced from the same dataset it is not suf
   Female       10          38            51            42            32
   ------------ ----------- ------------- ------------- ------------- -------------
 
-> **Table 5.13:** New differenced table (via sub-populations)
+  : Hours worked by sex in Area A {#tbl-hours-sex-A-2}
 
   ---------- ---------- ------------- ------------- ------------- ------------- -------------
              **\<20**   **20 - 24**   **25 - 39**   **40 - 59**   **60 - 69**   **Over 70**
@@ -205,6 +205,8 @@ Importantly, when linked tables are produced from the same dataset it is not suf
 
   Female     10         0             38            51            42            32
   ---------- ---------- ------------- ------------- ------------- ------------- -------------
+
+  : New differenced table (via sub-populations) {#tbl-differenced-table-subpop}
 
 > The example indicates how a new table can be differenced from the original tables, in particular a new hours worked group (for 20-24 hours) which reveals that the male falling into this derived hours worked group is unique.
 >
