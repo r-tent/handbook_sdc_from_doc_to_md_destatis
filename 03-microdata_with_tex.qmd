@@ -1751,25 +1751,25 @@ For business microdata these rules are not appropriate. Opposite to personal mic
 
 The software package μ‑ARGUS (Hundepool et al, 2005) is also of help in producing public use microdata files. For the public use microdata files Statistics Netherlands uses the following set of rules:
 
-38. The microdata must be at least one year old before they may be released.
+1. The microdata must be at least one year old before they may be released.
 
-39. Direct identifiers should not be released. Also direct regional variables, nationality, country of birth and ethnicity should not be released.
+2. Direct identifiers should not be released. Also direct regional variables, nationality, country of birth and ethnicity should not be released.
 
-40. Only one kind of indirect regional variables (e.g. the size class of the place of residence) may be released. The combinations of values of the indirect regional variables should be sufficiently scattered, i.e. each area that can be distinguished should contain at least 200 000 persons in the target population and, moreover, should consist of municipalities from at least six of the twelve provinces in the Netherlands. The number of inhabitants of a municipality in an area that can be distinguished should be less than 50 % of the total number of inhabitants in that area.
+3. Only one kind of indirect regional variables (e.g. the size class of the place of residence) may be released. The combinations of values of the indirect regional variables should be sufficiently scattered, i.e. each area that can be distinguished should contain at least 200 000 persons in the target population and, moreover, should consist of municipalities from at least six of the twelve provinces in the Netherlands. The number of inhabitants of a municipality in an area that can be distinguished should be less than 50 % of the total number of inhabitants in that area.
 
-41. The number of identifying variables in the microdata is at most 15.
+4. The number of identifying variables in the microdata is at most 15.
 
-42. Sensitive variables should not be released.
+5. Sensitive variables should not be released.
 
-43. It should be impossible to derive additional identifying information from the sampling weights.
+6. It should be impossible to derive additional identifying information from the sampling weights.
 
-44. At least 200 000 persons in the population should score on each value of an identifying variable.
+7. At least 200 000 persons in the population should score on each value of an identifying variable.
 
-45. At least 1 000 persons in the population should score on each value of the crossing of two identifying variables.
+8. At least 1 000 persons in the population should score on each value of the crossing of two identifying variables.
 
-46. For each household from which more than one person participated in the survey we demand that the total number of households that correspond to any particular combination of values of household variables is at least five in the microdata.
+9. For each household from which more than one person participated in the survey we demand that the total number of households that correspond to any particular combination of values of household variables is at least five in the microdata.
 
-47. The records of the microdata should be released in random order.
+10. The records of the microdata should be released in random order.
 
 According to this set of rules the public use files are protected much more severely than the microdata for research. Note that for the microdata for research it is necessary to check certain trivariate combinations of values of identifying variables and for the public use files it is sufficient to check bivariate combinations, but the thresholds are much higher. However, for public use files it is not allowed to release direct regional variables. When no direct regional variable is released in a microdata set for research, then only some bivariate combinations of values of identifying variables should be checked according to the statistical disclosure control rules. For the corresponding public use files all the bivariate combinations of values of identifying variables should be checked.
 
@@ -1780,6 +1780,8 @@ In this section we provide examples based on real surveys of the various steps d
 ### Labour Force Survey
 
 The Labour Force Survey[^2] is one of the surveys subject to Regulation EC 831/2002 on access to microdata for scientific purposes. The Labour Force Survey (LFS) is the main data source for the analysis of the labour market, employment, unemployment as well as the conditions and the level of involvement at the labour market. Some of the main observed variables are:
+
+[^2]:The European Union Labour Force Survey (EU LFS)? is conducted in the 25 Member States of the European Union and 3 countries of the European Free Trade Association (EFTA) in accordance with Council Regulation (EEC) No. 577/98 of 9 March 98: [http://epp.eurostat.ec.europa.eu/portal/page?_pageid=1913,47567825,1913_47568351&_dad=portal&_schema=PORTAL](http://epp.eurostat.ec.europa.eu/portal/page?_pageid=1913,47567825,1913_47568351&_dad=portal&_schema=PORTAL)
 
 1. demographic variable: (gender, year of birth, marital status, relationship to reference person, place of residence);
 
