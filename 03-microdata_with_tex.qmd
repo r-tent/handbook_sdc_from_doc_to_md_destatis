@@ -1621,9 +1621,7 @@ $\text{dc}\left( c,c^{'} \right) = \frac{\left| c^{''}\text{:min}\left( c,c^{'} 
 
 An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets $F$ and $G$ (the original and the protected set, respectively) and their corresponding *t*-dimensional contingency tables for $t \leq K$, we can define a contingency table-based information loss measure *CTBIL* for a subset $W$ of variables as follows: ![](Images/media/image134.png){width="0.2in" height="0.2in"}
 
-$\begin{matrix}
-\sum_{\left| \left\{ V_{\text{ji}}\cdots V_{\text{jt}} \right\} \right| \leq K}^{}\left\{ V_{\text{ji}}\cdots V_{\text{jt}} \right\} \subseteq W \\
-\end{matrix}$ (3.4.3.1)
+$$\text{CTBIL}(F,G; W,K) = \sum_{ \{ V_{ji} \cdots V_{jt} \} f\subseteq W \atop | \{ V_{ji} \cdots V_{jt} \} | \leq K} \sum_{i_1 \cdots i_t} | x^F_{i_1 \cdots i_t} - x^G_{i_1 \cdots i_t} |$$(3.4.3.1)
 
 where $x_{\text{subscripts}}^{\text{file}}$ is the entry of the contingency table of *file* at position given by *subscripts*.
 
