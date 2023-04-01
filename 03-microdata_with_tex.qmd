@@ -634,7 +634,7 @@ $$X _ { 1 } ^ { a } = \left( 1 - W _ { 1 } \right) X _ { 1 }$$.
 
 The records $X _ { 2 } , \ldots , X _ { n - 1 }$ are now perturbed as follows:
 
-$$$X _ { i } ^ { a } = \left( 1 - W _ { i } \right) X _ { i } , \text { if } \sum _ { k = 1 } ^ { i - 1 } X _ { k } ^ { a } > \sum _ { k = 1 } ^ { i - 1 } X _ { k }$$
+$$X _ { i } ^ { a } = \left( 1 - W _ { i } \right) X _ { i } , \text { if } \sum _ { k = 1 } ^ { i - 1 } X _ { k } ^ { a } > \sum _ { k = 1 } ^ { i - 1 } X _ { k }$$
 
 $$X _ { i } ^ { a } = \left( 1 + W _ { i } \right) X _ { i } , \text { if } \sum _ { k = 1 } ^ { i - 1 } X _ { k } ^ { a } \leq \sum _ { k = 1 } ^ { i - 1 } X _ { k }$$.
 
