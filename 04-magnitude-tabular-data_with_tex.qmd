@@ -418,7 +418,11 @@ The cost-function indicates the relative importance of a cell. In principle the 
 
 -   The cell-value of another variable in the dataset (this will be the indication of the important cells).
 
+[^7]: One of the secondary cell suppression methods of t-ARGUS, the hypercube method, uses an elaborate internal weighting scheme in order to avoid to some extent the suppression of totals and subtotals which is essential for the performance of the method. In order to avoid that this internal weighting scheme is thrown out of balance, it has been decided to make the cost function facilities of t-ARGUS inoperational for this method.
+
 Especially in the latter two cases the cell-value could give too much preference to the larger cells. Is a 10 times bigger cell really 10 times as important? Sometimes here is a need to be a bit more moderate. Some transformation of the cost-function is desired. Popular transformations are square-root or a log-transformation. Box and Cox (1960) have proposed a system of power transformations:
+
+$y = \frac{x^{\lambda} -1}{\lambda}$
 
 In this formula λ = 0 yields to a log-transformation and the -1 is needed for making this formula continuous in λ. 
 
@@ -430,7 +434,7 @@ $y = \text{log}(x)$ for λ = 0
 
 So choosing λ = ½ will give the square-root.
 
-### Evaluation of Secondary Cell Suppression algorithms offered by τ‑ARGUS {#evaluation-of-secondary-cell-suppression-algorithms-offered-by-τargus .Opmaakprofiel-Kop-3-+-Na:--3-pt}
+### Evaluation of Secondary Cell Suppression algorithms offered by τ‑ARGUS {#evaluation-of-secondary-cell-suppression-algorithms-offered-by-τargus}
 
 The software package τ−ARGUS offers a variety of algorithms to assign secondary suppressions which will be described in detail in section 4.4. While some of those algorithms are not yet fully developed, or not yet fully integrated into the package, respectively, two are indeed powerful tools for automated tabular data protection. In this section we focus on those latter algorithms. We compare them with respect to quality aspects of the protected tables, while considering also some practical issues. Based on this comparison, we finally give some recommendation on the use of those algorithms.
 
