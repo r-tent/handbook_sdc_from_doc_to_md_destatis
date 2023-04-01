@@ -1346,7 +1346,7 @@ Using that ${\hat{B}}_{C} = \hat{B}$, the expression of the MLE estimate of $\ha
 $$\begin{align}
 {\hat{\Sigma}}_{C} &= \frac{\left( y_{C}^{'},x\hat{B} \right)^{T}\left( y_{C}^{'},x\hat{B} \right)}{n}\\
 &= \frac{\left( x\hat{B} + {\overset{\sim}{r}}^{'} - x\hat{B} \right)^{T}\left( x\hat{B} + {\overset{\sim}{r}}^{'} - x\hat{B} \right)}{n} \\ 
-&= \frac{{\overset{\sim}{r}}^{}{\overset{\sim}{r}}^{'}}{n} \\ 
+&= \frac{{\overset{\sim}{r}}^{T}{\overset{\sim}{r}}^{'}}{n} \\ 
 &= \hat{\Sigma}
 \end{align}$$
 
