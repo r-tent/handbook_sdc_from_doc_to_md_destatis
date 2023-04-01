@@ -618,7 +618,7 @@ One main challenge regarding additive noise with constant variance is that on on
 
 Let $X$ be the matrix of the original data and $W$ the matrix of continuous perturbation variables with expectation 1 and variance $\sigma _ { w } ^ { 2 } > 0$. The corresponding anonymised data $X ^ { a }$ is then obtained as
 
-$$$\left( X ^ { a } \right) _ { i j } : = w _ { i j } \cdot X _ { i j }$$
+$$\left( X ^ { a } \right) _ { i j } : = w _ { i j } \cdot X _ { i j }$$
 
 for each pair $( i , j )$.
 
