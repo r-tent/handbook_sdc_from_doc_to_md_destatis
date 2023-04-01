@@ -356,11 +356,11 @@ Another alternative method for magnitude table protection is known as '*Controll
 
 The software package τ‑ARGUS provides software tools for disclosure protection methods for tabular data. This can be achieved by modifying the table so that it contains less, or less detailed, information. τ‑ARGUS allows for several modifications of a table: a table can be redesigned, meaning that rows and columns can be combined; sensitive cells can be suppressed and additional cells to protect these can be found in some optimum way (secondary cell suppression). Several alternative algorithms for the selection of secondary suppressions are available in τ‑ARGUS, e.g. the Hypercube/GHMiter method, a Modular and a Full optimal solution, and a method based on a network flow algorithm. Instead of cell suppression one could also use other methods for disclosure control of tables. One of these alternative methods is Controlled Rounding. However, use of Controlled Rounding is more common for frequency tables.
 
-undefinedFigure 4‑4: Overview of the τ‑ARGUS architecture
+![Overview of the τ‑ARGUS architecture](Images/media/tau_argus_overview.png){#fig-tau-argus-overview}
 
 We start this section by introducing into the basic issues related to the question of how to set up a tabular data protection problem properly given a set of tables that are intended to be published, discussing tabular data structures, and particularly tables with hierarchical structures. Section provides an evaluation of algorithms for secondary cell suppression offered by τ-ARGUS, including a recommendation on which tool to use in which situation. After that, in section we give some guidance on processing table protection efficiently, especially in the case of linked tables. We finish the section with an introductive example in .
 
-### Setting up a Tabular Data Protection Problem in Practice {#setting-up-a-tabular-data-protection-problem-in-practice .Opmaakprofiel-Kop-3-+-Na:--3-pt}
+### Setting up a Tabular Data Protection Problem in Practice {#setting-up-a-tabular-data-protection-problem-in-practice}
 
 At the beginning of this section we explain the basic concept of tables in the context of tabular data protection, and complex structures like hierarchical and linked tables. In order to find a good balance between protection of individual response data and provision of information -- in other words, to take control of the loss of information that obviously cannot be avoided completely because of the requirements of disclosure control, it is necessary to somehow rate the information loss connected to a cell that is suppressed. We therefore complete this section by explaining the concept of cell costs to rate information loss.
 
