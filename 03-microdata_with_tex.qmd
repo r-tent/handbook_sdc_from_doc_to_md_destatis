@@ -1797,6 +1797,8 @@ The Labour Force Survey[^2] is one of the surveys subject to Regulation EC 831/2
 
 The sampling designs in the EU-LFS[^3] are extremely varied. Most NSIs employ some kind of multistage stratified random sampling design, especially those that do not have central population register available.
 
+[^3]: [http://epp.eurostat.ec.europa.eu/cache/ITY_OFFPUB/KS-CC-06-007/EN/KS-CC-06-007-EN.PDF](http://epp.eurostat.ec.europa.eu/cache/ITY_OFFPUB/KS-CC-06-007/EN/KS-CC-06-007-EN.PDF)
+
 In the document Eurostat (2004) a proposal for the anonymisation of the LFS is presented. Here we show a possible approach to disclosure scenario definition that leads to the definition of the identifying variables.
 
 A spontaneous identification (see Section 3.3.2) can happen when an intruder has a direct knowledge of some statistical units belonging to the sample and, whether such units assume extremely particular values for some variables or for some combinations. In the Labour Force data set there are several variables that may lead to a spontaneous identification. Some of these variables are: professional status, number of persons working at local unit, income, economic activity, etc. To avoid a possible spontaneous identification such variables are usually checked to see whether there are unusual patterns or very rare keys and, if necessary some recoding or suppression may be suggested.
