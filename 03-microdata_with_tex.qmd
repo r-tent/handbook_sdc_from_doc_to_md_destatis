@@ -1364,7 +1364,7 @@ Closely related to multiply imputed, partially synthetic microdata is model-base
 
 #### Muralidhar-Sarathy hybrid generator
 
-Hybrid data are a mixture of original data and synthetic data. Let V an original data set whose attributes are numerical and fall into confidential attributes $X (=X_1\dots X_L)$ and non-confidential attributes $Y (=Y_1\dots Y_L)$. Let V' be a hybrid data set obtained from V, whose attributes are $X (=X'_1\dots X'_L)$ (hybrid versions of X) and Y.![](Images/media/image82.png){width="0.2in" height="0.2in"}
+Hybrid data are a mixture of original data and synthetic data. Let V an original data set whose attributes are numerical and fall into confidential attributes $X (=X_1\dots X_L)$ and non-confidential attributes $Y (=Y_1\dots Y_M)$. Let V' be a hybrid data set obtained from V, whose attributes are $X (=X'_1\dots X'_L)$ (hybrid versions of X) and Y.![](Images/media/image82.png){width="0.2in" height="0.2in"}
 
 Muralidhar and Sarathy (2008) proposed a procedure (called MS in the sequel) for generating hybrid data as follows
 
