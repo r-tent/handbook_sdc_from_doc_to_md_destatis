@@ -1695,17 +1695,17 @@ Many of the methods described previously in the methodology section can be appli
 
 μ‑ARGUS is a flexible interactive program that will guide you through the process of data protection. In a typically μ‑ARGUS run you will typically go through the following steps, given that the microdata set is ready.
 
-28.  **Meta data**. μ‑ARGUS needs to know the structure of the data set. Not only the general aspects but also additional SDC-specific information. As there is till now no suitable flexible standard for meta data allowing us to specify also the SDC-specific parts of the meta data, we have to rely on the ARGUS meta data format.\
+1.  **Meta data**. μ‑ARGUS needs to know the structure of the data set. Not only the general aspects but also additional SDC-specific information. As there is till now no suitable flexible standard for meta data allowing us to specify also the SDC-specific parts of the meta data, we have to rely on the ARGUS meta data format.\
     This can be prepared (partially) externally or it can be specified interactively during a μ‑ARGUS session.
 
 ```{=html}
 <!-- -->
 ```
-29. **Threshold-rule/risk models.** Selection and computation of frequency tables on which several SDC-methods (like risk models, threshold rule) are based
+2. **Threshold-rule/risk models.** Selection and computation of frequency tables on which several SDC-methods (like risk models, threshold rule) are based
 
-30. **Global recoding.** Selection of possible recodings and inspection of the results.
+3. **Global recoding.** Selection of possible recodings and inspection of the results.
 
-31. Selection and application of **other protection methods** like:
+4. Selection and application of **other protection methods** like:
 
     a.  Microaggregation
 
@@ -1719,9 +1719,9 @@ Many of the methods described previously in the methodology section can be appli
 
     f.  Noise addition
 
-32. **Risk model:** selection of the risk-level
+5. **Risk model:** selection of the risk-level
 
-33. **Generate the safe micro file.** During this process all data transformations specified above. This is also the moment that all remaining unsafe combinations will be protected by local suppressions. Also an extensive report will be generated.
+6. **Generate the safe micro file.** During this process all data transformations specified above. This is also the moment that all remaining unsafe combinations will be protected by local suppressions. Also an extensive report will be generated.
 
 When the above scheme has been followed a safe microdata file has been generated. μ‑ARGUS is capable of handling very large datasets. Only during the first phase, when the datafile is explored and the frequency tables are computed some heavy computations are performed. This might take some time depending on the size of the datafile. However all the real SDC-work (global recoding and the other methods named under 4 and 5 above) are done at the level of the information prepared during this first phase. This will be done very quickly. Only in the final phase when the protected datafile is made, the operation might be time consuming depending on the size of the datafile.
 
