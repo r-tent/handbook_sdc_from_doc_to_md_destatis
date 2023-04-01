@@ -378,9 +378,9 @@ The structure between the categories of hierarchical variables also implies sub-
 
 For any explanatory variable we pick one particular non-bottom-level category (the 'food production sector' for instance). Then we construct a 'sub-variable'. This sub-variable consists only of the category picked in the first step and those categories of the level immediately below belonging to this category (bakers, butchers, etc.). After doing that for each explanatory variable the table specified through a set of these sub-variables is free from substructure then, and is a sub-table of the original one. Any cell within the sub-table does also belong to the original table. Many cells of the original table will appear in more than one sub-table: The sub-tables are linked. Example 6 provides a simple instance of a one-dimensional table with hierarchical structure.
 
-Assume the categories A, AA, AB, AB1, AB2, and AB3 of some variable EXP resemble a hierarchical structure as depicted in Figure 4 -5 below:
+Assume the categories A, AA, AB, AB1, AB2, and AB3 of some variable EXP resemble a hierarchical structure as depicted in @fig-hierarchical-structure below:
 
-Figure 4‑5
+![Hierarchical structure](Images/media/chap4_hierarchical_structure.png){#fig-hierarchical-structure}
 
 Let the full table present turnover by the categories of EXP. Then the two subtables of this table will be
 
