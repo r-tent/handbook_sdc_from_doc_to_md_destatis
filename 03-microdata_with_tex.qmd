@@ -1613,7 +1613,7 @@ $$dv(c,c')=\begin{cases}
 
 where $c$ is a category in an original record and $c^{'}$ is the category which has replaced *c* in the corresponding protected record.
 
-For an ordinal variable $V$ (a categorical variable taking values over a totally ordered set), let $V$ be the total order operator over the range $D(V)$ of $V$. Define the distance between categories $c$ and $c^{'}$ as the number of categories between the minimum and the maximum of $c$ and $c^{'}$ divided by the cardinality of the range:
+For an ordinal variable $V$ (a categorical variable taking values over a totally ordered set), let $\leq V$ be the total order operator over the range $D(V)$ of $V$. Define the distance between categories $c$ and $c^{'}$ as the number of categories between the minimum and the maximum of $c$ and $c^{'}$ divided by the cardinality of the range:
 
 $\text{dc}\left( c,c^{'} \right) = \frac{\left| c^{''}\text{:min}\left( c,c^{'} \right) \leq c^{''} < \text{max}\left( c,c^{'} \right) \right|}{\left| D(V) \right|}$
 
