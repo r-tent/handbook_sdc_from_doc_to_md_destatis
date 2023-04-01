@@ -71,6 +71,8 @@ Microdata, or unit record data, is the form from which all other data outputs ar
 
 NSIs should aim to determine optimal SDC methods and solutions that minimize disclosure risk while maximizing the utility of the data. Figure 1 -1 contains an R-U confidentiality map developed by Duncan, et. al. (2001) where R is a quantitative measure of disclosure risk and U is a quantitative measure of data utility.
 
+![](Images/media/intro_RU_map.png)
+
 Figure 1‑1: R-U Confidentiality map
 
 In the lower left hand quadrant of the graph low disclosure risk is achieved but also low utility, where no data is released at all. In the upper right hand quadrant of the graph high disclosure risk is realised but also high utility, represented by the point where the original data is released. The NSI must set the maximum tolerable disclosure risk based on standards, policies and guidelines. The goal in this disclosure risk--data utility decision problem is to then find the balance in maintaining the utility of the data but reducing the risk below the maximum tolerable threshold.
