@@ -114,6 +114,7 @@ Considering the above explained intruder scenarios statistical agencies have dev
 
 : Sensitivity rules {#tbl-sensitivity-rules}
 
+[^5]: $X − x_{n} − \cdots − x_{2} − x_{1} < p / 100 x_{1}$ for the case of coalitions of n-1 respondents, where n>2
 
 Note that the dominance rule is not defined for *k*=100, neither is the *p*%-rule for *p* = 0. Both are asymptotically equal to minimum frequency rules for *k*→100, or *p*→0 respectively.
 
