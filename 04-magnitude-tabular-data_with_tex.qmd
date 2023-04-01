@@ -98,7 +98,7 @@ The presumption of the sensitivity of a variable often matters in the choice of 
 
 Considering the above explained intruder scenarios statistical agencies have developed some '*safety rules*' (also referred to as '*sensitivity rules'* or *'sensitivity measures*'), measures to assess disclosure risks. We will now introduce the most popular rules, starting with an overview presenting formal representation of these rules in table 4.1. After that, the rules (or rather, classes of rules) will be discussed in detail. We explain in which situations it may make sense to use those rules, using simple examples for illustration where necessary.
 
-Table 4.1 briefly presents the most common sensitivity rules. Throughout this chapter we denote $x_{1} \geq x_{2} \geq \text{.}\text{.}\text{.} \geq x_{N}$ the ordered contributions by respondents 1,2,...,*N*, respectively, to a cell with cell total (or cell value) $X = \sum_{}^{}x_{i}$
+Table 4.1 briefly presents the most common sensitivity rules. Throughout this chapter we denote $x_{1} \geq x_{2} \geq \text{.}\text{.}\text{.} \geq x_{N}$ the ordered contributions by respondents 1,2,...,*N*, respectively, to a cell with cell total (or cell value) $X = \sum_{i \leq N}^{}x_{i}$
 
 Table 4‑8: Sensitivity rules
 
