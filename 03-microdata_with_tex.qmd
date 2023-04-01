@@ -895,7 +895,7 @@ $\Sigma_{z} = \Sigma + \text{αΣ} = (1 + \alpha)\Sigma$ (3.3.2.1)
 
 Preservation of correlation coefficients follows, since
 
-$$\text{ρz}_{j},z_{l} = \frac{1 + \alpha}{1 + \alpha}\frac{\text{Cov}\left( Z_{j},Z_{t} \right)}{\sqrt{V\left( X_{j} \right)V\left( X_{l} \right)}} = \text{ρx}_{j},x_{l}$$
+$$\rho (z_j, z_l) = \frac{1 + \alpha}{1 + \alpha}\frac{\text{Cov}\left( Z_{j},Z_{t} \right)}{\sqrt{V\left( X_{j} \right)V\left( X_{l} \right)}} = \rho(x_{j},x_{l})$$
 
 Regarding variances and covariances, we can see from Equation (3.3.2.13.3.2.1) that masked data only provide biased estimates for them. However, it is shown in Kim (1990) that the covariance matrix of the original data can be consistently estimated from the masked data as long as α is known.
 
