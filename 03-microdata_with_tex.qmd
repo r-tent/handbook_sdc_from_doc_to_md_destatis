@@ -868,9 +868,7 @@ where $\varepsilon_{j}$ is a vector of normally distributed errors drawn from a 
 
 The general assumption in the literature is that the variances of the $\varepsilon_{j}$ are proportional to those of the original variables. Thus, if $\sigma_{j}^{2}$ is the variance of $X_{j}$, then $\sigma_{\text{εj}}^{2}: = \text{ασ}_{j}^{2}$.
 
-In the case of a *p*-dimensional dataset, simple additive noise masking can be written in matrix notation as
-
-where $X \sim  (\mu,\Sigma),\varepsilon \sim  \left( 0,\Sigma_{\varepsilon} \right)$ and
+In the case of a *p*-dimensional dataset, simple additive noise masking can be written in matrix notation as $Z=X + \epsilon$, where $X \sim  (\mu,\Sigma)$, $\varepsilon \sim  \left( 0,\Sigma_{\varepsilon} \right)$ and
 
 $\Sigma_{\varepsilon} = \alpha \cdot \text{diag}\left( \sigma_{1}^{2},\sigma_{2}^{2},\cdots,\sigma_{p}^{2} \right)$, for $\alpha > 0$
 
