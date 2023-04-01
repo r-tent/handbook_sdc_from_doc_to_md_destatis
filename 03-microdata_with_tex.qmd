@@ -1179,6 +1179,8 @@ $${\hat{T}}_{\text{ξη}} = \left( P_{X}^{- 1} \right)^{t}T_{\text{XY}}P_{Y}^{- 
 
 where **P***~X~* denotes the PRAM-matrix corresponding to the categorical variable *X* and **P***~Y~* denotes the PRAM-matrix corresponding to the categorical variable *Y*.
 
+[^1]:When X has K categories and Y has L categories, the 2-dimensional frequency table **T***~XY~* is a K L matrix.
+
 For more information about correction methods for statistical analyses applied to data that have been protected with PRAM, we refer to e.g., Gouweleeuw et al. (1998a) and Van den Hout (1999 and 2004).
 
 The exact choice of transition probabilities influences both the amount of information loss as well as the amount of disclosure limitation. Moreover, in certain situations 'illogical' changes could occur, e.g., changing the gender of a female respondent with ovarian cancer to male. These kind of changes would attract the attention of a possible intruder which should be avoided.
