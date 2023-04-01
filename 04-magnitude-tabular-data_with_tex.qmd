@@ -466,7 +466,20 @@ Note that in the current implementation of τ-ARGUS, use of the optimization too
 
 Both Modular and Hypercube provide sufficient protection according to standards PS1\* (protection against inferential disclosure) and PS2 above. Regarding singleton disclosure, Hypercube even satisfies the extended standard PS2\*. However, simplifications of the heuristic approach of Hypercube cause a certain tendency for over‑suppression. This evaluation therefore includes a relaxed variant that, instead of PS1\*, satisfies only the reduced standard PS1, i.e. zero protection against inferential disclosure. We therefore refer to this method as Hyper0 in the following. Hyper0 processing can be achieved simply by inactivating the option "Protection against inferential disclosure required" when running Hypercube from out of τ‑ARGUS.
 
-Table 4‑10: Algorithms for practical use
+
++-----------------------------+--------------------+-----------+--------+
+|          Algorithm          |       Modular      | Hypercube | Hyper0 |
++-----------------------------+--------------------+-----------+--------+
+|   Procedure for secondary   | Fischetti/Salazar  |     Hypercube      |
+|         suppression         |    optimization    |      heuristic     |
++------------+----------------+--------------------+-----------+--------+
+| Protection | Interval/Exact |        PS1*        |    PS1*   |   PS1  |
+|  standard  |   disclosure   |                    |           |        |
+|            +----------------+--------------------+-----------+--------+
+|            |    Singleton   |         PS2        |    PS2*   |  PS2*  |
++------------+----------------+--------------------+-----------+--------+
+
+: Algorithms for practical use {#tbl-algorithms}
 
 In the following, we briefly report results of two evaluations studies, in the following referred to as study A, and study B. For further detail on these studies see Giessing(2004) (study A), and Giessing, Dittrich, Gehrling, Krüger, Merz and Wirtz(2006) (study B). Both studies are based on tabulations of a strongly skewed magnitude variable.
 
@@ -474,13 +487,52 @@ For study A, we used a variety of hierarchical tables generated from the synthet
 
 For study B, which was carried out on behalf of the German federal and state statistical offices, we used 2-dimensional tables of the German turnover tax statistics. Results have been derived for tables with 7-level hierarchical structure (given by the NACE economy classification) of the first dimension, and 4‑level structure of the second dimension given by the variable Region.
 
-We compare the loss of information due to secondary suppression in terms of the number and cell values of secondary suppression, and analyze the disclosure risk of the protected tables. Table 4 -11 reports the results regarding the loss of information obtained in study A .
+We compare the loss of information due to secondary suppression in terms of the number and cell values of secondary suppression, and analyze the disclosure risk of the protected tables. @tbl-results-study-A reports the results regarding the loss of information obtained in study A.
 
-**Table** **4‑11**: Results of study A: number and value of secondary suppressions
++-------------+----------+---------------------+---------------------+
+| Table Hier. | No Cells |   No Suppressions   |    Added Value of   |
+|    levels   |          |         (%)         |   Suppressions (%)  |
+|             |          +-----------+---------+-----------+---------+
+|             |          | Hypercube | Modular | Hypercube | Modular |
++=============+==========+===========+=========+===========+=========+
+|                        2-dimensional tables                        |
++------+------+----------+-----------+---------+-----------+---------+
+|   1  |   3  |    460   |    6.96   |   4.35  |    0.18   |   0.05  |
++------+------+----------+-----------+---------+-----------+---------+
+|   2  |   4  |   1050   |   10.95   |   8.29  |    0.98   |   0.62  |
++------+------+----------+-----------+---------+-----------+---------+
+|   3  |   6  |   8230   |   14.92   |  11.48  |    6.78   |   1.51  |
++------+------+----------+-----------+---------+-----------+---------+
+|   4  |   7  |   16530  |   14.97   |  11.13  |    8.24   |   2.12  |
++------+------+----------+-----------+---------+-----------+---------+
+|                        3-dimensional tables                        |
++------+------+----------+-----------+---------+-----------+---------+
+|   5  |   3  |   8280   |   14.63   |  10.72  |    6.92   |   1.51  |
++------+------+----------+-----------+---------+-----------+---------+
+|   6  |   4  |   18900  |   17.31   |  15.41  |   12.57   |   3.55  |
++------+------+----------+-----------+---------+-----------+---------+
+|   7  |   6  |  148140  |   15.99   |  10.63  |   23.16   |   3.91  |
++------+------+----------+-----------+---------+-----------+---------+
 
-Table Table 4 -12 presents information loss results from study B on the two topmost levels of the second dimension variable Region, e.g. on the national, and state level.
+: Results of study A - Number and value of secondary suppressions {#tbl-results-study-A}
 
-**Table** **4‑12:** Results of study B: number and value of secondary suppression
+@tbl-res-B presents information loss results from study B on the two topmost levels of the second dimension variable Region, e.g. on the national, and state level.
+
++-------------+-------------------------------+-------------+
+|  Algorithm  |             Number            | Added Value |
+|     for     +--------------+----------------+-------------+
+|  secondary  |  State level | National level |   overall   |
+| suppression +-------+------+--------+-------+-------------+
+|             |  abs  |   %  |   abs  |   %   |      %      |
++=============+=======+======+========+=======+=============+
+| Modular     | 1,675 | 10.0 |    7   |  0.6  |     2.73    |
++-------------+-------+------+--------+-------+-------------+
+| Hyper0      | 2,369 | 14.1 |    8   |  0.7  |     2.40    |
++-------------+-------+------+--------+-------+-------------+
+| Hypercube   | 2,930 | 17.4 |   22   |  1.9  |     5.69    |
++-------------+-------+------+--------+-------+-------------+
+
+: Results of study B - Number and value of secondary suppression {#tbl-res-B}
 
 Both studies show that best results are achieved by the modular method, while using either variant of the hypercube method leads to an often quite considerable increase in the amount of secondary suppression compared to the result of the modular method. The size of this increase varies between hierarchical levels of the aggregation: on the higher levels of a table the increase tends to be even larger than on the lower levels. Considering the results of study B presented in table 4.5, on the national level we observe an increase of about 214 % for Hypercube (14% for Hyper0), compared to an increase of 75 % ( 41%) on the state level. In (Giessing, Dittrich, Gehrling, Krüger, Merz and Wirtz, 2006) we report also results on the district level. On that level the increase was about 28% on the higher NACE levels for Hypercube (9% for Hyper0), and 20 % for Hypercube (14% for Hyper0) on the lower levels. In study A we observed increases mostly around 30% for Hypercube, for the smallest 2‑di­mensional, and the largest 3-dimensional instance even of 50% and 60 %, respectively. In particular, our impression is that the hypercube method tends to behave especially badly (compared to Modular), when tabulations involve many short equations, with only a few positions.
 
