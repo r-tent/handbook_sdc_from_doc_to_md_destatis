@@ -1689,7 +1689,7 @@ The starting point of μ‑ARGUS has been implementation of the threshold rules 
 
 **Data:** μ‑ARGUS can both protect fixed and free format ASCII files. A recent extension has been to support the SPSS file format.
 
-undefinedFigure 3‑3: Overview of μ‑ARGUS
+![Overview of $\mu$-ARGUS](Images/media/mu_argus_overview.png){#fig-mu-argus-overview}
 
 Many of the methods described previously in the methodology section can be applied with μ‑ARGUS to a dataset. It is our aim to include other methods as well in the near future, if time permits
 
