@@ -28,9 +28,7 @@ Section 3.2 goes through the whole process of creating a microdata file for exte
 
 5.  implementation
 
-> Specifying, for each stage, the peculiarities of microdata release. In Table 3 -1 we present an overview of the process.
-
-Table 3‑1 Roadmap to releasing a microdata file
+Specifying, for each stage, the peculiarities of microdata release. In @tbl-roadmap we present an overview of the process.
 
 +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | **Stage of disclosure process**                          | **Analyses to be carried out / problem to be addressed**                                                                                                                                            |
@@ -100,7 +98,9 @@ Table 3‑1 Roadmap to releasing a microdata file
 | 5\. Implementation                                       | Choice of software, parameters and thresholds for different methods                                                                                                                                 |
 +----------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-> The idea is to identify for each stage of the process choices that have to be made, analyses that need to be done, problems that need to be addressed and methods to be selected. References to the relevant sections where technical topics are discussed in detail will help the beginners in following the process without getting lost in too technical aspects.
+: Roadmap to releasing a microdata file {#tbl-roadmap}
+
+The idea is to identify for each stage of the process choices that have to be made, analyses that need to be done, problems that need to be addressed and methods to be selected. References to the relevant sections where technical topics are discussed in detail will help the beginners in following the process without getting lost in too technical aspects.
 
 We now analyse in turn each of the five stages.
 
@@ -566,9 +566,7 @@ Most perturbative methods reviewed below (including noise addition, rank swappin
 
 where **A** is a record-transforming mask, **B** is a variable-transforming mask and **C** is a displacing mask or noise (Duncan and Pearson, 1991).
 
-Table 3-2 lists the perturbative methods described below. For each method, the table indicates whether it is suitable for continuous and/or categorical data.
-
-Table 3‑2. Perturbative methods vs. data types. "X" denotes applicable and "(X)" denotes applicable with some adaptation.
+@tbl-perturbative-methods lists the perturbative methods described below. For each method, the table indicates whether it is suitable for continuous and/or categorical data.
 
   ------------------------ ----------------------- ----------------------- 
   *Method*                 *Continuous data*       *Categorical data*
@@ -587,6 +585,8 @@ Table 3‑2. Perturbative methods vs. data types. "X" denotes applicable and "(X
 
   MASSC                                            X
   ------------------------ ----------------------- -----------------------
+
+: Perturbative methods vs. data types. "X" denotes applicable and "(X)" denotes applicable with some adaptation. {#tbl-perturbative-methods}
 
 #### Noise addition
 
@@ -668,9 +668,7 @@ Even though the original procedure was not very used in practice (see Fienberg a
 
 It is reasonable to expect that multivariate statistics computed from data swapped with this algorithm will be less distorted than those computed after an unconstrained swap. In earlier empirical work by these authors on continuous microdata protection (Domingo-Ferrer and Torra, 2001), rank swapping has been identified as a particularly well-performing method in terms of the tradeoff between disclosure risk and information loss. Consequently, it is one of the techniques that have been implemented in the μ‑ARGUS package (Hundepool et al., 2005).
 
-**Example.** In Table 3 -3, we can see an original microdata set on the left and its rankswapped version on the right. There are four variables and ten records in the original dataset; the second variable is alphanumeric, and the standard alphabetic order has been used to rank it. A value of p=10% has been used for all variables.
-
-Table 3‑3. Example of rank swapping. Left, original file; right, rankswapped file.
+**Example.** In @tbl-ex-rank-swapping, we can see an original microdata set on the left and its rankswapped version on the right. There are four variables and ten records in the original dataset; the second variable is alphanumeric, and the standard alphabetic order has been used to rank it. A value of p=10% has been used for all variables.
 
   ------- ------ ----------- ---------- ------- ------ ---------- -----------
   1       K      3.7         4.4        1       H      3.0        4.8
@@ -693,6 +691,8 @@ Table 3‑3. Example of rank swapping. Left, original file; right, rankswapped f
 
   10      C      10.0        3.2        10      D      8.0        3.4
   ------- ------ ----------- ---------- ------- ------ ---------- -----------
+
+: Example of rank swapping. Left, original file; right, rankswapped file. {#tbl-ex-rank-swapping}
 
 #### Rounding
 
@@ -731,9 +731,9 @@ MASSC in interesting in that, to the best of our knowledge, it is the first atte
 
 ### Non-perturbative masking
 
-Non-perturbative masking does not rely on distortion of the original data but on partial suppressions or reductions of detail. Some of the methods are usable on both categorical and continuous data, but others are not suitable for continuous data. lists the non-perturbative methods described below. For each method, the table indicates whether it is suitable for continuous and/or categorical data.
+Non-perturbative masking does not rely on distortion of the original data but on partial suppressions or reductions of detail. Some of the methods are usable on both categorical and continuous data, but others are not suitable for continuous data. lists the non-perturbative methods described below. For each method, the @tbl-non-perturbative-methods indicates whether it is suitable for continuous and/or categorical data.
 
-*Table* *3‑4. Non-perturbative methods vs. data types.*
+: Non-perturbative methods vs. data types. {#tbl-non-perturbative-methods}
 
 |        _Method_       	| _Continuous data_ 	| _Categorical data_ 	|
 |:---------------------:	|:-----------------:	|:------------------:	|
@@ -997,11 +997,9 @@ In terms of sums of squares, the optimal $k$-partition is the one that minimizes
 
 For a microdata set consisting of $p$ variables, these can be microaggregated together or partitioned into several groups of variables. Also the way to form groups may vary. We next review the main proposals in the literature.
 
-**Example.** This example illustrates the use of microaggregation for SDC and, more specifically, for $k$-anonymization (Samarati and L. Sweeney, 1998), (Samarati, 2001), (Sweeney, 2002), (Domingo-Ferrer and Torra, 2005). A $k$-anonymous dataset allows no re-identification of a respondent within a group of at least $k$respondents. We show in Table 3 -5 a dataset giving, for 11 small or medium enterprises (SMEs) in a certain town, the company name, the surface in square meters of the company's premises, its number of employees, its turnover and its net profit. Clearly, the company name is an identifier. We will consider that turnover and net profit are confidential outcome variables. A first SDC measure is to suppress the identifier "Company name" when releasing the dataset for public use. However, note that the surface of the company's premises and its number of employees can be used by a snooper as key variables. Indeed, it is easy for anybody to gauge to a sufficient accuracy the surface and number of employees of a target SME. Therefore, if the only privacy measure taken when releasing the dataset in Table 3 -5 is to suppress the company name, a snooper knowing that company K&K Sarl has about a dozen employees crammed in a small flat of about 50 m will still be able to use the released data to link company K&K Sarl with turnover 645223 Euros and net profit 333010 Euros. Table 3 -6 is a 3-anonymous version of the dataset in Table 3 -5. The identifier "Company name" was suppressed and optimal bivariate microaggregation with $k = 3$ was used on the key variables "Surface" and "No. employees" (in general, if there are $p$ key variables, multivariate microaggregation with dimension $p$ should be used to mask all of them). Both variables were standardized to have mean 0 and variance 1 before microaggregation, in order to give them equal weight, regardless of their scale. Due to the small size of the dataset, it was feasible to compute optimal microaggregation by exhaustive search. The information or variability loss incurred for those two variables in standardized form can be measured by the within-groups sum of squares . Dividing by the total sum of squares SST=22 ---sum of squared Euclidean distances from all 11 pairs of standardized (surface, number of employees) to their average--- yielded a variability loss measure $SSE_{opt}/SST=0.34$ bounded between 0 and 1.
+**Example.** This example illustrates the use of microaggregation for SDC and, more specifically, for $k$-anonymization (Samarati and L. Sweeney, 1998), (Samarati, 2001), (Sweeney, 2002), (Domingo-Ferrer and Torra, 2005). A $k$-anonymous dataset allows no re-identification of a respondent within a group of at least $k$respondents. We show in @tbl-ex-sme-dataset a dataset giving, for 11 small or medium enterprises (SMEs) in a certain town, the company name, the surface in square meters of the company's premises, its number of employees, its turnover and its net profit. Clearly, the company name is an identifier. We will consider that turnover and net profit are confidential outcome variables. A first SDC measure is to suppress the identifier "Company name" when releasing the dataset for public use. However, note that the surface of the company's premises and its number of employees can be used by a snooper as key variables. Indeed, it is easy for anybody to gauge to a sufficient accuracy the surface and number of employees of a target SME. Therefore, if the only privacy measure taken when releasing the dataset in @tbl-ex-sme-dataset is to suppress the company name, a snooper knowing that company K&K Sarl has about a dozen employees crammed in a small flat of about 50 m will still be able to use the released data to link company K&K Sarl with turnover 645223 Euros and net profit 333010 Euros. @tbl-ex-three-anonym-sme is a 3-anonymous version of the dataset in @tbl-ex-sme-dataset. The identifier "Company name" was suppressed and optimal bivariate microaggregation with $k = 3$ was used on the key variables "Surface" and "No. employees" (in general, if there are $p$ key variables, multivariate microaggregation with dimension $p$ should be used to mask all of them). Both variables were standardized to have mean 0 and variance 1 before microaggregation, in order to give them equal weight, regardless of their scale. Due to the small size of the dataset, it was feasible to compute optimal microaggregation by exhaustive search. The information or variability loss incurred for those two variables in standardized form can be measured by the within-groups sum of squares . Dividing by the total sum of squares SST=22 ---sum of squared Euclidean distances from all 11 pairs of standardized (surface, number of employees) to their average--- yielded a variability loss measure $SSE_{opt}/SST=0.34$ bounded between 0 and 1.
 
-> *It can be seen that the 11 records were microaggregated into three groups: one group with the 1st, 2nd, 3rd and 10th records (companies with large surface and many employees), a second group with the 4th, 5th and 9th records (companies with large surface and few employees) and a third group with the 6th, 7th, 8th and 11th records (companies with a small surface). Upon seeing* *Table 3 -6, a snooper knowing that company K&K Sarl crams a dozen employees in a small flat hesitates between the four records in the third group. Therefore, since turnover and net profit are different for all records in the third group, the snooper cannot be sure about their values for K&K Sarl.*
-
-Table 3‑5: Example: SME dataset. "Company name" is an identifier to be suppressed before publishing the dataset.
+> *It can be seen that the 11 records were microaggregated into three groups: one group with the 1st, 2nd, 3rd and 10th records (companies with large surface and many employees), a second group with the 4th, 5th and 9th records (companies with large surface and few employees) and a third group with the 6th, 7th, 8th and 11th records (companies with a small surface). Upon seeing @tbl-ex-three-anonym-sme, a snooper knowing that company K&K Sarl crams a dozen employees in a small flat hesitates between the four records in the third group. Therefore, since turnover and net profit are different for all records in the third group, the snooper cannot be sure about their values for K&K Sarl.*
 
 | **_Company name_** 	| **_Surface (m2)_** 	| **_No. employees_** 	| **_Turnover (Euros)_** 	| **_Net profit (Euros)_** 	|
 |:------------------:	|:------------------:	|:-------------------:	|:----------------------:	|:------------------------:	|
@@ -1017,7 +1015,7 @@ Table 3‑5: Example: SME dataset. "Company name" is an identifier to be suppres
 | J&J Co             	|         760        	|          52         	|         5333442        	|          1001233         	|
 | K&K Sarl           	|         50         	|          12         	|         645223         	|          333010          	|
 
-Table 3‑6: Example: 3-anonymous version of the SME dataset after optimal microaggregation of key variables
+: Example - SME dataset. "Company name" is an identifier to be suppressed before publishing the dataset. {#tbl-ex-sme-dataset}
 
 | **_Surface (m2)_** 	| **_No. employees_** 	| **_Turnover (Euros)_** 	| **_Net profit (Euros)_** 	|
 |:------------------:	|:-------------------:	|:----------------------:	|:------------------------:	|
@@ -1032,6 +1030,8 @@ Table 3‑6: Example: 3-anonymous version of the SME dataset after optimal micro
 |       756.67       	|          8          	|         159999         	|           60388          	|
 |        747.5       	|          46         	|         5333442        	|          1001233         	|
 |        322.5       	|          33         	|         645223         	|          333010          	|
+
+: Example - 3-anonymous version of the SME dataset after optimal microaggregation of key variables {#tbl-ex-three-anonym-sme}
 
 #### Fixed vs. variable group size 
 
@@ -1561,11 +1561,9 @@ Matrix discrepancy can be measured in at least three ways:
 
 **Mean variation** Sum of absolute percent variation of components in the matrix computed on protected data with respect to components in the matrix computed on original data, divided by the number of cells in either matrix. This approach has the advantage of not being affected by scale changes of variables.
 
-Table 3 -7 summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, *p* is the number of variables, *n* the number of records, and components of matrices are represented by the corresponding lowercase letters (*e.g.* $x_{\text{ij}}$ is a component of matrix $X$). Regarding $X - X^{'}$ measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant $\overline{X} - \overline{X^{'}}$. Similarly, for $V - V^{'}$measures, it would also be sensible to use them to compare only the variances of the variables, *i.e.* to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant $S - S^{'}$).
+@tbl-loss-information summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, *p* is the number of variables, *n* the number of records, and components of matrices are represented by the corresponding lowercase letters (*e.g.* $x_{\text{ij}}$ is a component of matrix $X$). Regarding $X - X^{'}$ measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant $\overline{X} - \overline{X^{'}}$. Similarly, for $V - V^{'}$measures, it would also be sensible to use them to compare only the variances of the variables, *i.e.* to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant $S - S^{'}$).
 
 <!-- TODO = rewrite the table 3.7 -->
-
-Table 3‑7*:* Information loss measures for continuous microdata
 
   ------- ----------------------- --------------------- -----------------------
           **Mean square error**   **Mean abs. error**   **Mean variation**
@@ -1583,15 +1581,17 @@ Table 3‑7*:* Information loss measures for continuous microdata
                                                         
   ------- ----------------------- --------------------- -----------------------
 
+: Information loss measures for continuous microdata {#tbl-loss-information}
+
 In Yancey, Winkler and Creecy (2002), it is observed that dividing by $x_{\text{ij}}$ causes the $X - X^{'}$mean variation to rise sharply when the original value $x_{\text{ij}}$ is close to 0. This dependency on the particular original value being undesirable in an information loss measure, Yancey, Winkler and Creecy (2002) propose to replace the mean variation of $X - X^{'}$by the more stable measure
 
 where $S_{j}$ is the standard deviation of the *j*-th variable in the original dataset.
 
-Trottini (2003) argues that, since information loss is to be traded off for disclosure risk and the latter is bounded ---there is no risk higher than 100%---, upper bounds should be enforced for information loss measures. In practice, the proposal in Trottini (2003) is to limit those measures in Table 3 -7 based on the mean variation to a predefined maximum value.
+Trottini (2003) argues that, since information loss is to be traded off for disclosure risk and the latter is bounded ---there is no risk higher than 100%---, upper bounds should be enforced for information loss measures. In practice, the proposal in Trottini (2003) is to limit those measures in @tbl-tbl-loss-information based on the mean variation to a predefined maximum value.
 
 ### Information loss measures for categorical data
 
-Straightforward computation of measures in Table 3 -7 on categorical data is not possible. The following alternatives are considered in Domingo-Ferrer and Torra (2001):
+Straightforward computation of measures in @tbl-tbl-loss-information on categorical data is not possible. The following alternatives are considered in Domingo-Ferrer and Torra (2001):
 
 -   Direct comparison of categorical values
 
