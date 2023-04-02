@@ -14,11 +14,11 @@ Defining what a generic information loss measure is can be a tricky issue. Rough
 
 -   A protected microdata set is an *analytically valid* microdata set if it approximately preserves the following with respect to the original data (some conditions apply only to continuous variables):
 
-25.  Means and covariances on a small set of subdomains (subsets of records and/or variables)
+1.  Means and covariances on a small set of subdomains (subsets of records and/or variables)
 
-26. Marginal values for a few tabulations of the data
+2. Marginal values for a few tabulations of the data
 
-27. At least one distributional characteristic
+3. At least one distributional characteristic
 
 -   A microdata set is an *analytically interesting microdata set,* if six variables on important subdomains are provided that can be validly analyzed.\
     More precise conditions of analytical validity and analytical interest cannot be stated without taking specific data uses into account. As imprecise as they may be, the above definitions suggest some possible measures:
@@ -53,7 +53,6 @@ Matrix discrepancy can be measured in at least three ways:
 
 @tbl-loss-information summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, *p* is the number of variables, *n* the number of records, and components of matrices are represented by the corresponding lowercase letters (*e.g.* $x_{\text{ij}}$ is a component of matrix $X$). Regarding $X - X^{'}$ measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant $\overline{X} - \overline{X^{'}}$. Similarly, for $V - V^{'}$measures, it would also be sensible to use them to compare only the variances of the variables, *i.e.* to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant $S - S^{'}$).
 
-<!-- TODO = rewrite the table 3.7 -->
 
 |          	|                                  Mean square error                                  	|                                   Mean abs. error                                   	|                                             Mena variation                                             	|
 |:--------:	|:-----------------------------------------------------------------------------------:	|:-----------------------------------------------------------------------------------:	|:------------------------------------------------------------------------------------------------------:	|

@@ -420,20 +420,17 @@ An algorithm combining simple additive noise and nonlinear transformation is pro
 
 The method consists of several steps:
 
-3.  Calculate the empirical distribution function for every original variable.
+1.  Calculate the empirical distribution function for every original variable.
 
-```{=html}
-<!-- -->
-```
-13. Smooth the empirical distribution function.
+2. Smooth the empirical distribution function.
 
-14. Convert the smoothed empirical distribution function into a uniform random variable and this into a standard normal random variable.
+3. Convert the smoothed empirical distribution function into a uniform random variable and this into a standard normal random variable.
 
-15. Add noise to the standard normal variable.
+4. Add noise to the standard normal variable.
 
-16. Back-transform to values of the distribution function.
+5. Back-transform to values of the distribution function.
 
-17. Back-transform to the original scale.
+6. Back-transform to the original scale.
 
 In the European project CASC (IST-2000-25069), the practicality and usability of this algorithm was assessed. Unfortunately, the internal CASC report by Brand (2002b) concluded that:\
 *"All in all, the results indicate that an algorithm as complex as the one proposed by Sullivan can only be applied by experts. Every application is very time-consuming and requires expert knowledge on the data and the algorithm."*
@@ -575,9 +572,6 @@ MDAV Algorithm
 
 1.   Compute the average record $\overline{x}$ of all records in the dataset. Consider the most distant record $x_{r}$ to the average record $\overline{x}$ (using the squared Euclidean distance).
 
-```{=html}
-<!-- -->
-```
 2. Find the most distant record $x_{s}$ from the record $x_{r}$ considered in the previous step.
 
 3.  Form two groups around $x_{r}$ and $x_{s}$, respectively. One group contains $x_{r}$ and the $k - 1$ records closest to $x_{r}$. The other group contains $x_{s}$ and the $k - 1$records closest to $x_{s}$.
@@ -719,14 +713,11 @@ Data distortion by probability distribution was proposed in 1985 (Liew, Choi an
 
 This method is suitable for both categorical and continuous variables and consists of three steps:
 
-6.  Identify the density function underlying to each of the confidential variables in the dataset and estimate the parameters associated with that density function.
+1.  Identify the density function underlying to each of the confidential variables in the dataset and estimate the parameters associated with that density function.
 
-```{=html}
-<!-- -->
-```
-25. For each confidential variable, generate a protected series by randomly drawing from the estimated density function.
+2. For each confidential variable, generate a protected series by randomly drawing from the estimated density function.
 
-26. Map the confidential series to the protected series and publish the protected series instead of the confidential ones.
+3. Map the confidential series to the protected series and publish the protected series instead of the confidential ones.
 
 In the identification and estimation stage, the original series of the confidential variable (*e.g.* salary) is screened to determine which of a set of predetermined density functions fits the data best. Goodness of fit can be tested by the Kolmogorov-Smirnov test. If several density functions are acceptable at a given significance level, selecting the one yielding the smallest value for the Kolmogorov-Smirnov statistics is recommended. If no density in the predetermined set fits the data, the frequency imposed distortion method can be used. With the latter method, the original series is divided into several intervals (somewhere between 8 and 20). The frequencies within the interval are counted for the original series, and become a guideline to generate the distorted series. By using a uniform random number generating subroutine, a distorted series is generated until its frequencies become the same as the frequencies of the original series. If the frequencies in some intervals overflow, they are simply discarded.
 
