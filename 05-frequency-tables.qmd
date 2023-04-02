@@ -1,0 +1,17 @@
+# frequency-tables
+
+{{< include _05-frequency-tables-01-Introduction.qmd >}}
+
+{{< include _05-frequency-tables-02-Disclosure-risks.qmd >}}
+
+{{< include _05-frequency-tables-03-Methods.qmd >}}
+
+{{< include _05-frequency-tables-04-Rounding.qmd >}}
+
+{{< include _05-frequency-tables-05-Information-loss.qmd >}}
+
+{{< include _05-frequency-tables-06-Software.qmd >}}
+
+{{< include _05-frequency-tables-07-References.qmd >}}
+
+

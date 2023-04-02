@@ -1,0 +1,11 @@
+# regulations
+
+{{< include _02-regulations-01-Introduction.qmd >}}
+
+{{< include _02-regulations-02-Ethical-codes.qmd >}}
+
+{{< include _02-regulations-03-Laws.qmd >}}
+
+{{< include _02-regulations-04-References.qmd >}}
+
+

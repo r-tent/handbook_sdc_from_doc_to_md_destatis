@@ -1,0 +1,211 @@
+## Confidentiality protection of the analysis results
+
+### Rules for designing programs for controlled teleprocessing using microdata of official statistics in Germany
+
+#### Introduction
+
+As in many other countries, German official data are subject to statutory data protection regulations. Therefore, results produced on the basis of statistical data are checked for confidentiality and critical values are suppressed. This applies both to publications of the statistical offices and to the results of scientific projects supported by the research data centres (RDC) of German official statistics. Since the research data centres were set up in Germany in 2001, microdata requests from the scientific community have considerably increased. In this context, researchers do their own analyses of microdata coming from the wide range of statistics offered by the research data centres. In Germany, various ways of data access have been established for researchers. A way of access frequently used is controlled teleprocessing - or controlled remote data processing - , which runs on non-anonymised original data thus giving the researcher the opportunity to exploit the full information content of official microdata. For controlled remote data processing the user first of all gets a data structure file from the research data centre whose structure is that of the original file, but whose content is not. Based on that file, the data user develops a program code using the statistics software SAS, SPSS or STATA, checks it for errors and sends it to the research data centre via e-mail. The output of his program is then checked for confidentiality and returned also by e-mail. Checking the produced results for confidentiality is done manually.
+
+Manual confidentiality checks are time-consuming and labour-intensive, as is shown in chapter 6.3. The responsible staff member must be familiar with both the analysed statistics and the specific research project. He must ensure primary and secondary confidentiality and keep track of the secondary confidentiality protection performed even with repeated outputs. In particular, he must check the transmitted program code for intentional and unintentional disclosure of the data. The experience of the research data centres of official statistics in Germany shows that the projects dealt with are very different in terms of volume and complexity of the transmitted programs. In some cases, there is much need for clarification and, depending on how the project proceeds, a variety of individual arrangements must be made with the data user. A more or less long start-up and acquaintance phase on both sides is necessary in every project. Combining that experience at the research data centres has led to the wish to reduce both the adjustment phase and the checking times by standardising the program design.
+
+#### Rules for program design
+
+To simplify project handling, and especially the confidentiality checks, the research data centres of the Federation and the Länder have developed a catalogue of rules for program design when using controlled teleprocessing[^9]. Its purpose is to allow
+
+-   to shape the envisaged analysis steps in a traceable manner,
+
+-   to facilitate readability of the user-specific "programming handwritings",
+
+-   to apply uniform standards to projects performed at different locations of the research data centres of the Federation and the Länder,
+
+-   and, where necessary, to change the project staff at the RDC without causing delays in the project progress.
+
+The benefits obtained from those rules for the research data centres involve a considerable advantage for users, too: The checking time for the output, for which users undoubtedly are urgently waiting for, will substantially be reduced.
+
+Specifically, the following requirements have been included in the rules:
+
+The program developed by the researcher should include a program heading, indicating the project title, the data material used, and contact information of the data user. The project title and the information on data material used allow rapid identification of the program at the research data centre. The contact information is important because in case of faulty programs the user can immediately be contacted by telephone or e-mail in order to agree on modifications.
+
+Also, a program explanation should be provided at the beginning of the program, describing its purpose. Where applicable, information is also required on how the current analyses fit into the project's state of affairs and progress, on the reference to previous and future analyses, or possible changes in the analysis strategy. The explanation should also contain a list of variables of the original data set used and of the new variables created by the program code, including its labels. Such information facilitates orientation when checking the results. Repeated analyses involving minor changes will more easily be recognised and cross-table confidentiality, which requires comparison with previous outputs, can be performed more rapidly. The names and contents of newly formed variables are more easily recognised by the checking person if they have been mentioned before.
+
+The output tables should meet specific format requirements. Every output element should have a title and a serial number. Tables must be self-explanatory, i.e. the table stub and rows must clearly show the table content. Tables should be manageable, that is, they must not exceed a reasonable size. Tables showing totals must have a column for the underlying number of cases to allow checking the frequency and dominance rules. These requirements are based, among other things, on the experience made with confidentiality checks of poorly structured and oversized tables. Output numbering has proved necessary to allow referring to a number when communicating with the data user, rather than having to describe in detail the content of an analysis (often quite similar to other ones) to identify the table.
+
+Path references to files used should be put at the beginning of the program. This provides an overview of what files are loaded by the program and what files are stored. This allows the research data centre to adjust the paths (which is frequently necessary) more rapidly than when having to search the entire program for load and store commands.
+
+The program code should be clearly structured visually; loops should be indented and some space should be left between program blocks. Capital and small letters should be used consistently, program sections should be numbered, and long programs should be subdivided into modules. This, together with the following three items, will allow reducing the time required for getting acquainted with different programming styles and for understanding the program goals and output content.
+
+Comments should be given on the program. All program blocks and individual commands needing explanation or analyses should be provided with intelligible and sufficiently detailed comments to facilitate understanding of the program steps. Especially the macros must be documented in detail. Variables must be indicated with their labels in the comment.
+
+Descriptive names should be given to newly formed variables; intelligible variable labels and, where applicable, value labels should be added.
+
+> Designations of elements used in the code should not be changed (example: relations \[everywhere either ">" or "GT"\], missing values \[0 or -x\], etc.).
+>
+> The log function of the statistics software (creating log files) must be activated by the user's program code or in any case must not be deactivated, depending on the statistics software. Creating the logs allows archiving the project, so that possible disclosures can be detected later.
+>
+> Where minor changes are applied to the program, only the relevant program elements should be recalculated. The usual procedure for one's own workplace is to perform complete runs of a program with minor changes again and again until a satisfactory result has been obtained. For controlled teleprocessing, however, this means that nearly identical outputs have to be checked again and again.
+
+#### Summary
+
+Different from the program rules required by automated systems, these rules do not completely block certain procedures and commands. Manual handling allows taking individual decisions -- when calling up critical procedures, and depending on the data or the specific analysis -- to what extent the analysis results thus obtained can be transmitted to the user or must be retained for confidentiality reasons. In this manner, users can make optimal use of the information content of the data.
+
+Supplementary to the catalogue of rules, a model program (cf. 6.6.1.4) has been designed and is available for the statistics packages offered (SPSS, STATA and SAS). In addition, a glossary is provided, containing the terms used in the jargon of official statistics, in programming languages and statistical packages, scientific notation and everyday language and translating them into each other.
+
+The program criteria developed are sent in the form of a letter to the researchers and are part of the data usage contract. The purpose of the letter is to ask users for understanding of the list of rules, to avoid misunderstandings from the beginning, and to rapidly and efficiently make users acquainted with the rules of controlled teleprocessing, which may be quite different from the work methods they are used to at their own workplace. When developing the criteria, the model programs and the glossary, the aim was to make them generally acceptable, thus making it easier for the very different scientific users to meet the requirements.
+
+From the viewpoint of the research data centres, the individual items are maximum requirements for developing perfect program codes. If the criteria are not entirely met in some cases, it is up to the discretion of the RDC staff member to decide to what extent it is possible for him to check the results. As the research projects are handled individually and personally, interpreting the rules to the users' benefit is rather liberal. If, however, a project is getting very difficult to follow, the research data centres may refer to the rules that must be adhered to.
+
+#### Programming example in SPSS
+
+```
+***************************************************************************.
+*** open log file.                            
+set journal on.
+set journal="path\log_name of program code.jnl". 
+set printback=on.
+
+***************************************************************************.
+***************************************************************************.
+***					project title:	Women and Work in Germany		
+***								data:	Micro Census 1985
+***                                                                     
+***      name of program code:	name of program code.sps               
+***          date of creation:	date                           
+***                    author:	name                            
+***                    e-mail:	e-mail address                 
+***                     phone:	phone number
+***                                                                     
+***       name of output file:	name of program code.spo                           
+***                                                                     
+***		 statistical software:	SPSS version 13.0                   
+***                                                                    
+***      					 outline:	analysis of multiple person numbers, data check 	
+***                                                                     
+***      				  variables:			      			
+***									ef1:	Land	
+***									ef2:	administrative district             
+***									ef3:	sample district number        
+***									ef4:	household number        
+***									ef5:	person number
+***									ef6:	family number
+***									ef23:	age
+***									ef26:	population group        
+***									ef27:	population in private households 
+***									ef28:	population at family residence
+***									ef38:	marital status.
+***                                                                      
+***				created variables:     
+***								persnr: person number            
+***								 famnr: family number             
+***				      		  hhnr: household number             
+***              			nrdiff: consistency of household number 
+***                             and family number                               
+***             		  piddiff: test on unique person number                   
+***
+***			   weighting variable: 
+***								  gew1: weighting variable from ef253
+***                                                                     
+***                                                                     
+***************************************************************************.
+***************************************************************************.
+
+
+*(1)*** original data: mc95org.
+FILE HANDLE mz85org /Name='path\mc_1985.sav'.
+
+**** save new variables: mc85working.
+FILE HANDLE mc85working /Name='path\mc_1985_working_1.sav'.
+
+
+***************************************************************************.
+*(2)*** read data.
+GET FILE=mc85org.
+
+**** select private households (ef27 eq 1) at main residence (ef26 lt 3) and 
+**** at family residence ef28 eq 1.
+SELECT IF (ef27 EQ 1) & (ef26 LT 3) & (ef28 EQ 1).
+
+
+***************************************************************************.
+*(3)*** generate household and family number from ef1-ef6.
+**** pers ef1-ef5
+**** hh ef1-ef4
+**** fam ef1-ef4 + ef6.
+SORT CASES BY ef1 ef2 ef3 ef4 ef5.
+COMPUTE persnr=(ef1*10000000000)+(ef2*1000000000)+(ef3*100000)+(ef4*1000)+(ef5*10).
+EXE.
+
+SORT CASES BY ef1 ef2 ef3 ef4 .
+COMPUTE hhnr=(ef1*10000000000)+(ef2*1000000000)+(ef3*100000)+(ef4*1000).
+EXE.
+
+SORT CASES BY ef1 ef2 ef3 ef4 ef6.
+COMPUTE famnr=(ef1*10000000000)+(ef2*1000000000)+(ef3*100000)+(ef4*1000)+(ef6*1).
+EXE.
+
+**** labeling.
+VARIABLE LABELS persnr 'person number'.
+VARIABLE LABELS hhnr 'household number'.
+VARIABLE LABELS famnr 'family number'.
+
+
+***************************************************************************.
+*(4)*** weighting.
+**** multiply the weighting variable by 0.1.
+COMPUTE gew=(ef253 * 0.1).
+EXE.
+
+WEIGHT BY gew .
+***************************************************************************.
+*(5)***compare household number (hhnr)  - family number (famnr) - person number (persnr).
+COMPUTE nrdiff=0.
+
+**** if family number (famnr) unequal household number (hhnr) then consistency of hausehold number and family number (nrdiff) = 1.
+DO IF famnr NE hhnr.
+	COMPUTE nrdiff=1.
+END IF.
+
+**** labeling.
+VARIABLE LABELS nrdiff 'consistency of household number and family number'.
+VALUE LABELS nrdiff	1 'household number and family number inconsistent'
+								0 'household number and family number consistent. 		
+
+TITLE "output no. 1: constistency of household number and family number".
+FREQ VAR=nrdiff.
+
+
+***************************************************************************.
+*(6)*** test on unique person number (persnr).
+SORT CASES BY persnr.
+COMPUTE piddiff=0.
+EXE.
+
+**** if person number (persnr) is equal to previous person number, then test on unique person numbers (piddiff) = 1.
+IF persnr EQ LAG(persnr) piddiff=1.
+EXE.
+
+**** labeling.
+VARIABLE LABELS piddiff	'test on unique person number'.
+VALUE LABELS piddiff 	1'multiple person number'
+	             				0'unique person number'. 
+
+TITLE "output no. 2: multiple person numbers".	
+FREQ VAR=piddiff.
+
+
+***************************************************************************.
+*(7)*** user defined table (counts)
+**** mean and valid cases (N) of age (ef23) by marital status (ef38).
+
+CTABLES
+  /VLABELS VARIABLES=ef38 ef23 DISPLAY=DEFAULT
+  /TABLE ef23 [MEAN, VALIDN F40.0] BY ef38
+  /CATEGORIES VARIABLES=ef38 ORDER=A KEY=VALUE EMPTY=EXCLUDE
+  /TITLES
+   TITLE= 'output no. 3: cross table age and marital status'.
+
+
+***************************************************************************.
+*(8)*** save new variables.
+SAVE OUTFILE=mc85working.
+```
+

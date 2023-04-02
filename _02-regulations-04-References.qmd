@@ -1,0 +1,20 @@
+## References
+
+Commission Regulation (EC) No 831/2002 concerning access to confidential data for scientific purposes\
+[[http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2002:133:0007:0009:EN:PDF]{.underline}](http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2002:133:0007:0009:EN:PDF)
+
+Commission Regulation (EC) No 223/2009 on European statistics: [[http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2009:087:0164:0173:en:PDF]{.underline}](http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2009:087:0164:0173:en:PDF)
+
+Council Regulation 1588/90: [[http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:31990R1588:EN:HTML]{.underline}](http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:31990R1588:EN:HTML)
+
+Council Regulation 322/97: [[http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:31997R0322:EN:HTML]{.underline}](http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:31997R0322:EN:HTML)
+
+European Statistics Code of Practice [[http://epp.eurostat.cec.eu.int/portal/page?\_pageid=2273,49535429,2273_49541374&\_dad=portal&\_schema=PORTAL]{.underline}](http://epp.eurostat.cec.eu.int/portal/page?_pageid=2273,49535429,2273_49541374&_dad=portal&_schema=PORTAL)
+
+ISI (1985) *Declaration on Professional Ethics:* [[http://isi.cbs.nl/ethics.htm]{.underline}](http://isi.cbs.nl/ethics.htm)
+
+Pink, B et al. (2009) *Principles and Guidelines on Confidentiality Aspects of Data Integration,* UNECE United Nations Economic commission for Europe: [[http://www.unece.org/stats/publications/Confidentiality_aspects_data_integration.pdf]{.underline}](http://www.unece.org/stats/publications/Confidentiality_aspects_data_integration.pdf)
+
+Trewin, D et al. (2007) *Principles and Guidelines of Good Practice for Managing Statistical Confidentiality and Microdata Access,* UNECE United Nations Economic commission for Europe: [[http://www.unece.org/stats/documents/tfcm/1.e.pdf]{.underline}](http://www.unece.org/stats/documents/tfcm.1.e.pdf)
+
+
