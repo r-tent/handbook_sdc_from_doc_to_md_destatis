@@ -1,15 +1,15 @@
 # magnitude-tabular-data
 
-{{< include _04-magnitude-tabular-data-01-Introduction.qmd >}}
+{{< include chapters/04/_04-magnitude-tabular-data-01-Introduction.qmd >}}
 
-{{< include _04-magnitude-tabular-data-02-Disclosure-Control-Concepts-for-Magnitude-Tabular-Data.qmd >}}
+{{< include chapters/04/_04-magnitude-tabular-data-02-Disclosure-Control-Concepts-for-Magnitude-Tabular-Data.qmd >}}
 
-{{< include _04-magnitude-tabular-data-03-The-τ‑ARGUS-Implementation-of-Cell-Suppression.qmd >}}
+{{< include chapters/04/_04-magnitude-tabular-data-03-The-τ‑ARGUS-Implementation-of-Cell-Suppression.qmd >}}
 
-{{< include _04-magnitude-tabular-data-04-Methodological-concepts-of-secondary-cell-suppression-algorithms-in-τ‑ARGUS.qmd >}}
+{{< include chapters/04/_04-magnitude-tabular-data-04-Methodological-concepts-of-secondary-cell-suppression-algorithms-in-τ‑ARGUS.qmd >}}
 
-{{< include _04-magnitude-tabular-data-05-Controlled-Tabular-AdjustmentControlled-Tabular-Adjustment.qmd >}}
+{{< include chapters/04/_04-magnitude-tabular-data-05-Controlled-Tabular-AdjustmentControlled-Tabular-Adjustment.qmd >}}
 
-{{< include _04-magnitude-tabular-data-06-References.qmd >}}
+{{< include chapters/04/_04-magnitude-tabular-data-06-References.qmd >}}
 
 
