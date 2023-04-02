@@ -493,10 +493,14 @@ The RAPID solution is produced by CRP as an approximated solution when a feasibl
 
 The protection provided by controlled rounding can be assessed by considering the uncertainty (about the true values achieved) when releasing rounded values; that is the existence interval that an intruder can compute for a rounded value. We assume that the values of the rounding base, *b*, and the number of steps allowed, *K*, are known by the user together with the output rounded table. Furthermore, we assume that it is known that the original values are positive frequencies (hence nonnegative integers).
 
-**Zero-restricted rounding.\
-**Given a rounded value, *a*, an intruder can compute the following existence intervals for the true value, *z*:
+**Zero-restricted rounding.**  
 
-undefined)
+Given a rounded value, *a*, an intruder can compute the following existence intervals for the true value, *z*:
+
+$\begin{align}
+z &\in [0,b-1], \text{if} a = 0 \\
+z &\in [a-b+1,a+b-1], \text{if} a \neq 0
+\end{align}$
 
 For example, if the rounding base is *b*=5 and the rounded value is *a*=0, a user can determine that the original value is between 0 and 4. If the rounded value is not 0, then users can determine that the true value is between plus or minus 4 units from the published value.
 
