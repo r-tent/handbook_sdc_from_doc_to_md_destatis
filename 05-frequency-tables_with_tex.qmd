@@ -212,11 +212,11 @@ Importantly, when linked tables are produced from the same dataset it is not suf
 >
 > More information on disclosure by differencing can be obtained from Brown (2003) and Duke-Williams and Rees (1998).
 >
-> Niet geneste hierarchieen
+<!-- Niet geneste hierarchieen -->
 
 In addition to providing actual disclosure control protection for sensitive information, NSIs need to be seen to be providing this protection. The public may have a different understanding of disclosure control risks and their perception is likely to be influenced by what they see in tables. If many small cells appear in frequency tables users may perceive that either no SDC, or insufficient SDC methods, have been applied to the data. Section 5.3 discusses SDC methods, but generally some methods are more obvious in the output tables, than others. To protect against negative perceptions NSIs should be transparent about the SDC methods applied. Managing perceptions is important to maintain credibility and responsibility towards respondents. Negative perceptions may impact response rates for censuses and surveys if respondents perceive that there is little concern about protecting their confidentiality. More emphasis has been placed on this type of disclosure risk in recent years due to declining response rates and decreasing data quality. It is important to provide clear explanations to the public about the protection afforded by the SDC method, as well as guidance on the impact of the SDC methods on the quality and utility of the outputs. Explanations should provide details of the methods used but avoid stating the exact parameters as this may allow intruders to unpick the protection.
 
-**Table 5.14** Summary of disclosure risks associated with frequency tables
+
 
   --------------------------------------------- ----------------------------------------------------------------------------------------
   **Disclosure Risk**                           **Description**
@@ -229,6 +229,8 @@ In addition to providing actual disclosure control protection for sensitive info
 
   Perception of disclosure                      The public's feeling of risk based on what is seen in released tables
   --------------------------------------------- ----------------------------------------------------------------------------------------
+
+  : Summary of disclosure risks associated with frequency tables {#tbl-summary-risks-freq-table}
 
 ## Methods
 
@@ -257,7 +259,7 @@ The advantages of table redesign methods are that original counts in the data ar
 
 Statistical disclosure control methods that modify cell values within tabular outputs are referred to as post-tabular methods. Such methods are generally clear and transparent to users, and are easier to understand and account for in analyses, than pre-tabular methods. However, post-tabular methods suffer the problem that each table must be individually protected, and it is necessary to ensure that the new protected table cannot be compared against any other existing outputs in such a way which may undo the protection that has been applied. In addition post-tabular methods can be cumbersome to apply to large tables. The main post-tabular methods include cell suppression, cell perturbation, and rounding.
 
-**Table 5.15** Summary of Tabular Disclosure Control Methods
+
 
   ------------------------------------------------------------------- ------------------------------------------- --------------------------------------- ------------------------------------------
                                                                       **Pre-Tabular**                             **Table Redesign**                      **Post-Tabular**
@@ -272,6 +274,8 @@ Statistical disclosure control methods that modify cell values within tabular ou
 
   Flexible table generation is possible                               Yes                                         No                                      No
   ------------------------------------------------------------------- ------------------------------------------- --------------------------------------- ------------------------------------------
+
+  : Summary of Tabular Disclosure Control Methods {#tbl-summary-sdc-freq-table}
 
 The main post-tabular methods of disclosure control are discussed below.
 
@@ -301,9 +305,8 @@ Care must be taken when combining rounded tables to create user-defined areas. C
 
 There are several alternative rounding methods including; conventional rounding, random rounding, controlled rounding, and semi-controlled rounding, which are outlined below. Each method is flexible in terms of the choice of the base for rounding, although common choices are 3 and 5. All rounded values (other than zeros) will then be integer multiples of 3 or 5, respectively.
 
-> When using conventional rounding, each cell is rounded to the nearest multiple of the base. The marginal totals and table totals are rounded independently from the internal cells. An example of conventional rounding is provided below; Table 5.15 shows counts of males and females in different areas, while Table 5.16 shows the same information rounded to a base of 5.
+> When using conventional rounding, each cell is rounded to the nearest multiple of the base. The marginal totals and table totals are rounded independently from the internal cells. An example of conventional rounding is provided below; @tbl-counts-sex-area shows counts of males and females in different areas, while @tbl-counts-sex-area-round shows the same information rounded to a base of 5.
 
-**Table 5.16:** Population counts by sex
 
 |        	| **Male** 	| **Female** 	| **Total** 	|
 |--------	|:--------:	|:----------:	|:---------:	|
@@ -312,8 +315,8 @@ There are several alternative rounding methods including; conventional rounding,
 | Area C 	|    12    	|     20     	|     32    	|
 | Total  	|    16    	|     23     	|     39    	|
 
+: Population counts by sex {#tbl-counts-sex-area}
 
-**Table 5.17:** Population counts by sex (conventional rounding)
 
 |        	| **Male** 	| **Female** 	| **Total** 	|
 |--------	|:--------:	|:----------:	|:---------:	|
@@ -322,11 +325,11 @@ There are several alternative rounding methods including; conventional rounding,
 | Area C 	|    10    	|     20     	|     35    	|
 | Total  	|    15    	|     25     	|     40    	|
 
-> Table 5.1
->
-> The example shows the Males unsafe cell in Area A in Table 5.16 is protected by the rounding process in Table 5.17.
->
-> The advantages of this method are that the table totals are rounded independently from the internal cells, and therefore consistent table totals will exist within the rounding base. Cells in different tables which represent the same records will always be the same. While this method does provide some confidentiality protection, it is considered less effective than controlled or random rounding. Tables are not additive (e.g. row 3 of Table 5.17 does not sum to 35) and the level of information is poor if there are many values of 1 and 2. The method is not suitable for flexible table generation as it can be easily 'unpicked' when differencing and linking tables. For these reasons conventional rounding is not recommended as a disclosure control method for frequency tables. Conventional rounding is sometimes used by NSIs for quality reasons (e.g. rounding data from small sample surveys to emphasize the uncertain nature of the data). The distinction between rounding performed for disclosure control reasons and rounding performed for quality reasons should always be made clear to users.
+: Population counts by sex (conventional rounding) {#tbl-counts-sex-area-round}
+
+The example shows the Males unsafe cell in Area A in @tbl-counts-sex-area is protected by the rounding process in @tbl-counts-sex-area-round.
+
+The advantages of this method are that the table totals are rounded independently from the internal cells, and therefore consistent table totals will exist within the rounding base. Cells in different tables which represent the same records will always be the same. While this method does provide some confidentiality protection, it is considered less effective than controlled or random rounding. Tables are not additive (e.g. row 3 of Table 5.17 does not sum to 35) and the level of information is poor if there are many values of 1 and 2. The method is not suitable for flexible table generation as it can be easily 'unpicked' when differencing and linking tables. For these reasons conventional rounding is not recommended as a disclosure control method for frequency tables. Conventional rounding is sometimes used by NSIs for quality reasons (e.g. rounding data from small sample surveys to emphasize the uncertain nature of the data). The distinction between rounding performed for disclosure control reasons and rounding performed for quality reasons should always be made clear to users.
 
 Random rounding shifts each cell to one of the two nearest base values in a random manner. Each cell value is rounded independently of other cells, and has a greater probability of being rounded to the nearest multiple of the rounding base. For example, with a base of 5, cell values of 6, 7, 8, or 9 could be rounded to either 5 or 10. Marginal totals are typically rounded separately from the internal cells of the table (i.e. they are not created by adding rounding cell counts) and this means tables are not necessarily additive. Various probability schemes are possible, but an important characteristic is that they should be unbiased. This means there should be no net tendency to round up or down and the average difference from the original counts should be zero.
 
@@ -356,9 +359,7 @@ If we are rounding to base 3 the residual of the cell value after dividing by 3 
   6                           6 (~1~)
   --------------------------- -------------------------------------------
 
-As an example, Table 5.18 shows a possible solution for Table 5.16 using random rounding to base 5.
-
-Table 5.18: Population counts by sex (with random rounding)
+As an example, @tbl-counts-sex-round shows a possible solution for @tbl-counts-sex-area using random rounding to base 5.
 
   ----------- ---------------------- -------------------------- -----------
               **Male**               **Female**                 **Total**
@@ -372,15 +373,15 @@ Table 5.18: Population counts by sex (with random rounding)
   Total       15                     20                         40
   ----------- ---------------------- -------------------------- -----------
 
+: Population counts by sex (with random rounding) {#tbl-counts-sex-round}
+
 The main advantages of random rounding are that it is relatively easy to implement, it is unbiased, and it is clear and transparent to users. Table totals are consistent within the rounding base because the totals are rounded independently from the internal cells. All values of 1 and 2 are removed from the table by rounding, which prevents cases of perceived disclosure as well as actual disclosure. The method may also provide some protection against disclosure by differencing as rounding should obscure most of the exact differences between tables.
 
-However, random rounding has disadvantages including the increased information loss which results from the fact that all cells (even safe cells) are rounded. In some instances the protection can be 'unpicked' and in order to ensure adequate protection, the resulting rounded tables need to be audited. Although the method is unbiased, after applying random rounding there may be inconsistencies in data within tables (e.g. rows or columns which do not add up like row 3 of Table 5.18 does not sum to 35) and between tables (e.g. the same cell may be rounded to a different number in different tables).
+However, random rounding has disadvantages including the increased information loss which results from the fact that all cells (even safe cells) are rounded. In some instances the protection can be 'unpicked' and in order to ensure adequate protection, the resulting rounded tables need to be audited. Although the method is unbiased, after applying random rounding there may be inconsistencies in data within tables (e.g. rows or columns which do not add up like row 3 of @tbl-counts-sex-round does not sum to 35) and between tables (e.g. the same cell may be rounded to a different number in different tables).
 
 Unlike other rounding methods, controlled rounding yields additive rounded tables. It is the statistical disclosure control method that is generally most effective for frequency tables. The method uses linear programming techniques to round cell values up or down by small amounts, and its strength over other methods is that additivity is maintained in the rounded table, (i.e. it ensures that the rounded values add up to the rounded totals and sub-totals shown in the table). This property not only permits the release of realistic tables which are as close as possible to the original table, but it also makes it impossible to reduce the protection by 'unpicking' the original values by exploiting the differences in the sums of the rounded values. Another useful feature is that controlled rounding can achieve specified levels of protection. In other words, the user can specify the degree of ambiguity added to the cells, for example, they may not want a rounded value within 10% of the true value. Controlled rounding can be used to protect flexible tables although the time taken to implement the method may make it unsuitable for this purpose.
 
-Table 5.19 shows a possible rounding solution for Table 5.16, using controlled rounding to base 5.
-
-Table 5.19: Population counts by sex (controlled rounding)
+@tbl-counts-sex-control-round shows a possible rounding solution for @tbl-counts-sex-area, using controlled rounding to base 5.
 
   ----------- ---------------------- -------------------------- -----------
               **Male**               **Female**                 **Total**
@@ -394,11 +395,11 @@ Table 5.19: Population counts by sex (controlled rounding)
   Total       15                     25                         40
   ----------- ---------------------- -------------------------- -----------
 
-> The disadvantages of controlled rounding are that it is a complicated method to implement, and it has difficulty coping with the size, scope and magnitude of the census tabular outputs. It is hardto find control-rounded solutions for sets of linked tables, and in order to find a solution cells may be rounded beyond the nearest rounding base. In this case users will know less about exactly how the table was rounded and it is also likely to result in differing values for the same internal cells across different tables.
->
-> Semi-controlled rounding also uses linear programming to round table entries up or down but in this case it controls for the overall total in the table, or it controls for each separate output area total. Other marginal and sub totals will not necessarily be additive. This ensures that either the overall total of the table is preserved (or the output area totals are all preserved), and the utility of this method is increased compared with conventional and random rounding. Consistent totals are provided across linked tables, and therefore the method can be used to protect flexible tables, although the time it takes to implement may make it unsuitable. Disadvantages of semi-controlled rounding relate to the fact tables are not fully additive, and it is difficult to find an optimal solution.
+: Population counts by sex (controlled rounding) {#tbl-counts-sex-control-round}
 
-Table 5.19: Summary of SDC rounding methods
+The disadvantages of controlled rounding are that it is a complicated method to implement, and it has difficulty coping with the size, scope and magnitude of the census tabular outputs. It is hardto find control-rounded solutions for sets of linked tables, and in order to find a solution cells may be rounded beyond the nearest rounding base. In this case users will know less about exactly how the table was rounded and it is also likely to result in differing values for the same internal cells across different tables.
+
+Semi-controlled rounding also uses linear programming to round table entries up or down but in this case it controls for the overall total in the table, or it controls for each separate output area total. Other marginal and sub totals will not necessarily be additive. This ensures that either the overall total of the table is preserved (or the output area totals are all preserved), and the utility of this method is increased compared with conventional and random rounding. Consistent totals are provided across linked tables, and therefore the method can be used to protect flexible tables, although the time it takes to implement may make it unsuitable. Disadvantages of semi-controlled rounding relate to the fact tables are not fully additive, and it is difficult to find an optimal solution.
 
   ---------------------------------------------------------------- --------------------------- ----------------------------------------------------- -------------------------------------------------
                                                                    **Conventional Rounding**   **Controlled (and semi-controlled) Rounding**         **Random rounding**
@@ -410,11 +411,13 @@ Table 5.19: Summary of SDC rounding methods
   Method is quick and easy to implement                            Yes                         It can take time for this method to find a solution   Yes
   ---------------------------------------------------------------- --------------------------- ----------------------------------------------------- -------------------------------------------------
 
-> There are some more specialised rounding methods which have been used at various times by NSIs to protect census data, two of these methods are described below.
->
-> Small cell adjustment was used (in addition to random swapping (a pre-tabular method)) to protect 2001 Census tabular outputs for England, Wales and Northern Ireland. This method was also used by the ABS to protect their tabular outputs from the 2001 Census.
->
-> Applying small cell adjustments involves randomly adjusting small cells within tables upwards or downwards to a base using an unbiased prescribed probability scheme. During the process:
+: Summary of SDC rounding methods {#tbl-summary-rounding-methods}
+
+There are some more specialised rounding methods which have been used at various times by NSIs to protect census data, two of these methods are described below.
+
+Small cell adjustment was used (in addition to random swapping (a pre-tabular method)) to protect 2001 Census tabular outputs for England, Wales and Northern Ireland. This method was also used by the ABS to protect their tabular outputs from the 2001 Census.
+
+Applying small cell adjustments involves randomly adjusting small cells within tables upwards or downwards to a base using an unbiased prescribed probability scheme. During the process:
 
 -   small counts appearing in a table cells are adjusted
 
