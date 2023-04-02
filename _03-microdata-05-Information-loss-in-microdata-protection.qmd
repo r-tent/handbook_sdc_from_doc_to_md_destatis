@@ -70,11 +70,11 @@ In Yancey, Winkler and Creecy (2002), it is observed that dividing by $x_{\text
 
 where $S_{j}$ is the standard deviation of the *j*-th variable in the original dataset.
 
-Trottini (2003) argues that, since information loss is to be traded off for disclosure risk and the latter is bounded ---there is no risk higher than 100%---, upper bounds should be enforced for information loss measures. In practice, the proposal in Trottini (2003) is to limit those measures in @tbl-tbl-loss-information based on the mean variation to a predefined maximum value.
+Trottini (2003) argues that, since information loss is to be traded off for disclosure risk and the latter is bounded ---there is no risk higher than 100%---, upper bounds should be enforced for information loss measures. In practice, the proposal in Trottini (2003) is to limit those measures in @tbl-loss-information based on the mean variation to a predefined maximum value.
 
 ### Information loss measures for categorical data
 
-Straightforward computation of measures in @tbl-tbl-loss-information on categorical data is not possible. The following alternatives are considered in Domingo-Ferrer and Torra (2001):
+Straightforward computation of measures in @tbl-loss-information on categorical data is not possible. The following alternatives are considered in Domingo-Ferrer and Torra (2001):
 
 -   Direct comparison of categorical values
 
