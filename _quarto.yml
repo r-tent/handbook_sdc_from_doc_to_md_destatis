@@ -8,7 +8,7 @@ book:
   date: "20/01/2023"
   chapters:
     - index.qmd
-    - 02-regulations_with_tex.qmd
+    - 02-regulations.qmd
     - 03-microdata_with_tex.qmd
     - 04-magnitude-tabular-data_with_tex.qmd
     - 05-frequency-tables_with_tex.qmd
