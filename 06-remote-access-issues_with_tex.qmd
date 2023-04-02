@@ -40,16 +40,13 @@ The main idea of a remote facility is that it should resemble the 'traditional' 
 
 The following aspects have to be taken into account:
 
-11. Only authorized users should be able to make use of this facility,
+1. Only authorized users should be able to make use of this facility,
 
-```{=html}
-<!-- -->
-```
-47. Microdata should remain at the NSI,
+2. Microdata should remain at the NSI,
 
-48. Desired output of analyses should be checked on confidentiality,
+3. Desired output of analyses should be checked on confidentiality,
 
-49. Legal measures have to be taken when allowing access.
+4. Legal measures have to be taken when allowing access.
 
 The key issue is that the micro data set remains in the controlled environment of the NSI, while the researcher can do the analysis in his institute. In fact it is an equivalent of the research centre. The Citrix connection will enable the researcher to run SPSS, SAS etc on the server of the NSI. The researcher will only see the session on his screen. This allows him to see the results on his analysis but also the microdata itself. This is completely equivalent to what he can see, if he would be at the research centre.
 
