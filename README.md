@@ -1,24 +1,8 @@
-It seems that there is no way to directly move from doc to md, so before starting export the .doc to .docx.
-
-Then, the command line to export docx file to md is the following one:
-
-`pandoc --extract-media=Images --wrap=none -f docx -t markdown .\Handbook_V1_2_2010_2.docx -o Handbook.md`
-
-The most of equations were converted in .wmf files which are not readable for markdown. So, we have to convert them into .png files with the 
-bash command line written in `bash_convert_images.sh`.
-
-We can, then, create a quarto book inside the directory with vscode or R. It will automotically creates the necessary files for it.
-
-Then, we split the single .md file to multiple .qmd (quarto) files with the R script written in `from_md_to_quarto_book.R` file.
-This script splits the .md file at each h1 level (chapters) but this behavior could be changed (for example h2 level) to deal with smaller files. 
-The script replaces the .wmf files by the .png files.
-
 - Website of this V0: [https://julienjamme.quarto.pub/sdc_handbook/](https://julienjamme.quarto.pub/sdc_handbook/)  
 - PDF version in _book/ directory. 
 
-It remains at least to:
+A first complete review was made (thanks to violeta for the help). All the equations and figures should be in place now.
 
-- convert images of equation to real latex equations;
-- to remove old comments and maybe strore them elsewhere (Suprisingly, they are visible in the document (but not in the .doc, for me at least))
-- check the page layout;
+It's time for a deeper review on each chapter. For each mistake, typo, etc. detected, the best option is to open a new issue mentionning the chapter and section (and sufficiently info to locate the problem) and describing what has to be done to fix the problem.
 
+On my side, it remains some work on cross-referenced sections / equations /figures and tables. The numbers of referenced were hard-written in the original document and it's not very easy to maintain.
