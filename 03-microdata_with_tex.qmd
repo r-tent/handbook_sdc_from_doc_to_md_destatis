@@ -1565,21 +1565,14 @@ Matrix discrepancy can be measured in at least three ways:
 
 <!-- TODO = rewrite the table 3.7 -->
 
-  ------- ----------------------- --------------------- -----------------------
-          **Mean square error**   **Mean abs. error**   **Mean variation**
-
-  $X-X$   
-
-                                                        
-
-                                                        
-
-                                                        
-
-                                                        
-
-                                                        
-  ------- ----------------------- --------------------- -----------------------
+|          	|                                  Mean square error                                  	|                                   Mean abs. error                                   	|                                             Mena variation                                             	|
+|:--------:	|:-----------------------------------------------------------------------------------:	|:-----------------------------------------------------------------------------------:	|:------------------------------------------------------------------------------------------------------:	|
+|  $X-X'$  	|            $\frac{\sum_{j=1}^{p}\sum_{i=1}^{n}(x_{ij} - x_{ij}')^2}{np}$            	|            $\frac{\sum_{j=1}^{p}\sum_{i=1}^{n}|x_{ij} - x_{ij}'|}{np}$            	|            $\frac{\sum_{j=1}^{p}\sum_{i=1}^{n}\frac{|x_{ij} - x_{ij}'|}{|x_{ij}|}}{np}$            	|
+|  $V-V'$  	| $\frac{\sum_{j=1}^{p}\sum_{1 \leq i \leq j}(v_{ij} - v_{ij}')^2}{\frac{p(p+1)}{2}}$ 	| $\frac{\sum_{j=1}^{p}\sum_{1 \leq i \leq j}|v_{ij} - v_{ij}'|}{\frac{p(p+1)}{2}}$ 	| $\frac{\sum_{j=1}^{p}\sum_{1 \leq i \leq j}\frac{|v_{ij} - v_{ij}'|}{|v_{ij}|}}{\frac{p(p+1)}{2}}$ 	|
+|  $R-R'$  	| $\frac{\sum_{j=1}^{p}\sum_{1 \leq i \leq j}(r_{ij} - r_{ij}')^2}{\frac{p(p-1)}{2}}$ 	| $\frac{\sum_{j=1}^{p}\sum_{1 \leq i \leq j}|r_{ij} - r_{ij}'|}{\frac{p(p-1)}{2}}$ 	| $\frac{\sum_{j=1}^{p}\sum_{1 \leq i \leq j}\frac{|r_{ij} - r_{ij}'|}{|r_{ij}|}}{\frac{p(p-1)}{2}}$ 	|
+| $RF-RF'$ 	|         $\frac{\sum_{j=1}^{p}w_j\sum_{i=1}^{p}(rf_{ij} - rf_{ij}')^2}{p^2}$         	|         $\frac{\sum_{j=1}^{p}w_j\sum_{i=1}^{p}|rf_{ij} - rf_{ij}'|}{p^2}$         	|        $\frac{\sum_{j=1}^{p} w_j \sum_{i=1}^{p}\frac{|rf_{ij} - rf_{ij}'|}{|rf_{ij}|}}{p^2}$       	|
+|  $C-C'$  	|                       $\frac{\sum_{i=1}^{p}(c_i - c_i')^2}{p}$                      	|                       $\frac{\sum_{i=1}^{p}|c_i - c_i'|}{p}$                      	|                       $\frac{\sum_{i=1}^{p}\frac{|c_i - c_{i}'|}{|c_i|}}{p}$                       	|
+|  $F-F'$  	|          $\frac{\sum_{j=1}^{p}w_j\sum_{i=1}^{p}(f_{ij} - f_{ij}')^2}{p^2}$          	|          $\frac{\sum_{j=1}^{p}w_j\sum_{i=1}^{p}|f_{ij} - f_{ij}'|}{p^2}$          	|         $\frac{\sum_{j=1}^{p} w_j \sum_{i=1}^{p}\frac{|f_{ij} - f_{ij}'|}{|f_{ij}|}}{p^2}$         	|
 
 : Information loss measures for continuous microdata {#tbl-loss-information}
 
