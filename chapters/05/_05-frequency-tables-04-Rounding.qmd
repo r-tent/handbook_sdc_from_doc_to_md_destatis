@@ -38,26 +38,26 @@ If we are rounding to base 3 the residual of the cell value after dividing by 3 
 
 -   If the residual is zero no change is made to the original cell value.
 
--   If the residual is 1, then with a probability of 2/3 the cell value is rounded down to the lower multiple of 3 and with a probability of 1/3 the cell value is rounded up to the higher multiple of 3.
+-   If the residual is 1, then with a probability of $2/3$ the cell value is rounded down to the lower multiple of 3 and with a probability of $1/3$ the cell value is rounded up to the higher multiple of 3.
 
--   If the residual is 2, the probabilities are 2/3 to round up and 1/3 to round down.
+-   If the residual is 2, the probabilities are $2/3$ to round up and $1/3$ to round down.
 
   --------------------------- -------------------------------------------
   Original Value              Rounded Value (probability)
 
-  0                           0 (~1~)
+  0                           0 ($1$)
 
-  1                           0 (~2/3~) or 3 (~1/3~)
+  1                           0 ($2/3$) or 3 ($1/3$)
 
-  2                           3(~2/3~) or 0(~1/3~)
+  2                           3($2/3$) or 0($1/3$)
 
-  3                           3 (~1~)
+  3                           3 ($1$)
 
-  4                           3(~2/3~) or 6(~1/3~)
+  4                           3($2/3$) or 6($1/3$)
 
-  5                           6(~2/3~) or 4(~1/3~)
+  5                           6($2/3$) or 4($1/3$)
 
-  6                           6 (~1~)
+  6                           6 ($1$)
   --------------------------- -------------------------------------------
 
 As an example, @tbl-counts-sex-round shows a possible solution for @tbl-counts-sex-area using random rounding to base 5.
