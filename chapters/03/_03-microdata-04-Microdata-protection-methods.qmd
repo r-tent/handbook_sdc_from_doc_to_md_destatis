@@ -4,7 +4,7 @@
 
 In this section we explain the basic concepts and methods related to microdata protection. Sections 3.4.2, 3.4.3, 3.4.4 and 3.4.5 give in-depth descriptions of some particularly complex methods: microaggregation, rank swapping, additive noise and synthetic data (the first two implemented in μ‑ARGUS).
 
-A microdata set **V** can be viewed as a file with *n* records, where each record contains *m* variables on an individual respondent. The variables can be classified in four categories which are not necessarily disjoint:
+A microdata set $V$ can be viewed as a file with $n$ records, where each record contains $m$ variables on an individual respondent. The variables can be classified in four categories which are not necessarily disjoint:
 
 -   *Identifiers*. These are variables that *unambiguously* identify the respondent. Examples are the passport number, social security number, etc.
 
@@ -16,20 +16,20 @@ A microdata set **V** can be viewed as a file with *n* records, where each recor
 
 The purpose of SDC is to prevent confidential information from being linked to specific respondents. Therefore, we will assume in what follows that original microdata sets to be protected have been pre-processed so as to remove identifiers and quasi-identifiers with low ambiguity (such as name).
 
-The purpose of microdata SDC mentioned in the previous section can be stated more formally by saying that, given an original microdata set **V**, the goal is to release a protected microdata set **V**\' in such a way that:
+The purpose of microdata SDC mentioned in the previous section can be stated more formally by saying that, given an original microdata set $V$, the goal is to release a protected microdata set $V^{'}$ in such a way that:
 
-1.  Disclosure risk (*i.e.* the risk that a user or an intruder can use **V\'** to determine confidential variables on a specific individual among those in **V**) is low.
+1.  Disclosure risk (*i.e.* the risk that a user or an intruder can use $V^{'}$ to determine confidential variables on a specific individual among those in $V$) is low.
 
 ```{=html}
 <!-- -->
 ```
-9.  User analyses (regressions, means, etc.) on **V\'** and on **V** yield the same or at least similar results.
+9.  User analyses (regressions, means, etc.) on $V^{'}$ and on $V$ yield the same or at least similar results.
 
-Microdata protection methods can generate the protected microdata set **V**\'
+Microdata protection methods can generate the protected microdata set $V$\'
 
--   either by *masking original data*, *i.e.* generating **V**\' a modified version of the original microdata set **V**;
+-   either by *masking original data*, *i.e.* generating $V^{'}$ a modified version of the original microdata set $V$;
 
--   or by *generating synthetic data* **V**\' that preserve some statistical properties of the original data **V**.
+-   or by *generating synthetic data* $V^{'}$ that preserve some statistical properties of the original data $V$.
 
 Masking methods can in turn be divided in two categories depending on their effect on the original data (Willenborg and DeWaal, 2001):
 
@@ -49,11 +49,13 @@ So far in this section, we have classified microdata protection methods by their
 
 Perturbative statistical disclosure control (SDC) methods allow for the release of the entire microdata set, although perturbed values rather than exact values are released. Not all perturbative methods are designed for continuous data; this distinction is addressed further below for each method.
 
-Most perturbative methods reviewed below (including noise addition, rank swapping, microaggregation and post-randomization) are special cases of matrix masking. If the original microdata set is **X**, then the masked microdata set **Z** is computed as
+Most perturbative methods reviewed below (including noise addition, rank swapping, microaggregation and post-randomization) are special cases of matrix masking. If the original microdata set is $X$, then the masked microdata set $Z$ is computed as
 
-**Z**=**AXB**+**C**
+$$
+Z=AXB+C
+$$
 
-where **A** is a record-transforming mask, **B** is a variable-transforming mask and **C** is a displacing mask or noise (Duncan and Pearson, 1991).
+where $A$ is a record-transforming mask, $B$ is a variable-transforming mask and $C$ is a displacing mask or noise (Duncan and Pearson, 1991).
 
 @tbl-perturbative-methods lists the perturbative methods described below. For each method, the table indicates whether it is suitable for continuous and/or categorical data.
 
@@ -91,7 +93,7 @@ The main noise addition algorithms in the literature are: ![](Images/media/image
 
 For more details on specific algorithms, the reader can check Brand (2002).
 
-In practice, only simple noise addition (two first variants) or noise addition with linear transformation are used. When using linear transformations, a decision has to be made whether to reveal to the data user the parameter *c* determining the transformations to allow for bias adjustment in the case of subpopulations.
+In practice, only simple noise addition (two first variants) or noise addition with linear transformation are used. When using linear transformations, a decision has to be made whether to reveal to the data user the parameter $c$ determining the transformations to allow for bias adjustment in the case of subpopulations.
 
 With the exception of the not very practical method of Sullivan(1989), noise addition is not suitable to protect categorical data. On the other hand, it is well suited for continuous data for the following reasons:
 
@@ -105,31 +107,44 @@ With the exception of the not very practical method of Sullivan(1989), noise add
 
 One main challenge regarding additive noise with constant variance is that on one hand small values are strongly perturbed and on the other large values are weakly perturbed. For instance, in a business microdata set the large enterprises \-- which are much easier to re-identify than the smaller ones \-- remain still high at risk after noise addition. A possible way out is given by the multiplicative noise approach explained below.![](Images/media/image27.png){width="0.2in" height="0.2in"}
 
-Let $X$ be the matrix of the original data and $W$ the matrix of continuous perturbation variables with expectation 1 and variance $\sigma _ { w } ^ { 2 } > 0$. The corresponding anonymised data $X ^ { a }$ is then obtained as
+Let $X$ be the matrix of the original data and $W$ the matrix of continuous perturbation variables with expectation 1 and variance $\sigma_{w}^{2} > 0$. The corresponding anonymised data $X^{a}$ is then obtained as
 
-$$\left( X ^ { a } \right) _ { i j } : = w _ { i j } \cdot X _ { i j }$$
+$$
+\left(X^{a}\right)_{ij} : = w_{ij} \cdot X_{ij}
+$$
 
-for each pair $( i , j )$.
+for each pair $(i,j)$.
 
-The following approach has been suggested by Höhne (2004). In a first step, for each record it is randomly decided whether its values are increased or decreased, each with 0.5-probability. This is done using the main factors $1 - f$ and $1 + f$. In order to avoid that all values of some record are perturbed with the same noise, these main factors are themselves perturbed with some additive noise $s \left( \text { where } s < \frac { f } { 2 } \right)$. The following transformation is needed to preserve the first and second moments of the distribution:
+The following approach has been suggested by Höhne (2004). In a first step, for each record it is randomly decided whether its values are increased or decreased, each with 0.5-probability. This is done using the main factors $1 - f$ and $1 + f$. In order to avoid that all values of some record are perturbed with the same noise, these main factors are themselves perturbed with some additive noise $s \left( \text { where } s < \frac{f}{2} \right)$. The following transformation is needed to preserve the first and second moments of the distribution:
 
-$$x _ { i } ^ { a ^ { R } } : = \frac { \sigma _ { X } } { \sigma _ { X ^ { a } } } \left( x _ { i } ^ { a } - \mu _ { X ^ { a } } \right) + \mu _ { X }$$,
+$$
+x_{i}^{a^{R}} : = \frac{ \sigma_{X} }{\sigma_{X^{a}}} \left( x_{i}^{a} - \mu_{X^{a}} \right) + \mu_{X}
+$$,
 
-where $\mu _ { X }$ and $\mu _ { X ^ { a } }$ define the average of the original and anonymised variables, $\sigma _ { X }$ and $\sigma _ { X ^ { a } }$ the corresponding standard deviations, respectively.
 
-Particularly if the original data follow a strongly skewed distribution, the deviations using this method may strongly depend on the configuration of the noise factors for some few, but large values. That is, despite consistency, means and sums might be unsatisfactorily reproduced. For this reason, (Höhne, 2004) suggests a slight modification of the method. At first, we generate normal distributed random variables $W _ { i }$ with expectation greater than zero and \'small\' variance, s.t. the realisation of $W _ { i }$ yields a positive value. Afterwards, the data is sorted in descending order by the variable under consideration. Then, the record with the largest entry in this variable is diminished by
+where $\mu_{X}$ and $\mu_{X^{a}}$ define the average of the original and anonymised variables, $\sigma_{X}$ and $\sigma_{X^{a}}$ the corresponding standard deviations, respectively.
 
-$$X _ { 1 } ^ { a } = \left( 1 - W _ { 1 } \right) X _ { 1 }$$.
+Particularly if the original data follow a strongly skewed distribution, the deviations using this method may strongly depend on the configuration of the noise factors for some few, but large values. That is, despite consistency, means and sums might be unsatisfactorily reproduced. For this reason, (Höhne, 2004) suggests a slight modification of the method. At first, we generate normal distributed random variables $W_{i}$ with expectation greater than zero and \'small\' variance, s.t. the realisation of $W _ { i }$ yields a positive value. Afterwards, the data is sorted in descending order by the variable under consideration. Then, the record with the largest entry in this variable is diminished by
 
-The records $X _ { 2 } , \ldots , X _ { n - 1 }$ are now perturbed as follows:
+$$
+X_{1}^{a} = \left( 1 - W_{1} \right) X_{1} \quad .
+$$
 
-$$X _ { i } ^ { a } = \left( 1 - W _ { i } \right) X _ { i } , \text { if } \sum _ { k = 1 } ^ { i - 1 } X _ { k } ^ { a } > \sum _ { k = 1 } ^ { i - 1 } X _ { k }$$
+The records $X_{2} , \ldots , X_{n-1}$ are now perturbed as follows:
 
-$$X _ { i } ^ { a } = \left( 1 + W _ { i } \right) X _ { i } , \text { if } \sum _ { k = 1 } ^ { i - 1 } X _ { k } ^ { a } \leq \sum _ { k = 1 } ^ { i - 1 } X _ { k }$$.
+$$
+X_{i}^{a} = \begin{cases}
+ \left( 1 - W_{i} \right) X_{i} , &\text{if}\quad \sum\limits_{k=1}^{i-1}X_{k}^{a} > \sum\limits_{k=1}^{i-1}X_{k}\\
+ \left( 1 + W_{i}\right) X_{i} , &\text{if}\quad \sum\limits_{k=1}^{i-1}X_{k}^{a} \leq \sum\limits_{k=1}^{i-1}X_{k} \quad .
+\end{cases}
+$$
 
-Hence, means and sums are preserved and the diminishing and enlarging effects of single values cancel out each other. For the remaining record $X _ { n }$ we set
 
-$$X _ { n } ^ { a } = X _ { n } - \left( \sum _ { k = 1 } ^ { n - 1 } X _ { k } ^ { a } - \sum _ { k = 1 } ^ { n - 1 } X _ { k } \right)$$
+Hence, means and sums are preserved and the diminishing and enlarging effects of single values cancel out each other. For the remaining record $X_{n}$ we set
+
+$$
+X_{n}^{a} = X_{n} - \left( \sum\limits_{k=1}^{n-1} X_{k}^{a} - \sum\limits_{k=1}^{n-1} X_{k} \right)
+$$
 
 in order to preserve the overall sum.
 
@@ -187,7 +202,7 @@ It is reasonable to expect that multivariate statistics computed from data swapp
 
 Rounding methods replace original values of variables with rounded values. For a given variable $X_{i}$, rounded values are chosen among a set of rounding points defining a *rounding set*. In a multivariate original dataset, rounding is usually performed one variable at a time (*univariate* rounding); however, multivariate rounding is also possible (Willenborg and DeWaal, 2001). The operating principle of rounding makes it suitable for continuous data. ![](Images/media/image52.png){width="0.2in" height="0.2in"}
 
-**Example** Assume a continuous variable $X$. Then we have to determine a set of rounding points$\left\{ p_{1},\cdots,p_{r} \right\}$. One possibility is to take rounding points as multiples of a base value $b$, that is, $p_{i} = b \cdot i$ for $i = 1,\cdots,r$. The set of attraction for each rounding point is defined as the interval $\left\lbrack p_{i} - \frac{b}{2},p_{i} + \frac{b}{2} \right\rbrack$, for $i = 1$to $r - 1$; for $p_{1}$ and $p_{r}$, respectively, the sets of attraction are $\left\lbrack 0,p_{1} + \frac{b}{2} \right\rbrack$ and $\left\lbrack p_{r} - \frac{b}{2},X_{\text{max}} \right\rbrack$, where $X_{\text{max}}$ is the largest possible value for variable $X$. Now an original value $x$ of $X$ is replaced with the rounding point corresponding to the set of attraction where $x$ lies.
+**Example** Assume a continuous variable $X$. Then we have to determine a set of rounding points$\left\{ p_{1},\cdots,p_{r} \right\}$. One possibility is to take rounding points as multiples of a base value $b$, that is, $p_{i} = b \cdot i$ for $i = 1,\cdots,r$. The set of attraction for each rounding point is defined as the interval $\left\lbrack p_{i} - \frac{b}{2},p_{i} + \frac{b}{2} \right\rbrack$, for $i = 1$ to $r - 1$; for $p_{1}$ and $p_{r}$, respectively, the sets of attraction are $\left\lbrack 0,p_{1} + \frac{b}{2} \right\rbrack$ and $\left\lbrack p_{r} - \frac{b}{2},X_{\text{max}} \right\rbrack$, where $X_{\text{max}}$ is the largest possible value for variable $X$. Now an original value $x$ of $X$ is replaced with the rounding point corresponding to the set of attraction where $x$ lies.
 
 #### Resampling
 
@@ -255,7 +270,7 @@ With the above sampling fraction, the maximum absolute error for estimating a ma
 
 #### Global recoding
 
-For a categorical variable $V_{i}$, several categories are combined to form new (less specific) categories, thus resulting in a new $V_{i}^{'}$ with $\left| D\left( V_{i}^{'} \right) \right| < \left| D\left( V_{i} \right) \right|$ where \|⋅\| is the cardinality operator. For a continuous variable, global recoding means replacing $V_{i}$ by another variable $V_{i}^{'}$ which is a discretized version of $V_{i}$. In other words, a potentially infinite range $D\left( V_{i} \right)$ is mapped onto a finite range $D\left( V_{i}^{'} \right)$. This is the technique used in the μ‑ARGUS SDC package (Hundepool et al. 2005).![](Images/media/image57.png){width="0.2in" height="0.2in"}
+For a categorical variable $V_{i}$, several categories are combined to form new (less specific) categories, thus resulting in a new $V_{i}^{'}$ with $\left| D\left( V_{i}^{'} \right) \right| < \left| D\left( V_{i} \right) \right|$ where $|\cdot |$ is the cardinality operator. For a continuous variable, global recoding means replacing $V_{i}$ by another variable $V_{i}^{'}$ which is a discretized version of $V_{i}$. In other words, a potentially infinite range $D\left( V_{i} \right)$ is mapped onto a finite range $D\left( V_{i}^{'} \right)$. This is the technique used in the μ‑ARGUS SDC package (Hundepool et al. 2005).![](Images/media/image57.png){width="0.2in" height="0.2in"}
 
 This technique is more appropriate for categorical microdata, where it helps disguise records with strange combinations of categorical variables. Global recoding is used heavily by statistical offices.
 
@@ -353,9 +368,9 @@ We sketch in this Section the operation of the main noise addition algorithms in
 
 Masking by additive noise assumes that the vector of observations $x_{j}$ for the *j*-th variable of the original dataset $X_{j}$ is replaced by a vector ![](Images/media/image60.png){width="0.2in" height="0.2in"}
 
-where $\varepsilon_{j}$ is a vector of normally distributed errors drawn from a random variable $\varepsilon_{j} \sim  N\left( 0,\sigma_{\text{εj}}^{2} \right)$, such that $\text{Cov}\left( \varepsilon_{j},\varepsilon_{l} \right)$ for all $t \neq l$ (white noise).
+where $\varepsilon_{j}$ is a vector of normally distributed errors drawn from a random variable $\varepsilon_{j} \sim  N\left( 0,\sigma_{\varepsilon_{j}}^{2} \right)$, such that $\text{Cov}\left( \varepsilon_{j},\varepsilon_{l} \right)$ for all $t \neq l$ (white noise).
 
-The general assumption in the literature is that the variances of the $\varepsilon_{j}$ are proportional to those of the original variables. Thus, if $\sigma_{j}^{2}$ is the variance of $X_{j}$, then $\sigma_{\text{εj}}^{2}: = \text{ασ}_{j}^{2}$.
+The general assumption in the literature is that the variances of the $\varepsilon_{j}$ are proportional to those of the original variables. Thus, if $\sigma_{j}^{2}$ is the variance of $X_{j}$, then $\sigma_{\varepsilon_{j}}^{2}: = \alpha\sigma_{j}^{2}$.
 
 In the case of a *p*-dimensional dataset, simple additive noise masking can be written in matrix notation as $Z=X + \epsilon$, where $X \sim  (\mu,\Sigma)$, $\varepsilon \sim  \left( 0,\Sigma_{\varepsilon} \right)$ and
 
@@ -363,28 +378,40 @@ $\Sigma_{\varepsilon} = \alpha \cdot \text{diag}\left( \sigma_{1}^{2},\sigma_{2}
 
 This method preserves means and covariances, *i.e.*
 
-$\begin{matrix}
-E(Z) = E(X) + E(\varepsilon) = E(X) = \mu \\
-\text{Cov}\left( Z_{j},Z_{l} \right) = \text{Cov}\left( X_{j},X_{l} \right)\forall j \neq l \\
-\end{matrix}$
+$$
+\begin{align}
+\mathbb{E}(Z) &= \mathbb{E}(X) + \mathbb{E}(\epsilon) = \mathbb{E}(X) = \mu\\
+\operatorname{Cov}(Z_j,Z_l) &= \operatorname{Cov}(X_j,X_l) \quad \forall j\neq l
+\end{align}
+$$
+
+
 
 Unfortunately, neither variances nor correlation coefficients are preserved:
 
-$V\left( Z_{j} \right) = V\left( X_{j} \right) + \text{αV}\left( X_{j} \right) = (1 + \alpha)V\left( X_{j} \right)$
+$$
+\mathbb{V}\left( Z_{j} \right) = \mathbb{V}\left( X_{j} \right) + \alpha\mathbb{V}\left( X_{j} \right) = (1 + \alpha)\mathbb{V}\left( X_{j} \right)
+$$
 
-$\rho (z_j, z_l)=\frac{Cov(Z_j, Z_l)}{\sqrt{V(X_j)V(X_l)}} = \frac{1}{1+\alpha} \rho(x_j, x_l),\forall j \neq l$
+$$
+\rho (z_j, z_l)=\frac{\operatorname{Cov}(Z_j, Z_l)}{\sqrt{\mathbb{V}(X_j)\mathbb{V}(X_l)}} = \frac{1}{1+\alpha} \rho(x_j, x_l),\forall j \neq l
+$$
 
 #### Masking by correlated noise addition
 
-Correlated noise addition also preserves means and additionally allows preservation of correlation coefficients. The difference with the previous method is that the covariance matrix of the errors is now proportional to the covariance matrix of the original data, *i.e.* $\varepsilon \sim  (0,\Sigma)$, where $\Sigma_{\varepsilon} = \text{αΣ}$.![](Images/media/image61.png){width="0.2in" height="0.2in"}
+Correlated noise addition also preserves means and additionally allows preservation of correlation coefficients. The difference with the previous method is that the covariance matrix of the errors is now proportional to the covariance matrix of the original data, *i.e.* $\varepsilon \sim  (0,\Sigma)$, where $\Sigma_{\varepsilon} = \alpha\Sigma$.![](Images/media/image61.png){width="0.2in" height="0.2in"}
 
 With this method, we have that the covariance matrix of the masked data is
 
-$\Sigma_{z} = \Sigma + \text{αΣ} = (1 + \alpha)\Sigma$ (3.3.2.1)
+$$
+\Sigma_{z} = \Sigma + \alpha\Sigma = (1 + \alpha)\Sigma \quad . \quad \text{(3.3.2.1)}
+$$ 
 
 Preservation of correlation coefficients follows, since
 
-$$\rho (z_j, z_l) = \frac{1 + \alpha}{1 + \alpha}\frac{\text{Cov}\left( Z_{j},Z_{t} \right)}{\sqrt{V\left( X_{j} \right)V\left( X_{l} \right)}} = \rho(x_{j},x_{l})$$
+$$
+\rho (z_j, z_l) = \frac{1 + \alpha}{1 + \alpha}\frac{\operatorname{Cov}\left( Z_{j},Z_{t} \right)}{\sqrt{\mathbb{V}\left( X_{j} \right)\mathbb{V}\left( X_{l} \right)}} = \rho(x_{j},x_{l})
+$$
 
 Regarding variances and covariances, we can see from Equation (3.3.2.13.3.2.1) that masked data only provide biased estimates for them. However, it is shown in Kim (1990) that the covariance matrix of the original data can be consistently estimated from the masked data as long as α is known.
 
@@ -392,25 +419,35 @@ As a summary, masking by correlated noise addition outputs masked data with high
 
 #### Masking by noise addition and linear transformations
 
-In Kim (1986), a method is proposed that ensures by additional transformations that the sample covariance matrix of the masked variables is an unbiased estimator for the covariance matrix of the original variables. The idea is to use simple additive noise on the *p* original variables to obtain overlayed variables ![](Images/media/image62.png){width="0.2in" height="0.2in"}
+In Kim (1986), a method is proposed that ensures by additional transformations that the sample covariance matrix of the masked variables is an unbiased estimator for the covariance matrix of the original variables. The idea is to use simple additive noise on the $p$ original variables to obtain overlayed variables ![](Images/media/image62.png){width="0.2in" height="0.2in"}
 
-$Z_{j} = X_{j} + \varepsilon_{j}$, for $j = 1,\cdots,p$
+$$
+Z_{j} = X_{j} + \varepsilon_{j},\quad \text{for } j = 1,\ldots,p
+$$
+
+
 
 As in the previous section on correlated masking, the covariances of the errors $\varepsilon_{j}$ are taken proportional to those of the original variables. Usually, the distribution of errors is chosen to be normal or the distribution of the original variables, although in Roque (2000) mixtures of multivariate normal noise are proposed.
 
 In a second step, every overlayed variable $Z_{j}$ is transformed into a masked variable $G_{j}$ as
 
-$G_{j} = \text{cZ}_{j} + d_{j}$
+$$
+G_{j} = cZ_{j} + d_{j}
+$$
 
 In matrix notation, this yields
 
-$Z = X + \varepsilon$
+$$
+Z = X + \varepsilon
+$$
 
-$G = \text{cZ} + D = c(X + \varepsilon) + D$
+$$
+G = cZ_{j} + D = c(X + \varepsilon) + D
+$$
 
-where $X \sim  N(\mu,\Sigma),\varepsilon \sim  \left( 0,\text{αΣ} \right),G \sim  (\mu,\Sigma)$ and *D* is a matrix whose *j*-th column contains the scalar $d_{j}$ in all rows. Parameters *c* and $d_{j}$ are determined under the restrictions that $E\left( G_{j} \right) = E\left( X_{j} \right)$ and $V\left( G_{j} \right) = V\left( X_{j} \right)$ for $j = 1,\cdots,p$. In fact, the first restriction implies that $d_{j} = (1 - c)E\left( X_{j} \right)$, so that the linear transformations depend on a single parameter *c*.
+where $X \sim  N(\mu,\Sigma),\varepsilon \sim  \left( 0,\alpha\Sigma \right),G \sim  (\mu,\Sigma)$ and $D$ is a matrix whose $j$-th column contains the scalar $d_{j}$ in all rows. Parameters $c$ and $d_{j}$ are determined under the restrictions that $\mathbb{E}\left( G_{j} \right) = \mathbb{E}\left( X_{j} \right)$ and $\mathbb{V}\left( G_{j} \right) = \mathbb{V}\left( X_{j} \right)$ for $j = 1,\cdots,p$. In fact, the first restriction implies that $d_{j} = (1 - c)\mathbb{E}\left( X_{j} \right)$, so that the linear transformations depend on a single parameter $c$.
 
-Due to the restrictions used to determine *c*, this methods preserves expected values and covariances of the original variables and is quite good in terms of analytical validity. Regarding analysis of regression estimates in subpopulations, it is shown in Kim (1990) that (masked) sample means and covariances are asymptotically biased estimates of the corresponding statistics on the original subpopulations. The magnitude of the bias depends on the parameter *c*, so that estimates can be adjusted by the data user as long as *c* is revealed to her ---revealing *c* to the user has a fundamental disadvantage, though: the user can undo the linear transformation, so that this method becomes equivalent to plain uncorrelated noise addition (Domingo-Ferrer, Sebé, and Castellà, 2004)
+Due to the restrictions used to determine $c$, this methods preserves expected values and covariances of the original variables and is quite good in terms of analytical validity. Regarding analysis of regression estimates in subpopulations, it is shown in Kim (1990) that (masked) sample means and covariances are asymptotically biased estimates of the corresponding statistics on the original subpopulations. The magnitude of the bias depends on the parameter $c$, so that estimates can be adjusted by the data user as long as $c$ is revealed to her ---revealing $c$ to the user has a fundamental disadvantage, though: the user can undo the linear transformation, so that this method becomes equivalent to plain uncorrelated noise addition (Domingo-Ferrer, Sebé, and Castellà, 2004)
 
 The most prominent shortcomings of this method are that it does not preserve the univariate distributions of the original data and that it cannot be applied to discrete variables due to the structure of the transformations.
 
@@ -437,7 +474,7 @@ In the European project CASC (IST-2000-25069), the practicality and usability of
 
 #### Summary on noise addition
 
-Thus, in practice, only simple noise addition or noise addition with linear transformation are used. When using linear transformations, a decision has to be made whether to reveal to the data user the parameter *c* determining the transformations to allow for bias adjustment in the case of subpopulations.![](Images/media/image64.png){width="0.2in" height="0.2in"}
+Thus, in practice, only simple noise addition or noise addition with linear transformation are used. When using linear transformations, a decision has to be made whether to reveal to the data user the parameter $c$ determining the transformations to allow for bias adjustment in the case of subpopulations.![](Images/media/image64.png){width="0.2in" height="0.2in"}
 
 With the exception of the not very practical method of Sullivan (1989), additive noise is not suitable to protect categorical data. On the other hand, it is well suited for continuous data for the following reasons:
 
@@ -469,15 +506,19 @@ Tendick, P., and Matloff, N. (1994). *A modified random perturbation method for 
 
 ### Microaggregation: further details
 
-Consider a microdata set with $p$ continuous variables and $n$ records (*i.e.* the result of recording $p$ variables on $n$ individuals). A particular record can be viewed as an instance of $X^{'} = \left( X_{1},\cdots,X_{p} \right)$, where the $X_{i}$ are the variables. With these individuals, $g$ groups are formed with $n_{i}$ individuals in the *i*-th group ($n_{i} \geq k$ and $n = \sum_{}^{}n_{i}$). Denote by $x_{\text{ij}}$ the $j$-th record in the *i*-th group; denote by ${\overline{x}}_{i}$ the average record over the $i$-th group, and by $\overline{x}$ the average record over the whole set of $n$ individuals.
+Consider a microdata set with $p$ continuous variables and $n$ records (*i.e.* the result of recording $p$ variables on $n$ individuals). A particular record can be viewed as an instance of $X^{'} = \left( X_{1},\cdots,X_{p} \right)$, where the $X_{i}$ are the variables. With these individuals, $g$ groups are formed with $n_{i}$ individuals in the $i$-th group ($n_{i} \geq k$ and $n = \Sigma_{}^{}n_{i}$). Denote by $x_{\text{ij}}$ the $j$-th record in the $i$-th group; denote by ${\overline{x}}_{i}$ the average record over the $i$-th group, and by $\overline{x}$ the average record over the whole set of $n$ individuals.
 
-The optimal $k$-partition (from the information loss point of view) is defined to be the one that maximizes within-group homogeneity; the higher the within-group homogeneity, the lower the information loss, since microaggregation replaces values in a group by the group centroid. The sum of squares criterion is common to measure homogeneity in clustering. The within-groups sum of squares *SSE* is defined as
+The optimal $k$-partition (from the information loss point of view) is defined to be the one that maximizes within-group homogeneity; the higher the within-group homogeneity, the lower the information loss, since microaggregation replaces values in a group by the group centroid. The sum of squares criterion is common to measure homogeneity in clustering. The within-groups sum of squares $\text{SSE}$ is defined as
 
-$$\text{SSE} = \sum_{i = 1}^{g}{\sum_{j = 1}^{n_{i}}\left( x_{\text{ij}} - {\overline{x}}_{i} \right)}^{\prime}\left( x_{\text{ij}} - {\overline{x}}_{i} \right)$$
+$$
+\text{SSE} = \sum\limits_{i = 1}^{g}\sum\limits_{j = 1}^{n_{i}}\left( x_{\text{ij}} - {\overline{x}}_{i} \right)^{T}\left( x_{\text{ij}} - {\overline{x}}_{i} \right)
+$$
 
-The lower SSE, the higher the within group homogeneity. The total sum of squares is
+The lower $\text{SSE}$, the higher the within group homogeneity. The total sum of squares is
 
-$$\text{SST} = \sum_{i = 1}^{g}{\sum_{j = 1}^{n_{i}}\left( x_{\text{ij}} - \overline{x} \right)}^{\prime}\left( x_{\text{ij}} - \overline{x} \right)$$
+$$
+\text{SST} = \sum_{i = 1}^{g}\sum_{j = 1}^{n_{i}}\left( x_{\text{ij}} - \overline{x} \right)^{T}\left( x_{\text{ij}} - \overline{x} \right)
+$$
 
 In terms of sums of squares, the optimal $k$-partition is the one that minimizes SSE.
 
@@ -521,7 +562,7 @@ For a microdata set consisting of $p$ variables, these can be microaggregated to
 
 #### Fixed vs. variable group size 
 
-Classical microaggregation algorithms (Defays and Nanopoulos, 1993) required that all groups except perhaps one be of size *k*; allowing groups to be of size $k$depending on the structure of data was termed *data-oriented microaggregation* (Mateo-Sanz and Domingo-Ferrer, 1999), (Domingo-Ferrer and Mateo-Sanz, 2002). @fig-fixed-vs-variable-sized-group illustrates the advantages of variable-sized groups. If classical fixed-size microaggregation with $k = 3$ is used, we obtain a partition of the data into three groups, which looks rather unnatural for the data distribution given. On the other hand, if variable-sized groups are allowed then the five data on the left can be kept in a single group and the four data on the right in another group; such a variable-size grouping yields more homogeneous groups, which implies lower information loss.![](Images/media/image65.png){width="0.2in" height="0.2in"}
+Classical microaggregation algorithms (Defays and Nanopoulos, 1993) required that all groups except perhaps one be of size $k$; allowing groups to be of size $k$depending on the structure of data was termed *data-oriented microaggregation* (Mateo-Sanz and Domingo-Ferrer, 1999), (Domingo-Ferrer and Mateo-Sanz, 2002). @fig-fixed-vs-variable-sized-group illustrates the advantages of variable-sized groups. If classical fixed-size microaggregation with $k = 3$ is used, we obtain a partition of the data into three groups, which looks rather unnatural for the data distribution given. On the other hand, if variable-sized groups are allowed then the five data on the left can be kept in a single group and the four data on the right in another group; such a variable-size grouping yields more homogeneous groups, which implies lower information loss.![](Images/media/image65.png){width="0.2in" height="0.2in"}
 
 However, except for specific cases such as the one depicted in @fig-fixed-vs-variable-sized-group, the small gain in within-group homogeneity obtained with variable-sized groups hardly justifies the higher computational overhead of this option with respect to fixed-sized groups. This is particularly evident for multivariate data, as noted by Sande (2002).
 
@@ -545,11 +586,11 @@ We next describe the two microaggregation algorithms implemented in μ‑ARGUS.
 
 #### Hansen-Mukherjee's optimal univariate microaggregation
 
-In Hansen and Mukherjee (2003) a polynomial-time algorithm was proposed for *univariate* optimal microaggregation. Authors formulate the microaggregation problem as a shortest-path problem on a graph. They first construct the graph and then show that the optimal microaggregation corresponds to the shortest path in this graph. Each arc of the graph corresponds to a possible group that may be part of an optimal partition. The arc label is the *SSE* that would result if that group were to be included in the partition. We next detail the graph construction.![](Images/media/image68.png){width="0.2in" height="0.2in"}
+In Hansen and Mukherjee (2003) a polynomial-time algorithm was proposed for *univariate* optimal microaggregation. Authors formulate the microaggregation problem as a shortest-path problem on a graph. They first construct the graph and then show that the optimal microaggregation corresponds to the shortest path in this graph. Each arc of the graph corresponds to a possible group that may be part of an optimal partition. The arc label is the $\text{SSE}$ that would result if that group were to be included in the partition. We next detail the graph construction.![](Images/media/image68.png){width="0.2in" height="0.2in"}
 
-Let $V = \left\{ v_{1},\cdots,v_{n} \right\}$ be a vector consisting of $n$real numbers sorted into ascending order, so that $v_{1}$ is the smallest value and $v_{n}$ the largest value. Let $k$ be an integer group size such that $1 \leq k < n$. Now, a graph $G_{n,k}$ is constructed as follows:
+Let $V = \left\{ v_{1},\cdots,v_{n} \right\}$ be a vector consisting of $n$ real numbers sorted into ascending order, so that $v_{1}$ is the smallest value and $v_{n}$ the largest value. Let $k$ be an integer group size such that $1 \leq k < n$. Now, a graph $G_{n,k}$ is constructed as follows:
 
-1. For each value $v_{i}$ in **V**, create a node with label $i$. Create also an additional node with label 0.
+1. For each value $v_{i}$ in $V$, create a node with label $i$. Create also an additional node with label 0.
 
 ```{=html}
 <!-- -->
@@ -558,11 +599,13 @@ Let $V = \left\{ v_{1},\cdots,v_{n} \right\}$ be a vector consisting of $n$real 
 
 3. Map each arc $(i,j)$ to the group of values $C(i,j) = \left\{ v_{h}:i < h \leq j \right\}$. Let the length $L(i,j)$ of the arc be the within group sum of squares for $C(i,j)$, that is,
 
-$L(i,j) = \sum_{h = i + 1}^{j}\left( v_{h} - {\overline{v}}_{(i,j)} \right)^{2}$
+$$
+L(i,j) = \sum\limits_{h = i + 1}^{j}\left( v_{h} - {\overline{v}}_{(i,j)} \right)^{2}
+$$
 
 where ${\overline{v}}_{(i,j)} = \frac{1}{j - i}\sum_{h=i+1}^{j}v_{h}$
 
-It is proven in Hansen and Mukherjee (2003) that the optimal $k$-partition for **V** is found by taking as groups the $C(i,j)$ corresponding to the arcs in the shortest path between nodes 0 and $n$. For minimal group size $k$and a dataset of $n$ real numbers sorted in ascending order, the complexity of this optimal univariate microaggregation is $O\left( k^{2}n \right)$, that is, linear in the size of the dataset.
+It is proven in Hansen and Mukherjee (2003) that the optimal $k$-partition for $V$ is found by taking as groups the $C(i,j)$ corresponding to the arcs in the shortest path between nodes 0 and $n$. For minimal group size $k$and a dataset of $n$ real numbers sorted in ascending order, the complexity of this optimal univariate microaggregation is $O\left( k^{2}n \right)$, that is, linear in the size of the dataset.
 
 #### The MDAV heuristic for multivariate microaggregation
 
@@ -635,34 +678,42 @@ Since the probability mechanism that is used when applying PRAM is known, charac
 
 In this section a short theoretical description of PRAM is given. For a detailed description of the method, see e.g., Gouweleeuw et al. (1998a and 1998b). For a discussion of several issues concerning the method and its consequences, see e.g., De Wolf et al. (1998).![](Images/media/image71.png){width="0.2in" height="0.2in"}
 
-Let *ξ* denote a categorical variable in the original file to which PRAM will be applied and let *X* denote the same variable in the perturbed file. Moreover, assume that *ξ*, and hence *X* as well, has *K* categories, labelled 1, ..., *K*. The probabilities that define PRAM are denoted as
+Let $\xi$ denote a categorical variable in the original file to which PRAM will be applied and let $X$ denote the same variable in the perturbed file. Moreover, assume that $\xi$, and hence $X$ as well, has $K$ categories, labelled $1,\ldots,K$. The probabilities that define PRAM are denoted as
 
-$$p_{\text{kl}} = P(X = l|\xi = k)$$
+$$
+p_{\text{kl}} = P(X = l|\xi = k)
+$$
 
-i.e., the probability that an original score *ξ* = *k* is changed into the score *X* = *l*. These so called transition probabilities are defined for all *k*, *l* = 1, ..., *K.\
-*Using these transition probabilities as entries of a *K* × *K* matrix, we obtain a Markov matrix that we will call the PRAM-matrix, denoted by **P**.
+i.e., the probability that an original score $\xi$ = $k$ is changed into the score $X$ = $l$. These so called transition probabilities are defined for all $k$, $l = 1, ..., K$.\
+*Using these transition probabilities as entries of a $K \times K$ matrix, we obtain a Markov matrix that we will call the PRAM-matrix, denoted by $\mathbf{P}$.
 
-Applying PRAM now means that, given the score *ξ* = *k* for record *r*, the score *X* for that record is drawn from the probability distribution *p~k~*~1~, ..., *p~kK~*. For each record in the original file, this procedure is performed independently of the other records.
+Applying PRAM now means that, given the score $\xi = k$ for record $r$, the score $X$ for that record is drawn from the probability distribution $p_{k1},\ldots,p_{kK}$. For each record in the original file, this procedure is performed independently of the other records.
 
-To illustrate the ideas, suppose that the variable *ξ* is gender, with scores *ξ* =1 if male and *ξ* = 2 if female. Applying PRAM with *p*~11~ = *p*~22~ = 0.9 on a microdata file with 110 males and 90 females, would yield a perturbed microdata file with in expectation, 108 males and 92 females. However, in expectation, 9 of these males were originally female, and similarly, 11 of the females were originally male.
+To illustrate the ideas, suppose that the variable $\xi$ is gender, with scores $\xi =1$ if male and $\xi = 2$ if female. Applying PRAM with $p_{11} = p_{22} = 0.9$ on a microdata file with 110 males and 90 females, would yield a perturbed microdata file with in expectation, 108 males and 92 females. However, in expectation, 9 of these males were originally female, and similarly, 11 of the females were originally male.
 
 More generally, the effect of PRAM on one-dimensional frequency tables is that
 
-$$E(T_{X}|\xi) = P^{t}T_{\xi}$$
+$$
+\mathbb{E}(T_{X}|\xi) = \mathbf{P}^{T}T_{\xi}
+$$
 
-where *T~ξ~* = (*T~ξ~*(1), ..., *T~ξ~*(*Κ*))^t^ denotes the frequency table according to the original microdata file and *T~X~* the frequency table according to the perturbed microdata file. A conditionally unbiased estimator of the frequency table in the original file is then given by
+where $T_{\xi} = (T_{\xi}(1),\ldots,T_{\xi}(K))^T$ denotes the frequency table according to the original microdata file and $T_X$ the frequency table according to the perturbed microdata file. A conditionally unbiased estimator of the frequency table in the original file is then given by
 
-$${\hat{T}}_{\xi} = \left( P^{- 1} \right)^{t}T_{X}$$
+$$
+{\hat{T}}_{\xi} = \left( \mathbf{P}^{- 1} \right)^{T}T_{X}
+$$
 
 This can be extended to two-dimensional frequency tables, by vectorizing such tables. The corresponding PRAM-matrix is then given by the Kronecker product of the PRAM-matrices of the individual dimensions.
 
-Alternatively, one could use the two-dimensional frequency tables[^1] **T***~ξη~* for the original data and **T***~XY~* for the perturbed data directly in matrix notation:
+Alternatively, one could use the two-dimensional frequency tables[^1] $T_{\xi\eta}$ for the original data and $T_{XY}$ for the perturbed data directly in matrix notation:
 
-$${\hat{T}}_{\text{ξη}} = \left( P_{X}^{- 1} \right)^{t}T_{\text{XY}}P_{Y}^{- 1}$$
+$$
+\hat{T}_{\xi\eta} = \left( \mathbf{P}_{X}^{- 1} \right)^{T}T_{XY}}\mathbf{P}_{Y}^{- 1}
+$$
 
-where **P***~X~* denotes the PRAM-matrix corresponding to the categorical variable *X* and **P***~Y~* denotes the PRAM-matrix corresponding to the categorical variable *Y*.
+where $\mathbf{P}_{X}$ denotes the PRAM-matrix corresponding to the categorical variable $X$ and $\mathbf{P}_{Y}$ denotes the PRAM-matrix corresponding to the categorical variable $Y$.
 
-[^1]:When X has K categories and Y has L categories, the 2-dimensional frequency table **T***~XY~* is a K L matrix.
+[^1]:When $X$ has $K$ categories and $Y$ has $L$ categories, the 2-dimensional frequency table $T_{XY}$ is a $K\times L$ matrix.
 
 For more information about correction methods for statistical analyses applied to data that have been protected with PRAM, we refer to e.g., Gouweleeuw et al. (1998a) and Van den Hout (1999 and 2004).
 
@@ -733,13 +784,13 @@ It must be stressed here that the approach described in (Liew, Choi and Liew, 1
 
 Rubin (1993) suggested creating an entirely synthetic dataset based on the original survey data and multiple imputations. Rubin's proposal was more completely developed in Raghunathan, Reiter, and Rubin (2003). A simulation study of it was given in Reiter (2002). In Reiter (2005) inference on synthetic data is discussed and in Reiter (2005b) an application is given. ![](Images/media/image74.png){width="0.2in" height="0.2in"}
 
-We next sketch the operation of the original proposal by Rubin. Consider an original microdata set $X$ of size $n$ records drawn from a much larger population of $N$ individuals, where there are background variables $A$, non-confidential variables $B$ and confidential variables $C$. Background variables are observed and available for all $N$ individuals in the population, whereas $B$ and $C$are only available for the $n$ records in the sample $X$. The first step is to construct from $X$ a multiply-imputed population of $N$ individuals. This population consists of the *n* records in $X$ and $M$ (the number of multiple imputations, typically between 3 and 10) matrices of $(B,C)$data for the $N$-$n$ non-sampled individuals. The variability in the imputed values ensures, theoretically, that valid inferences can be obtained on the multiply-imputed population. A model for predicting $(B,C)$from $A$ is used to multiply-impute $(B,C)$in the population. The choice of the model is a nontrivial matter. Once the multiply-imputed population is available, a sample $Z$of $n^{'}$ records can be drawn from it whose structure looks like the one a sample of $n^{'}$ records drawn from the original population. This can be done $M$ times to create $M$ replicates of $(B,C)$values. The results are $M$ multiply-imputed synthetic datasets. To make sure no original data are in the synthetic datasets, it is wise to draw the samples from the multiply-imputed population excluding the $n$ original records from it.
+We next sketch the operation of the original proposal by Rubin. Consider an original microdata set $X$ of size $n$ records drawn from a much larger population of $N$ individuals, where there are background variables $A$, non-confidential variables $B$ and confidential variables $C$. Background variables are observed and available for all $N$ individuals in the population, whereas $B$ and $C$are only available for the $n$ records in the sample $X$. The first step is to construct from $X$ a multiply-imputed population of $N$ individuals. This population consists of the $n$ records in $X$ and $M$ (the number of multiple imputations, typically between 3 and 10) matrices of $(B,C)$data for the $N$-$n$ non-sampled individuals. The variability in the imputed values ensures, theoretically, that valid inferences can be obtained on the multiply-imputed population. A model for predicting $(B,C)$from $A$ is used to multiply-impute $(B,C)$in the population. The choice of the model is a nontrivial matter. Once the multiply-imputed population is available, a sample $Z$of $n^{'}$ records can be drawn from it whose structure looks like the one a sample of $n^{'}$ records drawn from the original population. This can be done $M$ times to create $M$ replicates of $(B,C)$values. The results are $M$ multiply-imputed synthetic datasets. To make sure no original data are in the synthetic datasets, it is wise to draw the samples from the multiply-imputed population excluding the $n$ original records from it.
 
 #### Synthetic data by bootstrap
 
 Fienberg (1994) proposed generating synthetic microdata by using bootstrap methods. Later, in Fienberg, Makov and Steele (1998), this approach was used for categorical data.![](Images/media/image75.png){width="0.2in" height="0.2in"}
 
-The bootstrap approach bears some similarity to the data distortion by probability distribution and the multiple-imputation methods described above. Given an original microdata set $X$ with *p* variables, the data protector computes its empirical *p*-variate cumulative distribution function (c.d.f.) $F$. Now, rather than distorting the original data to obtain masked data, the data protector alters (or "smoothes") the c.d.f. $F$to derive a similar c.d.f. $F^{'}$. Finally, $F^{'}$ is sampled to obtain a synthetic microdata set $Z$.
+The bootstrap approach bears some similarity to the data distortion by probability distribution and the multiple-imputation methods described above. Given an original microdata set $X$ with $p$ variables, the data protector computes its empirical $p$-variate cumulative distribution function (c.d.f.) $F$. Now, rather than distorting the original data to obtain masked data, the data protector alters (or "smoothes") the c.d.f. $F$to derive a similar c.d.f. $F^{'}$. Finally, $F^{'}$ is sampled to obtain a synthetic microdata set $Z$.
 
 #### Synthetic data by Latin Hypercube Sampling
 
@@ -751,13 +802,17 @@ Generating plausible synthetic values for all variables in a database may be dif
 
 In Burridge (2004) a family of methods known as IPSO (Information Preserving Statistical Obfuscation) is proposed for generation of partially synthetic data. It consists of three methods that are described next.
 
-The basic form of IPSO will be called here Method A. Informally, suppose two sets of variables $X$ and $Y$, where the former are the confidential outcome variables and the latter are quasi-identifier variables. Then $X$ are taken as independent and $Y$ as dependent variables. A multiple regression of *Y* on $X$ is computed and fitted $Y_{A}^{'}$ variables are computed. Finally, variables $X$ and $Y_{A}^{'}$ are released in place of $X$ and $Y$.
+The basic form of IPSO will be called here Method A. Informally, suppose two sets of variables $X$ and $Y$, where the former are the confidential outcome variables and the latter are quasi-identifier variables. Then $X$ are taken as independent and $Y$ as dependent variables. A multiple regression of $Y$ on $X$ is computed and fitted $Y_{A}^{'}$ variables are computed. Finally, variables $X$ and $Y_{A}^{'}$ are released in place of $X$ and $Y$.
 
-More formally, let $y$and $x$ be two data matrices, with rows representing respondents and columns representing variables; the row vectors $y_{i}$ and $x_{i}$ will represent the data for the *i*-th respondent, for $i = 1,\cdots,n$. The column vector $u_{j}$ will represent the quasi-identifier variable $j$, for $j = 1,\cdots,p$; in other words, the $u_{j}$ are the columns of quasi-identifier matrix $Y$. Conditionally on the specific values for confidential variables, quasi-identifier variables for different respondents are assumed to be independent. Conditional on the specific confidential variables $x_{i}$, the quasi-identifier variables $Y_{i}$. are assumed to follow a multivariate normal distribution with covariance matrix $\Sigma = \left\{ \sigma_{\text{jk}} \right\}$ and a mean vector $x_{i}B$, where $B$ is an *m*×*p* matrix with columns $\beta_{j}$. Thus a separate univariate normal multiple regression model is assumed for each column of $Y$ with regression parameter equal to the corresponding column of $B$, that is, $U_{j} \sim  N\left( \text{xβ}_{j},\sigma_{\text{jj}}I \right)$.
+More formally, let $y$and $x$ be two data matrices, with rows representing respondents and columns representing variables; the row vectors $y_{i}$ and $x_{i}$ will represent the data for the $i$-th respondent, for $i = 1,\cdots,n$. The column vector $u_{j}$ will represent the quasi-identifier variable $j$, for $j = 1,\cdots,p$; in other words, the $u_{j}$ are the columns of quasi-identifier matrix $Y$. Conditionally on the specific values for confidential variables, quasi-identifier variables for different respondents are assumed to be independent. Conditional on the specific confidential variables $x_{i}$, the quasi-identifier variables $Y_{i}$. are assumed to follow a multivariate normal distribution with covariance matrix $\Sigma = \left\{ \sigma_{\text{jk}} \right\}$ and a mean vector $x_{i}B$, where $B$ is an $m\times p$ matrix with columns $\beta_{j}$. Thus a separate univariate normal multiple regression model is assumed for each column of $Y$ with regression parameter equal to the corresponding column of $B$, that is, $U_{j} \sim  N\left( x\beta_{j},\sigma_{\text{jj}}I \right)$.
 
 Let $\hat{B}$ and $\hat{\Sigma}$ be the maximum likelihood estimates of $B$ and $\Sigma$derived from the complete dataset $(y,x)$. These estimates are a pair of sufficient statistics for the regression model. We denote in what follows the vectors of fitted values and residuals for $u_{j}$ as ${\hat{\mu}}_{j}$ and ${\hat{r}}_{j}$, respectively. Thus, $\hat{\mu}$, $\hat{r}$ and $\hat{\Sigma}$ will denote the matrices $x\hat{B}$, $y - x\hat{B}$ and $n^{- 1}{\hat{r}}^{T}\hat{r}$, respectively.
 
-The output of IPSO Method A is $y_{A}^{'} = x\hat{B}$
+The output of IPSO Method A is 
+
+$$
+y_{A}^{'} = x\hat{B} \quad .
+$$
 
 If a user fits a multiple regression model to $\left( y_{A}^{'},x \right)$, she will get estimates ${\hat{B}}_{A}$ and ${\hat{\Sigma}}_{A}$ which, in general, are different from the estimates $\hat{B}$ and $\hat{\Sigma}$ obtained when fitting the model to the original data $(y,x)$.
 
@@ -765,7 +820,9 @@ IPSO Method B modifies $y_{A}^{'}$ into $y_{B}^{'}$ in such a way that the estim
 
 Suppose that $\overset{\sim}{y}$ is a new, artificial, set of quasi-identifier values. These can be any set of numbers initially, *e.g.* an i.i.d. normal random sample or a deterministically chosen set. For each component new residuals ${\overset{\sim}{r}}_{j}$ are calculated by fitting the above multivariate multiple regression to the new "data" $\overset{\sim}{y}$. Define
 
-$y_{B}^{'} = \hat{\mu} + \overset{\sim}{r} = x\hat{B} + \overset{\sim}{r}$
+$$
+y_{B}^{'} = \hat{\mu} + \overset{\sim}{r} = x\hat{B} + \overset{\sim}{r}
+$$
 
 The following information preservation result holds for IPSO-B.
 
@@ -773,29 +830,39 @@ The following information preservation result holds for IPSO-B.
 
 **Proof:** We have that
 
-$y_{B}^{'} = x\hat{B} + \overset{\sim}{r} = x\hat{B} + \left( \overset{\sim}{y} - x\overset{\sim}{B} \right)$ (3.3.5.1)
+$$
+y_{B}^{'} = x\hat{B} + \overset{\sim}{r} = x\hat{B} + \left( \overset{\sim}{y} - x\overset{\sim}{B} \right) \qquad \text{(3.3.5.1)}
+$$ 
 
 where $\hat{B}$ is the MLE estimate of $B$ obtained from $\left( \overset{\sim}{y},x \right)$. Now, the expressions of $\hat{B}$ and $\overset{\sim}{B}$ are, respectively,
 
-$\hat{B} = \left( x^{T}x \right)^{- 1}x^{T}y$
+$$
+\hat{B} = \left( x^{T}x \right)^{- 1}x^{T}y
+$$
 
 and
 
-$\overset{\sim}{B} = \left( x^{T}x \right)^{- 1}x^{T}\overset{\sim}{y}$
+$$
+\overset{\sim}{B} = \left( x^{T}x \right)^{- 1}x^{T}\overset{\sim}{y}
+$$
 
 Analogously, the expression of the MLE estimate of ${\hat{B}}_{B}$ obtained from $\left( y_{B}^{'},x \right)$ is
 
-${\hat{B}}_{B} = \left( x^{T}x \right)^{- 1}x^{T}y_{B}^{'}$
+$$
+{\hat{B}}_{B} = \left( x^{T}x \right)^{- 1}x^{T}y_{B}^{'}
+$$
 
 Substituting expression (3.3.5.1) for $y_{B}^{'}$ in the equation above, we get
 
-${\hat{B}}_{B} = \left( x^{T}x \right)^{- 1}\left( x^{T}x \right)\hat{B} + \left( x^{T}x \right)^{- 1}x^{T}(\overset{\sim}{y} - x\overset{\sim}{B}) = \hat{B} + \overset{\sim}{B} - \overset{\sim}{B} = B$
+$$
+{\hat{B}}_{B} = \left( x^{T}x \right)^{- 1}\left( x^{T}x \right)\hat{B} + \left( x^{T}x \right)^{- 1}x^{T}(\overset{\sim}{y} - x\overset{\sim}{B}) = \hat{B} + \overset{\sim}{B} - \overset{\sim}{B} = B
+$$
 
 A more ambitious goal is to come up with a data matrix $y_{C}^{'}$ such that, when a multivariate multiple regression model is fitted to $\left( y_{C}^{'},x \right)$, *both* sufficient statistics $\hat{B}$ and $\hat{\Sigma}$ obtained on the original data $(y,x)$ are preserved.
 
 The algorithm proposed in Burridge (2004) to get $y_{C}^{'}$ is as follows
 
-1. Generate provisional new "data" $\overset{\sim}{y}$ (this will be an *n*×*p* matrix).
+1. Generate provisional new "data" $\overset{\sim}{y}$ (this will be an $n\times p$ matrix).
 
 2. Calculate provisional new residuals $\overset{\sim}{r}$ by fitting the multiple regression model to each column of $\overset{\sim}{y}$.
 
@@ -807,7 +874,9 @@ The algorithm proposed in Burridge (2004) to get $y_{C}^{'}$ is as follows
 
 Define
 
-$y_{C}^{'} = x\hat{B} + {\overset{\sim}{r}}^{'}$
+$$
+y_{C}^{'} = x\hat{B} + {\overset{\sim}{r}}^{'}
+$$
 
 Information preservation in IPSO-C is as follows.
 
@@ -815,26 +884,30 @@ Information preservation in IPSO-C is as follows.
 
 **Proof:** The expression of the MLE estimate of $\hat{B}$ obtained from $\left( y_{C}^{'},x \right)$ is
 
-$$\begin{align}
+$$
+\begin{align}
 {\hat{B}}_{C} &= \left( x^{T}x \right)^{- 1}x^{T}y_{C}^{'} = \left( x^{T}x \right)^{- 1}x^{T}\left( x\hat{B} + {\overset{\sim}{r}}^{'} \right) \\
 &= \hat{B} + \left( x^{T}x \right)^{- 1}x^{T}\overset{\sim}{r}L_{O}^{T}L^{T} = \hat{B} + \left( x^{T}x \right)^{- 1}x^{T}\left( \overset{\sim}{y} - x\overset{\sim}{B} \right)L_{O}^{T}L^{T} \\
 &= \hat{B} + \left( \overset{\sim}{B} - \overset{\sim}{B} \right)L_{O}^{T}L^{T} = \hat{B} \\
-\end{align}$$
+\end{align}
+$$
 
 Using that ${\hat{B}}_{C} = \hat{B}$, the expression of the MLE estimate of $\hat{\Sigma}$ obtained from $\left( y_{C}^{'},x \right)$ is
 
-$$\begin{align}
+$$
+\begin{align}
 {\hat{\Sigma}}_{C} &= \frac{\left( y_{C}^{'},x\hat{B} \right)^{T}\left( y_{C}^{'},x\hat{B} \right)}{n}\\
 &= \frac{\left( x\hat{B} + {\overset{\sim}{r}}^{'} - x\hat{B} \right)^{T}\left( x\hat{B} + {\overset{\sim}{r}}^{'} - x\hat{B} \right)}{n} \\ 
 &= \frac{{\overset{\sim}{r}}^{T}{\overset{\sim}{r}}^{'}}{n} \\ 
 &= \hat{\Sigma}
-\end{align}$$
+\end{align}
+$$
 
 where in the last equality we have used the property required on ${\overset{\sim}{r}}^{'}$.
 
 In Mateo-Sanz, Martínez-Ballesté and Domingo-Ferrer (2004), a non-iterative method for generating entirely synthetic continuous microdata through Cholesky decomposition is proposed. This can be viewed as a special case of IPSO. In a single step of computation, the method exactly reproduces the means and the covariance matrix of the original dataset. The running time grows linearly with the number of records. Exact preservation of the original covariance matrix implies that variances and Pearson correlations are also exactly preserved in the synthetic dataset.
 
-The idea of the method is as follows. A dataset **X** is viewed as a *n*×*m* matrix, where rows are records and columns are variables. First, the covariance matrix **C** of **X** is computed (covariance is defined between variables, *i.e.* between columns). Then, a random *n*\'×*m* matrix **A** is generated, whose covariance matrix is the identity matrix. Next, the Cholesky decomposition of **C** is computed, that is $C=U^t \times U$, an upper triangular matrix **U** is found such that . Finally, the synthetic microdata set **Z** is an *n*\'×*m* matrix **Z**=**A**⋅**U**.
+The idea of the method is as follows. A dataset $X$ is viewed as a $n\times m$ matrix, where rows are records and columns are variables. First, the covariance matrix $C$ of $X$ is computed (covariance is defined between variables, *i.e.* between columns). Then, a random $n\times m$ matrix $A$ is generated, whose covariance matrix is the identity matrix. Next, the Cholesky decomposition of $C$ is computed, that is $C=U^T \times U$, an upper triangular matrix $U$ is found such that . Finally, the synthetic microdata set $Z$ is an $n\times m$ matrix $Z = A \cdot U$.
 
 #### Other partially synthetic microdata approaches
 
@@ -844,83 +917,92 @@ Closely related to multiply imputed, partially synthetic microdata is model-base
 
 #### Muralidhar-Sarathy hybrid generator
 
-Hybrid data are a mixture of original data and synthetic data. Let V an original data set whose attributes are numerical and fall into confidential attributes $X (=X_1\dots X_L)$ and non-confidential attributes $Y (=Y_1\dots Y_M)$. Let V' be a hybrid data set obtained from V, whose attributes are $X (=X'_1\dots X'_L)$ (hybrid versions of X) and Y.![](Images/media/image82.png){width="0.2in" height="0.2in"}
+Hybrid data are a mixture of original data and synthetic data. Let $V$ an original data set whose attributes are numerical and fall into confidential attributes $X (=X_1\dots X_L)$ and non-confidential attributes $Y (=Y_1\dots Y_M)$. Let $V'$ be a hybrid data set obtained from $V$, whose attributes are $X (=X'_1\dots X'_L)$ (hybrid versions of $X$) and $Y$.![](Images/media/image82.png){width="0.2in" height="0.2in"}
 
 Muralidhar and Sarathy (2008) proposed a procedure (called MS in the sequel) for generating hybrid data as follows
 
-$$X'_j = \gamma + X_j\alpha^T + Y_j\beta^T + e_i, j = 1, \dots, n$$
+$$
+X'_j = \gamma + X_j\alpha^T + Y_j\beta^T + e_i, j = 1, \dots, n
+$$
 
 MS can yield hybrid data preserving the means and covariances of original data. To that end, the following equalities must be satisfied:
 
-$\beta^T = \sum_{YY}^{-1} \sum_{YX} (I-\alpha^T)$
+$$
+\begin{align}
+\beta^T &= \Sigma_{YY}^{-1} \Sigma_{YX} (I-\alpha^T) \\
+\gamma &= (I-\alpha) \bar{X} - \beta \bar{Y} \\
+\Sigma_{ee} &= (\Sigma_{XX} - \Sigma_{XY}\Sigma_{YY}^{-1}\Sigma_{YX}) - \alpha (\Sigma_{XX} - \Sigma_{XY}\Sigma_{YY}^{-1}\Sigma_{YX}) \alpha^T
+\end{align}
+$$
 
-$\gamma = (I-\alpha) \bar{X} - \beta \bar{Y}$
 
-$\sum_{ee} = (\sum_{XX} - \sum_{XY}\sum_{YY}^{-1}\sum_{YX}) - \alpha (\sum_{XX} - \sum_{XY}\sum_{YY}^{-1}\sum_{YX}) \alpha^T$
+where $I$ is the identity matrix and $\Sigma_{ee}$ is the covariance matrix of the noise terms $e$.
 
-where I is the identity matrix and $\sum_{ee}$ is the covariance matrix of the noise terms $e$.
+Thus, $\alpha$ completely specifies the procedure. The authors of MS admit that $\alpha$ must be selected carefully to ensure that $\Sigma_{ee}$ is positive semidefinite. They consider three options for specifying the $\alpha$ matrix:
 
-Thus, $\alpha$ completely specifies the procedure. The authors of MS admit that $\alpha$ must be selected carefully to ensure that $\sum_{ee}$ is positive semidefinite. They consider three options for specifying the $\alpha$ matrix:
+(1) Take $\alpha$ as a diagonal matrix with all values in the diagonal being equal. In this case, $\Sigma_{ee}$ is positive semidefinite and the value of the hybrid attribute $X_i'$ depends only on $X_i$, but not on $X_j$ for $j \neq i$. All confidential attributes $X_i$ are perturbed at the same level.
 
-(1) Take $\alpha$ as a diagonal matrix with all values in the diagonal being equal. In this case, $\sum_{ee}$ is positive semidefinite and the value of the hybrid attribute $X_i'$ depends only on $X_i$, but not on $X_j$ for $j \neq i$. All confidential attributes $X_i$ are perturbed at the same level.
-
-(2) Take $\alpha$ as a diagonal matrix, with values in the diagonal being not all equal. In this case, $X_i'$ still depends only on $X_i$, but not on $X_j$ for $j \neq i$. The differences are that the confidential attributes are perturbed at different levels and there is no guarantee that $\sum_{ee}$ is positive semidefinite, so it may be necessary to try several values of $\alpha$ until positive semidefiniteness is achieved.
+(2) Take $\alpha$ as a diagonal matrix, with values in the diagonal being not all equal. In this case, $X_i'$ still depends only on $X_i$, but not on $X_j$ for $j \neq i$. The differences are that the confidential attributes are perturbed at different levels and there is no guarantee that $\Sigma_{ee}$ is positive semidefinite, so it may be necessary to try several values of $\alpha$ until positive semidefiniteness is achieved.
 
 (3) Taking $\alpha$ as a non-diagonal matrix does not guarantee positive semidefiniteness either and the authors of MS do not see any advantage in it, although it would be the only way to have $X_i'$ depend on several attributes among $(X_1 \dots X_L)$. With $\mathbb{R}^{-}$-Microhybrid, the dependence of $X_i'$ on the original confidential attributes is the one provided by the underlying IPSO method.
 
 #### Microaggregation-based hybrid data
 
-In (Domingo-Ferrer and González-Nicolás, 2009) an alternative procedure to generate hybrid data based on microaggregation was proposed. Let *V* be an original data set consisting of *n* records. On input an integer parameter $k \in \{1,\dots,n\}$, the procedure described in this section generates a hybrid data set $V'$. The greater *k*, the more synthetic is $V'$. Extreme cases are: i) *k* = 1, which yields $V'$ = *V* (the output data are exactly the original input data); and ii) *k* = *n*, which yields a completely synthetic output data set $V'$.![](Images/media/image116.png){width="0.2in" height="0.2in"}
+In (Domingo-Ferrer and González-Nicolás, 2009) an alternative procedure to generate hybrid data based on microaggregation was proposed. Let $V$ be an original data set consisting of $n$ records. On input an integer parameter $k \in \{1,\dots,n\}$, the procedure described in this section generates a hybrid data set $V'$. The greater $k$, the more synthetic is $V'$. Extreme cases are: i) $k$ = 1, which yields $V' = V$ (the output data are exactly the original input data); and ii) $k = n$, which yields a completely synthetic output data set $V'$.![](Images/media/image116.png){width="0.2in" height="0.2in"}
 
 The procedure calls two algorithms:
 
--   A generic synthetic data generator $S(C,C', parms)$, that is, an algorithm which, given an original data (sub)set C, generates a synthetic data (sub)set $C'$ preserving the statistics or parameters or models of C specified in *parms*.
+-   A generic synthetic data generator $S(C,C', \text{parms})$, that is, an algorithm which, given an original data (sub)set $C$, generates a synthetic data (sub)set $C'$ preserving the statistics or parameters or models of C specified in $\text{parms}$.
 
--   A microaggregation heuristic, which, on input a set or *n* records and parameter *k*, partitions the set of records into clusters containing between *k* and 2*k* − 1 records. Cluster creation attempts to maximize intra-cluster homogeneity.
+-   A microaggregation heuristic, which, on input a set or $n$ records and parameter $k$, partitions the set of records into clusters containing between $k$ and $2k − 1$ records. Cluster creation attempts to maximize intra-cluster homogeneity.
 
-**Procedure 1 (*Microhybrid* (V,V', *parms*, *k*))**
+**Procedure 1 (*Microhybrid* ($V$,$V'$, $\text{parms}$, $k$))**
 
 (1) Call microaggregation(V, *k*). Let $C_1,\dots,C_k$ for some *k* be the resulting clusters of records.
 
-(2) For $i = 1, \dots, k$ call $S(C_i,C_{i}', parms)$.
+(2) For $i = 1, \dots, k$ call $S(C_i,C_{i}', \text{parms})$.
 
 (3) Output a hybrid dataset $V'$ whose records are those in the clusters $C_{1}',\dots,C_{k}'$ .
 
-At Step 1 of procedure Microhybrid above, clusters containing between *k* and 2*k* −1 records are created. Then at Step 2, a synthetic version of each cluster is generated. At Step 3, the original records in each cluster are replaced by the records in the corresponding synthetic cluster (instead of replacing them with the average record of the cluster, as done in conventional microaggregation).
+At Step 1 of procedure Microhybrid above, clusters containing between $k$ and $2k −1$ records are created. Then at Step 2, a synthetic version of each cluster is generated. At Step 3, the original records in each cluster are replaced by the records in the corresponding synthetic cluster (instead of replacing them with the average record of the cluster, as done in conventional microaggregation).
 
 The Microhybrid procedure bears some resemblance to the condensation approach proposed by (Aggarwal and Yu, 2004); however, Microhybrid is more general because:
 
 -   It can be applied to any data type (condensation is designed for numerical data only);
 
--   Clusters do not need to be all of size *k* (their sizes can vary between *k* and 2*k* − 1);
+-   Clusters do not need to be all of size $k$ (their sizes can vary between $k$ and $2k − 1$);
 
 -   Any synthetic data generator (chosen to preserve certain pre-selected statistics or models) can be used by Microhybrid;
 
 -   Instead of using an ad hoc clustering heuristic like condensation, Microhybrid can use any of the best microaggregation heuristics cited above, which should yield higher within-cluster homogeneity and thus less information loss.
 
-We justify here the role of parameter *k* in Microhybrid:
+We justify here the role of parameter $k$ in Microhybrid:
 
--   If *k* = 1, and *parms* include preserving the mean of each attribute in the original clusters, the output is the same original data set, because the procedure creates *n* clusters (as many as the number of original records). With *k* = 1, even variable-size heuristics will yield all clusters of size 1, because the maximum intra-cluster similarity is obtained when clusters consist all of a single record.
+-   If $k = 1$, and $\text{parms}$ include preserving the mean of each attribute in the original clusters, the output is the same original data set, because the procedure creates $n$ clusters (as many as the number of original records). With $k = 1$, even variable-size heuristics will yield all clusters of size 1, because the maximum intra-cluster similarity is obtained when clusters consist all of a single record.
 
--   If *k* = *n*, the output is a single synthetic cluster: the procedure is equivalent to calling the synthetic data generator *S* once for the entire data set.
+-   If $k = n$, the output is a single synthetic cluster: the procedure is equivalent to calling the synthetic data generator $S$ once for the entire data set.
 
--   For intermediate values of *k*, several clusters are obtained at Step 1, whose parameters *parms* are preserved by the synthetic clusters generated at Step 2. As *k* decreases, the number of clusters (whose parameters are preserved in the data output at Step 3) increases, which causes the output data to look more and more like the original data. Each cluster can be regarded as a constraint on the synthetic data generation: the more constraints, the less freedom there is for generating synthetic data, and the output resembles more the original data. This is why the output data can be called hybrid.
+-   For intermediate values of $k$, several clusters are obtained at Step 1, whose parameters $\text{parms}$ are preserved by the synthetic clusters generated at Step 2. As $k$ decreases, the number of clusters (whose parameters are preserved in the data output at Step 3) increases, which causes the output data to look more and more like the original data. Each cluster can be regarded as a constraint on the synthetic data generation: the more constraints, the less freedom there is for generating synthetic data, and the output resembles more the original data. This is why the output data can be called hybrid.
 
-It must be noted here that, depending on the synthetic generator used, there may be a lower bound for *k* higher than 1. For example, if using IPSO (see section 3.4.7.5) with $|X|$ confidential attributes and $|Y|$ non-confidential attributes, it turns out that *k* must be at least $2|X|+|Y|+1$; otherwise there are not enough degrees of freedom for the generator to work.
+It must be noted here that, depending on the synthetic generator used, there may be a lower bound for $k$ higher than 1. For example, if using IPSO (see section 3.4.7.5) with $|X|$ confidential attributes and $|Y|$ non-confidential attributes, it turns out that $k$ must be at least $2|X|+|Y|+1$; otherwise there are not enough degrees of freedom for the generator to work.
 
-Note that the choice of parameter *k* is more straightforward than the choice of $\alpha$ in the MS procedure above. Also, for the case of numerical microdata, Microhybrid can offer, in addition to mean and covariance exact preservation, approximate preservation of third-order and fourth-order moments, and also approximate preservation of all moments up to order four in randomly chosen subdomains of the dataset. Details are given in the above-referenced paper describing Microhybrid.
+Note that the choice of parameter $k$ is more straightforward than the choice of $\alpha$ in the MS procedure above. Also, for the case of numerical microdata, Microhybrid can offer, in addition to mean and covariance exact preservation, approximate preservation of third-order and fourth-order moments, and also approximate preservation of all moments up to order four in randomly chosen subdomains of the dataset. Details are given in the above-referenced paper describing Microhybrid.
 
 #### Other hybrid microdata approaches
 
 A different approach called hybrid masking was proposed in Dandekar, Domingo-Ferrer and Sebé (2002). The idea is to compute masked data as a combination of original and synthetic data. Such a combination allows better control than purely synthetic data over the individual characteristics of masked records. For hybrid masking to be feasible, a rule must be used to pair one original data record with one synthetic data record. An option suggested in Dandekar, Domingo-Ferrer and Sebé (2002) is to go through all original data records and pair each original record with the nearest synthetic record according to some distance. Once records have been paired, Dandekar, Domingo-Ferrer, and Sebé (2002) suggest two possible ways for combining one original record $X$ with one synthetic record $X_{S}$: additive combination and multiplicative combination. Additive combination yields ![](Images/media/image129.png){width="0.2in" height="0.2in"}
 
-$Z = \text{αX} + (1 - \alpha)X_{S}$
+$$
+Z = \alpha X + (1 - \alpha)X_{S}
+$$
 
 and multiplicative combination yields
 
-$Z = X^{\alpha} \cdot X_{s}^{(1 - \alpha)}$
+$$
+Z = X^{\alpha} \cdot X_{s}^{(1 - \alpha)}
+$$
 
-where α is an input parameter in \[0,1\] and *Z* is the hybrid record. The authors present empirical results comparing the hybrid approach with rank swapping and microaggregation masking (the synthetic component of hybrid data is generated using Latin Hypercube Sampling by Dandekar, Cohen, and Kirkendall, 2002).
+where $\alpha$ is an input parameter in $[0,1]$ and $Z$ is the hybrid record. The authors present empirical results comparing the hybrid approach with rank swapping and microaggregation masking (the synthetic component of hybrid data is generated using Latin Hypercube Sampling by Dandekar, Cohen, and Kirkendall, 2002).
 
 Post-masking optimization is another approach to combining original and synthetic microdata is proposed in Sebé et al. (2002) . The idea here is to first mask an original dataset using a masking method. Then a hill-climbing optimization heuristic is run which seeks to modify the masked data to preserve the first and second-order moments of the original dataset as much as possible without increasing the disclosure risk with respect to the initial masked data. The optimization heuristic can be modified to preserve higher-order moments, but this significantly increases computation. Also, the optimization heuristic can use take as initial dataset a random dataset instead of a masked dataset; in this case, the output dataset is purely synthetic.
 
