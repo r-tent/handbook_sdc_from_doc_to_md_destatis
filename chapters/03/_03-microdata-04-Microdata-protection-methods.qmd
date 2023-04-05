@@ -708,7 +708,7 @@ This can be extended to two-dimensional frequency tables, by vectorizing such ta
 Alternatively, one could use the two-dimensional frequency tables[^1] $T_{\xi\eta}$ for the original data and $T_{XY}$ for the perturbed data directly in matrix notation:
 
 $$
-\hat{T}_{\xi\eta} = \left( \mathbf{P}_{X}^{- 1} \right)^{T}T_{XY}}\mathbf{P}_{Y}^{- 1}
+\hat{T}_{\xi\eta} = \left( \mathbf{P}_{X}^{- 1} \right)^{T}T_{XY}\mathbf{P}_{Y}^{- 1}
 $$
 
 where $\mathbf{P}_{X}$ denotes the PRAM-matrix corresponding to the categorical variable $X$ and $\mathbf{P}_{Y}$ denotes the PRAM-matrix corresponding to the categorical variable $Y$.
@@ -958,7 +958,7 @@ The procedure calls two algorithms:
 
 **Procedure 1 (*Microhybrid* ($V$,$V'$, $\text{parms}$, $k$))**
 
-(1) Call microaggregation(V, *k*). Let $C_1,\dots,C_k$ for some *k* be the resulting clusters of records.
+(1) Call microaggregation($V$, $k$). Let $C_1,\dots,C_k$ for some $k$ be the resulting clusters of records.
 
 (2) For $i = 1, \dots, k$ call $S(C_i,C_{i}', \text{parms})$.
 
