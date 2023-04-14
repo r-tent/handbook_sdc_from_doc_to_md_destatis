@@ -6,6 +6,7 @@ The key aim of the Statistical Disclosure Control is to achieve optimal balance 
   
 ### Types of disclosure risk
 
+In general
 
 A strict evaluation of information loss must be based on the data uses to be supported by the protected data. The greater the differences between the results obtained on original and protected data for those uses, the higher the loss of information. However, very often microdata protection cannot be performed in a data use specific manner, for the following reasons:
 
