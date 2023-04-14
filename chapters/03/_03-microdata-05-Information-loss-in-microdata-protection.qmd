@@ -1,6 +1,11 @@
-## Information loss in microdata protection
+## Measurement of disclosure risk and information loss
 
 ### Introduction
+
+The key aim of the Statistical Disclosure Control is to achieve optimal balance between minimization of disclosure risk and simultaneous minimization of the information loss arising from the SDC process (what is equivalent to maximization of data utility for the possible users). So, both aspects of this problem will be described and critically discussed in this subchapter. We will present types of disclosure risk, show how one can measure of disclosure risk for categorical variables and continuous variables. Because usually for each of such types separate measures are applied, we investigate also a possibility of complex measurement of disclosure risk taking them jointly into account. A similar approach was also applied to measures of information loss: types of information loss and its measures for categorical and continuous variables are presented and next complex measures providing synthetic information in this respect are discussed. They are available already in the literature and implemented to the specialized statistical software. Finally, some remarks on the practical realization of trade-off between safety and utility of microdata are collected.
+  
+### Types of disclosure risk
+
 
 A strict evaluation of information loss must be based on the data uses to be supported by the protected data. The greater the differences between the results obtained on original and protected data for those uses, the higher the loss of information. However, very often microdata protection cannot be performed in a data use specific manner, for the following reasons:
 
