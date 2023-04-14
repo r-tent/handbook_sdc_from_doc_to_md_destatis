@@ -6,15 +6,17 @@ The key aim of the Statistical Disclosure Control is to achieve optimal balance 
   
 ### Types of disclosure risk
 
-The assessment of the risk of identification using disclosed data involves identifying unsafe combinations for categorical variables or their values in the neighbourhood of relevant original values (for continuous variables) or levels (individual, global or hierarchical). The unsafe combinations of values of categorical variables are recognized using e.g. the $k$-anonymity or $l$-diversity rules. It is possible also when the $t$-closeness criterion is applied: in this case all records - and themselves the combinations of values of categorical variables – belonging to unsafe class are regarded to be unsafe. 
+The assessment of the risk of identification using disclosed data involves identifying unsafe combinations for categorical variables or their values in the neighbourhood of relevant original values (for continuous variables) or levels (individual, global or hierarchical). The unsafe combinations of values of categorical variables are recognized using e.g. the $k$-anonymity or $l$-diversity rules. It is possible also when the $t$-closeness criterion is applied: in this case all records - and themselves the combinations of values of categorical variables – belonging to unsafe class are regarded to be unsafe. There are several criteria to classify the risk. We present the most important from them.
 
-One can distinguish two types of disclosure risk for a dataset obtained once the SDC process has been applied: 
-    • internal risk -- when there is a threat of identifying  units only using modified data (It is worth noting that the measures of internal risk can obviously be used to assess the risk of disclosure in the original data),
+Due to the range of data that can be used to identify the individual one can distinguish two types of disclosure risk for a dataset obtained once the SDC process has been applied (cf. Młodak et al. (2022)): 
+    • internal risk -- when there is a threat of identifying  units only using modified data (it is worth noting that the measures of internal risk can obviously be used to assess the risk of disclosure in the original data),
     • external risk -- when there is a threat of identifying units by attempting to link data after SDC with information from other sources possibly available to the user.
 
 Internal risk results from the existence of unique combinations of values (exact for categorical variables and -- if possible -- within a certain precision level for continuous variables). External risk depends on the possibility of linking records contained in a statistical dataset (which underwent SDC) with relevant records from other data sources available to the user. 
 
-Internal risk refers to the risk of a user/intruder identifying a given unit only by using information included in the file that has been made available by the data provider (e.g. statistical office). In this case, it is assumed that the user can only rely on information that can be obtained from the data set made available to to him/her. In contrast, external risk refers to the situation when the user can access alternative data sources and use them in an attempt to identify units by linking relevant data from different sources. As can be seen, these two kinds of risks are rather different. 
+Internal risk refers to the risk of a user/intruder identifying a given unit only by using information included in the file that has been made available by the data provider (e.g. statistical office). In this case, it is assumed that the user can only rely on information that can be obtained from the data set made available to to him/her. In contrast, external risk refers to the situation when the user can access alternative data sources and use them in an attempt to identify units by linking relevant data from different sources. As can be seen, these two kinds of risks are rather different.
+
+Internal risk seems to be easier to compute than the external risk. Internal threats for confidentiality can be modelled by violation of the aforementioned rules based on frequency of combinations of values of categorical variables and of observations falling into an re-identification precision interval around a given value of continuous variable. However, the estimation of external risk requires a knowledge about possible alternative data sources available for the user. This knowledge is hard to obtain, but we can (with large probability) suppose which possibilities in this respect he/she can have. For instance, if the user is employed in the labour office, one can suppose the he/she has an access to the basis of unemployed persons, which can be linked by him/her with the databse from the Labour Force Survey obtained from the official statistics or similar data holder).       
 
 A strict evaluation of information loss must be based on the data uses to be supported by the protected data. The greater the differences between the results obtained on original and protected data for those uses, the higher the loss of information. However, very often microdata protection cannot be performed in a data use specific manner, for the following reasons:
 
@@ -160,6 +162,9 @@ Domingo-Ferrer, J., and Torra, V. (2001). *Disclosure protection methods and inf
 Hundepool, A., Van de Wetering, A., Ramaswamy, R., Franconi, L., Capobianchi, A., DeWolf, P.-P., Domingo-Ferrer, J., Torra, V., Brand, R:, and Giessing, S. (2005). *µ-ARGUS version 4.0 Software and User's Manual*. Statistics Netherlands, Voorburg NL, may 2005. [[http://neon.vb.cbs.nl/casc]{.underline}](http://neon.vb.cbs.nl/casc/deliv/MUmanual4.0.pdf).
 
 Kooiman, P. L., Willenborg, L. and Gouweleeuw, J. (1998). *PRAM: A method for disclosure limitation of microdata.* Technical report, Statistics Netherlands (Voorburg, NL), 1998.
+
+Młodak, A., Pietrzak, M., & Józefowski, T. (2022). The trade–off between the risk of disclosure and data utility in SDC: A case of data from a survey of accidents at
+work. *Statistical Journal of the IAOS*, 38 (4), 1503–1511.
 
 Trottini, M. (2003) . *Decision models for data disclosure limitation*. PhD thesis, Carnegie Mellon University, 2003. [[http://www.niss.org/dgii/TR/Thesis-Trottini-final.pdf]{.underline}](http://www.niss.org/dgii/TR/Thesis-Trottini-final.pdf).
 
