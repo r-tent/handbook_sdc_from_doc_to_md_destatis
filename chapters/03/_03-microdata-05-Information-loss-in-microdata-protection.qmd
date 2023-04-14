@@ -16,9 +16,18 @@ Internal risk results from the existence of unique combinations of values (exact
 
 Internal risk refers to the risk of a user/intruder identifying a given unit only by using information included in the file that has been made available by the data provider (e.g. statistical office). In this case, it is assumed that the user can only rely on information that can be obtained from the data set made available to to him/her. In contrast, external risk refers to the situation when the user can access alternative data sources and use them in an attempt to identify units by linking relevant data from different sources. As can be seen, these two kinds of risks are rather different.
 
-Internal risk seems to be easier to compute than the external risk. Internal threats for confidentiality can be modelled by violation of the aforementioned rules based on frequency of combinations of values of categorical variables and of observations falling into an re-identification precision interval around a given value of continuous variable. However, the estimation of external risk requires a knowledge about possible alternative data sources available for the user. This knowledge is hard to obtain, but we can (with large probability) suppose which possibilities in this respect he/she can have. For instance, if the user is employed in the labour office, one can suppose the he/she has an access to the basis of unemployed persons, which can be linked by him/her with the databse from the Labour Force Survey obtained from the official statistics or similar data holder).       
+Internal risk seems to be easier to compute than the external risk. Internal threats for confidentiality can be modelled by violation of the aforementioned rules based on frequency of combinations of values of categorical variables and of observations falling into an re-identification precision interval around a given value of continuous variable. However, the estimation of external risk requires a knowledge about possible alternative data sources available for the user. This knowledge is hard to obtain, but we can (with large probability) suppose which possibilities in this respect he/she can have. For instance, if the user is employed in the labour office, one can suppose the he/she has an access to the basis of unemployed persons, which can be linked by him/her with the databse from the Labour Force Survey obtained from the official statistics or similar data holder). The internal and external risk can be combined to obtain a total disclosure risk.   
 
 A strict evaluation of information loss must be based on the data uses to be supported by the protected data. The greater the differences between the results obtained on original and protected data for those uses, the higher the loss of information. However, very often microdata protection cannot be performed in a data use specific manner, for the following reasons:
+
+Another classification of disclosure risk is connected with the reference object. That is, the following types of risk from this point of view are distinguished (cf. Templ (2017)):  
+    • individual risk - the risk of disclosing data for a single record and thus identifying the corresponding individual,
+    • hierarchical risk - the aggregated risk estimated for units of particular levels of a given hierarchy established within a dataset (e.g. according to territorial or economic classification),    
+    • global risk - the aggregated disclosure risk for the whole data set.
+
+The statistician involved in processing and dissemination of data should estymate disclosure risk at each stage of the SDC process. It allows to track changes and efficiency of data protection made using various SDC methods and taking all relevant data struktures into account. Due to the fact, that information on the disclosure risk can contribute to re-identification of individuals, it should be, however, confidential itself and cannot be known by the user.    
+
+### Measures of disclosure risk for categorical variables
 
 • Potential data uses are very diverse and it may be even hard to identify them all at the moment of data release by the data protector.
 
@@ -165,6 +174,8 @@ Kooiman, P. L., Willenborg, L. and Gouweleeuw, J. (1998). *PRAM: A method for di
 
 Młodak, A., Pietrzak, M., & Józefowski, T. (2022). The trade–off between the risk of disclosure and data utility in SDC: A case of data from a survey of accidents at
 work. *Statistical Journal of the IAOS*, 38 (4), 1503–1511.
+
+Templ, M. (2017). *Statistical Disclosure Control for Microdata. Methods and Applications in R.* Springer International Publishing AG, Cham, Switzerland.
 
 Trottini, M. (2003) . *Decision models for data disclosure limitation*. PhD thesis, Carnegie Mellon University, 2003. [[http://www.niss.org/dgii/TR/Thesis-Trottini-final.pdf]{.underline}](http://www.niss.org/dgii/TR/Thesis-Trottini-final.pdf).
 
