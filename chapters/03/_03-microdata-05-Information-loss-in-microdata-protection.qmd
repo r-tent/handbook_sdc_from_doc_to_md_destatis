@@ -6,7 +6,15 @@ The key aim of the Statistical Disclosure Control is to achieve optimal balance 
   
 ### Types of disclosure risk
 
-In general
+The assessment of the risk of identification using disclosed data involves identifying unsafe combinations for categorical variables or their values in the neighbourhood of relevant original values (for continuous variables) or levels (individual, global or hierarchical). The unsafe combinations of values of categorical variables are recognized using e.g. the $k$-anonymity or $l$-diversity rules. It is possible also when the $t$-closeness criterion is applied: in this case all records - and themselves the combinations of values of categorical variables – belonging to unsafe class are regarded to be unsafe. 
+
+One can distinguish two types of disclosure risk for a dataset obtained once the SDC process has been applied: 
+    • internal risk -- when there is a threat of identifying  units only using modified data (It is worth noting that the measures of internal risk can obviously be used to assess the risk of disclosure in the original data),
+    • external risk -- when there is a threat of identifying units by attempting to link data after SDC with information from other sources possibly available to the user.
+
+Internal risk results from the existence of unique combinations of values (exact for categorical variables and -- if possible -- within a certain precision level for continuous variables). External risk depends on the possibility of linking records contained in a statistical dataset (which underwent SDC) with relevant records from other data sources available to the user. 
+
+Internal risk refers to the risk of a user/intruder identifying a given unit only by using information included in the file that has been made available by the data provider (e.g. statistical office). In this case, it is assumed that the user can only rely on information that can be obtained from the data set made available to to him/her. In contrast, external risk refers to the situation when the user can access alternative data sources and use them in an attempt to identify units by linking relevant data from different sources. As can be seen, these two kinds of risks are rather different. 
 
 A strict evaluation of information loss must be based on the data uses to be supported by the protected data. The greater the differences between the results obtained on original and protected data for those uses, the higher the loss of information. However, very often microdata protection cannot be performed in a data use specific manner, for the following reasons:
 
