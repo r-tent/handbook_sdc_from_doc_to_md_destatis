@@ -31,7 +31,7 @@ The statistician involved in processing and dissemination of data should estymat
 
 The key measures of disclosure risk for categorical variables in microdata are, in general, based on the frequency rules in the internal dimension. That is, they are expressed by number or percentage of records violating $k$-anonymity or $l$-diversity rule or being regarded as unsafe according to the $t$-closeness principle. These indicators can be applied, however, only for the raw microdata. However, we have to take also into account the fact that the microdata are usually a sample from some general population, and verify that relevant population values are also safe. Of course, one should take also the specificity of individual and global risk into account. As regards the hierachical risk, Templ (2017) proposes to measure it in any case as $1-\prod_{i\in A}{(1-r_i)}$, where $r_i$ is the individual risk for $i$-th record and $A$ is a given aggregate.
 
-Hundepool et al. (2012) present the measure of individual risk being a probability of correct link between record and unit in a worst case scenario. On the other hand, the global risk is here computed as a sum of inverted frequencies of combinations (also in an option restricted only to limited only to those combinations that have the frequency equal to 1). It is presented also in subchapter 3.3.3. This approach was further developed by Taylor, Zhou, and Rise (2018), who proposed an additional measure: the probability of a correct match given a unique match and probability of correct match. The former is a relation of the number of combinations with frequency 1 in the sample and relevant number in the population, the latter is the average expected value of inverted population frequency of a combination given relevant sample frequency. Moreover, Hundepool et al. (2012) and Taylor et al. (2018) as well as Templ (2017) discuss the use of Benedetti–Franconi and Poisson approaches in this context. Let $f_k$ be frequency of combination of values of categorical variables in $k$-th records in a sample and $F_k$ - the relevant frequency in the population and $\pi_k$ - its inclusion probability. Then the individal risk, $r_k$ is given as a function of these quantities. Templ (2017) provides the complete formula. However, in practice, most risky are situations where $f_k=1$ or $f_k=2$. In the former case the estimate of individual risk as
+Hundepool et al. (2012) present the measure of individual risk being a probability of correct link between record and unit in a worst case scenario. On the other hand, the global risk is here computed as a sum of inverted frequencies of combinations (also in an option restricted only to limited only to those combinations that have the frequency equal to 1). It is presented also in subchapter 3.3.3. This approach was further developed by Taylor, Zhou, and Rise (2018), who proposed an additional measure: the probability of a correct match given a unique match and probability of correct match. The former is a relation of the number of combinations with frequency 1 in the sample and relevant number in the population, the latter is the average expected value of inverted population frequency of a combination given relevant sample frequency. Moreover, Hundepool et al. (2012) and Taylor et al. (2018) as well as Templ (2017) discuss the use of Benedetti–Franconi and Poisson approaches in this context. Let $f_k$ be frequency of combination of values of categorical variables in $k$-th records in a sample and $F_k$ - the relevant frequency in the population and $\pi_k$ - its inclusion probability. Then the individual risk, $r_k$, is given as a function of these quantities. Templ (2017) provides the complete formula. However, in practice, most risky are situations where $f_k=1$ or $f_k=2$. In the former case the estimate of individual risk as
 $\hat{r}_k=\frac{\hat{p}_k}{1-\hat{p}_k}\log\left(\frac{1}{\hat{p}_k}\right)$,
 where 
 $\hat{p}_k=\frac{f_k}{\hat{F}_k}=\frac{f_k}{\sum_{i\in\{j:x_j=x_k\}}{\pi_i}}$ and $x_l$ is the combination of values of categorical variables preset in $l$-th record. In the latter situation,
@@ -44,18 +44,9 @@ Shlomo (2022) proposes measures disclosure risk in synthetic data based on the c
 
 ### Measures of disclosure risk for continuous variables
 
-For continuous variables the situation is much more complicated. They are measured on the interval or ratio scale and have continuous distributions. Hence, Due to their properties different solutions for measurement of disclosure risk have to be be applied. The
-famous approach in this context is used in the sdcMicro package of the R environment
-dedicated to carry out the SDC process on microdata (cf. R Development Core Team
-(2008), Templ, Kowarik, and Meindl (2023)) and described by Templ (2017). It reports
-the percentage of observations falling within an interval centered on its masked
-value whereas the upper bound corresponds to a worst case scenario where an intruder
-is sure that each nearest neighbour is indeed the true link. However, it can be used
-only in comparative terms, i.e. when data before and after SDC process are compared.
-For raw data the result is always that the risk lies between 0% and 100%, what is
-not informative. Alfalayleh and Brankovic (2015) presented a solution related in some
-sense to this idea based on the precision interval of rediscovering a confidential value,
-the Shannon’s entropy and the dynamic programming algorithm. Another approaches
+For continuous variables the situation is much more complicated. They are measured on the interval or ratio scale and have continuous distributions. Hence, we cannot use frequency of occurrence of individual values as a basis for measurement of the dislosure risk in this case. Therefore, different solutions for measurement of disclosure risk have to be be applied. The famous approach in this context is used in the sdcMicro package of the R environment dedicated to carry out the SDC process on microdata (cf. R Development Core Team (2008), Templ, Kowarik, and Meindl (2023)) and described by Templ (2017). It reports the percentage of observations falling within an interval centered on its masked value whereas the upper bound corresponds to a worst case scenario where an intruder is sure that each nearest neighbour is indeed the true link. More precisely, for a given variable $X$ a minimal level of re-identificaion error can be established (say, $p\in (0,1)$ and as the basis of measurement of the risk the number of records for which the values of $X$ belong to the interval $(x(1-p),x(1+p))$ (where $x$ is the actual value of $X$). If this number is too low (e.g. smaller than 3) then the value $x$ is regarded as undafe. 
+
+However, the variant of this approach applied in the sdcMicro can be used only in comparative terms, i.e. when data before and after SDC process are compared. For raw data the result is always that the risk lies between 0% and 100%, what is not informative. Alfalayleh and Brankovic (2015) presented a solution related in some sense to this idea based on the precision interval of rediscovering a confidential value, the Shannon’s entropy and the dynamic programming algorithm. Another approaches
 in this context are: distance-based linking (Pagliuca and Seri (1999)) and probabilistic
 record linkage (Jaro (1989)).
 
@@ -209,6 +200,8 @@ Kooiman, P. L., Willenborg, L. and Gouweleeuw, J. (1998). *PRAM: A method for di
 Młodak, A., Pietrzak, M., & Józefowski, T. (2022). The trade–off between the risk of disclosure and data utility in SDC: A case of data from a survey of accidents at
 work. *Statistical Journal of the IAOS*, 38 (4), 1503–1511.
 
+*R Development Core Team. (2008). R: A Language and Environment for Statistical Computing [Computer software manual]*. Vienna, Austria. Retrieved from http://www.R-project.org (ISBN 3-900051-07-0)
+
 Shlomo, N. (2022). How to Measure Disclosure Risk in Microdata? *The Survey Statistician*, 86, 13–21.
 
 Shlomo, N., & Skinner, C. (2022). Measuring risk of re-identification in microdata: state-of-the art and new directions. *Journal of the Royal Statistical Society. Series A: Statistics in Society*, 185 (4), 1644–1662.
@@ -216,6 +209,9 @@ Shlomo, N., & Skinner, C. (2022). Measuring risk of re-identification in microda
 Taylor, L., Zhou, X.-H., & Rise, P. (2018). A tutorial in assessing disclosure risk in microdata. *Statistics in Medicine*, 37 (25), 3693–3706.
 
 Templ, M. (2017). *Statistical Disclosure Control for Microdata. Methods and Applications in R.* Springer International Publishing AG, Cham, Switzerland.
+
+Templ, M., Kowarik, A., & Meindl, B. (2023). *sdcMicro: Statistical Disclosure Control Methods for Anonymization of Data and Risk Estimation. Manual and Package.*
+R package version 5.7.5 [Computer software manual]. (http://CRAN.R-project.org/package=sdcMicro)
 
 Trottini, M. (2003) . *Decision models for data disclosure limitation*. PhD thesis, Carnegie Mellon University, 2003. [[http://www.niss.org/dgii/TR/Thesis-Trottini-final.pdf]{.underline}](http://www.niss.org/dgii/TR/Thesis-Trottini-final.pdf).
 
