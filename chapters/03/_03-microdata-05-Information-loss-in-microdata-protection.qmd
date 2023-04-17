@@ -6,7 +6,7 @@ The key aim of the Statistical Disclosure Control is to achieve optimal balance 
   
 ### Types of disclosure risk
 
-The assessment of the risk of identification using disclosed data involves identifying unsafe combinations for categorical variables or their values in the neighbourhood of relevant original values (for continuous variables) or levels (individual, global or hierarchical). The unsafe combinations of values of categorical variables are recognized using e.g. the $k$-anonymity or $l$-diversity rules. It is possible also when the $t$-closeness criterion is applied: in this case all records - and themselves the combinations of values of categorical variables – belonging to unsafe class are regarded to be unsafe. There are several criteria to classify the risk. We present the most important from them.
+The assessment of the risk of re-identification using disclosed data involves identifying unsafe combinations for categorical variables or their values in the neighbourhood of relevant original values (for continuous variables) or levels (individual, global or hierarchical). The unsafe combinations of values of categorical variables are recognized using e.g. the $k$-anonymity or $l$-diversity rules. It is possible also when the $t$-closeness criterion is applied: in this case all records - and themselves the combinations of values of categorical variables – belonging to unsafe class are regarded to be unsafe. There are several criteria to classify the risk. We present the most important from them.
 
 Due to the range of data that can be used to identify the individual one can distinguish two types of disclosure risk for a dataset obtained once the SDC process has been applied (cf. Młodak et al. (2022)): 
     • internal risk -- when there is a threat of identifying  units only using modified data (it is worth noting that the measures of internal risk can obviously be used to assess the risk of disclosure in the original data),
@@ -28,6 +28,37 @@ Another classification of disclosure risk is connected with the reference object
 The statistician involved in processing and dissemination of data should estymate disclosure risk at each stage of the SDC process. It allows to track changes and efficiency of data protection made using various SDC methods and taking all relevant data struktures into account. Due to the fact, that information on the disclosure risk can contribute to re-identification of individuals, it should be, however, confidential itself and cannot be known by the user.    
 
 ### Measures of disclosure risk for categorical variables
+
+The key measures of disclosure risk for categorical variables in microdata are, in general, based on the frequency rules in the internal dimension. That is, they are expressed by number or percentage of records violating $k$-anonymity or $l$-diversity rule or being regarded as unsafe according to the $t$-closeness principle. These indicators can be applied, however, only for the raw microdata. However, we have to take also into account the fact that the microdata are usually a sample from some general population, and verify that relevant population values are also safe. Of course, one should take also the specificity of individual and global risk into account. As regards the hierachical risk, Templ (2017) proposes to measure it in any case as $1-\prod_{i\in A}{(1-r_i)}$, where $r_i$ is the individual risk for $i$-th record and $A$ is a given aggregate.
+
+Hundepool et al. (2012) present the measure of individual risk being a probability of correct link between record and unit in a worst case scenario. On the other hand, the global risk is here computed as a sum of inverted frequencies of combinations (also in an option restricted only to limited only to those combinations that have the frequency equal to 1). It is presented also in subchapter 3.3.3. This approach was further developed by Taylor, Zhou, and Rise (2018), who proposed an additional measure: the probability of a correct match given a unique match and probability of correct match. The former is a relation of the number of combinations with frequency 1 in the sample and relevant number in the population, the latter is the average expected value of inverted population frequency of a combination given relevant sample frequency. Moreover, Hundepool et al. (2012) and Taylor et al. (2018) as well as Templ (2017) discuss the use of Benedetti–Franconi and Poisson approaches in this context. Let $f_k$ be frequency of combination of values of categorical variables in $k$-th records in a sample and $F_k$ - the relevant frequency in the population and $\pi_k$ - its inclusion probability. Then the individal risk, $r_k$ is given as a function of these quantities. Templ (2017) provides the complete formula. However, in practice, most risky are situations where $f_k=1$ or $f_k=2$. In the former case the estimate of individual risk as
+$\hat{r}_k=\frac{\hat{p}_k}{1-\hat{p}_k}\log\left(\frac{1}{\hat{p}_k}\right)$,
+where 
+$\hat{p}_k=\frac{f_k}{\hat{F}_k}=\frac{f_k}{\sum_{i\in\{j:x_j=x_k\}}{\pi_i}}$ and $x_l$ is the combination of values of categorical variables preset in $l$-th record. In the latter situation,
+$\hat{r}_k=\frac{\hat{p}_k}{1-\hat{p}_k}-\left(\frac{\hat{p}_k}{1-\hat{p}_k}\right)^2\log\left(\frac{1}{\hat{p}_k}\right)$
+The parameters of these methods are estimated taking the aforementioned frequencies and dependencies into account. 
+For large samples one can use the following approximation
+$\hat{r}_k=\frac{\hat{p}_k}{f_k-(1-\hat{p}_k)}=\frac{f_k}{f_k\hat{F}_k-(\hat{F}_k-\hat{f}_k)}$.
+
+Shlomo (2022) proposes measures disclosure risk in synthetic data based on the comparison of the overall distributions in the original data versus synthetic data and using Kullback–Leibler Total Variation and Hellinger’s Distance formulas. Shlomo and Skinner (2022) introduced a new approach to measure the risk of re-identification for a subpopulation in a register that is not representative of the general population based on the numbers of combinations which frequency equals in the sample in the subpopulation and in the population using the Poisson model.
+
+### Measures of disclosure risk for continuous variables
+
+For continuous variables the situation is much more complicated. They are measured on the interval or ratio scale and have continuous distributions. Hence, Due to their properties different solutions for measurement of disclosure risk have to be be applied. The
+famous approach in this context is used in the sdcMicro package of the R environment
+dedicated to carry out the SDC process on microdata (cf. R Development Core Team
+(2008), Templ, Kowarik, and Meindl (2023)) and described by Templ (2017). It reports
+the percentage of observations falling within an interval centered on its masked
+value whereas the upper bound corresponds to a worst case scenario where an intruder
+is sure that each nearest neighbour is indeed the true link. However, it can be used
+only in comparative terms, i.e. when data before and after SDC process are compared.
+For raw data the result is always that the risk lies between 0% and 100%, what is
+not informative. Alfalayleh and Brankovic (2015) presented a solution related in some
+sense to this idea based on the precision interval of rediscovering a confidential value,
+the Shannon’s entropy and the dynamic programming algorithm. Another approaches
+in this context are: distance-based linking (Pagliuca and Seri (1999)) and probabilistic
+record linkage (Jaro (1989)).
+
 
 • Potential data uses are very diverse and it may be even hard to identify them all at the moment of data release by the data protector.
 
@@ -177,12 +208,21 @@ Domingo-Ferrer, J., Mateo-Sanz, J. M., and Torra, V. (2001). *Comparing sdc meth
 
 Domingo-Ferrer, J., and Torra, V. (2001). *Disclosure protection methods and information loss for microdata.* In P. Doyle, J. I. Lane, J. J. M. Theeuwes, and L. Zayatz, editors, Confidentiality, Disclosure and Data Access: Theory and Practical Applications for Statistical Agencies, pages 91--110, Amsterdam, 2001. North-Holland. [[http://vneumann.etse.urv.es/publications/bcpi]{.underline}](http://vneumann.etse.urv.es/publications/bcpi).
 
-Hundepool, A., Van de Wetering, A., Ramaswamy, R., Franconi, L., Capobianchi, A., De Wolf, P.-P., Domingo-Ferrer, J., Torra, V., Brand, R:, and Giessing, S. (2005). *$\mu$-ARGUS version 4.0 Software and User's Manual*. Statistics Netherlands, Voorburg NL, may 2005. [[https://research.cbs.nl/casc]{.underline}](https://research.cbs.nl/casc/deliv/MUmanual4.0.pdf).
+Hundepool, A., Van de Wetering, A., Ramaswamy, R., Franconi, L., Capobianchi, A., DeWolf, P.-P., Domingo-Ferrer, J., Torra, V., Brand, R:, and Giessing, S. (2005). *µ-ARGUS version 4.0 Software and User's Manual*. Statistics Netherlands, Voorburg NL, may 2005. [[http://neon.vb.cbs.nl/casc]{.underline}](http://neon.vb.cbs.nl/casc/deliv/MUmanual4.0.pdf).
+
+Hundepool, A., Domingo–Ferrer, J., Franconi, L., Giessing, S., Nordholt, E. S., Spicer, K., & de Wolf, P. (2012). *Statistical Disclosure Control*. John Wiley & Sons,
+Ltd.
 
 Kooiman, P. L., Willenborg, L. and Gouweleeuw, J. (1998). *PRAM: A method for disclosure limitation of microdata.* Technical report, Statistics Netherlands (Voorburg, NL), 1998.
 
 Młodak, A., Pietrzak, M., & Józefowski, T. (2022). The trade–off between the risk of disclosure and data utility in SDC: A case of data from a survey of accidents at
 work. *Statistical Journal of the IAOS*, 38 (4), 1503–1511.
+
+Shlomo, N. (2022). How to Measure Disclosure Risk in Microdata? *The Survey Statistician*, 86, 13–21.
+
+Shlomo, N., & Skinner, C. (2022). Measuring risk of re-identification in microdata: state-of-the art and new directions. *Journal of the Royal Statistical Society. Series A: Statistics in Society*, 185 (4), 1644–1662.
+
+Taylor, L., Zhou, X.-H., & Rise, P. (2018). A tutorial in assessing disclosure risk in microdata. *Statistics in Medicine*, 37 (25), 3693–3706.
 
 Templ, M. (2017). *Statistical Disclosure Control for Microdata. Methods and Applications in R.* Springer International Publishing AG, Cham, Switzerland.
 
