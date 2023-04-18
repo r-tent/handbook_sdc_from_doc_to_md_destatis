@@ -54,13 +54,7 @@ One can easily observe that in both cases also original and protected data sets 
 
 ### Possibility of complex measurement of disclosure risk
 
-The construction of measures of disclosure risk is focused on the development of separate tools for categorical and continuous variables. It is justified by their different nature. However, using them means that the actual disclosure risk
-may be underestimated. For instance, assume that (1,3,0,5) is a combinations of categories
-of four categorical variables occurring 10 times in a given microdata set and Y
-is a continuous variable in the same set for which 8 values is contained in the interval
-57.5(1±0, 1), where 0.1 is the minimum allowable level of error during trial of rediscovering
-of the sensitive value 57.5. So, treating the combinations of categorical variables
-and the values of Y separately, one can say that both (1,3,0,5) and Y = 57.5 are safe.
+It is worth noting that the classical construction of measures of disclosure risk is focused on the development of separate tools for categorical and continuous variables. As it was indicated earlier it is justified by their different nature. However, using them means that the actual disclosure risk may be underestimated. For instance, assume that (2,6,7,1) is a combination of categories of four categorical variables occurring 12 times in a given microdata set and $Y$ is a continuous variable in the same set for which 8 values is contained in the interval $(43.7(1-0.2),43.7(1+0.2))$, where 0.2 is the minimum allowable level of error during trial of rediscovering of the sensitive value 43.7. So, treating the combinations of categorical variables and the values of $Y$ separately, one can say that both (2,6,7,1) and $Y= 43.7$ are safe.
 However, imagine that there is only one record for which the categorical variables have
 the realization of (1,3,0,5) and simultaneously Y takes value from 57.5(1±0, 1). Then
 the threat of identification of a unit associated with thus record is very high.
