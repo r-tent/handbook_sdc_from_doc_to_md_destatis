@@ -44,7 +44,7 @@ Shlomo (2022) proposes measures disclosure risk in synthetic data based on the c
 
 ### Measures of disclosure risk for continuous variables
 
-For continuous variables the situation is much more complicated. They are measured on the interval or ratio scale and have continuous distributions. Hence, we cannot use frequency of occurrence of individual values as a basis for measurement of the dislosure risk in this case. Therefore, different solutions for measurement of disclosure risk have to be be applied. The famous approach in this context is used in the sdcMicro package of the R environment dedicated to carry out the SDC process on microdata (cf. R Development Core Team (2008), Templ, Kowarik, and Meindl (2023)) and described by Templ (2017). It reports the percentage of observations falling within an interval centered on its masked value whereas the upper bound corresponds to a worst case scenario where an intruder is sure that each nearest neighbour is indeed the true link. More precisely, for a given variable $X$ a minimal level of re-identificaion error can be established (say, $p\in (0,1)$ and as the basis of measurement of the risk the number of records for which the values of $X$ belong to the interval $(x(1-p),x(1+p))$ (where $x$ is the actual value of $X$). If this number is too low (e.g. smaller than 3) then the value $x$ is regarded as undafe. 
+For continuous variables the situation is much more complicated. They are measured on the interval or ratio scale and have continuous distributions. Hence, we cannot use frequency of occurrence of individual values as a basis for measurement of the dislosure risk in this case. Therefore, different solutions for measurement of disclosure risk have to be be applied. The famous approach in this context is used in the sdcMicro package of the R environment dedicated to carry out the SDC process on microdata (cf. R Development Core Team (2008), Templ, Kowarik, and Meindl (2023)) and described by Templ (2017). It reports the percentage of observations falling within an interval centered on its masked value whereas the upper bound corresponds to a worst case scenario where an intruder is sure that each nearest neighbour is indeed the true link. More precisely, for a given variable $X$ a minimal level of re-identificaion error can be established (say, $p\in (0,1)$ and as the basis of measurement of the risk the number of records for which the values of $X$ belong to the interval $(x(1-p),x(1+p))$ (where $x$ is the actual value of $X$). If this number is too low (e.g. smaller than 3) then the value $x$ is regarded as unsafe. 
 
 However, the variant of this approach applied in the sdcMicro can be used only in comparative terms, i.e. when data before and after SDC process are compared. For raw data the result is always that the risk lies between 0% and 100%, what is not informative. Alfalayleh and Brankovic (2015) presented a solution related in some sense to this idea based on the precision interval of rediscovering a confidential value, the Shannon’s entropy and the dynamic programming algorithm. Another approaches
 in this context are: 
@@ -54,6 +54,33 @@ One can easily observe that in both cases also original and protected data sets 
 
 ### Possibility of complex measurement of disclosure risk
 
+The construction of measures of disclosure risk is focused on the development of separate tools for categorical and continuous variables. It is justified by their different nature. However, using them means that the actual disclosure risk
+may be underestimated. For instance, assume that (1,3,0,5) is a combinations of categories
+of four categorical variables occurring 10 times in a given microdata set and Y
+is a continuous variable in the same set for which 8 values is contained in the interval
+57.5(1±0, 1), where 0.1 is the minimum allowable level of error during trial of rediscovering
+of the sensitive value 57.5. So, treating the combinations of categorical variables
+and the values of Y separately, one can say that both (1,3,0,5) and Y = 57.5 are safe.
+However, imagine that there is only one record for which the categorical variables have
+the realization of (1,3,0,5) and simultaneously Y takes value from 57.5(1±0, 1). Then
+the threat of identification of a unit associated with thus record is very high.
+On the other hand, the data users (in this case mainly statisticians involved in
+data processing and their preparation for dissemination – as the information on the
+disclosure risk is usually confidential) are interested in obtaining precise, reliable and
+comprehensive information on the disclosure risk. Too low quality of estimation of
+such risk can lead to insufficient protection of sensible information and, consequently,
+to violation of privacy of a respondent.
+Taking these premises into account, we have proposed a complex measure of disclosure
+risk in a data set containing various types of variables. Młodak, Pietrzak, and
+Józefowski (2022)1 discussed the possibility of use in this context the distance based
+on the idea of the Gower’s formula. In this way, the disclosure risk has been assessed
+in context of possible re-identification by linking relevant record from a given data set
+and record from a related alternative database available for the user. It is worth noting
+that in the same paper a complex measure of information loss (also using the approach
+being the basis of the Gower distance) proposed by Młodak (2020) was improved and
+applied. This measure was also implemented to the sdcMicro R package. When it is
+also possible to use a comprehensive measure of disclosure risk, achieving a balance
+between minimizing these two quantities will become much easier.
 
 • Potential data uses are very diverse and it may be even hard to identify them all at the moment of data release by the data protector.
 
