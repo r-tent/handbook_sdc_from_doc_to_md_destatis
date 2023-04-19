@@ -49,7 +49,7 @@ For continuous variables the situation is much more complicated. They are measur
 However, the variant of this approach applied in the sdcMicro can be used only in comparative terms, i.e. when data before and after SDC process are compared. For raw data the result is always that the risk lies between 0% and 100%, what is not informative. Alfalayleh and Brankovic (2015) presented a solution related in some sense to this idea based on the precision interval of rediscovering a confidential value, the Shannon’s entropy and the dynamic programming algorithm. Another approaches
 in this context are: 
 • distance-based linking (Pagliuca and Seri (1999)): based on the distances between records of the original data set and the dataset modified during the SDC process. For each record in protected dataset its nearest and second nearest neighbour in the original dataset is found (using the assumed distance formula). If the record and its nearest neighbour in original data set refer to the same respondent, then the former is regarded to be "linked". Similarly, if the second nearest neighbour in the original dataset and the current record in the protected datsaset correspond to the same individual, then the latter is regarded to be "linked to the second nearest". The measure of risk is here the percentage of records in the protected data set marked as "linked" or "linked to the second nearest", 
-• probabilistic record linkage (Jaro (1989)): the disclosure risk is here understood as percentage of "linked" pairs of records from the original and protected datasets, i.e. such that weights (assigned by a special algorithm values of likelihood that two paired records refer to the same respondent) are greater than an arbitrarily established threshold.
+• probabilistic record linkage (Jaro (1989)): the disclosure risk is here understood as percentage of "linked" pairs of records from the original and protected datasets, i.e. such that weights (values of likelihood that two paired records refer to the same respondent assigned by a special algorithm) are greater than an arbitrarily established threshold.
 One can easily observe that in both cases also original and protected data sets are compared. This makes it impossible to assess the original risk of disclosure, which is usually the basis of any data disclosure control activities.
 
 ### Possibility of complex measurement of disclosure risk
@@ -58,9 +58,9 @@ It is worth noting that the classical construction of measures of disclosure ris
 
 On the other hand, the data users (in this case to concerns mainly statisticians involved in data processing and their preparation for dissemination – as the information on the disclosure risk is usually confidential) are interested in obtaining precise, reliable and comprehensive information on the disclosure risk. Too low quality of estimation of such risk can lead to insufficient protection of sensible information and, consequently, to violation of privacy of a respondent.
 
-Taking these premises into account, Młodak, Pietrzak, and Józefowski (2022) discussed the possibility of use in this context the distance based on the idea of the Gower’s formula. Recall, that this approach takes all types of variables (according to their measurement scales) into account. In this way, the disclosure risk has been assessed in context of possible re-identification by linking relevant record from a given data set and record from a related alternative database available for the user. It is in fact the measure of external risk. A similar idea can be used also to complex assessment of internal disclosure risk using the distance-based approach, where application of the analogous concept of distance allows for joint estimation of change of the risk before and after performing SDC process.
+Taking these premises into account, Młodak, Pietrzak, and Józefowski (2022) discussed the possibility of use in this context the distance based on the idea of the Gower’s formula. Recall, that this approach takes all types of variables (according to their measurement scales) into account. In this way, the disclosure risk has been assessed in context of possible re-identification by linking relevant record from a given data set and record from a related alternative database available for the user. It is in fact the measure of external risk. A similar idea can be used also to complex assessment of internal disclosure risk using the distance-based approach, where application of the analogous concept of distance allows for joint estimation of change of the risk before and after performing SDC process. Also the probabilistic record linkage, where the conditional probability that a pair of records has an agreement pattern $\gamma$, given that it is a true match and the conditional probability that a pair of records has an agreement pattern $\gamma$ given they are true unmatched records (cf. Sayers et al. (2016)) can be computed using using a properly selected categorization of continuous variables. 
 
-However
+However, as one can see, these 
 
 When it is also possible to use a comprehensive measure of disclosure risk, achieving a balance between minimizing these two quantities will become much easier.
 
@@ -217,6 +217,8 @@ Młodak, A., Pietrzak, M., & Józefowski, T. (2022). The trade–off between the
 Pagliuca, D., & Seri, G. (1999). Some results of individual ranking method on the system of enterprise accounts annual survey. *Esprit SDC Project, Deliverable MI-3 D, 2*.
 
 *R Development Core Team. (2008). R: A Language and Environment for Statistical Computing [Computer software manual]*. Vienna, Austria. Retrieved from http://www.R-project.org (ISBN 3-900051-07-0)
+
+Sayers, A., Ben-Shlomo, Y., Blom, A. W., & Steele, F. (2016). Probabilistic record linkage. *International Journal of Epidemiology*, 45(3), 954-964.
 
 Shlomo, N. (2022). How to Measure Disclosure Risk in Microdata? *The Survey Statistician*, 86, 13–21.
 
