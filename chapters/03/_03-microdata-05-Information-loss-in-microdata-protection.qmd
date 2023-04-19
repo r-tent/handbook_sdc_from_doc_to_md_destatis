@@ -64,6 +64,8 @@ However, as one can see, these methods can be also applied only in comparative t
 
 ### Types of information loss and its measures
 
+The application of SDC methods entails the loss of some information. It arises as a result e.g. from gaps, when non-perturbative methods are used, or perturbations, when perturbative tools are used). Because of this loss the analytical worth of the disclosed data for the user decreases, which means there is a possibility that results of computations and analyses based on such data will be inadequate (e.g. the precision of estimation could be much worse). 
+
 • Potential data uses are very diverse and it may be even hard to identify them all at the moment of data release by the data protector.
 
 • Even if all data uses can be identified, issuing several versions of the same original dataset so that the *i*-th version has an information loss optimized for the *i*-th data use may result in unexpected disclosure.
