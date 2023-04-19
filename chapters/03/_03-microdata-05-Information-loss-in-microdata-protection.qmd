@@ -8,7 +8,7 @@ The key aim of the Statistical Disclosure Control is to achieve optimal balance 
 
 The assessment of the risk of re-identification using disclosed data involves identifying unsafe combinations for categorical variables or their values in the neighbourhood of relevant original values (for continuous variables) or levels (individual, global or hierarchical). The unsafe combinations of values of categorical variables are recognized using e.g. the $k$-anonymity or $l$-diversity rules. It is possible also when the $t$-closeness criterion is applied: in this case all records - and themselves the combinations of values of categorical variables – belonging to unsafe class are regarded to be unsafe. There are several criteria to classify the risk. We present the most important from them.
 
-Due to the range of data that can be used to identify the individual one can distinguish two types of disclosure risk for a dataset obtained once the SDC process has been applied (cf. Młodak et al. (2022)): 
+Due to the range of data that can be used to identify the individual one can distinguish two types of disclosure risk for a dataset obtained once the SDC process has been applied (cf. Młodak, Pietrzak and Józefowski (2022)): 
     • internal risk -- when there is a threat of identifying  units only using modified data (it is worth noting that the measures of internal risk can obviously be used to assess the risk of disclosure in the original data),
     • external risk -- when there is a threat of identifying units by attempting to link data after SDC with information from other sources possibly available to the user.
 
@@ -54,27 +54,16 @@ One can easily observe that in both cases also original and protected data sets 
 
 ### Possibility of complex measurement of disclosure risk
 
-It is worth noting that the classical construction of measures of disclosure risk is focused on the development of separate tools for categorical and continuous variables. As it was indicated earlier it is justified by their different nature. However, using them means that the actual disclosure risk may be underestimated. For instance, assume that (2,6,7,1) is a combination of categories of four categorical variables occurring 12 times in a given microdata set and $Y$ is a continuous variable in the same set for which 8 values is contained in the interval $(43.7(1-0.2),43.7(1+0.2))$, where 0.2 is the minimum allowable level of error during trial of rediscovering of the sensitive value 43.7. So, treating the combinations of categorical variables and the values of $Y$ separately, one can say that both (2,6,7,1) and $Y= 43.7$ are safe.
-However, imagine that there is only one record for which the categorical variables have
-the realization of (1,3,0,5) and simultaneously Y takes value from 57.5(1±0, 1). Then
-the threat of identification of a unit associated with thus record is very high.
-On the other hand, the data users (in this case mainly statisticians involved in
-data processing and their preparation for dissemination – as the information on the
-disclosure risk is usually confidential) are interested in obtaining precise, reliable and
-comprehensive information on the disclosure risk. Too low quality of estimation of
-such risk can lead to insufficient protection of sensible information and, consequently,
-to violation of privacy of a respondent.
-Taking these premises into account, we have proposed a complex measure of disclosure
-risk in a data set containing various types of variables. Młodak, Pietrzak, and
-Józefowski (2022)1 discussed the possibility of use in this context the distance based
-on the idea of the Gower’s formula. In this way, the disclosure risk has been assessed
-in context of possible re-identification by linking relevant record from a given data set
-and record from a related alternative database available for the user. It is worth noting
-that in the same paper a complex measure of information loss (also using the approach
-being the basis of the Gower distance) proposed by Młodak (2020) was improved and
-applied. This measure was also implemented to the sdcMicro R package. When it is
-also possible to use a comprehensive measure of disclosure risk, achieving a balance
-between minimizing these two quantities will become much easier.
+It is worth noting that the classical construction of measures of disclosure risk is focused on the development of separate tools for categorical and continuous variables. As it was indicated earlier it is justified by their different nature. However, using them means that the actual disclosure risk may be underestimated. For instance, assume that (2,6,7,1) is a combination of categories of four categorical variables occurring 12 times in a given microdata set and $Y$ is a continuous variable in the same set for which 10 values is contained in the interval $(43.7(1-0.2),43.7(1+0.2))$, where 0.2 is the minimum allowable level of error during trial of rediscovering of the sensitive value 43.7. So, treating the combinations of categorical variables and the values of $Y$ separately, one can say that both (2,6,7,1) and $Y= 43.7$ are safe. However, imagine that there is only one record for which the categorical variables have the realization of (2,6,7,1) and simultaneously $Y$ takes value from $(43.7(1-0.2),43.7(1+0.2))$. Then the threat of identification of a unit associated with thus record is very high.
+
+On the other hand, the data users (in this case to concerns mainly statisticians involved in data processing and their preparation for dissemination – as the information on the disclosure risk is usually confidential) are interested in obtaining precise, reliable and comprehensive information on the disclosure risk. Too low quality of estimation of such risk can lead to insufficient protection of sensible information and, consequently, to violation of privacy of a respondent.
+
+Taking these premises into account, Młodak, Pietrzak, and Józefowski (2022) discussed the possibility of use in this context the distance based on the idea of the Gower’s formula. Recall, that this approach takes all types of variables (according to their measurement scales) into account. In this way, the disclosure risk has been assessed in context of possible re-identification by linking relevant record from a given data set and record from a related alternative database available for the user. It is in fact the measure of external risk. A similar idea can be used also to complex assessment of internal disclosure risk using the distance-based approach, where application of the analogous concept of distance allows for joint estimation of change of the risk before and after performing SDC process.
+
+However
+
+When it is also possible to use a comprehensive measure of disclosure risk, achieving a balance between minimizing these two quantities will become much easier.
+
 
 • Potential data uses are very diverse and it may be even hard to identify them all at the moment of data release by the data protector.
 
