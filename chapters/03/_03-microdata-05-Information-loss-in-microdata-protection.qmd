@@ -25,7 +25,7 @@ Another classification of disclosure risk is connected with the reference object
     • hierarchical risk - the aggregated risk estimated for units of particular levels of a given hierarchy established within a dataset (e.g. according to territorial or economic classification),
     • global risk - the aggregated disclosure risk for the whole data set.
 
-The statistician involved in processing and dissemination of data should estymate disclosure risk at each stage of the SDC process. It allows to track changes and efficiency of data protection made using various SDC methods and taking all relevant data struktures into account. Due to the fact, that information on the disclosure risk can contribute to re-identification of individuals, it should be, however, confidential itself and cannot be known by the user.  
+The statistician involved in processing and dissemination of data should estimate disclosure risk at each stage of the SDC process. It allows to track changes and efficiency of data protection made using various SDC methods and taking all relevant data struktures into account. Due to the fact, that information on the disclosure risk can contribute to re-identification of individuals, it should be, however, confidential itself and cannot be known by the user.  
 
 ### Measures of disclosure risk for categorical variables
 
