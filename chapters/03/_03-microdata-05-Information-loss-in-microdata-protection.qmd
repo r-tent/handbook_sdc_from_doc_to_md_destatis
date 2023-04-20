@@ -98,7 +98,7 @@ of information loss involves a comparison of
 components of coefficients of determination R2
 – in terms of within-group and inter-group variance
 – for relevant models based on original and
-perturbed values (cf. [3])),
+perturbed values (cf. Hundepool et al. (2012)),
 – measures of impact on the intensity of connections
 – comparisons of measures of direction and
 intensity of connections between original continuous
