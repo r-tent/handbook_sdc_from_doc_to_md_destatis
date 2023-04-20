@@ -133,7 +133,7 @@ Distance between contingency tables generalizes some of the information loss mea
 
 *Entropy-based measures*
 
-In De Waal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw (1998) and Willenborg and DeWaal (2001), the use of Shannon's entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.
+In De Waal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw (1998) and Willenborg and De Waal (2001), the use of Shannon's entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.
 
 As noted earlier, PRAM is a method that generalizes noise addition, suppression and recoding methods. Therefore, our description of the use of entropy will be limited to PRAM.
 
