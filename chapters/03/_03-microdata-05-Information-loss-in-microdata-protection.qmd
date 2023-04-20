@@ -123,7 +123,7 @@ $\text{dc}\left(c,c^'\right)=\frac{\left|c^{''}\text{:min}\left(c,c^'\right \leq
 
 An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets $F$ and $G$ (the original and the protected set, respectively) and their corresponding *t*-dimensional contingency tables for $t\leq K$, we can define a contingency table-based information loss measure *CTBIL* for a subset $W$ of variables as follows:
 
-$$\text{CTBIL}(F,G; W,K)=\sum_{\{V_{ji}\cdots V_{jt}\} f\subseteq W\atop|\{V_{ji}\cdots V_{jt}\}|\leq K}\sum_{i_1\cdots i_t}|x^F_{i_1\cdots i_t}-x^G_{i_1\cdots i_t} |$$(3.4.3.1)
+$$\text{CTBIL}(F,G;W,K)=\sum_{\{V_{ji}\cdots V_{jt}\} f\subseteq W\atop|\{V_{ji}\cdots V_{jt}\}|\leq K}\sum_{i_1\cdots i_t}|x^F_{i_1\cdots i_t}-x^G_{i_1\cdots i_t} |$$(3.4.3.1)
 
 where $x_{\text{subscripts}}^{\text{file}}$ is the entry of the contingency table of *file* at position given by *subscripts*.
 
@@ -133,7 +133,7 @@ Distance between contingency tables generalizes some of the information loss mea
 
 *Entropy-based measures*
 
-In DeWaal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw (1998) and Willenborg and DeWaal (2001), the use of Shannon's entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.
+In De Waal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw (1998) and Willenborg and DeWaal (2001), the use of Shannon's entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.
 
 As noted earlier, PRAM is a method that generalizes noise addition, suppression and recoding methods. Therefore, our description of the use of entropy will be limited to PRAM.
 
