@@ -143,7 +143,7 @@ $H\left(V|V^'=j\right)=-\sum_{i=1}^n{p\left(V=i|V^'=j\right)\text{log}p}\left(V=
 
 The probabilities in Expression (3.4.3.2) can be derived from $P_{V,V^'}$ using Bayes's formula. Finally, the entropy-based information loss measure *EBIL* is obtained by accumulating Expression 3.4.3.2 for all individuals *r* in the protected dataset $G$
 
-$\text{EBIL}\left(P_{V,V^'},G\right)=\sum_{r\in G}^{}{H\left( V|V^'=j_{r}\right)}$
+$\text{EBIL}\left(P_{V,V^'},G\right)=\sum_{r\in G}^{}{H\left(V|V^'=j_{r}\right)}$
 
 where $j_r$ is the value taken by $V^'$ in record *r*.
 
