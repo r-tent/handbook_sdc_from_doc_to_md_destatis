@@ -101,7 +101,7 @@ Straightforward computation of measures based on basic arithmetic opereations (a
 • comparison of contingency tables,
 • entropy-based measures.
 
-Below we will describe each of such types of measure.
+Below we will describe each of such types of measures.
 
 *Direct comparison of categorical values*
 
