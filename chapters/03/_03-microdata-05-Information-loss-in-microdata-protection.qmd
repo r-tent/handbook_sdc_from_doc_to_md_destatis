@@ -96,7 +96,7 @@ distances, complex distances, etc.),
 
 ### Information loss measures for categorical data
 
-Straightforward computation of measures based on most descriptive statistics (Euclidean distace, mean, variance, correlation, etc.) on categorical data is not possible. The following alternatives are considered in Domingo-Ferrer and Torra (2001):
+Straightforward computation of measures based on basic arithmetic opereations (addition, subtraction, multiplication, division) or most descriptive statistics (Euclidean distance, mean, variance, correlation, etc.) on categorical data is not possible. The following alternatives are considered in Domingo-Ferrer and Torra (2001):
 • direct comparison of categorical values,
 • comparison of contingency tables,
 • entropy-based measures.
