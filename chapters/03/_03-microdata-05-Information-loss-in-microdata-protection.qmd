@@ -104,9 +104,9 @@ Straightforward computation of measures in @tbl-loss-information on categorical 
 
 -   Entropy-based measures
 
-##Direct comparison of categorical values
+[Direct comparison of categorical values]
 
-Comparison of matrices $X$ and $X^{'}$ for categorical data requires the definition of a distance for categorical variables. Definitions consider only the distances between pairs of categories that can appear when comparing an original record and its protected version (see discussion above on pairing original and protected records).![](Images/media/image130.png){width="0.2in" height="0.2in"}
+Comparison of matrices $X$ and $X^'$ for categorical data requires the definition of a distance for categorical variables. Definitions consider only the distances between pairs of categories that can appear when comparing an original record and its protected version (see discussion above on pairing original and protected records).
 
 For a nominal variable $V$ (a categorical variable taking values over an unordered set), the only permitted operation is comparison for equality. This leads to the following distance definition:
 
@@ -122,7 +122,7 @@ For an ordinal variable $V$ (a categorical variable taking values over a totally
 
 $\text{dc}\left( c,c^{'} \right) = \frac{\left| c^{''}\text{:min}\left( c,c^{'} \right) \leq c^{''} < \text{max}\left( c,c^{'} \right) \right|}{\left| D(V) \right|}$
 
-##Comparison of contingency tables
+[Comparison of contingency tables]
 
 An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets $F$ and $G$ (the original and the protected set, respectively) and their corresponding *t*-dimensional contingency tables for $t \leq K$, we can define a contingency table-based information loss measure *CTBIL* for a subset $W$ of variables as follows: ![](Images/media/image134.png){width="0.2in" height="0.2in"}
 
@@ -134,7 +134,7 @@ Because the number of contingency tables to be considered depends on the number 
 
 Distance between contingency tables generalizes some of the information loss measures used in the literature. For example, the μ‑ARGUS software (Hundepool et al. 2005) measures information loss for local suppression by counting the number of suppressions. The distance between two contingency tables of dimension one returns twice the number of suppressions. This is because, when category *A* is suppressed for one record, two entries of the contingency table are changed: the count of records with category *A* decreases and the count of records with the "missing" category increases.
 
-##Entropy-based measures
+[Entropy-based measures]
 
 In DeWaal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw, (1998) and Willenborg and DeWaal (2001), the use of Shannon's entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.![](Images/media/image135.png){width="0.2in" height="0.2in"}
 
