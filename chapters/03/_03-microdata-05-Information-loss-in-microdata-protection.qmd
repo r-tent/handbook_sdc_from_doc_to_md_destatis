@@ -62,26 +62,50 @@ Taking these premises into account, Młodak, Pietrzak, and Józefowski (2022) di
 
 However, as one can see, these methods can be also applied only in comparative terms. If we would like to assess the primary individual disclosure risks in the original dataset, we will have to use a combination of risks associated with categorical and continuous variables which are computed on the basis of the frequency rules (in the case of countinuous variables - using the sumber of observations falling into $(x(1-p),x(1+p))$, as it was stated before). The global risk is e.g. the arithmetic mean of individual risks. When it is also possible to use a comprehensive measure of disclosure risk, achieving a balance between minimizing these two quantities will become much easier.
 
-### Types of information loss and its measures
+### Concepts and types of information loss and its measures
 
-The application of SDC methods entails the loss of some information. It arises as a result e.g. from gaps, when non-perturbative methods are used, or perturbations, when perturbative tools are used). Because of this loss the analytical worth of the disclosed data for the user decreases, which means there is a possibility that results of computations and analyses based on such data will be inadequate (e.g. the precision of estimation could be much worse). 
+The application of SDC methods entails the loss of some information. It arises as a result e.g. from gaps occurring in data when non-perturbative SDC methods are used, or perturbations when perturbative SDC tools are used. Because of this loss the analytical worth of the disclosed data for the user decreases, which means there is a possibility that results of computations and analyses based on such data will be inadequate (e.g. the precision of estimation could be much worse). 
 
-• Potential data uses are very diverse and it may be even hard to identify them all at the moment of data release by the data protector.
-
-• Even if all data uses can be identified, issuing several versions of the same original dataset so that the $i$-th version has an information loss optimized for the $i$-th data use may result in unexpected disclosure.
+A strict evaluation of information loss must be based on the data uses to be supported by the protected data. The greater the differences between the results obtained on original and protected data for those uses, the higher the loss of information. However, very often microdata protection cannot be performed in a data use specific manner, for the following reasons:
+• potential data uses are very diverse and it may be even hard to identify them all at the moment of data release by the data protector.
+• even if all data uses can be identified, issuing several versions of the same original dataset so that the *i*-th version has an information loss optimized for the *i*-th data use may result in unexpected disclosure.
 
 Since that data often must be protected with no specific data use in mind, generic information loss measures are desirable to guide the data protector in assessing how much harm is being inflicted to the data by a particular SDC technique.
 
-Defining what a generic information loss measure is can be a tricky issue. Roughly speaking, it should capture the amount of information loss for a reasonable range of data uses. We will say there is little information loss if the protected dataset is analytically valid and interesting according to the following definitions by Winkler (1998):
+Defining what a generic information loss measure is can be a difficult issue. Roughly speaking, it should capture the amount of information loss for a reasonable range of data uses. We will say there is little information loss if the protected dataset is analytically valid and interesting according to the following definitions by Winkler (1998):
 
--   A protected microdata set is an *analytically valid* microdata set if it approximately preserves the following with respect to the original data (some conditions apply only to continuous variables):
-    1.  Means and covariances on a small set of subdomains (subsets of records and/or variables)
-    2. Marginal values for a few tabulations of the data
-    3. At least one distributional characteristic
--   A microdata set is an *analytically interesting microdata set,* if six variables on important subdomains are provided that can be validly analyzed.\
+1. A protected microdata set is an *analytically valid* microdata set if it approximately preserves the following with respect to the original data (some conditions apply only to continuous variables):
+
+• means and covariances on a small set of subdomains (subsets of records and/or variables),
+• marginal values for a few tabulations of the data (the information loss in this approach concerns mainly tables created on the basis of microdata and therefore it will be discussed in chapters 4 and 5),
+• at least one distributional characteristic.
+
+2. A microdata set is an *analytically interesting microdata set,* if six variables on important subdomains are provided that can be validly analyzed.
     More precise conditions of analytical validity and analytical interest cannot be stated without taking specific data uses into account. As imprecise as they may be, the above definitions suggest some possible measures:
--   Compare raw records in the original and the protected dataset. The more similar the SDC method to the identity function, the less the impact (but the higher the disclosure risk! ). This requires pairing records in the original dataset and records in the protected dataset. For masking methods, each record in the protected dataset is naturally paired to the record in the original dataset it originates from. For synthetic protected datasets, pairing is more artificial. In Dandekar, Domingo-Ferrer and Sebé (2002) we proposed to pair a synthetic record to the nearest original record according to some distance.
--   Compare some statistics computed on the original and the protected datasets. The above definitions list some statistics which should be preserved as much as possible by an SDC method.
+
+1. Compare raw records in the original and the protected dataset. The more similar the SDC method to the identity function, the less the impact (but the higher the disclosure risk!). This requires pairing records in the original dataset and records in the protected dataset. For masking methods, each record in the protected dataset is naturally paired to the record in the original dataset it originates from. For synthetic protected datasets, pairing is more artificial. In Dandekar, Domingo-Ferrer and Sebé (2002) we proposed to pair a synthetic record to the nearest original record according to some distance.
+
+2. Compare some statistics computed on the original and the protected datasets. The above definitions list some statistics which should be preserved as much as possible by an SDC method.
+
+  Taking the above into account, for microdata the information loss can concern the differences in distributions, in diversification and in shape and power of connections between various features. Therefore, the following types of measures of information loss are distinguished:    
+
+1. Measures of distribution disturbance – measures based on distances between original and perturbed values of variables (e.g. mean, mean of relative
+distances, complex distances, etc.),
+2. Measures of impact on variance of estimation – computed using distances between variances for averages of continuous variables before and after
+SDC or multi-factor ANOVA for a selected dependent variable in relation to selected independent
+categorical variables (in this case, the measure
+of information loss involves a comparison of
+components of coefficients of determination R2
+– in terms of within-group and inter-group variance
+– for relevant models based on original and
+perturbed values (cf. [3])),
+– measures of impact on the intensity of connections
+– comparisons of measures of direction and
+intensity of connections between original continuous
+variables and between relevant perturbed ones;
+such measures can be e.g. correlation coefficients
+or test of independence.
+
 
 ### Information loss measures for continuous data
 
