@@ -113,44 +113,43 @@ $$dv(c,c')=\begin{cases}
 0, & \text{if $c=c'$},\\
 1, & \text{if $c \neq c'$},
 \end{cases}$$
-where $c$ is a category in an original record and $c^{'}$ is the category which has replaced *c* in the corresponding protected record.
+where $c$ is a category in an original record and $c^'$ is the category which has replaced *c* in the corresponding protected record.
 
-For an ordinal variable $V$ (a categorical variable taking values over a totally ordered set), let $\leq V$ be the total order operator over the range $D(V)$ of $V$. Define the distance between categories $c$ and $c^{'}$ as the number of categories between the minimum and the maximum of $c$ and $c^{'}$ divided by the cardinality of the range:
+For an ordinal variable $V$ (a categorical variable taking values over a totally ordered set), let $\leq V$ be the total order operator over the range $D(V)$ of $V$. Define the distance between categories $c$ and $c^'$ as the number of categories between the minimum and the maximum of $c$ and $c^'$ divided by the cardinality of the range:
 
-$\text{dc}\left( c,c^{'} \right) = \frac{\left| c^{''}\text{:min}\left( c,c^{'} \right) \leq c^{''} < \text{max}\left( c,c^{'} \right) \right|}{\left| D(V) \right|}$
+$\text{dc}\left(c,c^'\right)=\frac{\left|c^{''}\text{:min}\left(c,c^'\right \leq c^{''}<\text{max}\left(c,c^'\right)\right|}{\left|D(V)\right|}$
 
 *Comparison of contingency tables*
 
-An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets $F$ and $G$ (the original and the protected set, respectively) and their corresponding *t*-dimensional contingency tables for $t \leq K$, we can define a contingency table-based information loss measure *CTBIL* for a subset $W$ of variables as follows:
+An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets $F$ and $G$ (the original and the protected set, respectively) and their corresponding *t*-dimensional contingency tables for $t\leq K$, we can define a contingency table-based information loss measure *CTBIL* for a subset $W$ of variables as follows:
 
-$$\text{CTBIL}(F,G; W,K) = \sum_{ \{ V_{ji} \cdots V_{jt} \} f\subseteq W \atop | \{ V_{ji} \cdots V_{jt} \} | \leq K} \sum_{i_1 \cdots i_t} | x^F_{i_1 \cdots i_t} - x^G_{i_1 \cdots i_t} |$$(3.4.3.1)
+$$\text{CTBIL}(F,G; W,K)=\sum_{\{V_{ji}\cdots V_{jt}\} f\subseteq W\atop|\{V_{ji}\cdots V_{jt}\}|\leq K}\sum_{i_1\cdots i_t}|x^F_{i_1\cdots i_t}-x^G_{i_1\cdots i_t} |$$(3.4.3.1)
 
 where $x_{\text{subscripts}}^{\text{file}}$ is the entry of the contingency table of *file* at position given by *subscripts*.
 
 Because the number of contingency tables to be considered depends on the number of variables $|W|$*,* the number of categories for each variable, and the dimension $K$, a normalized version of Expression (3.4.3.1) may be desirable. This can be obtained by dividing Expression (3.4.2.1) by the total number of cells in all considered tables.
 
-Distance between contingency tables generalizes some of the information loss measures used in the literature. For example, the μ‑ARGUS software (Hundepool et al. 2005) measures information loss for local suppression by counting the number of suppressions. The distance between two contingency tables of dimension one returns twice the number of suppressions. This is because, when category *A* is suppressed for one record, two entries of the contingency table are changed: the count of records with category *A* decreases and the count of records with the "missing" category increases.
+Distance between contingency tables generalizes some of the information loss measures used in the literature. For example, the μ‑ARGUS software (Hundepool et al. (2005)) measures information loss for local suppression by counting the number of suppressions. The distance between two contingency tables of dimension one returns twice the number of suppressions. This is because, when category *A* is suppressed for one record, two entries of the contingency table are changed: the count of records with category *A* decreases and the count of records with the "missing" category increases.
 
 *Entropy-based measures*
 
-In DeWaal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw, (1998) and Willenborg and DeWaal (2001), the use of Shannon's entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.
+In DeWaal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw (1998) and Willenborg and DeWaal (2001), the use of Shannon's entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.
 
 As noted earlier, PRAM is a method that generalizes noise addition, suppression and recoding methods. Therefore, our description of the use of entropy will be limited to PRAM.
 
-Let $V$ be a variable in the original dataset and $V^{'}$ be the corresponding variable in the PRAM-protected dataset. Let $P_{V,V^{'}} = \left\{ p\left( V^{'} = j|V = i \right) \right\}$ be the PRAM Markov matrix. Then, the conditional uncertainty of *V* given that $V^{'} = j$is:
+Let $V$ be a variable in the original dataset and $V^'$ be the corresponding variable in the PRAM-protected dataset. Let $P_{V,V^'}=\left\{p\left(V^'=j|V=i\right) \right\}$ be the PRAM Markov matrix. Then, the conditional uncertainty of *V* given that $V^' = j$ is:
 
-$H\left( V|V^{'} = j \right) = - \sum_{i = 1}^{n}{p\left( V = i|V^{'} = j \right)\text{log}p}\left( V = i|V^{'} = j| \right)$ (3.4.3.2)
+$H\left(V|V^'=j\right)=-\sum_{i=1}^n{p\left(V=i|V^'=j\right)\text{log}p}\left(V=i|V^'=j|\right)$ (3.4.3.2)
 
-The probabilities in Expression (3.4.3.2) can be derived from $P_{V,V^{'}}$ using Bayes's formula. Finally, the entropy-based information loss measure *EBIL* is obtained by accumulating Expression 3.4.3.2 for all individuals *r* in the protected dataset $G$
+The probabilities in Expression (3.4.3.2) can be derived from $P_{V,V^'}$ using Bayes's formula. Finally, the entropy-based information loss measure *EBIL* is obtained by accumulating Expression 3.4.3.2 for all individuals *r* in the protected dataset $G$
 
-$\text{EBIL}\left( P_{V,V^{'}},G \right) = \sum_{r \in G}^{}{H\left( V|V^{'} = j_{r} \right)}$
+$\text{EBIL}\left(P_{V,V^'},G\right)=\sum_{r\in G}^{}{H\left( V|V^'=j_{r}\right)}$
 
-where $j_{r}$ is the value taken by $V^{'}$ in record *r*.
+where $j_r$ is the value taken by $V^'$ in record *r*.
 
 The above measure can be generalized for multivariate datasets if $V$ and $V^{'}$ are taken as being multidimensional variables (*i.e.* representing several one-dimensional variables).
 
 While using entropy to measure information loss is attractive from a theoretical point of view, its interpretation in terms of data utility loss is less obvious than for the previously discussed measures.
-
 
 ### Information loss measures for continuous data
 
