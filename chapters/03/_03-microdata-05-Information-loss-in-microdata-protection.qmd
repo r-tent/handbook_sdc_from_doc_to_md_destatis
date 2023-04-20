@@ -32,13 +32,13 @@ The statistician involved in processing and dissemination of data should estimat
 The key measures of disclosure risk for categorical variables in microdata are, in general, based on the frequency rules in the internal dimension. That is, they are expressed by number or percentage of records violating $k$-anonymity or $l$-diversity rule or being regarded as unsafe according to the $t$-closeness principle. These indicators can be applied, however, only for the raw microdata. However, we have to take also into account the fact that the microdata are usually a sample from some general population, and verify that relevant population values are also safe. Of course, one should take also the specificity of individual and global risk into account. As regards the hierachical risk, Templ (2017) proposes to measure it in any case as $1-\prod_{i\in A}{(1-r_i)}$, where $r_i$ is the individual risk for $i$-th record and $A$ is a given aggregate.
 
 Hundepool et al. (2012) present the measure of individual risk being a probability of correct link between record and unit in a worst case scenario. On the other hand, the global risk is here computed as a sum of inverted frequencies of combinations (also in an option restricted only to limited only to those combinations that have the frequency equal to 1). It is presented also in subchapter 3.3.3. This approach was further developed by Taylor, Zhou, and Rise (2018), who proposed an additional measure: the probability of a correct match given a unique match and probability of correct match. The former is a relation of the number of combinations with frequency 1 in the sample and relevant number in the population, the latter is the average expected value of inverted population frequency of a combination given relevant sample frequency. Moreover, Hundepool et al. (2012) and Taylor et al. (2018) as well as Templ (2017) discuss the use of Benedetti–Franconi and Poisson approaches in this context. Let $f_k$ be frequency of combination of values of categorical variables in $k$-th records in a sample and $F_k$ - the relevant frequency in the population and $\pi_k$ - its inclusion probability. Then the individual risk, $r_k$, is given as a function of these quantities. Templ (2017) provides the complete formula. However, in practice, most risky are situations where $f_k=1$ or $f_k=2$. In the former case the estimate of individual risk as
-$\hat{r}_k=\frac{\hat{p}_k}{1-\hat{p}_k}\log\left(\frac{1}{\hat{p}_k}\right)$,
+$$\hat{r}_k=\frac{\hat{p}_k}{1-\hat{p}_k}\log\left(\frac{1}{\hat{p}_k}\right)$$,
 where 
 $\hat{p}_k=\frac{f_k}{\hat{F}_k}=\frac{f_k}{\sum_{i\in\{j:x_j=x_k\}}{\pi_i}}$ and $x_l$ is the combination of values of categorical variables preset in $l$-th record. In the latter situation,
-$\hat{r}_k=\frac{\hat{p}_k}{1-\hat{p}_k}-\left(\frac{\hat{p}_k}{1-\hat{p}_k}\right)^2\log\left(\frac{1}{\hat{p}_k}\right)$
+$$\hat{r}_k=\frac{\hat{p}_k}{1-\hat{p}_k}-\left(\frac{\hat{p}_k}{1-\hat{p}_k}\right)^2\log\left(\frac{1}{\hat{p}_k}\right)$$
 The parameters of these methods are estimated taking the aforementioned frequencies and dependencies into account. 
 For large samples one can use the following approximation
-$\hat{r}_k=\frac{\hat{p}_k}{f_k-(1-\hat{p}_k)}=\frac{f_k}{f_k\hat{F}_k-(\hat{F}_k-\hat{f}_k)}$.
+$$\hat{r}_k=\frac{\hat{p}_k}{f_k-(1-\hat{p}_k)}=\frac{f_k}{f_k\hat{F}_k-(\hat{F}_k-\hat{f}_k)}$$.
 
 Shlomo (2022) proposes measures disclosure risk in synthetic data based on the comparison of the overall distributions in the original data versus synthetic data and using Kullback–Leibler Total Variation and Hellinger’s Distance formulas. Shlomo and Skinner (2022) introduced a new approach to measure the risk of re-identification for a subpopulation in a register that is not representative of the general population based on the numbers of combinations which frequency equals in the sample in the subpopulation and in the population using the Poisson model.
 
@@ -87,7 +87,7 @@ Defining what a generic information loss measure is can be a difficult issue. Ro
 
 2. Compare some statistics computed on the original and the protected datasets. The above definitions list some statistics which should be preserved as much as possible by an SDC method.
 
-  Taking the above into account, for microdata the information loss can concern the differences in distributions, in diversification and in shape and power of connections between various features. Therefore, the following types of measures of information loss are distinguished:    
+  Taking the aforementioned premises into account, for microdata the information loss can concern the differences in distributions, in diversification and in shape and power of connections between various features. Therefore, the following types of measures of information loss are distinguished:    
 
 1. Measures of distribution disturbance – measures based on distances between original and perturbed values of variables (e.g. mean, mean of relative
 distances, complex distances, etc.),
@@ -96,35 +96,32 @@ distances, complex distances, etc.),
 
 ### Information loss measures for categorical data
 
-Straightforward computation of measures in @tbl-loss-information on categorical data is not possible. The following alternatives are considered in Domingo-Ferrer and Torra (2001):
+Straightforward computation of measures based on most descriptive statistics (Euclidean distace, mean, variance, correlation, etc.) on categorical data is not possible. The following alternatives are considered in Domingo-Ferrer and Torra (2001):
+• direct comparison of categorical values,
+• comparison of contingency tables,
+• entropy-based measures.
 
--   Direct comparison of categorical values
+Below we will describe each of such types of measure.
 
--   Comparison of contingency tables
-
--   Entropy-based measures
-
-[Direct comparison of categorical values]
+*Direct comparison of categorical values*
 
 Comparison of matrices $X$ and $X^'$ for categorical data requires the definition of a distance for categorical variables. Definitions consider only the distances between pairs of categories that can appear when comparing an original record and its protected version (see discussion above on pairing original and protected records).
 
 For a nominal variable $V$ (a categorical variable taking values over an unordered set), the only permitted operation is comparison for equality. This leads to the following distance definition:
 
-
 $$dv(c,c')=\begin{cases}
-0, & \text{if $c=c'$}\\
-1, & \text{if $c \neq c'$}
+0, & \text{if $c=c'$},\\
+1, & \text{if $c \neq c'$},
 \end{cases}$$
-
 where $c$ is a category in an original record and $c^{'}$ is the category which has replaced *c* in the corresponding protected record.
 
 For an ordinal variable $V$ (a categorical variable taking values over a totally ordered set), let $\leq V$ be the total order operator over the range $D(V)$ of $V$. Define the distance between categories $c$ and $c^{'}$ as the number of categories between the minimum and the maximum of $c$ and $c^{'}$ divided by the cardinality of the range:
 
 $\text{dc}\left( c,c^{'} \right) = \frac{\left| c^{''}\text{:min}\left( c,c^{'} \right) \leq c^{''} < \text{max}\left( c,c^{'} \right) \right|}{\left| D(V) \right|}$
 
-[Comparison of contingency tables]
+*Comparison of contingency tables*
 
-An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets $F$ and $G$ (the original and the protected set, respectively) and their corresponding *t*-dimensional contingency tables for $t \leq K$, we can define a contingency table-based information loss measure *CTBIL* for a subset $W$ of variables as follows: ![](Images/media/image134.png){width="0.2in" height="0.2in"}
+An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets $F$ and $G$ (the original and the protected set, respectively) and their corresponding *t*-dimensional contingency tables for $t \leq K$, we can define a contingency table-based information loss measure *CTBIL* for a subset $W$ of variables as follows:
 
 $$\text{CTBIL}(F,G; W,K) = \sum_{ \{ V_{ji} \cdots V_{jt} \} f\subseteq W \atop | \{ V_{ji} \cdots V_{jt} \} | \leq K} \sum_{i_1 \cdots i_t} | x^F_{i_1 \cdots i_t} - x^G_{i_1 \cdots i_t} |$$(3.4.3.1)
 
@@ -134,9 +131,9 @@ Because the number of contingency tables to be considered depends on the number 
 
 Distance between contingency tables generalizes some of the information loss measures used in the literature. For example, the μ‑ARGUS software (Hundepool et al. 2005) measures information loss for local suppression by counting the number of suppressions. The distance between two contingency tables of dimension one returns twice the number of suppressions. This is because, when category *A* is suppressed for one record, two entries of the contingency table are changed: the count of records with category *A* decreases and the count of records with the "missing" category increases.
 
-[Entropy-based measures]
+*Entropy-based measures*
 
-In DeWaal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw, (1998) and Willenborg and DeWaal (2001), the use of Shannon's entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.![](Images/media/image135.png){width="0.2in" height="0.2in"}
+In DeWaal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw, (1998) and Willenborg and DeWaal (2001), the use of Shannon's entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.
 
 As noted earlier, PRAM is a method that generalizes noise addition, suppression and recoding methods. Therefore, our description of the use of entropy will be limited to PRAM.
 
