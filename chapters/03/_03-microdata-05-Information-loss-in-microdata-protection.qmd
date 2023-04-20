@@ -153,13 +153,10 @@ While using entropy to measure information loss is attractive from a theoretical
 
 ### Information loss measures for continuous data
 
-Assume a microdata set with *n* individuals (records) $I_{1},I_{2},\cdots,I_{n}$ and *p* continuous variables $Z_{1},Z_{2},\cdots,Z_{p}$. Let $X$ be the matrix representing the original microdata set (rows are records and columns are variables). Let $X^{'}$ be the matrix representing the protected microdata set. The following tools are useful to characterize the information contained in the dataset:
-
--   Covariance matrices $V$ (on $X$) and $V^{'}$ (on $X^{'}$).
-
--   Correlation matrices $R$ and $R^{'}$.
-
--   Correlation matrices $\text{RF}$ and $RF^{'}$ between the *p* variables and the *p* factors principal components $\text{PC}_{1},\text{PC}_{2},\cdots,\text{PC}_{p}$ obtained through principal components analysis.
+Assume a microdata set with *n* individuals (records) $I_1,I_2,\cdots,I_n$ and *p* continuous variables $Z_1,Z_2,\cdots,Z_p$. Let $X$ be the matrix representing the original microdata set (rows are records and columns are variables). Let $X^{'}$ be the matrix representing the protected microdata set. The following tools are useful to characterize the information contained in the dataset:
+-   Covariance matrices $V$ (on $X$) and $V^'$ (on $X^'$).
+-   Correlation matrices $R$ and $R^'$.
+-   Correlation matrices $\text{RF}$ and $RF^'$ between the *p* variables and the *p* factors principal components $\text{PC}_{1},\text{PC}_{2},\cdots,\text{PC}_{p}$ obtained through principal components analysis.
 
 -   Communality between each of the *p* variables and the first principal component $\text{PC}_{1}$ (or other principal components $\text{PC}_{i}$*'s*). Communality is the percent of each variable that is explained by $\text{PC}_{1}$ (or $\text{PC}_{i}$). Let $C$ be the vector of communalities for $X$ and $C^{'}$ the corresponding vector for $X^{'}$.
 
@@ -194,6 +191,9 @@ In Yancey, Winkler and Creecy (2002), it is observed that dividing by $x_{\text
 where $S_{j}$ is the standard deviation of the *j*-th variable in the original dataset.
 
 Trottini (2003) argues that, since information loss is to be traded off for disclosure risk and the latter is bounded ---there is no risk higher than 100%---, upper bounds should be enforced for information loss measures. In practice, the proposal in Trottini (2003) is to limit those measures in @tbl-loss-information based on the mean variation to a predefined maximum value.
+
+### Complex measures of information loss
+### Practical realization of trade-off between safety and utility of microdata.
 
 
 ### References
