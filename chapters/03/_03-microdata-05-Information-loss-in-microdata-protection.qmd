@@ -147,7 +147,7 @@ $\text{EBIL}\left(P_{V,V^'},G\right)=\sum_{r\in G}{H\left(V|V^'=j_{r}\right)}$
 
 where $j_r$ is the value taken by $V^'$ in record $r$.
 
-The above measure can be generalized for multivariate datasets if $V$ and $V^{'}$ are taken as being multidimensional variables (*i.e.* representing several one-dimensional variables).
+The above measure can be generalized for multivariate datasets if $V$ and $V^'$ are taken as being multidimensional variables (*i.e.* representing several one-dimensional variables).
 
 While using entropy to measure information loss is attractive from a theoretical point of view, its interpretation in terms of data utility loss is less obvious than for the previously discussed measures.
 
@@ -158,7 +158,7 @@ Assume a microdata set with $n$ individuals (records) $I_1,I_2,\cdots,I_n$ and $
 • correlation matrices $R$ and $R^'$.
 • correlation matrices $\text{RF}$ and $RF^'$ between the $p$ variables and the $p$ factors principal components $\text{PC}_1,\text{PC}_2,\cdots,\text{PC}_p$ obtained through principal components analysis.
 • communality between each of the $p$ variables and the first principal component $\text{PC}_{1}$ (or other principal components $\text{PC}_i$*'s*). Communality is the percent of each variable that is explained by $\text{PC}_{1}$ (or $\text{PC}_i$). Let $C$ be the vector of communalities for $X$ and $C^'$ the corresponding vector for $X^'$.
-• matrices $F$ and $F^'$ containing the loadings of each variable in $X$on each principal component. The i-th variable in $X$ can be expressed as a linear combination of the principal components plus a residual variation, where the $j$-th principal component is multiplied by the loading in $F$ relating the $i$-th variable and the $j$-th principal component (Chatfield and Collins, 1980\]. $F^'$ is the corresponding matrix for $X^'$.
+• matrices $F$ and $F^'$ containing the loadings of each variable in $X$ on each principal component. The i-th variable in $X$ can be expressed as a linear combination of the principal components plus a residual variation, where the $j$-th principal component is multiplied by the loading in $F$ relating the $i$-th variable and the $j$-th principal component (Chatfield and Collins, 1980\]. $F^'$ is the corresponding matrix for $X^'$.
 
 There does not seem to be a single quantitative measure which completely reflects those structural differences. Therefore, we proposed in Domingo-Ferrer, Mateo-Sanz, and Torra (2001) and Domingo-Ferrer and Torra (2001) to measure information loss through the discrepancies between matrices $X$, $V$, $R$, $\text{RF}$, $C$ and $F$ obtained on the original data and the corresponding $X^'$, $V^'$, $R^'$, $RF^'$, $C^'$ and $F^'$ obtained on the protected dataset. In particular, discrepancy between correlations is related to the information loss for data uses such as regressions and cross tabulations.
 
