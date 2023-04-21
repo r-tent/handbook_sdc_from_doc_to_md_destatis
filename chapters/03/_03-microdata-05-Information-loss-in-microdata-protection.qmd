@@ -121,15 +121,15 @@ $$\text{dc}\left(c,c^'\right)=\frac{\left|c^{''}\text{:min}\left(c,c^'\right\leq
 
 *Comparison of contingency tables*
 
-An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets $F$ and $G$ (the original and the protected set, respectively) and their corresponding *t*-dimensional contingency tables for $t\leq K$, we can define a contingency table-based information loss measure *CTBIL* for a subset $W$ of variables as follows:
+An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets $F$ and $G$ (the original and the protected set, respectively) and their corresponding $t$-dimensional contingency tables for $t\leq K$, we can define a contingency table-based information loss measure *CTBIL* for a subset $W$ of variables as follows:
 
-$$\text{CTBIL}(F,G;W,K)=\sum_{\{V_{ji}\cdots V_{jt}\} f\subseteq W\atop|\{V_{ji}\cdots V_{jt}\}|\leq K}\sum_{i_1\cdots i_t}|x^F_{i_1\cdots i_t}-x^G_{i_1\cdots i_t} |$$(3.4.3.1)
+$$\text{CTBIL}(F,G;W,K)=\sum_{\{V_{ji}\cdots V_{jt}\} f\subseteq W\atop|\{V_{ji}\cdots V_{jt}\}|\leq K}\sum_{i_1\cdots i_t}|x^F_{i_1\cdots i_t}-x^G_{i_1\cdots i_t} |$$(3.5.3)
 
 where $x_{\text{subscripts}}^{\text{file}}$ is the entry of the contingency table of *file* at position given by *subscripts*.
 
-Because the number of contingency tables to be considered depends on the number of variables $|W|$*,* the number of categories for each variable, and the dimension $K$, a normalized version of Expression (3.4.3.1) may be desirable. This can be obtained by dividing Expression (3.4.2.1) by the total number of cells in all considered tables.
+Because the number of contingency tables to be considered depends on the number of variables $|W|$, the number of categories for each variable, and the dimension $K$, a normalized version of Expression (3.5.3) may be desirable. This can be obtained by dividing Expression (3.4.2.1) by the total number of cells in all considered tables.
 
-Distance between contingency tables generalizes some of the information loss measures used in the literature. For example, the μ‑ARGUS software (Hundepool et al. (2005)) measures information loss for local suppression by counting the number of suppressions. The distance between two contingency tables of dimension one returns twice the number of suppressions. This is because, when category *A* is suppressed for one record, two entries of the contingency table are changed: the count of records with category *A* decreases and the count of records with the "missing" category increases.
+Distance between contingency tables generalizes some of the information loss measures used in the literature. For example, the μ‑ARGUS software (Hundepool et al. (2005)) measures information loss for local suppression by counting the number of suppressions. The distance between two contingency tables of dimension one returns twice the number of suppressions. This is because, when category $A$ is suppressed for one record, two entries of the contingency table are changed: the count of records with category $A$ decreases and the count of records with the "missing" category increases.
 
 *Entropy-based measures*
 
@@ -137,15 +137,15 @@ In De Waal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw (1998) and 
 
 As noted earlier, PRAM is a method that generalizes noise addition, suppression and recoding methods. Therefore, our description of the use of entropy will be limited to PRAM.
 
-Let $V$ be a variable in the original dataset and $V^'$ be the corresponding variable in the PRAM-protected dataset. Let $P_{V,V^'}=\left\{p\left(V^'=j|V=i\right) \right\}$ be the PRAM Markov matrix. Then, the conditional uncertainty of *V* given that $V^'=j$ is:
+Let $V$ be a variable in the original dataset and $V^'$ be the corresponding variable in the PRAM-protected dataset. Let $P_{V,V^'}=\left\{p\left(V^'=j|V=i\right) \right\}$ be the PRAM Markov matrix. Then, the conditional uncertainty of $V$ given that $V^'=j$ is:
 
-$H\left(V|V^'=j\right)=-\sum_{i=1}^n{p\left(V=i|V^'=j\right)\text{log}p}\left(V=i|V^'=j|\right)$ (3.5.2)
+$H\left(V|V^'=j\right)=-\sum_{i=1}^n{p\left(V=i|V^'=j\right)\text{log}p}\left(V=i|V^'=j|\right)$ (3.5.4)
 
-The probabilities in Expression (3.5.2) can be derived from $P_{V,V^'}$ using Bayes's formula. Finally, the entropy-based information loss measure *EBIL* is obtained by accumulating Expression (3.5.2) for all individuals *r* in the protected dataset $G$
+The probabilities in Expression (3.5.4) can be derived from $P_{V,V^'}$ using Bayes's formula. Finally, the entropy-based information loss measure *EBIL* is obtained by accumulating Expression (3.5.4) for all individuals $r$ in the protected dataset $G$
 
 $\text{EBIL}\left(P_{V,V^'},G\right)=\sum_{r\in G}{H\left(V|V^'=j_{r}\right)}$
 
-where $j_r$ is the value taken by $V^'$ in record *r*.
+where $j_r$ is the value taken by $V^'$ in record $r$.
 
 The above measure can be generalized for multivariate datasets if $V$ and $V^{'}$ are taken as being multidimensional variables (*i.e.* representing several one-dimensional variables).
 
@@ -153,12 +153,12 @@ While using entropy to measure information loss is attractive from a theoretical
 
 ### Information loss measures for continuous data
 
-Assume a microdata set with *n* individuals (records) $I_1,I_2,\cdots,I_n$ and *p* continuous variables $Z_1,Z_2,\cdots,Z_p$. Let $X$ be the matrix representing the original microdata set (rows are records and columns are variables). Let $X^{'}$ be the matrix representing the protected microdata set. The following tools are useful to characterize the information contained in the dataset:
+Assume a microdata set with $n$ individuals (records) $I_1,I_2,\cdots,I_n$ and $p$ continuous variables $Z_1,Z_2,\cdots,Z_p$. Let $X$ be the matrix representing the original microdata set (rows are records and columns are variables). Let $X^{'}$ be the matrix representing the protected microdata set. The following tools are useful to characterize the information contained in the dataset:
 • covariance matrices $V$ (on $X$) and $V^'$ (on $X^'$).
 • correlation matrices $R$ and $R^'$.
-• correlation matrices $\text{RF}$ and $RF^'$ between the *p* variables and the *p* factors principal components $\text{PC}_{1},\text{PC}_{2},\cdots,\text{PC}_{p}$ obtained through principal components analysis.
-• communality between each of the *p* variables and the first principal component $\text{PC}_{1}$ (or other principal components $\text{PC}_{i}$*'s*). Communality is the percent of each variable that is explained by $\text{PC}_{1}$ (or $\text{PC}_{i}$). Let $C$ be the vector of communalities for $X$ and $C^'$ the corresponding vector for $X^'$.
-• matrices $F$ and $F^'$ containing the loadings of each variable in $X$on each principal component. The i-th variable in *X* can be expressed as a linear combination of the principal components plus a residual variation, where the *j*-th principal component is multiplied by the loading in *F* relating the *i*-th variable and the *j*-th principal component (Chatfield and Collins, 1980\]. $F^'$ is the corresponding matrix for $X^'$.
+• correlation matrices $\text{RF}$ and $RF^'$ between the $p$ variables and the $p$ factors principal components $\text{PC}_1,\text{PC}_2,\cdots,\text{PC}_p$ obtained through principal components analysis.
+• communality between each of the $p$ variables and the first principal component $\text{PC}_{1}$ (or other principal components $\text{PC}_i$*'s*). Communality is the percent of each variable that is explained by $\text{PC}_{1}$ (or $\text{PC}_i$). Let $C$ be the vector of communalities for $X$ and $C^'$ the corresponding vector for $X^'$.
+• matrices $F$ and $F^'$ containing the loadings of each variable in $X$on each principal component. The i-th variable in $X$ can be expressed as a linear combination of the principal components plus a residual variation, where the $j$-th principal component is multiplied by the loading in $F$ relating the $i$-th variable and the $j$-th principal component (Chatfield and Collins, 1980\]. $F^'$ is the corresponding matrix for $X^'$.
 
 There does not seem to be a single quantitative measure which completely reflects those structural differences. Therefore, we proposed in Domingo-Ferrer, Mateo-Sanz, and Torra (2001) and Domingo-Ferrer and Torra (2001) to measure information loss through the discrepancies between matrices $X$, $V$, $R$, $\text{RF}$, $C$ and $F$ obtained on the original data and the corresponding $X^'$, $V^'$, $R^'$, $RF^'$, $C^'$ and $F^'$ obtained on the protected dataset. In particular, discrepancy between correlations is related to the information loss for data uses such as regressions and cross tabulations.
 
@@ -167,7 +167,7 @@ Matrix discrepancy can be measured in at least three ways:
 • *Mean absolute error* - sum of absolute componentwise differences between pairs of matrices, divided by the number of cells in either matrix,
 • *Mean variation* - sum of absolute percent variation of components in the matrix computed on protected data with respect to components in the matrix computed on original data, divided by the number of cells in either matrix. This approach has the advantage of not being affected by scale changes of variables.
 
-Table 1 summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, *p* is the number of variables, *n* the number of records, and components of matrices are represented by the corresponding lowercase letters (*e.g.* $x_{\text{ij}}$ is a component of matrix $X$). Regarding $X-X^'$ measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant $\overline{X} - \overline{X^'}$. Similarly, for $V-V^'$ measures, it would also be sensible to use them to compare only the variances of the variables, *i.e.* to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant $S-S^'$).
+Table 1 summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, $p$ is the number of variables, $n$ - the number of records, and components of matrices are represented by the corresponding lowercase letters (*e.g.* $x_{\text{ij}}$ is a component of matrix $X$). Regarding $X-X^'$ measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant $\overline{X} - \overline{X^'}$. Similarly, for $V-V^'$ measures, it would also be sensible to use them to compare only the variances of the variables, *i.e.* to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant $S-S^'$).
 
 Table 1. Examples of measures of information loss for continuous variables.  
 
