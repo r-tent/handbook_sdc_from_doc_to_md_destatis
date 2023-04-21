@@ -196,7 +196,19 @@ Values of (\ref{mgamma}) are also easily interpretable - it can be understood as
 
 ### Complex measures of information loss
 
-The above presented concepts of information loss prompt the question whether it is possible to construct complex measure of information loss taking variables of all measurement scales into account. The relevant proposal was formulated by Młodak (2020) and applied by Młodak, Pietrzak and Józefowski (2022) to the case of microdata from the Polish survey of accodents at work. (3.5.1) and (3.5.2)
+The above presented concepts of information loss prompt the question whether it is possible to construct complex measure of information loss taking variables of all measurement scales into account. The relevant proposal was formulated by Młodak (2020) and applied by Młodak, Pietrzak and Józefowski (2022) to the case of microdata from the Polish survey of accodents at work. For categorical variables it is based on the approaches (3.5.1) and (3.5.2), i.e. if the variable $X_j$ is nominal, then (treating NA as a separate level)
+$$
+d({x_{ij}}^',x_{hj})=\begin{cases}
+1&\textmd{if}\;x_{ij}}^'=x_{hj},\cr
+0&\textmd{if}\;x_{ij}}^'\ne x_{hj}.
+$$
+If $X_j$ is ordinal, then (NA is treated as a separate, lowest category)
+$$
+d(x_{ij}}^',x_{hj})=\frac{\mathfrak{r}(x_{ij}}^',x_{hj})}{\mathfrak{r}_j-1},
+$$
+where $\mathfrak{r}(x_{ij}}^',x_{hj})$ is the absolute difference in categories between $x_{ij}}^'$ and $x_{hj}$ and $\mathfrak{r}_j$ is the total number of categories of $X_j$.These partial distances take always values from [0,1].  
+
+Much more complicated situation occurs for continuous variables.
 
 ### Practical realization of trade-off between safety and utility of microdata.
 
