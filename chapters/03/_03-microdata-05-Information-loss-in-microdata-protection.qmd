@@ -112,12 +112,12 @@ For a nominal variable $V$ (a categorical variable taking values over an unorder
 $$dv(c,c')=\begin{cases}
 0, & \text{if $c=c'$},\\
 1, & \text{if $c\neq c'$},
-\end{cases}$$
+\end{cases}$$ (3.5.1)
 where $c$ is a category in an original record and $c^'$ is the category which has replaced *c* in the corresponding protected record.
 
 For an ordinal variable $V$ (a categorical variable taking values over a totally ordered set), let $\leq V$ be the total order operator over the range $D(V)$ of $V$. Define the distance between categories $c$ and $c^'$ as the number of categories between the minimum and the maximum of $c$ and $c^'$ divided by the cardinality of the range:
 
-$\text{dc}\left(c,c^'\right)=\frac{\left|c^{''}\text{:min}\left(c,c^'\right \leq c^{''}<\text{max}\left(c,c^'\right)\right|}{\left|D(V)\right|}$
+$$\text{dc}\left(c,c^'\right)=\frac{\left|c^{''}\text{:min}\left(c,c^'\right\leq c^{''}<\text{max}\left(c,c^'\right)\right|}{\left|D(V)\right|}$$ (3.5.2)
 
 *Comparison of contingency tables*
 
@@ -137,11 +137,11 @@ In De Waal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw (1998) and 
 
 As noted earlier, PRAM is a method that generalizes noise addition, suppression and recoding methods. Therefore, our description of the use of entropy will be limited to PRAM.
 
-Let $V$ be a variable in the original dataset and $V^'$ be the corresponding variable in the PRAM-protected dataset. Let $P_{V,V^'}=\left\{p\left(V^'=j|V=i\right) \right\}$ be the PRAM Markov matrix. Then, the conditional uncertainty of *V* given that $V^' = j$ is:
+Let $V$ be a variable in the original dataset and $V^'$ be the corresponding variable in the PRAM-protected dataset. Let $P_{V,V^'}=\left\{p\left(V^'=j|V=i\right) \right\}$ be the PRAM Markov matrix. Then, the conditional uncertainty of *V* given that $V^'=j$ is:
 
-$H\left(V|V^'=j\right)=-\sum_{i=1}^n{p\left(V=i|V^'=j\right)\text{log}p}\left(V=i|V^'=j|\right)$ (3.4.3.2)
+$H\left(V|V^'=j\right)=-\sum_{i=1}^n{p\left(V=i|V^'=j\right)\text{log}p}\left(V=i|V^'=j|\right)$ (3.5.2)
 
-The probabilities in Expression (3.4.3.2) can be derived from $P_{V,V^'}$ using Bayes's formula. Finally, the entropy-based information loss measure *EBIL* is obtained by accumulating Expression 3.4.3.2 for all individuals *r* in the protected dataset $G$
+The probabilities in Expression (3.5.2) can be derived from $P_{V,V^'}$ using Bayes's formula. Finally, the entropy-based information loss measure *EBIL* is obtained by accumulating Expression (3.5.2) for all individuals *r* in the protected dataset $G$
 
 $\text{EBIL}\left(P_{V,V^'},G\right)=\sum_{r\in G}{H\left(V|V^'=j_{r}\right)}$
 
@@ -194,9 +194,9 @@ Trottini (2003) argues that, since information loss is to be traded off for disc
 
 Młodak (2020) proposed a new measure of information loss for continuous variables in terms of assesment of impact on the intensity of connections, which was slighthly improved by Młodak, Pietrzak and Józefowski (2022). It is based on on diagonal entries of inversed correlation matrices for continuous variables in the original ($R^{-1}$) and perturbed (${R^'}{-1}$) data sets, i.e. $\rho_{jj}^{(-1)}$ and ${\rho_{jj}^'}^{(-1)}$), $j=1,2,\ldots,m_c$ (where $m_c$ is the number of continuous variables):
 
-$$ \gamma=\frac{1}{\sqrt{2}}\sqrt{\sum_{j=1}^{m_c}{\left(\frac{\rho_{jj}^{(-1)}}{\sqrt{\sum_{l=1}^m{\left(\rho_{ll}^{(-1)}\right)^2}}}-\frac{\rho_{jj}^{*(-1)}}{\sqrt{\sum_{l=1}^m{\left(\rho_{ll}^{*(-1)}\right)^2}}}\right)^2}}\in [0,1]. $$
+$$\gamma=\frac{1}{\sqrt{2}}\sqrt{\sum_{j=1}^{m_c}{\left(\frac{\rho_{jj}^{(-1)}}{\sqrt{\sum_{l=1}^m{\left(\rho_{ll}^{(-1)}\right)^2}}}-\frac{\rho_{jj}^{*(-1)}}{\sqrt{\sum_{l=1}^m{\left(\rho_{ll}^{*(-1)}\right)^2}}}\right)^2}}\in [0,1].$$
 
-Values of (\ref{mgamma}) are also easily interpretable, as the expected loss of information about connections between variables and can be expressed in $\%$. Of course, both matrices must be based on the same correlation coefficient. The most obvious choice in this respect is the Pearson's index. However, when tau-Kendall correlation matrix is used, one can also apply it to ordinal variables. The method will be not applicable if the correlation matrix is singular. The measure $\gamma$ can be computed in the sdcMicro R package using the function IL_correl().  
+Values of (\ref{mgamma}) are also easily interpretable - it can be understood as the expected loss of information about connections between variables. As one can easily see, the result can be expressed in $\%$. Of course, both matrices - $R$ and $R'$ - must be based on the same correlation coefficient. The most obvious choice in this respect is the Pearson's index. However, when tau-Kendall correlation matrix is used, one can also apply it to ordinal variables. The method will be not applicable if the correlation matrix is singular. The main advantage of the measure $\gamma$ is that it treats all variables as an inseparable whole and takes all connections between analysed variables, even those hard to observe, into account. $\gamma$ can be computed in the sdcMicro R package using the function *IL_correl()*. 
 
 ### Information loss measures for categorical data
 
