@@ -198,23 +198,23 @@ Values of (\ref{mgamma}) are also easily interpretable - it can be understood as
 
 The above presented concepts of information loss prompt the question whether it is possible to construct complex measure of information loss taking variables of all measurement scales into account. The relevant proposal was formulated by Młodak (2020) and applied by Młodak, Pietrzak and Józefowski (2022) to the case of microdata from the Polish survey of accodents at work. For categorical variables it is based on the approaches (3.5.1) and (3.5.2), i.e. if the variable $X_j$ is nominal, then (treating NA as a separate level)
 $$
-d({x_{ij}}^',x_{hj})=\begin{cases}
-1&\textmd{if}\;x_{ij}}^'=x_{hj},\cr
-0&\textmd{if}\;x_{ij}}^'\ne x_{hj}.
+d({x_{ij}}^',x_{ij})=\begin{cases}
+1&\textmd{if}\;x_{ij}}^'=x_{ij},\cr
+0&\textmd{if}\;x_{ij}}^'\ne x_{ij}. (3.5.5)
 $$
 If $X_j$ is ordinal, then (NA is treated as a separate, lowest category)
 $$
-d(x_{ij}}^',x_{hj})=\frac{\mathfrak{r}(x_{ij}}^',x_{hj})}{\mathfrak{r}_j-1},
+d({x_{ij}}^',x_{ij})=\frac{\mathfrak{r}(x_{ij}}^',x_{ij})}{\mathfrak{r}_j-1}, (3.5.6)
 $$
-where $\mathfrak{r}(x_{ij}}^',x_{hj})$ is the absolute difference in categories between $x_{ij}}^'$ and $x_{hj}$ and $\mathfrak{r}_j$ is the total number of categories of $X_j$.These partial distances take always values from [0,1]. There are, however, some problems with using these measures. One of the SDC tools for categorical variables is recoding. The number of categories of such a recoded variable in the original set and in the new SDC resulting from it will be different. Therefore, in the first place, it should be ensured that the numbers of the categories left unchanged are identical in both variants. For example, if before recoding the variable $X_j$ had $k_j$=8 categories marked as 1,2,3,4,5,6,7,8, and as a result of recoding categories 2 and 3 and 6 and 7 were combined, then the new categories should have respectively numbers 1,2,4,5,6,8. Then approach (3.5.2) applies in this case as well.
+where $\mathfrak{r}(x_{ij}}^',x_{ij})$ is the absolute difference in categories between $x_{ij}}^'$ and $x_{ij}$ and $\mathfrak{r}_j$ is the total number of categories of $X_j$.These partial distances take always values from [0,1]. There are, however, some problems with using them, especially if recoding is applied. The number of categories of a recoded variable in the original set and in the set after SDC will be different. Therefore, in the first place, it should be ensured that the numbers of the categories left unchanged are identical in both variants. For example, if before recoding the variable $X_j$ had $\mathfrak{r}_j$=8 categories marked as 1,2,3,4,5,6,7,8 and as a result of recoding categories 2 and 3 and 6 and 7 were combined, then the new categories should have respectively numbers 1,2,4,5,6,8. Then the option (3.5.6) for categorical variables applies in this case as well.
 
 Much more complicated situation occurs for continuous variables. Młodak (2020) proposed several options is this respect, e.g. normalized absolute value or normalized square of difference between ${x_{ij}}^'$ and $x_{ij}$, i.e. 
-$$d(x_ij,x_ij^* )=|x_ij-x_ij^* |/max┬(k=1,2,…,n)⁡|x_kj-x_kj^* |,$$                                                    (4)
-lub
-d(x_ij,x_ij^* )=(x_ij-x_ij^* )^2/max┬(k=1,2,…,n)⁡〖(x_kj-x_kj^* )^2 〗 ,                                                 (5)
-i=1,2,…,n, j=1,2,…,m.
+$$d({x_{ij}}^',x_{ij})=|{x_{ij}}^'-x_{ij}|/\max_{k=1,2,\ldots,n}⁡|{x_{kj}}^'-x_{kj}|,$$ (3.5.7)
+or
+$$d({x_{ij}}^',x_{ij})=({x_{ij}}^'-x_{ij})^2/\max_(k=1,2,\lots,n)⁡({x_{kj}}^'-x_{kj})^2,$$ (3.5.8)
+$i=1,2,\ldots,n$, $j=1,2,\ldots,m_c$, where $n$ is the number of records and $m_c$ - the number of continuous variables.
 
-Measures (4) and (5) also have another significant weakness. The measure of information loss should be an increasing function due to individual partial information losses. This means that, for example, if for some i∈{1,2,,…,n} the value |x_ij-x_ij^* | will increase and all |x_hj-x_hj^* | for h≠i remain the same, the value of the gauge should increase. Meanwhile, in the case of formulas (4) and (5), this will not be the case. If, for the same, the indicated absolute difference (or the square of the difference, respectively) between the original value and the value after SDC reaches a maximum, then the partial loss of information for i will remain unchanged - it will be 1, and for the others it will turn out to be smaller. As a result, we get a smaller metric value, while the information loss actually increased.
+Measures (3.5.7) and (3.5.8) also have another significant weakness. The measure of information loss should be an increasing function due to individual partial information losses. This means that, for example, if for some i∈{1,2,,…,n} the value |x_ij-x_ij^* | will increase and all |x_hj-x_hj^* | for h≠i remain the same, the value of the gauge should increase. Meanwhile, in the case of formulas (3.5.7) and (3.5.8), this will not be the case. If, for the same, the indicated absolute difference (or the square of the difference, respectively) between the original value and the value after SDC reaches a maximum, then the partial loss of information for i will remain unchanged - it will be 1, and for the others it will turn out to be smaller. As a result, we get a smaller metric value, while the information loss actually increased.
 
 then
     \[
