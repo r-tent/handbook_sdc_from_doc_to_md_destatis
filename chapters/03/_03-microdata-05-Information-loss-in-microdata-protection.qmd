@@ -206,9 +206,45 @@ If $X_j$ is ordinal, then (NA is treated as a separate, lowest category)
 $$
 d(x_{ij}}^',x_{hj})=\frac{\mathfrak{r}(x_{ij}}^',x_{hj})}{\mathfrak{r}_j-1},
 $$
-where $\mathfrak{r}(x_{ij}}^',x_{hj})$ is the absolute difference in categories between $x_{ij}}^'$ and $x_{hj}$ and $\mathfrak{r}_j$ is the total number of categories of $X_j$.These partial distances take always values from [0,1].  
+where $\mathfrak{r}(x_{ij}}^',x_{hj})$ is the absolute difference in categories between $x_{ij}}^'$ and $x_{hj}$ and $\mathfrak{r}_j$ is the total number of categories of $X_j$.These partial distances take always values from [0,1]. There are, however, some problems with using these measures. One of the SDC tools for categorical variables is recoding. The number of categories of such a recoded variable in the original set and in the new SDC resulting from it will be different. Therefore, in the first place, it should be ensured that the numbers of the categories left unchanged are identical in both variants. For example, if before recoding the variable $X_j$ had $k_j$=8 categories marked as 1,2,3,4,5,6,7,8, and as a result of recoding categories 2 and 3 and 6 and 7 were combined, then the new categories should have respectively numbers 1,2,4,5,6,8. Then approach (3.5.2) applies in this case as well.
 
-Much more complicated situation occurs for continuous variables.
+Much more complicated situation occurs for continuous variables. Młodak (2020) proposed several options is this respect, e.g. normalized absolute value or normalized square of difference between ${x_{ij}}^'$ and $x_{ij}$, i.e. 
+$$d(x_ij,x_ij^* )=|x_ij-x_ij^* |/max┬(k=1,2,…,n)⁡|x_kj-x_kj^* |,$$                                                    (4)
+lub
+d(x_ij,x_ij^* )=(x_ij-x_ij^* )^2/max┬(k=1,2,…,n)⁡〖(x_kj-x_kj^* )^2 〗 ,                                                 (5)
+i=1,2,…,n, j=1,2,…,m.
+
+Measures (4) and (5) also have another significant weakness. The measure of information loss should be an increasing function due to individual partial information losses. This means that, for example, if for some i∈{1,2,,…,n} the value |x_ij-x_ij^* | will increase and all |x_hj-x_hj^* | for h≠i remain the same, the value of the gauge should increase. Meanwhile, in the case of formulas (4) and (5), this will not be the case. If, for the same, the indicated absolute difference (or the square of the difference, respectively) between the original value and the value after SDC reaches a maximum, then the partial loss of information for i will remain unchanged - it will be 1, and for the others it will turn out to be smaller. As a result, we get a smaller metric value, while the information loss actually increased.
+
+then
+    \[
+    d({x_{ij}}^',x_{ij})=\frac{2}{\pi}\arctan|{x_{ij}}^'-x_{ij}|.
+    \]
+The arcus tangens (arctan) function was used to ensure that the distance between original and perturbed values takes values from $[0,1]$. To achieve this, an ascending function bounded on both sides (both from the top and from the bottom) should be applied. The arctan seems to be a good solution and is also easy to compute. Of course -- like any function of this type -- it is not perfect: for larger absolute differences between original and perturbed values it tends to be close to $\frac{\pi}{2}$ (and, in consequence, $d(x_{ij},x_{ij}^*)$ to be close to 1). On the other hand, owing to this property it exhibits more clearly all information losses due to perturbation.
+
+The complex measure of distribution disturbance is given by (cf. Młodak, Pietrzak and Józefowksi (2022)):
+\begin{equation}
+\lambda=\sum_{j=1}^m{\sum_{i=1}^n{\frac{d(x_{ij},x_{ij}^*)}{mn}}}\in [0,1],
+\label{mlambda}
+\end{equation}
+where $d(\cdot,\cdot)\in [0,1]$ is measure of distance.
+
+Authors of the aforementioned paper indicated also than one can measure the contribution of particular variables $X_j$ to total information loss as follows  
+\begin{equation}
+ \lambda_j=\sum_{i=1}^n{\frac{d(x_{ij},x_{ij}^*)}{n}}\in [0,1]
+ \label{plambda}
+\end{equation}
+
+If $X_j$ is nominal, then if $x_{ij}^*$ is hidden, $d(x_{ij},x_{ij}^*)=1$; if $X_j$ is ordinal, then we assign $x_{ij}^*:=1$ if $x_{ij}$ is closer to $k_j$ or $x_{ij}^*:=k_j$ if $X_j$ is closer to 1; if $X_j$ is continuous, then
+\[
+ x_{ij}^*:=\begin{cases}
+ \max\limits_{h=1,2,\ldots,n}{x_{hj}}&\textmd{if}\quad x_{ij}\le \med_{h=1,2,\ldots,n}{x_{hj}},\\
+ \min\limits_{h=1,2,\ldots,n}{x_{hj}}&\textmd{if}\quad x_{ij}> \med_{h=1,2,\ldots,n}{x_{hj}}.
+ \end{cases}
+\]
+
+The measure (\ref{mlambda}) can be expressed as a percentage and shows total information loss -- the greater the value of $\lambda$, the bigger the loss. In this way users obtain clear and easily understandable information about expected information loss owing to the application of SDC. 
+IL_variables
 
 ### Practical realization of trade-off between safety and utility of microdata.
 
