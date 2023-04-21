@@ -147,7 +147,7 @@ $\text{EBIL}\left(P_{V,V^'},G\right)=\sum_{r\in G}{H\left(V|V^'=j_{r}\right)}$
 
 where $j_r$ is the value taken by $V^'$ in record $r$.
 
-The above measure can be generalized for multivariate datasets if $V$ and $V^{'}$ are taken as being multidimensional variables (*i.e.* representing several one-dimensional variables).
+The above measure can be generalized for multivariate datasets if $V$ and $V^'$ are taken as being multidimensional variables (*i.e.* representing several one-dimensional variables).
 
 While using entropy to measure information loss is attractive from a theoretical point of view, its interpretation in terms of data utility loss is less obvious than for the previously discussed measures.
 
