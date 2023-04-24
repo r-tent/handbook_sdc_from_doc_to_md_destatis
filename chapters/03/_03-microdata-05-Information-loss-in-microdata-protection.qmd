@@ -246,6 +246,13 @@ The measures (3.5.10) and (3.5.11) can be expressed as a percentages and show to
 
 ### Practical realization of trade-off between safety and utility of microdata
 
+Achieving the optimal balance between minimization of dislosure risk and minimization of the information loss is not easy. It is very hard (if even possible) to take all aspects deciding on level of these quantities (especially in the case of risk) into account. Moreover, both risk and information loss can be assessed from various point of views. Thus, first one should establish the possible factors which may decide on the type and level of dislosure risk and the most preferred direction of data use by the user. In the case of risk, one should assess not only internal risk (including different types of variables and their relationships) but also assess what alternative data sources the interested data user could have access to due to his place of employment and position held (such information is usually provided in official data access request. The priorities in measurement of information loss preferred by the user should be a basis for establishment of used measure in this context. For instance, if the users prefers comparison of distributions of some phenomena, then the measures of distribution disturbance should have much higher priority than others. On the other hand, if the subject of interest of an user are connections between some features, then for categorical variables the information loss should be assessed using the measures for contingency tables (as they are in fact frequency tables, this problem is discussed in chapter 5). For continuous variables the aforementioned measures of impact on the intensity of connections can be, of course, applied.
+
+Similarly as e.g. in the case of significance and loss in testing of statistical hypotheses, the most obvious and easy approach to obtain reasonable compromise between these two expectations is to apply one of two following ways:
+• establishing arbitrarily maximum allowable level of disclosure risk and minimize the information loss in this situation - it defends, first of all, the data confidentiality and trust to data holder in terms of privacy protection,
+• establishing arbitrarily maximum allowable level of information loss and minimize the disclosure risk in this situation - it defends, first of all, the data utility  for users and data provider as a source of reliable, creadible and useful data. 
+
+In practice, the data holder (e.g. official statistics) prefers rather the first approach as the strict protection of data privacy is usually an obligation imposaed by valid law regulations. So, assurance of the safety of confidential information is very important.     
 
 ### References
 
