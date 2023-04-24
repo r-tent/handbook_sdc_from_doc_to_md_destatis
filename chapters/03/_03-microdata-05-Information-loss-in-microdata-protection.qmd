@@ -244,7 +244,7 @@ $$
 
 The measures (3.5.10) and (3.5.11) can be expressed as a percentages and show total information loss and contribution of particular variables to it, respectively. the-- the greater the value of $\lambda$/$\lambda_j$, the bigger the loss/contribution. In this way users obtain clear and easily understandable information about expected information loss owing to the application of SDC. These measures were implemented to the sdcMicro R package and are computed by the function *IL_variables*.
 
-### Practical realization of trade-off between safety and utility of microdata.
+### Practical realization of trade-off between safety and utility of microdata
 
 
 ### References
