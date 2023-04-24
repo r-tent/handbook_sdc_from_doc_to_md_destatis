@@ -181,7 +181,7 @@ Table 1. Examples of measures of information loss for continuous variables.
 |  $C-C'$  	|                       $\frac{\sum\limits_{i=1}^{p}(c_i - c_i')^2}{p}$                      	|                       $\frac{\sum\limits_{i=1}^{p}|c_i - c_i'|}{p}$                      	|                       $\frac{\sum\limits_{i=1}^{p}\frac{|c_i - c_{i}'|}{|c_i|}}{p}$                       	|
 |  $F-F'$  	|          $\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}(f_{ij} - f_{ij}')^2}{p^2}$          	|          $\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}|f_{ij} - f_{ij}'|}{p^2}$          	|         $\frac{\sum\limits_{j=1}^{p} w_j \sum\limits_{i=1}^{p}\frac{|f_{ij} - f_{ij}'|}{|f_{ij}|}}{p^2}$         	|
 
-Source: Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001).
+Source: Domingo-Ferrer, Mateo-Sanz and Torra (2001).
 
 In Yancey, Winkler and Creecy (2002), it is observed that dividing by $x_{\text{ij}}$ causes the $X - X^{'}$mean variation to rise sharply when the original value $x_{\text{ij}}$ is close to 0. This dependency on the particular original value being undesirable in an information loss measure, Yancey, Winkler and Creecy (2002) propose to replace the mean variation of $X - X^{'}$ by the more stable measure
 $$
