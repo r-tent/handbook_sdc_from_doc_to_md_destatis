@@ -235,7 +235,7 @@ In section 4.2.2 we introduce into the concepts of secondary tabular data protec
 
 ### Secondary tabular data protection methods
 
-For reasons explained in the introduction of this chapter, we assume here that tables always include margins and overall totals along with their 'inner' cells. Thus, there is always a linear relationship between cells of a table. (Consider for instance example 1a of the introduction to this chapter: The sector result (say: X~T~) is the sum of the three sub-sector results (X~1~ to X~3~), e.g. the linear relationship between these four cells is given by the relation X~T~ = X~1~ + X~2~ + X~3~. As we have seen in example 1a, if it has been established that a disclosure risk is connected to the release of certain cells of a table, then it is not enough to prevent publication of these cells. Other cells (so called 'complementary' or 'secondary' suppressions) must be suppressed, or be otherwise manipulated in order to prevent the value of the protected sensitive cell being recalculated through f.i. differencing.![](Images/media/image176.png){width="0.2in" height="0.2in"}
+For reasons explained in the introduction of this chapter, we assume here that tables always include margins and overall totals along with their 'inner' cells. Thus, there is always a linear relationship between cells of a table. (Consider for instance example 1a of the introduction to this chapter: The sector result (say: $X_T$) is the sum of the three sub-sector results ($X_1$ to $X_3$), e.g. the linear relationship between these four cells is given by the relation $X_T = X_1 + X_2 + X_3$. As we have seen in example 1a, if it has been established that a disclosure risk is connected to the release of certain cells of a table, then it is not enough to prevent publication of these cells. Other cells (so called 'complementary' or 'secondary' suppressions) must be suppressed, or be otherwise manipulated in order to prevent the value of the protected sensitive cell being recalculated through f.i. differencing.![](Images/media/image176.png){width="0.2in" height="0.2in"}
 
 Within this section we explain the methodological background of secondary tabular data protection methods.
 
@@ -256,17 +256,18 @@ When a table is protected by cell suppression, by making use of the linear relat
 
 For this table the following linear relations hold:
 
-$\begin{align}
-X_{11} + X_{12} &= 7 (R1) \\
-X_{21} + X_{22} &= 3 (R2) \\
-X_{11} + X_{21} &= 6 (C1) \\
-X_{12} + X_{22} &= 4 (C2) \\
-\text{with} X_{ij} \geq 0, \forall (i,j)
-\end{align}$
+$$
+\begin{align}
+X_{11} + X_{12} &= 7 \quad \text{(R1)} \\
+X_{21} + X_{22} &= 3 \quad \text{(R2)} \\
+X_{11} + X_{21} &= 6 \quad \text{(C1)} \\
+X_{12} + X_{22} &= 4 \quad \text{(C2)} \\
+\end{align}
+$$
 
-Using linear programming methodology, it is possible to derive systematically for any suppressed cell in a table an upper bound $\left( X ^ { \max } \right)$ and a lower bound $\left( X _ { 11 } ^ { \min } \right)$ for the set of feasible values. In the example above, for cell (1,1) these bounds are $\left( X _ { 11 } ^ { \min } \right)$ = 3 and $X _ { 11 } ^ { \max }$ = 6 .
+with $X_{ij} \geq 0, \forall (i,j)$. Using linear programming methodology, it is possible to derive systematically for any suppressed cell in a table an upper bound $\left(X^{\max} \right)$ and a lower bound $\left( X_{11}^{\min} \right)$ for the set of feasible values. In the example above, for cell (1,1) these bounds are $\left( X_{11}^{\min} \right)$ = 3 and $X_{11}^{\max}$ = 6 .
 
-In this simple instance, however, we do not need linear programming technology to derive this result: Because of the first column relation (C1) $X _ { 11 }$ must be less or equal 6, and because of the second row relation (R2) $X _ { 21 }$ must be less or equal 3. Therefore, and because of the first column relation (R1) $X _ { 11 }$ must be at least 3.
+In this simple instance, however, we do not need linear programming technology to derive this result: Because of the first column relation (C1) $X_{11}$ must be less or equal 6, and because of the second row relation (R2) $X_{21}$ must be less or equal 3. Therefore, and because of the first column relation (R1) $X_{11}$ must be at least 3.
 
 A general mathematical statement for the linear programming problem to compute upper and lower bounds for the suppressed entries of a table is given in Fischetti and Salazar (2000).
 
@@ -276,21 +277,21 @@ Note that we recommend using protection levels of zero when instead of a concent
 
 | Sensitivity rule 	|              Upper protection level              	|
 |------------------	|:------------------------------------------------:	|
-| (1,k)-rule       	|                  $100/k x_1 - X$                 	|
-| (n,k)-rule       	| $100 / k ⋅ (x_{1} + x_{2} + \cdots + x_{n}) − X$ 	|
-| p%-rule          	|      $p / 100 ⋅ x_{1} − (X − x_{1} − x_{2})$     	|
-| (p,q)-rule       	|       $p / q ⋅ x_{1} − (X − x_{1} − x_{2})$      	|
+| $(1,k)$-rule       	|                  $\frac{100}{k}x_1 - X$                 	|
+| $(n,k)$-rule       	| $\frac{100}{k} \cdot (x_{1} + x_{2} + \cdots + x_{n}) − X$ 	|
+| $p\%$-rule          	|      $\frac{p}{100} \cdot x_{1} − (X − x_{1} − x_{2})$     	|
+| $(p,q)$-rule       	|       $\frac{p}{q} \cdot x_{1} − (X − x_{1} − x_{2})$      	|
 
 : Upper protection levels {#tbl-upper-protection-levels}
 
 
 If the distance between upper bound of the feasibility interval and true value of a sensitive cell is below the upper protection level computed according to the formulas of @tbl-upper-protection-levels, then this upper bound could be used to derive an estimate for individual contributions of the sensitive cell that is too close according to the safety rule employed, which can easily be proven along the lines of Cox (1981).
 
-Cell X = 330 with 3 contributions of distinct respondents$x_{1}\text{=300,}$ $x_{2}\text{=20,}$ $x_{3}\text{=10}$ is confidential (or 'unsafe') according to the (1,85)- dominance rule. If the feasible upper bound $X^{\text{max}}$ for this confidential cell value is less than $100/\text{85} \cdot x_{1} = \text{352}\text{.}\text{94}$ , then it will provide an upper estimate for the largest contribution $x _ { 1 }$ which is too close according to the (1,85)-dominance rule.
+Cell X = 330 with 3 contributions of distinct respondents $x_{1}=300,\ x_{2}=20,\ x_{3}=10$ is confidential (or 'unsafe') according to the $(1,85)$- dominance rule. If the feasible upper bound $X^{\max}$ for this confidential cell value is less than $\frac{100}{85} \cdot x_{1} = 352.94$ , then it will provide an upper estimate for the largest contribution $x_{1}$ which is too close according to the $(1,85)$-dominance rule.
 
-Example 5 proves the formula given in @tbl-upper-protection-levels for the case of the p%-rule:
+Example 5 proves the formula given in @tbl-upper-protection-levels for the case of the $p\%$-rule:
 
-Let X + U be the upper bound of the feasibility interval for a cell with cell value X . The second largest respondent can then deduce an upper bound $x_{1}^{U}$by subtracting its own contribution from that upper bound: $x_{1}^{U} = X + U - x_{2}$. According to the definition of the p%-rule proper protection means that $x_{1}^{U} \geq \left( 1 + \frac{p}{100} \right) \cdot x_{1}$. So, if the feasibility interval provides upper protection, it must hold that $U \geq \left( 1 + \frac{p}{100} \right) \cdot x_{1} - X + x_{2} =$=$p/100 \cdot x_{1} - \left( X - x_{1} - x_{2} \right)$.
+Let $X + U$ be the upper bound of the feasibility interval for a cell with cell value $X$ . The second largest respondent can then deduce an upper bound $x_{1}^{U}$by subtracting its own contribution from that upper bound: $x_{1}^{U} = X + U - x_{2}$. According to the definition of the $p\%$-rule proper protection means that $x_{1}^{U} \geq \left( 1 + \frac{p}{100} \right) \cdot x_{1}$. So, if the feasibility interval provides upper protection, it must hold that $U \geq \left( 1 + \frac{p}{100} \right) \cdot x_{1} - X + x_{2} = p/100 \cdot x_{1} - \left( X - x_{1} - x_{2} \right)$.
 
 The distance between upper bound of the feasibility interval and true value of a sensitive cell must exceed the upper protection level; otherwise the sensitive cell is not properly protected. This safety criterion is a necessary, but not always sufficient criterion for proper protection! It is a sufficient criterion, when the largest respondent makes the same contribution also within the combination of suppressed cells within the same aggregation (a row or column relation of the table, for instance), and when no individual contribution of any respondent (or coalition of respondents) to such a combination of suppressed cells is larger than the second largest respondent's (or coalition's) contribution.
 
