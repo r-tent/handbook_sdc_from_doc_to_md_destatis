@@ -3,9 +3,20 @@
 
 The key measure of dislosure risk in the case of magnitude tables is based on the $(n,l)$-dominance or $p\%$ rules. In many formal regulations or recommendations it is assumed $n=1$ and $l=75$. Very often $(n,l)$ dominance is combined with $k$-anonymity: a cell is regarded as unsafe if it violates the $k$-anonymity or the $(n,l)$-dominance. Therefore the dislosure risk can be measured as the share of cells violating the finally assumed principle.  
 
-However, this assessment concerns only the primary risk. One should take into account the risk of secondary re-identification of unit. Shlomo, Antal and Elliot (2015) 
+However, this assessment concerns only the primary risk. One should take into account the risk of secondary re-identification of unit. Antal, Shlomo and Elliot (2014), formulate four fundamental properties which should have an efficient disclosure risk measure: 
+(a) small cell values have higher disclosure risk thanlarge values; (b) uniformly distributed frequencies imply low disclosure risk; (c) the morezero cells in the census table, the higher the disclosure risk; (d) the risk measure should bebounded by 0 and 1.
+Shlomo, Antal and Elliot (2015) proposed in this context measure based on the entropy. According to their approach, a high entropy indicates that the distribution across cells is uniform and a low entropy indicates mainly zeros in a row/column or table with a few non-zero cells. The fewer the number of non-zero cells, the more likely that attribute disclosure occurs. The entropy is given as
+$$
+H=-\sum_{i=1}^{k}{\frac{c_i}{n}\cdot\log{\frac{c_i}{n}}}, (4.6.1)
+$$
+where $c_i$ is the number of units contained in $i$-th cell and $n$ is the total number of cells in the table. The measure (4.6.1) is next normalized to the form
+$$
+1-\frac{H}{\log n}.
+$$
+
 
 ### Information loss
 
 ### References
+Antal, L., Shlomo, N., & Elliot, M. (2014). Measuring disclosure risk with entropy in population based frequency tables. In Privacy in Statistical Databases: UNESCO Chair in Data Privacy, International Conference, PSD 2014, Ibiza, Spain, September 17-19, 2014. Proceedings (pp. 62-78). Springer International Publishing.
 Shlomo, N., Antal, L., & Elliot, M. (2015). Measuring disclosure risk and data utility for flexible table generators. *Journal of Official Statistics*, 31(2), 305-324.
