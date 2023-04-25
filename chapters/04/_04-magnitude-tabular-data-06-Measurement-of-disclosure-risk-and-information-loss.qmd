@@ -1,8 +1,11 @@
 ## Measurement of disclosure risk and information loss 
 ### Disclosure risk
 
-The key measure of dislosure risk in the case of magnitude tables is based on the $(n,l)$-dominance or $p\%$ rules. In many formal regulations or recommendations it is assumed $n=1$ and $l=75$. Very often $(n,l)$ dominance is combined with $k$-anonymity: a cell is regarded as unsafe if   
+The key measure of dislosure risk in the case of magnitude tables is based on the $(n,l)$-dominance or $p\%$ rules. In many formal regulations or recommendations it is assumed $n=1$ and $l=75$. Very often $(n,l)$ dominance is combined with $k$-anonymity: a cell is regarded as unsafe if it violates the $k$-anonymity or the $(n,l)$-dominance. Therefore the dislosure risk can be measured as the share of cells violating the finally assumed principle.  
+
+However, this assessment concerns only the primary risk. One should take into account the risk of secondary re-identification of unit. Shlomo, Antal and Elliot (2015) 
 
 ### Information loss
 
 ### References
+Shlomo, N., Antal, L., & Elliot, M. (2015). Measuring disclosure risk and data utility for flexible table generators. *Journal of Official Statistics*, 31(2), 305-324.
