@@ -1,1 +1,8 @@
-** Measurement of disclosure risk and information loss 
+## Measurement of disclosure risk and information loss 
+### Disclosure risk
+
+The key measure of dislosure risk in the case of magnitude tables is based on the $(n,l)$-dominance or $p\%$ rules. In many formal regulations or recommendations it is assumed $n=1$ and $l=75$. Very often $(n,l)$ dominance is combined with $k$-anonymity: a cell is regarded as unsafe if   
+
+### Information loss
+
+### References
