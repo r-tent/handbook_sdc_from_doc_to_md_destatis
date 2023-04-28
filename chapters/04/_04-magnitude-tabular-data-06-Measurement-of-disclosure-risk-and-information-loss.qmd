@@ -29,10 +29,15 @@ This approach, however, doesn't take our fifth condition into account. So, one c
 $$
 r=1-\frac{1}{2}\left(\frac{H}{\log n}+\frac{1}{n}\sum_{i=1}^n{\frac{x_{i(\text{max})}}{\sum_{j\in C_i}{x_j}}}\right),
 $$
-where $x_{i(\text{max})}$ is the share of the largest contributors to the cell $C_i$ and $x_j$ is the contribution of the $j$-th unit to it. This measure takes value from $[0,1]$ and is easy interpretable.    
+where $x_{i(\text{max})}$ is the share of the largest contributors to the cell $C_i$ and $x_j$ is the contribution of the $j$-th unit to it. This measure takes value from $[0,1]$ and is easy interpretable. 
+
+The disclosure risk assessment can be also adjusted to the specificity of currently used SDC method. For instance, Enderle, Giessing and Tent (2020) have propsed an original risk measure for continous data perturbed using the Cell Key approach. It assumes that an intruder can know the noise parameter and the maximum deviation parameter. Then he/she can determine the feasibility intervals for original internal and margin cells using the noisy values. The risk estimate is then based on the sum of products of cumulated probabilities resulting from entries of p-table and empirical probabilities for ratio of noise parameters.     
 
 ### Information loss
 
 ### References
 Antal, L., Shlomo, N., & Elliot, M. (2014). Measuring disclosure risk with entropy in population based frequency tables. In Privacy in Statistical Databases: UNESCO Chair in Data Privacy, International Conference, PSD 2014, Ibiza, Spain, September 17-19, 2014. Proceedings (pp. 62-78). Springer International Publishing.
+
+Enderle, T., Giessing, S., & Tent, R. (2020). Calculation of risk probabilities for the cell key method. In Privacy in Statistical Databases: UNESCO Chair in Data Privacy, International Conference, PSD 2020, Tarragona, Spain, September 23–25, 2020, Proceedings (pp. 151-165). Springer International Publishing.
+
 Shlomo, N., Antal, L., & Elliot, M. (2015). Measuring disclosure risk and data utility for flexible table generators. *Journal of Official Statistics*, 31(2), 305-324.
