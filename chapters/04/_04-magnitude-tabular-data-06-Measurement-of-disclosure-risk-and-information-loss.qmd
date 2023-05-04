@@ -35,6 +35,54 @@ The disclosure risk assessment can be also adjusted to the specificity of curren
 
 ### Information loss
 
+The basis of assesment of information loss for tables are differences between values of cells determined using perturbed microdata (or perturbed during creation of  tables) and relevant values obtained on the basis of the original data. Niech $T_0$ oznacza tablicę powstałą na podstawie mikrodanych oryginalnych, a~$T_1$ -- analogiczną tablicę stworzoną w~oparciu o~odpowiednie mikrodane poddane SDC przy użyciu metod zakłóceniowych (lub w~której same wartości komórek zostały zakłócone). $T_l(c)$ oznaczać będzie komórkę $c$ tablicy $T_l$, $l=0,1$.
+
+Do określenia miar straty informacji rekomenduje się powszechnie stosowanie następujących metryk:
+\begin{itemize}
+\item odchylenie bezwzględne: $|T_1(c)-T_0(c)|$,
+\item relatywne odchylenie bezwzględne: $\frac{|T_1(c)-T_0(c)|}{T_0(c)}$, 
+\item bezwzględne odchylenie pierwiastków kwadratowych: $|\sqrt{T_1(c)}-\sqrt{T_0(c)}|$.
+\end{itemize}
+
+Jak można zauważyć, bezwzględne odchylenie pierwiastków kwadratowych ma w~praktyce sens tylko wtedy, gdy wartości komórek w~tablicach są nieujemne. Ta sytuacja ma jednak miejsce najczęściej.
+
+Wykorzystując podane metryki można określić kompleksowe miary straty informacji dla określonego agregatu $A$ (może nim być cała tablica, ale może to być też określony podzbiór komórek tablicy odnoszący się np. do tej samej jednostki przestrzennej -- jak choćby liczby ludności według grup wieku dla powiatu). Pierwszą z~tych miar jest przeciętne odchylenie bezwzględne (ang. \textit{absolute deviation}) -- średnia z~bezwzględnych różnic pomiędzy częstościami w~tablicach oryginalnych oraz po zastosowaniu SDC:
+
+\begin{equation}
+\textmd{AD}(A)=\frac{\sum_{c\in A}{|T_1(c)-T_0(c)|}}{n_A},
+\label{ad}
+\end{equation}
+przy czym $n_A$ oznacza liczbę komórek objętych agregatem $A$.
+
+Można też wyznaczać sumę relatywnych odchyleń bezwzględnych (ang. \textit{relative absolute deviation}), czyli sumę względnych różnic pomiędzy częstościami w~tablicach):
+\begin{equation}
+\textmd{RAD}(A)=\sum_{c\in A}{\frac{|T_1(c)-T_0(c)|}{T_0(c)}}.
+\label{rad}
+\end{equation}
+
+Ostatnią z~prezentowanych tutaj miar jest miara oparta na bezwzględnych różnicach pierwiastków kwadratowych z~częstości w~tablicach, wykorzystująca formułę odległości Hellingera\footnote{Zaproponowaną w~1909 r. przez niemieckiego matematyka Ernsta Hellingera (1883--1950).} (ang. \textit{absolute difference of square roots -- Hellinger’s Distance}):
+\begin{equation}
+\textmd{HD}(A)=\sqrt{\frac{1}{2}\sum_{c\in A}{\left(\sqrt{T_1(c)}-\sqrt{T_0(c)}\right)^2}}.
+\label{hd}
+\end{equation}
+
+W~tablicach mogą wszakże występować braki danych. W~przypadku metod zakłóceniowych braki te będą wynikać przede wszystkim z~braków występujących w~oryginalnych mikrodanych stanowiących podstawę konstrukcji tablic. Wówczas podczas wyznaczania wartości w~komórkach można owe braki pominąć lub wcześniej dokonać imputacji danych dla tychże luk. Jedyny kłopot może występować w~przypadku, gdy nie będzie żadnych danych dotyczących kategorii wyznaczonej daną komórką. Wtedy trzeba albo zrezygnować z~danej konstrukcji tablicy (np. poprzez połączenie pewnych jej kategorii w~inną, bardziej zgrubną), albo też miarę straty oprzeć na pomiarze straty na poziomie mikrodanych odpowiadających tejże komórce dokonanym w~sposób opisany we wcześniejszych paragrafach.
+ 
+Trudniej przedstawia się sprawa, gdy stosuje się zakłóceniowe metody SDC, co prowadzi do ukrywania wartości pewnych komórek. W~takim przypadku do porównań trzeba zasymulować tablicę, w~której dla brakujących komórek ich wartości zostaną zaimputowane. W~przypadku ukrywania komórek strata informacji zostanie wyrażona jako suma kosztów poniesionych wskutek wtórnego ukrycia komórek. Problemem pozostaje to, czy waga każdej komórki w~tablicy jest taka sama, czy też komórki o~większej wartości mają wagę większą. W~praktyce ukrycie zbyt dużej liczby komórek o~wysokich wartościach może znacznie obniżyć użyteczność publikowanych danych. W~zależności od preferencji i~potrzeb użytkowników zagadnienie straty informacji może być różnie wyrażone. W~ten sposób da się wpłynąć na działanie algorytmu wyboru komórek do wtórnego ukrycia. \cite{Hund12} wskazują najbardziej popularne kryteria brane pod uwagę przy formułowaniu funkcji kosztu dla ukrywania komórek:
+\begin{itemize}
+\item jednakowa waga dla wszystkich komórek -- celem jest minimalizacja liczby wtórnie ukrytych komórek,
+\item liczba jednostek w~agregacie, który komórka reprezentuje -- prowadzi do poszukiwania możliwości ukrycia tylko takich komórek, które łącznie będą reprezentować jak najmniejszą liczbę jednostek,
+\item wartość komórki -- optymalnym rozwiązaniem będzie pozostawienie w~publikacji jak największej liczby komórek o~największych wartościach. 
+\end{itemize}
+
+W~sytuacji występowania silnej asymetrii danych preferowanie zachowania komórek o~największej wartości może prowadzić do zbyt dużej nierównowagi dla funkcji kosztu. W~tym wypadku zalecana jest transformacja funkcji kosztu. Jednym z~możliwych i~często stosowanych podejść w~tym zakresie jest transformacja potęgowa (zob. \cite{BC64}):
+\[
+y=\begin{cases}
+x^\lambda&\textmd{dla}\;\lambda\ne 0,\cr
+\log(x)&\textmd{dla}\;\lambda=0.
+\end{cases}
+\]
+
 ### References
 Antal, L., Shlomo, N., & Elliot, M. (2014). Measuring disclosure risk with entropy in population based frequency tables. In Privacy in Statistical Databases: UNESCO Chair in Data Privacy, International Conference, PSD 2014, Ibiza, Spain, September 17-19, 2014. Proceedings (pp. 62-78). Springer International Publishing.
 
