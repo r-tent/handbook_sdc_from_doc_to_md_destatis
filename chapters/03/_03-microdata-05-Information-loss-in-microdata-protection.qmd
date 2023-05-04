@@ -190,9 +190,9 @@ Trottini (2003) argues that, since information loss is to be traded off for disc
 
 Młodak (2020) proposed a new measure of information loss for continuous variables in terms of assesment of impact on the intensity of connections, which was slighthly improved by Młodak, Pietrzak and Józefowski (2022). It is based on on diagonal entries of inversed correlation matrices for continuous variables in the original ($R^{-1}$) and perturbed (${R^'}^{-1}$) data sets, i.e. $\rho_{jj}^{(-1)}$ and ${\rho_{jj}^'}^{(-1)}$), $j=1,2,\ldots,m_c$ (where $m_c$ is the number of continuous variables):
 
-$$\gamma=\frac{1}{\sqrt{2}}\sqrt{\sum_{j=1}^{m_c}{\left(\frac{\rho_{jj}^{(-1)}}{\sqrt{\sum_{l=1}^m{\left(\rho_{ll}^{(-1)}\right)^2}}}-\frac{\rho_{jj}^{*(-1)}}{\sqrt{\sum_{l=1}^m{\left(\rho_{ll}^{*(-1)}\right)^2}}}\right)^2}}\in [0,1].$$
+$$\gamma=\frac{1}{\sqrt{2}}\sqrt{\sum_{j=1}^{m_c}{\left(\frac{\rho_{jj}^{(-1)}}{\sqrt{\sum_{l=1}^m{\left(\rho_{ll}^{(-1)}\right)^2}}}-\frac{\rho_{jj}^{*(-1)}}{\sqrt{\sum_{l=1}^m{\left(\rho_{ll}^{*(-1)}\right)^2}}}\right)^2}}\in [0,1].$$ (3.5.6)
 
-Values of (\ref{mgamma}) are also easily interpretable - it can be understood as the expected loss of information about connections between variables. As one can easily see, the result can be expressed in $\%$. Of course, both matrices - $R$ and $R'$ - must be based on the same correlation coefficient. The most obvious choice in this respect is the Pearson's index. However, when tau-Kendall correlation matrix is used, one can also apply it to ordinal variables. The method will be not applicable if the correlation matrix is singular. The main advantage of the measure $\gamma$ is that it treats all variables as an inseparable whole and takes all connections between analysed variables, even those hard to observe, into account. $\gamma$ can be computed in the sdcMicro R package using the function *IL_correl()*. 
+Values of (3.5.6) are also easily interpretable - it can be understood as the expected loss of information about connections between variables. As one can easily see, the result can be expressed in $\%$. Of course, both matrices - $R$ and $R'$ - must be based on the same correlation coefficient. The most obvious choice in this respect is the Pearson's index. However, when tau-Kendall correlation matrix is used, one can also apply it to ordinal variables. The method will be not applicable if the correlation matrix is singular. The main advantage of the measure $\gamma$ is that it treats all variables as an inseparable whole and takes all connections between analysed variables, even those hard to observe, into account. $\gamma$ can be computed in the sdcMicro R package using the function *IL_correl()*. 
 
 ### Complex measures of information loss
 
@@ -200,37 +200,37 @@ The above presented concepts of information loss prompt the question whether it 
 $$
 d({x_{ij}}^',x_{ij})=\begin{cases}
 1&\textmd{if}\;x_{ij}}^'=x_{ij},\cr
-0&\textmd{if}\;x_{ij}}^'\ne x_{ij}. (3.5.5)
+0&\textmd{if}\;x_{ij}}^'\ne x_{ij}. (3.5.7)
 $$
 If $X_j$ is ordinal (assuming for simplification and without loss of generality that categories are numbered from 1 to $\mathfrak{r}_j$, where $\mathfrak{r}_j$ is the number of categories), then (NA is treated as a separate, lowest category)
 $$
-d({x_{ij}}^',x_{ij})=\frac{\mathfrak{r}(x_{ij}}^',x_{ij})}{\mathfrak{r}_j-1}, (3.5.6)
+d({x_{ij}}^',x_{ij})=\frac{\mathfrak{r}(x_{ij}}^',x_{ij})}{\mathfrak{r}_j-1}, (3.5.8)
 $$
-where $\mathfrak{r}(x_{ij}}^',x_{ij})$ is the absolute difference in categories between $x_{ij}}^'$ and $x_{ij}$. These partial distances take always values from [0,1]. There are, however, some problems with using them, especially if recoding is applied. The number of categories of a recoded variable in the original set and in the set after SDC will be different. Therefore, in the first place, it should be ensured that the numbers of the categories left unchanged are identical in both variants. For example, if before recoding the variable $X_j$ had $\mathfrak{r}_j$=8 categories marked as 1,2,3,4,5,6,7,8 and as a result of recoding categories 2 and 3 and 6 and 7 were combined, then the new categories should have respectively numbers 1,2,4,5,6,8. Then the option (3.5.6) for categorical variables applies in this case as well.
+where $\mathfrak{r}(x_{ij}}^',x_{ij})$ is the absolute difference in categories between $x_{ij}}^'$ and $x_{ij}$. These partial distances take always values from [0,1]. There are, however, some problems with using them, especially if recoding is applied. The number of categories of a recoded variable in the original set and in the set after SDC will be different. Therefore, in the first place, it should be ensured that the numbers of the categories left unchanged are identical in both variants. For example, if before recoding the variable $X_j$ had $\mathfrak{r}_j$=8 categories marked as 1,2,3,4,5,6,7,8 and as a result of recoding categories 2 and 3 and 6 and 7 were combined, then the new categories should have respectively numbers 1,2,4,5,6,8. Then the option (3.5.8) for categorical variables applies in this case as well.
 
 Much more complicated situation occurs for continuous variables. Młodak (2020) proposed several options is this respect, e.g. normalized absolute value or normalized square of difference between ${x_{ij}}^'$ and $x_{ij}$, i.e. 
-$$d({x_{ij}}^',x_{ij})=|{x_{ij}}^'-x_{ij}|/\max_{k=1,2,\ldots,n}⁡|{x_{kj}}^'-x_{kj}|,$$ (3.5.7)
+$$d({x_{ij}}^',x_{ij})=|{x_{ij}}^'-x_{ij}|/\max_{k=1,2,\ldots,n}⁡|{x_{kj}}^'-x_{kj}|,$$ (3.5.9)
 or
-$$d({x_{ij}}^',x_{ij})=({x_{ij}}^'-x_{ij})^2/\max_(k=1,2,\lots,n)⁡({x_{kj}}^'-x_{kj})^2,$$ (3.5.8)
+$$d({x_{ij}}^',x_{ij})=({x_{ij}}^'-x_{ij})^2/\max_(k=1,2,\lots,n)⁡({x_{kj}}^'-x_{kj})^2,$$ (3.5.10)
 $i=1,2,\ldots,n$, $j=1,2,\ldots,m_c$, where $n$ is the number of records and $m_c$ - the number of continuous variables.
 
-Measures (3.5.7) and (3.5.8) also have another significant weakness. The measure of information loss should be an increasing function due to individual partial information losses. This means that, for example, if for some $i\in\{1,2,\ldots,n\}$ the value $|x_{ij}^'-x_{ij}|$ will increase and all $|x_{hj}^'-x_{hj}|$ for $h\ne i$ remain the same, the value of the distance should increase. Meanwhile, in the case of formulas (3.5.7) and (3.5.8), this will not be the case. If, for the same, the indicated absolute difference (or the square of the difference, respectively) between the original value and the value after SDC reaches a maximum, then the partial loss of information for $i$ will remain unchanged - it will be 1, and for the others it will turn out to be smaller. As a result, we get a smaller metric value, while the information loss actually increased.
+Measures (3.5.8) and (3.5.9) also have another significant weakness. The measure of information loss should be an increasing function due to individual partial information losses. This means that, for example, if for some $i\in\{1,2,\ldots,n\}$ the value $|x_{ij}^'-x_{ij}|$ will increase and all $|x_{hj}^'-x_{hj}|$ for $h\ne i$ remain the same, the value of the distance should increase. Meanwhile, in the case of formulas (3.5.9) and (3.5.10), this will not be the case. If, for the same, the indicated absolute difference (or the square of the difference, respectively) between the original value and the value after SDC reaches a maximum, then the partial loss of information for $i$ will remain unchanged - it will be 1, and for the others it will turn out to be smaller. As a result, we get a smaller metric value, while the information loss actually increased.
 
 Taking the aforementioned observations into account Młodak (2020) proposed in the discussed case the distance of the form: 
 $$
-d({x_{ij}}^',x_{ij})=\frac{2}{\pi}\arctan|{x_{ij}}^'-x_{ij}|.  (3.5.9)
+d({x_{ij}}^',x_{ij})=\frac{2}{\pi}\arctan|{x_{ij}}^'-x_{ij}|.  (3.5.11)
 $$
 The arcus tangens (arctan) function was used to ensure that the distance between original and perturbed values takes values from $[0,1]$. To achieve this, an ascending function bounded on both sides (both from the top and from the bottom) should be applied. The arctan seems to be a good solution and is also easy to compute. Of course -- like any function of this type -- it is not perfect: for larger absolute differences between original and perturbed values it tends to be close to $\frac{\pi}{2}$ (and, in consequence, $d(x_{ij}^',x_{ij})$ to be close to 1). On the other hand, owing to this property it exhibits more clearly all information losses due to perturbation.
 
 The complex measure of distribution disturbance is given by (cf. Młodak, Pietrzak and Józefowski (2022)):
 $$
-\lambda=\sum_{j=1}^m{\sum_{i=1}^n{\frac{d(x_{ij}^',x_{ij})}{mn}}}\in [0,1],   (3.5.10)
+\lambda=\sum_{j=1}^m{\sum_{i=1}^n{\frac{d(x_{ij}^',x_{ij})}{mn}}}\in [0,1],   (3.5.12)
 $$
-where $d(\cdot,\cdot)\in [0,1]$ is measure of distance according to the formulas (3.5.5), (3.5.6) or (3.5.9) according to the measurement scale of a given value.
+where $d(\cdot,\cdot)\in [0,1]$ is measure of distance according to the formulas (3.5.7), (3.5.8) or (3.5.11) according to the measurement scale of a given value.
 
 Authors of the aforementioned paper indicated also than one can measure the contribution of particular variables $X_j$ to total information loss as follows  
 $$
-\lambda_j=\sum_{i=1}^n{\frac{d(x_{ij}^',x_{ij})}{n}}\in [0,1],    (3.5.11)
+\lambda_j=\sum_{i=1}^n{\frac{d(x_{ij}^',x_{ij})}{n}}\in [0,1],    (3.5.13)
 $$
 $j=1,2,\ldots,m$.
 
@@ -242,7 +242,7 @@ x_{ij}^':=\begin{cases}
 \end{cases}
 $$
 
-The measures (3.5.10) and (3.5.11) can be expressed as a percentages and show total information loss and contribution of particular variables to it, respectively. the-- the greater the value of $\lambda$/$\lambda_j$, the bigger the loss/contribution. In this way users obtain clear and easily understandable information about expected information loss owing to the application of SDC. These measures were implemented to the sdcMicro R package and are computed by the function *IL_variables*.
+The measures (3.5.12) and (3.5.13) can be expressed as a percentages and show total information loss and contribution of particular variables to it, respectively. the-- the greater the value of $\lambda$/$\lambda_j$, the bigger the loss/contribution. In this way users obtain clear and easily understandable information about expected information loss owing to the application of SDC. These measures were implemented to the sdcMicro R package and are computed by the function *IL_variables*.
 
 ### Practical realization of trade-off between safety and utility of microdata
 
