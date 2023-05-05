@@ -25,28 +25,27 @@ $$
 1-\frac{H}{\log n}. (4.6.2)
 $$
 
-This approach, however, doesn't take our fifth condition into account. So, one can correct (4.6.2) to the form combining both aspects, e.g. in the following way:     
+This approach, however, doesn't take our fifth condition into account. So, one can correct (4.6.2) to the form combining both aspects, e.g. in the following way: 
 $$
 r=1-\frac{1}{2}\left(\frac{H}{\log n}+\frac{1}{n}\sum_{i=1}^n{\frac{x_{i(\text{max})}}{\sum_{j\in C_i}{x_j}}}\right),
 $$
 where $x_{i(\text{max})}$ is the share of the largest contributors to the cell $C_i$ and $x_j$ is the contribution of the $j$-th unit to it. This measure takes value from $[0,1]$ and is easy interpretable. 
 
-The disclosure risk assessment can be also adjusted to the specificity of currently used SDC method. For instance, Enderle, Giessing and Tent (2020) have propsed an original risk measure for continous data perturbed using the Cell Key approach. It assumes that an intruder can know the noise parameter and the maximum deviation parameter. Then he/she can determine the feasibility intervals for original internal and margin cells using the noisy values. The risk estimate is then based on the sum of products of cumulated probabilities resulting from entries of p-table and empirical probabilities for ratio of noise parameters.     
+The disclosure risk assessment can be also adjusted to the specificity of currently used SDC method. For instance, Enderle, Giessing and Tent (2020) have propsed an original risk measure for continous data perturbed using the Cell Key approach. It assumes that an intruder can know the noise parameter and the maximum deviation parameter. Then he/she can determine the feasibility intervals for original internal and margin cells using the noisy values. The risk estimate is then based on the sum of products of cumulated probabilities resulting from entries of p-table and empirical probabilities for ratio of noise parameters. 
 
 ### Information loss
 
-The basis of assesment of information loss for tables are differences between values of cells determined using perturbed microdata (or perturbed during creation of  tables) and relevant values obtained on the basis of the original data. Niech $T_0$ oznacza tablicę powstałą na podstawie mikrodanych oryginalnych, a~$T_1$ -- analogiczną tablicę stworzoną w~oparciu o~odpowiednie mikrodane poddane SDC przy użyciu metod zakłóceniowych (lub w~której same wartości komórek zostały zakłócone). $T_l(c)$ oznaczać będzie komórkę $c$ tablicy $T_l$, $l=0,1$.
+The basis of assessment of information loss for tables are differences between values of cells determined using perturbed microdata (or perturbed during creation of tables) and relevant values obtained on the basis of the original data. Let $T_0$ denote a table generated using original microdata and $T_1$ - analogous table created on the basis of perturbed relevant microdata (or in which original cell vaules were pretrurbed - post-tabular pertrurbation). Denote by $T_l(c)$ the cell $c$ of table $T_l$, $l=0,1$.
 
-Do określenia miar straty informacji rekomenduje się powszechnie stosowanie następujących metryk:
-\begin{itemize}
-\item odchylenie bezwzględne: $|T_1(c)-T_0(c)|$,
-\item relatywne odchylenie bezwzględne: $\frac{|T_1(c)-T_0(c)|}{T_0(c)}$, 
-\item bezwzględne odchylenie pierwiastków kwadratowych: $|\sqrt{T_1(c)}-\sqrt{T_0(c)}|$.
-\end{itemize}
+The following metrics are commonly recommended for determining measures of information loss due to application of SDC process in magnitude tables:
+• absolute deviation: $|T_1(c)-T_0(c)|$,
+• relative absolute deviation: $\frac{|T_1(c)-T_0(c)|}{T_0(c)}$, 
+• absolute deviation of square roots: $|\sqrt{T_1(c)}-\sqrt{T_0(c)}|$.
+for any $c$. 
 
-Jak można zauważyć, bezwzględne odchylenie pierwiastków kwadratowych ma w~praktyce sens tylko wtedy, gdy wartości komórek w~tablicach są nieujemne. Ta sytuacja ma jednak miejsce najczęściej.
+As one can observe, the absolute deviation of square roots has a sense in practice only if the cell values are nonnegative. However, this is the most common situation. Otherwise, $\sqrt{T_l(c)}$ can be replaced with $-\sqrt{|T_l|}$, $l=0,1$. 
 
-Wykorzystując podane metryki można określić kompleksowe miary straty informacji dla określonego agregatu $A$ (może nim być cała tablica, ale może to być też określony podzbiór komórek tablicy odnoszący się np. do tej samej jednostki przestrzennej -- jak choćby liczby ludności według grup wieku dla powiatu). Pierwszą z~tych miar jest przeciętne odchylenie bezwzględne (ang. \textit{absolute deviation}) -- średnia z~bezwzględnych różnic pomiędzy częstościami w~tablicach oryginalnych oraz po zastosowaniu SDC:
+Using the metrics given above one can define complex measures of information loss for a given aggregate $A$ (it can be the whole table or a specific subset of table cells, referring to, for example, the same spatial unit - such as population numbers by age groups for a LAU 1 unit). The first of these measures is the average absolute Pierwszą z~tych miar jest przeciętne odchylenie bezwzględne (ang. \textit{absolute deviation}) -- średnia z~bezwzględnych różnic pomiędzy częstościami w~tablicach oryginalnych oraz po zastosowaniu SDC:
 
 \begin{equation}
 \textmd{AD}(A)=\frac{\sum_{c\in A}{|T_1(c)-T_0(c)|}}{n_A},
