@@ -35,13 +35,13 @@ The disclosure risk assessment can be also adjusted to the specificity of curren
 
 ### Information loss
 
-The basis of assessment of information loss for tables are differences between values of cells determined using perturbed microdata (or perturbed during creation of tables) and relevant values obtained on the basis of the original data. Let $T_0$ denote a table generated using original microdata and $T_1$ - analogous table created on the basis of perturbed relevant microdata (or in which original cell vaules were pretrurbed - post-tabular pertrurbation). Denote by $T_l(c)$ the cell $c$ of table $T_l$, $l=0,1$.
+The basis of assessment of information loss for tables are differences between values of cells determined using microdata after application of SDC methods (or perturbed/hidden during creation of tables) and relevant values obtained on the basis of the original data. Let $T_0$ denote a table generated using original microdata and $T_1$ - analogous table created on the basis of perturbed relevant microdata (or in which original cell vaules were pretrurbed - post-tabular pertrurbation). Denote by $T_l(c)$ the value of cell $c$ of table $T_l$, $l=0,1$.
 
 The following metrics are commonly recommended for determining measures of information loss due to application of SDC process in magnitude tables:
 • absolute deviation: $|T_1(c)-T_0(c)|$,
 • relative absolute deviation: $\frac{|T_1(c)-T_0(c)|}{T_0(c)}$, 
 • absolute deviation of square roots: $|\sqrt{T_1(c)}-\sqrt{T_0(c)}|$.
-for any $c$. 
+for any $c$.
 
 As one can observe, the absolute deviation of square roots has a sense in practice only if the cell values are nonnegative. However, this is the most common situation. Otherwise, $\sqrt{T_l(c)}$ can be replaced with $-\sqrt{|T_l|}$, $l=0,1$. 
 
@@ -51,21 +51,19 @@ $$
 $$
 where $n_A$ is the number of cells included in the aggregate $A$.
 
-Można też wyznaczać sumę relatywnych odchyleń bezwzględnych (ang. \textit{relative absolute deviation}), czyli sumę względnych różnic pomiędzy częstościami w~tablicach):
-\begin{equation}
+One can also propose to use in this context the sum of relative absolute deviations, i.e. the the sum of relative differences between cell values in both tables:
+$$
 \textmd{RAD}(A)=\sum_{c\in A}{\frac{|T_1(c)-T_0(c)|}{T_0(c)}}.
-\label{rad}
-\end{equation}
+$$
 
-Ostatnią z~prezentowanych tutaj miar jest miara oparta na bezwzględnych różnicach pierwiastków kwadratowych z~częstości w~tablicach, wykorzystująca formułę odległości Hellingera\footnote{Zaproponowaną w~1909 r. przez niemieckiego matematyka Ernsta Hellingera (1883--1950).} (ang. \textit{absolute difference of square roots -- Hellinger’s Distance}):
-\begin{equation}
+The last - but not least - measure which we would like to present here is the measure based on absolute differences between square roots from cell values in original nad perturbed tables using the formula of Hellinger's distance (proposed in 1909 by German mathematician Ernsta Hellingera (1883-1950)):
+$$
 \textmd{HD}(A)=\sqrt{\frac{1}{2}\sum_{c\in A}{\left(\sqrt{T_1(c)}-\sqrt{T_0(c)}\right)^2}}.
-\label{hd}
-\end{equation}
+$$
 
-W~tablicach mogą wszakże występować braki danych. W~przypadku metod zakłóceniowych braki te będą wynikać przede wszystkim z~braków występujących w~oryginalnych mikrodanych stanowiących podstawę konstrukcji tablic. Wówczas podczas wyznaczania wartości w~komórkach można owe braki pominąć lub wcześniej dokonać imputacji danych dla tychże luk. Jedyny kłopot może występować w~przypadku, gdy nie będzie żadnych danych dotyczących kategorii wyznaczonej daną komórką. Wtedy trzeba albo zrezygnować z~danej konstrukcji tablicy (np. poprzez połączenie pewnych jej kategorii w~inną, bardziej zgrubną), albo też miarę straty oprzeć na pomiarze straty na poziomie mikrodanych odpowiadających tejże komórce dokonanym w~sposób opisany we wcześniejszych paragrafach.
+However, there may be missing data in the tables. When perturbative SDC methods are applied, these gaps will result mainly from missing data occurring in the original microdata being a basis of construction of tables. In this case, during computation of cell values one can omit these gaps or earlier make an imputation of them. The only inconvenience may appear when there are no data concerning the categories defined by the cell. Then one must either resign from a given structure of the table (e.g. by combining some of the original categories into another, more coarse one), or the measure of loss should be based on the measurement of loss at the level of microdata corresponding to this cell, performed in the manner described in chapter 3.
  
-Trudniej przedstawia się sprawa, gdy stosuje się zakłóceniowe metody SDC, co prowadzi do ukrywania wartości pewnych komórek. W~takim przypadku do porównań trzeba zasymulować tablicę, w~której dla brakujących komórek ich wartości zostaną zaimputowane. W~przypadku ukrywania komórek strata informacji zostanie wyrażona jako suma kosztów poniesionych wskutek wtórnego ukrycia komórek. Problemem pozostaje to, czy waga każdej komórki w~tablicy jest taka sama, czy też komórki o~większej wartości mają wagę większą. W~praktyce ukrycie zbyt dużej liczby komórek o~wysokich wartościach może znacznie obniżyć użyteczność publikowanych danych. W~zależności od preferencji i~potrzeb użytkowników zagadnienie straty informacji może być różnie wyrażone. W~ten sposób da się wpłynąć na działanie algorytmu wyboru komórek do wtórnego ukrycia. \cite{Hund12} wskazują najbardziej popularne kryteria brane pod uwagę przy formułowaniu funkcji kosztu dla ukrywania komórek:
+More difficult is the situation where non-perturbative post-tabular SDC methods are used. It leads to suppression of values of some cells. In this case for making a comparison of tables before and after SDC process one should simulate a table, in which for missing cells their values are imputed. In the case of secondary suppression of cells the information loss will be expressed as the sum of costs incurred due to it. The problem is whether the weight of each cell in the table is the same, or whether cells with a higher value have a higher weight. In practice, suppression of too many cells with high values can significantly decrease the utility of disseminated data. The issue of information loss can be variously expressed, depending on preferences and needs of a user. W~ten sposób da się wpłynąć na działanie algorytmu wyboru komórek do wtórnego ukrycia. Hundepool et al. (2012) wskazują najbardziej popularne kryteria brane pod uwagę przy formułowaniu funkcji kosztu dla ukrywania komórek:
 \begin{itemize}
 \item jednakowa waga dla wszystkich komórek -- celem jest minimalizacja liczby wtórnie ukrytych komórek,
 \item liczba jednostek w~agregacie, który komórka reprezentuje -- prowadzi do poszukiwania możliwości ukrycia tylko takich komórek, które łącznie będą reprezentować jak najmniejszą liczbę jednostek,
@@ -83,6 +81,8 @@ x^\lambda&\textmd{dla}\;\lambda\ne 0,\cr
 ### References
 Antal, L., Shlomo, N., & Elliot, M. (2014). Measuring disclosure risk with entropy in population based frequency tables. In Privacy in Statistical Databases: UNESCO Chair in Data Privacy, International Conference, PSD 2014, Ibiza, Spain, September 17-19, 2014. Proceedings (pp. 62-78). Springer International Publishing.
 
-Enderle, T., Giessing, S., & Tent, R. (2020). Calculation of risk probabilities for the cell key method. In Privacy in Statistical Databases: UNESCO Chair in Data Privacy, International Conference, PSD 2020, Tarragona, Spain, September 23–25, 2020, Proceedings (pp. 151-165). Springer International Publishing.
+Enderle, T., Giessing, S., & Tent, R. (2020). Calculation of risk probabilities for the cell key method. In: Privacy in Statistical Databases: UNESCO Chair in Data Privacy, International Conference, PSD 2020, Tarragona, Spain, September 23–25, 2020, Proceedings (pp. 151-165). Springer International Publishing.
+
+Hundepool. A., Domingo-Ferrer. J., Franconi, L., Giessing S., Nordholt, E.S., Spicer, K. and de Wolf, P-P. (2012), Statistical Disclosure Control, series: Wiley Series in Survey Methodology, John Wiley & Sons, Ltd., Chichester.
 
 Shlomo, N., Antal, L., & Elliot, M. (2015). Measuring disclosure risk and data utility for flexible table generators. *Journal of Official Statistics*, 31(2), 305-324.
