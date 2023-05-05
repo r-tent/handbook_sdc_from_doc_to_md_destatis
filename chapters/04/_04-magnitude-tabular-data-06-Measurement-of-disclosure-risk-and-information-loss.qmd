@@ -56,33 +56,33 @@ $$
 \textmd{RAD}(A)=\sum_{c\in A}{\frac{|T_1(c)-T_0(c)|}{T_0(c)}}.
 $$
 
-The last - but not least - measure which we would like to present here is the measure based on absolute differences between square roots from cell values in original nad perturbed tables using the formula of Hellinger's distance (proposed in 1909 by German mathematician Ernsta Hellingera (1883-1950)):
+The last - but not least - measure which we would like to present here is the measure based on absolute differences between square roots from cell values in original nad perturbed tables using the formula of Hellinger's distance (proposed in 1909 by German mathematician Ernst Hellinger (1883-1950)):
 $$
 \textmd{HD}(A)=\sqrt{\frac{1}{2}\sum_{c\in A}{\left(\sqrt{T_1(c)}-\sqrt{T_0(c)}\right)^2}}.
 $$
 
 However, there may be missing data in the tables. When perturbative SDC methods are applied, these gaps will result mainly from missing data occurring in the original microdata being a basis of construction of tables. In this case, during computation of cell values one can omit these gaps or earlier make an imputation of them. The only inconvenience may appear when there are no data concerning the categories defined by the cell. Then one must either resign from a given structure of the table (e.g. by combining some of the original categories into another, more coarse one), or the measure of loss should be based on the measurement of loss at the level of microdata corresponding to this cell, performed in the manner described in chapter 3.
  
-More difficult is the situation where non-perturbative post-tabular SDC methods are used. It leads to suppression of values of some cells. In this case for making a comparison of tables before and after SDC process one should simulate a table, in which for missing cells their values are imputed. In the case of secondary suppression of cells the information loss will be expressed as the sum of costs incurred due to it. The problem is whether the weight of each cell in the table is the same, or whether cells with a higher value have a higher weight. In practice, suppression of too many cells with high values can significantly decrease the utility of disseminated data. The issue of information loss can be variously expressed, depending on preferences and needs of a user. W~ten sposób da się wpłynąć na działanie algorytmu wyboru komórek do wtórnego ukrycia. Hundepool et al. (2012) wskazują najbardziej popularne kryteria brane pod uwagę przy formułowaniu funkcji kosztu dla ukrywania komórek:
-\begin{itemize}
-\item jednakowa waga dla wszystkich komórek -- celem jest minimalizacja liczby wtórnie ukrytych komórek,
-\item liczba jednostek w~agregacie, który komórka reprezentuje -- prowadzi do poszukiwania możliwości ukrycia tylko takich komórek, które łącznie będą reprezentować jak najmniejszą liczbę jednostek,
-\item wartość komórki -- optymalnym rozwiązaniem będzie pozostawienie w~publikacji jak największej liczby komórek o~największych wartościach. 
-\end{itemize}
+More difficult is the situation where non-perturbative post-tabular SDC methods are used. It leads to suppression of values of some cells. When primary suppression is used, for making a comparison of tables before and after SDC process one should simulate a table, in which for missing cells their values are imputed. However, in the case of secondary suppression of cells the information loss will be expressed as the sum of costs incurred due to it. The problem is whether the weight of each cell in the table is the same, or whether cells with a higher value have a higher weight. In practice, suppression of too many cells with high values can significantly decrease the utility of disseminated data. The issue of information loss can be variously expressed, depending on preferences and needs of a user. In this way, it is possible to influence the operation of the algorithm for selecting cells for secondary suppression. Hundepool et al. (2012) indicate most common criteria taken into account when the cost function for cell suppression is defined:
+• the same wages for all cells - for minimalization of the number of secondary suppressed cells,
+• number of units in aggregate represented by a cell - leads to looking for possibilities of suppression of only such cells which will represent jointly as small number of units as possible,
+• cell value - an optimal solution is leaving in publication as many cells with higher values as possible. 
 
-W~sytuacji występowania silnej asymetrii danych preferowanie zachowania komórek o~największej wartości może prowadzić do zbyt dużej nierównowagi dla funkcji kosztu. W~tym wypadku zalecana jest transformacja funkcji kosztu. Jednym z~możliwych i~często stosowanych podejść w~tym zakresie jest transformacja potęgowa (zob. \cite{BC64}):
-\[
+If a strong asymmetry of data distribution preferring preferring to leave the cells with the highest value unsuppressed may lead to too large imbalance for the cost fuction. In this case a tranformation of the cost function is reommended. One of possible - and often applied - solutions is here the power transformation (cf. Box and Cox (1964)):
+$$
 y=\begin{cases}
-x^\lambda&\textmd{dla}\;\lambda\ne 0,\cr
-\log(x)&\textmd{dla}\;\lambda=0.
+x^\lambda&\textmd{for}\;\lambda\ne 0,\cr
+\log(x)&\textmd{for}\;\lambda=0.
 \end{cases}
-\]
+$$
 
 ### References
-Antal, L., Shlomo, N., & Elliot, M. (2014). Measuring disclosure risk with entropy in population based frequency tables. In Privacy in Statistical Databases: UNESCO Chair in Data Privacy, International Conference, PSD 2014, Ibiza, Spain, September 17-19, 2014. Proceedings (pp. 62-78). Springer International Publishing.
+Antal, L., Shlomo, N., & Elliot, M. (2014). Measuring disclosure risk with entropy in population based frequency tables. In *Privacy in Statistical Databases: UNESCO Chair in Data Privacy, International Conference, PSD 2014, Ibiza, Spain, September 17-19, 2014. Proceedings* (pp. 62-78). Springer International Publishing.
 
-Enderle, T., Giessing, S., & Tent, R. (2020). Calculation of risk probabilities for the cell key method. In: Privacy in Statistical Databases: UNESCO Chair in Data Privacy, International Conference, PSD 2020, Tarragona, Spain, September 23–25, 2020, Proceedings (pp. 151-165). Springer International Publishing.
+Box, G. E., Cox, D. R. (1964), An analysis of transformations. *Journal of the Royal Statistical Society. Series B (Methodological)*, 26:211–252.
 
-Hundepool. A., Domingo-Ferrer. J., Franconi, L., Giessing S., Nordholt, E.S., Spicer, K. and de Wolf, P-P. (2012), Statistical Disclosure Control, series: Wiley Series in Survey Methodology, John Wiley & Sons, Ltd., Chichester.
+Enderle, T., Giessing, S., & Tent, R. (2020). Calculation of risk probabilities for the cell key method. In: *Privacy in Statistical Databases: UNESCO Chair in Data Privacy, International Conference, PSD 2020, Tarragona, Spain, September 23–25, 2020, Proceedings* (pp. 151-165). Springer International Publishing.
+
+Hundepool. A., Domingo-Ferrer. J., Franconi, L., Giessing S., Nordholt, E.S., Spicer, K. and de Wolf, P-P. (2012), *Statistical Disclosure Control*, series: Wiley Series in Survey Methodology, John Wiley & Sons, Ltd., Chichester.
 
 Shlomo, N., Antal, L., & Elliot, M. (2015). Measuring disclosure risk and data utility for flexible table generators. *Journal of Official Statistics*, 31(2), 305-324.
