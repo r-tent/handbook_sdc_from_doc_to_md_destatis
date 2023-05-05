@@ -45,13 +45,11 @@ for any $c$.
 
 As one can observe, the absolute deviation of square roots has a sense in practice only if the cell values are nonnegative. However, this is the most common situation. Otherwise, $\sqrt{T_l(c)}$ can be replaced with $-\sqrt{|T_l|}$, $l=0,1$. 
 
-Using the metrics given above one can define complex measures of information loss for a given aggregate $A$ (it can be the whole table or a specific subset of table cells, referring to, for example, the same spatial unit - such as population numbers by age groups for a LAU 1 unit). The first of these measures is the average absolute Pierwszą z~tych miar jest przeciętne odchylenie bezwzględne (ang. \textit{absolute deviation}) -- średnia z~bezwzględnych różnic pomiędzy częstościami w~tablicach oryginalnych oraz po zastosowaniu SDC:
-
-\begin{equation}
+Using the metrics given above one can define complex measures of information loss for a given aggregate $A$ (it can be the whole table or a specific subset of table cells, referring to, for example, the same spatial unit - such as population numbers by age groups for a LAU 1 unit). The first of these measures is the average absolute deviation - the mean of absolute differences between cell values in original and modified tables:
+$$
 \textmd{AD}(A)=\frac{\sum_{c\in A}{|T_1(c)-T_0(c)|}}{n_A},
-\label{ad}
-\end{equation}
-przy czym $n_A$ oznacza liczbę komórek objętych agregatem $A$.
+$$
+where $n_A$ is the number of cells included in the aggregate $A$.
 
 Można też wyznaczać sumę relatywnych odchyleń bezwzględnych (ang. \textit{relative absolute deviation}), czyli sumę względnych różnic pomiędzy częstościami w~tablicach):
 \begin{equation}
