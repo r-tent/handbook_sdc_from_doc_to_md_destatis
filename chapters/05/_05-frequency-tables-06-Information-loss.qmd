@@ -22,3 +22,4 @@ A number of different information loss measures are described below, and more te
 
 In order to allow data suppliers to make informed decisions about optimal disclosure control methods, ONS has developed a user-friendly software application that calculates both disclosure risk measures based on small counts in tables and a wide range of information loss measures (as described above) for disclosure controlled statistical data, Shlomo and Young (2006). The software application also outputs R-U Confidentiality maps.
 
+
