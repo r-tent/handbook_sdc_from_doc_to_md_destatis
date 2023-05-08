@@ -147,7 +147,7 @@ $$
 p^* := 100 \cdot \frac{p}{q} \qquad \text{(4)}
 $$ 
 
-Of course we can also adapt the $(n,k)$-dominance rule to account for $q\%$ relative a priori bounds: Let e.g. $n = 2$ . According to (3) above, an aggregate should then be considered unsafe when the second largest respondent could estimate the largest contribution $x_{1}$ to within $(100 - k)$ percent of $X$ , by subtracting her own contribution and the estimate ${\hat{X}}_{R}$ from the cell total, e.g. when $|\left( X - x_{2} \right) - x_{1} - {\hat{X}}_{R}| < (100 - k)/100 \cdot X$. Just as in the case of the $p\%$-rule, we see that the aggregate is sensitive, when $X_{R} < \frec{100 - k}{q} \cdot X$, and that for given parameters $k$ and $q$ the parameter $k^*$ corresponding to $q^* = 100$ should be chosen such that
+Of course we can also adapt the $(n,k)$-dominance rule to account for $q\%$ relative a priori bounds: Let e.g. $n = 2$ . According to (3) above, an aggregate should then be considered unsafe when the second largest respondent could estimate the largest contribution $x_{1}$ to within $(100 - k)$ percent of $X$ , by subtracting her own contribution and the estimate ${\hat{X}}_{R}$ from the cell total, e.g. when $|\left( X - x_{2} \right) - x_{1} - {\hat{X}}_{R}| < (100 - k)/100 \cdot X$. Just as in the case of the $p\%$-rule, we see that the aggregate is sensitive, when $X_{R} < \frac{100 - k}{q} \cdot X$, and that for given parameters $k$ and $q$ the parameter $k^*$ corresponding to $q^* = 100$ should be chosen such that
 
 $$
 \frac{100-k^*}{100} = \frac{100-k}{q} \qquad \text{(5)}
