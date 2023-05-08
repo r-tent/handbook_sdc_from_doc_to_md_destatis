@@ -1,10 +1,14 @@
 ## Measurement of dislosure risk and information loss
 
 ### Disclosure risk
+As described in Section 5.3 and 5.4 there are a number of different disclosure control methods used to protect frequency tables. Each of these methods modifies the original data in the table in order to reduce the disclosure risk from small cells (e.g. 0's, 1's and 2's). The fundament of assessment of disclosure risk in this case it then the $k$-anonymity rule. Most often it is assumed that $k=3$, although sometimes also $k=2$ or $k=5$ is applied. So, in the frequency tables the primary risk results only for direct identification of an unit resulting from too low frequency and the secondary risk assessment is connected with possibility of deduction of suppressed/perturbed cells by relevant differenciation of table. 
 
+Similarly as in the case of magnitude tables (see Section 4.6) a cell is regarded as unsafe if it violates the $k$-anonymity. Therefore the dislosure risk can be measured as the share of cells having this property in the total number of cells in a table.
+
+As regards the secondary risk, its measure should satisfy four conditions formulated by Shlomo, Antal and Elliot (2015) and recalled in Section 4.6. Then the measure (4.6.1) and (4.6.2) can be applied directly in this case.    
 
 ### Information loss
-As described in Section 5.3 and 5.4 there are a number of different disclosure control methods used to protect frequency tables. Each of these methods modifies the original data in the table in order to reduce the disclosure risk from small cells (0's, 1's and 2's). However, the process of reducing disclosure risk results in information loss. Some quantitative information loss measures have been developed by Shlomo and Young (2005 & 2006) to determining the impact various statistical disclosure control (SDC) methods have on the original tables.
+However, the process of reducing disclosure risk results in information loss. Some quantitative information loss measures have been developed by Shlomo and Young (2005 & 2006) to determining the impact various statistical disclosure control (SDC) methods have on the original tables.
 
 Information loss measures can be split into two classes; measures for data suppliers used to make informed decisions about optimal SDC methods depending on the characteristics of the tables; and measures for users in order to facilitate adjustments to be made when carrying out statistical analysis on protected tables. Here we focus on measures for data suppliers. Measuring utility and quality for SDC methods is subjective. It depends on the users; the purpose of the data and the required statistical analysis; and the type and format of the statistical data. Therefore it is useful to have a range of information loss measures for assessing the impact of the SDC methods.
 
@@ -26,3 +30,5 @@ A number of different information loss measures are described below, and more te
 
 In order to allow data suppliers to make informed decisions about optimal disclosure control methods, ONS have developed a user-friendly software application that calculates both disclosure risk measures based on small counts in tables and a wide range of information loss measures (as described above) for disclosure controlled statistical data, Shlomo and Young (2006). The software application also outputs R-U Confidentiality maps.
 
+### References
+Shlomo, N., Antal, L., & Elliot, M. (2015). Measuring disclosure risk and data utility for flexible table generators. *Journal of Official Statistics*, 31(2), 305-324. 
