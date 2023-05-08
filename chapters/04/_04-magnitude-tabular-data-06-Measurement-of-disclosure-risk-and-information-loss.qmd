@@ -18,9 +18,9 @@ In the currently investigated case of magnitude table one should add one more co
 
 Shlomo, Antal and Elliot (2015) proposed in this context measure based on the entropy. According to their approach, a high entropy indicates that the distribution across cells is uniform and a low entropy indicates mainly zeros in a row/column or table with a few non-zero cells. The fewer the number of non-zero cells, the more likely that attribute disclosure occurs. The entropy is given as
 $$
-H=-\sum_{i=1}^{n}{\frac{c_i}{n}\cdot\log{\frac{c_i}{n}}}, (4.6.1)
+H=-\sum_{i=1}^{k}{\frac{c_i}{n}\cdot\log{\frac{c_i}{n}}}, (4.6.1)
 $$
-where $c_i$ is the number of units contained in $i$-th cell and $n$ is the total number of cells in the table. The measure (4.6.1) is next normalized to the form
+where $c_i$ is the number of units contained in $i$-th cell, $k$ is the number of cell in the tables and $n$ is the total number of units covered by the table. The measure (4.6.1) is next normalized to the form
 $$
 1-\frac{H}{\log n}. (4.6.2)
 $$
