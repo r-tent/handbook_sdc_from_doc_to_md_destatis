@@ -9,7 +9,11 @@ As regards the secondary risk, its measure should satisfy four conditions formul
 $$
 r=w_1\freq{|D|}{k}+w_2\left(1-\frac{H}{\log k}\right)-w_3\frac{1}{\sqrt{N}}\log\frac{1}{e\cdot\sqrt{N}},
 $$
-where $|A|$ denotes the number of elements of the set $A$, $H$ is the value defined in (4.6.1) and $\mathbf{w}=(w_1,w_2,w_3)$ is the vector of weights ($e$ is, of course, the base of the natural logarithm). This measure has all above mentioned properties.
+where $|A|$ denotes the number of elements of the set $A$, $H$ is the value defined in (4.6.1) but adjusted to the current situation as 
+$$
+H=-\sum_{i=1}^{k}{\frac{F_i}{N}\cdot\log{\frac{F_i}{N}}},
+$$
+and $\mathbf{w}=(w_1,w_2,w_3)$ is the vector of weights ($e$ is, of course, the base of the natural logarithm). This measure has all above mentioned properties.
 
 Assume that the original table was perturbed. The frequency of cell $C_l$ is then $F_l^#$, $l=1,2,\ldots,k$. Because the modified table has more uncertainty, the proposed measure of disclosure risk in this case is as follows: 
 $$
