@@ -31,7 +31,7 @@ r=1-\frac{1}{2}\left(\frac{H}{\log n}+\frac{1}{n}\sum_{i=1}^n{\frac{x_{i(\text{m
 $$
 where $x_{i(\text{max})}$ is the share of the largest contributors to the cell $C_i$ and $x_j$ is the contribution of the $j$-th unit to it. This measure takes value from $[0,1]$ and is easy interpretable. 
 
-The disclosure risk assessment can be also adjusted to the specificity of currently used SDC method. For instance, Enderle, Giessing and Tent (2020) have propsed an original risk measure for continous data perturbed using the Cell Key approach. It assumes that an intruder can know the noise parameter and the maximum deviation parameter. Then he/she can determine the feasibility intervals for original internal and margin cells using the noisy values. The risk estimate is then based on the sum of products of cumulated probabilities resulting from entries of p-table and empirical probabilities for ratio of noise parameters. 
+The disclosure risk assessment can be also adjusted to the specificity of currently used SDC method. For instance, Enderle, Giessing and Tent (2020) have proposed an original risk measure for continous data perturbed using the Cell Key approach. It assumes that an intruder can know the noise parameter and the maximum deviation parameter. Then he/she can determine the feasibility intervals for original internal and margin cells using the noisy values. The risk estimate is then based on the sum of products of cumulated probabilities resulting from entries of p-table and empirical probabilities for ratio of noise parameters. 
 
 ### Information loss
 
