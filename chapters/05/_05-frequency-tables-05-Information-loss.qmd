@@ -5,40 +5,11 @@ As described in Section 5.3 and 5.4 there are a number of different disclosure c
 
 Similarly as in the case of magnitude tables (see Section 4.6) a cell is regarded as unsafe if it violates the $k$-anonymity. Therefore the dislosure risk can be measured as the share of cells having this property in the total number of cells in a table.
 
-As regards the secondary risk, its measure should satisfy four conditions formulated by Antal, Shlomo and Elliot (2014) and recalled in Section 4.6. Then the measure (4.6.1) and (4.6.2) can be applied directly in this case.
-
-Denote the population based frequency table by 𝐹 = (𝐹1, 𝐹2, … , 𝐹𝐾). It implies that the
-size of the frequency table is 𝐾. Assume that the distribution of 𝑋 is (
-𝐹1
-𝑁
-,
-𝐹2
-𝑁
-, … ,
-𝐹𝐾
-𝑁
-),
-where 𝑁 = ∑ 𝐹𝑖
-𝐾
-𝑖=1
-. The disclosure risk for a population based frequency table is a
-weighted average defined as follows.
-𝑅1
-(𝐹, 𝒘) = 𝑤1 ∙
-|𝐷|
-𝐾
-+ 𝑤2 ∙ (1 −
-𝐻(𝑋)
-log 𝐾
-) − 𝑤3 ∙
-1
-√𝑁
-∙ log
-1
-𝑒 ∙ √𝑁
-(1)
-Here 𝐷 denotes the set of zeroes in the table, therefore |𝐷| provides the number of
-zeroes. 𝒘 = (𝑤1, 𝑤2, 𝑤3
+As regards the secondary risk, its measure should satisfy four conditions formulated by Antal, Shlomo and Elliot (2014) and recalled in Section 4.6. Then the measure (4.6.1) and (4.6.2) can be applied directly in this case. They have proposed also a measure of risk for population tables. Let $F_l$ be population frequency of cell $C_l$, $l=1,2,\ldots,k$ (where $k$ is the total number of cells). Let $N$ be the number of population, $N=\sum_{l=1}^k{F_k}$ and $D=\{l\n\{1,2,\ldots,n\}:F_l=0\}$. The disclosure risk for a population based frequency table is then defined as
+$$
+r=w_1\freq{|D|}{k}+w_2\left(\right)
+$$
+where |A| denotes the number of elements of the set $A$, and 𝒘 = (𝑤1, 𝑤2, 𝑤3
 ) is the vector of weights, while 𝑒 is the base of the natural
 logarithm. The disclosure risk measure reflects the properties listed in section 1.
 If a statistical agency deem that a population based frequency table is of high disclosure
