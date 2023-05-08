@@ -7,42 +7,15 @@ Similarly as in the case of magnitude tables (see Section 4.6) a cell is regarde
 
 As regards the secondary risk, its measure should satisfy four conditions formulated by Antal, Shlomo and Elliot (2014) and recalled in Section 4.6. Then the measure (4.6.1) and (4.6.2) can be applied directly in this case. They have proposed also a measure of risk for population tables. Let $F_l$ be population frequency of cell $C_l$, $l=1,2,\ldots,k$ (where $k$ is the total number of cells). Let $N$ be the number of population, $N=\sum_{l=1}^k{F_k}$ and $D=\{l\n\{1,2,\ldots,n\}:F_l=0\}$. The disclosure risk for a population based frequency table is then defined as
 $$
-r=w_1\freq{|D|}{k}+w_2\left(\right)
+r=w_1\freq{|D|}{k}+w_2\left(1-\frac{H}{\log k}\right)-w_3\frac{1}{\sqrt{N}}\log\frac{1}{e\cdot\sqrt{N}},
 $$
-where |A| denotes the number of elements of the set $A$, and 𝒘 = (𝑤1, 𝑤2, 𝑤3
-) is the vector of weights, while 𝑒 is the base of the natural
-logarithm. The disclosure risk measure reflects the properties listed in section 1.
-If a statistical agency deem that a population based frequency table is of high disclosure
-risk, then a statistical disclosure control (SDC) method must be applied to the table.
-Denote the perturbed frequency table by 𝐺 = (𝐺1,𝐺2, … , 𝐺𝐾). The disclosure risk of the
-perturbed table also must be assessed. However, the previously defined disclosure risk
-measure cannot be applied to the perturbed table since the perturbed table has more
-uncertainty. We define the disclosure risk after perturbation below.
-𝑅2
-(𝐹, 𝐺, 𝒘) = 𝑤1 ∙ (
-|𝐷|
-𝐾
-)
-|𝐷∪𝐸|
-|𝐷∩𝐸|
-+ 𝑤2 ∙ (1 −
-𝐻(𝑋)
-log 𝐾
-) ∙ (1 −
-𝐻(𝑋|𝑌)
-𝐻(𝑋)
-)
-− 𝑤3 ∙
-1
-√𝑁
-∙ log
-1
-𝑒 ∙ √𝑁
-(2)
-Here 𝐸 is the set of zeroes in the perturbed frequency table. The disclosure risk of a
-perturbed table is expected to be lower than that of the original table. 𝑅2
-(𝐹, 𝐺, 𝒘)
-satisfies this requirement.
+where $|A|$ denotes the number of elements of the set $A$, $H$ is the value defined in (4.6.1) and $\mathbf{w}=(w_1,w_2,w_3)$ is the vector of weights ($e$ is, of course, the base of the natural logarithm). This measure has all above mentioned properties.
+
+Assume that the original table was perturbed. The frequency of cell $C_l$ is then $F_l^#$, $l=1,2,\ldots,k$. Because the modified table has more uncertainty, the proposed measure of disclosure risk in this case is as follows: 
+$$
+r^#=w_1\left(\freq{|D|}{k}\right)^{\frac{|D\cup Q|}{|D\cap Q|}}+w_2\left(1-\frac{H}{\log k}\right)\left(1-\frac{H^#}{H}\right)-w_3\frac{1}{\sqrt{N}}\log\frac{1}{e\cdot\sqrt{N}}
+$$
+where $Q$ is the set of zeroes in the perturbed frequency table and $H^#=-\sum_{i=1}^{k}{\frac{F_i^#}{N}\cdot\sum_{j=1}^{k}{\frac{F_{ij}^#}{N\cdot F_j^#}\cdot\log{\frac{F_{ij}^#}{n\cdot F_j^#}}}$, $F_{ij}^#$ is the number of units which belong to $C_i$ before and to $C_j$ after perturbation. The disclosure risk of a perturbed table is expected to be lower than that of the original table. $r^#$ satisfies this requirement.
 
 ### Information loss
 However, the process of reducing disclosure risk results in information loss. Some quantitative information loss measures have been developed by Shlomo and Young (2005 & 2006) to determining the impact various statistical disclosure control (SDC) methods have on the original tables.
