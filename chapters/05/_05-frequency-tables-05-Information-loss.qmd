@@ -5,7 +5,73 @@ As described in Section 5.3 and 5.4 there are a number of different disclosure c
 
 Similarly as in the case of magnitude tables (see Section 4.6) a cell is regarded as unsafe if it violates the $k$-anonymity. Therefore the dislosure risk can be measured as the share of cells having this property in the total number of cells in a table.
 
-As regards the secondary risk, its measure should satisfy four conditions formulated by Antal, Shlomo and Elliot (2014) and recalled in Section 4.6. Then the measure (4.6.1) and (4.6.2) can be applied directly in this case.    
+As regards the secondary risk, its measure should satisfy four conditions formulated by Antal, Shlomo and Elliot (2014) and recalled in Section 4.6. Then the measure (4.6.1) and (4.6.2) can be applied directly in this case.
+
+Denote the population based frequency table by 𝐹 = (𝐹1, 𝐹2, … , 𝐹𝐾). It implies that the
+size of the frequency table is 𝐾. Assume that the distribution of 𝑋 is (
+𝐹1
+𝑁
+,
+𝐹2
+𝑁
+, … ,
+𝐹𝐾
+𝑁
+),
+where 𝑁 = ∑ 𝐹𝑖
+𝐾
+𝑖=1
+. The disclosure risk for a population based frequency table is a
+weighted average defined as follows.
+𝑅1
+(𝐹, 𝒘) = 𝑤1 ∙
+|𝐷|
+𝐾
++ 𝑤2 ∙ (1 −
+𝐻(𝑋)
+log 𝐾
+) − 𝑤3 ∙
+1
+√𝑁
+∙ log
+1
+𝑒 ∙ √𝑁
+(1)
+Here 𝐷 denotes the set of zeroes in the table, therefore |𝐷| provides the number of
+zeroes. 𝒘 = (𝑤1, 𝑤2, 𝑤3
+) is the vector of weights, while 𝑒 is the base of the natural
+logarithm. The disclosure risk measure reflects the properties listed in section 1.
+If a statistical agency deem that a population based frequency table is of high disclosure
+risk, then a statistical disclosure control (SDC) method must be applied to the table.
+Denote the perturbed frequency table by 𝐺 = (𝐺1,𝐺2, … , 𝐺𝐾). The disclosure risk of the
+perturbed table also must be assessed. However, the previously defined disclosure risk
+measure cannot be applied to the perturbed table since the perturbed table has more
+uncertainty. We define the disclosure risk after perturbation below.
+𝑅2
+(𝐹, 𝐺, 𝒘) = 𝑤1 ∙ (
+|𝐷|
+𝐾
+)
+|𝐷∪𝐸|
+|𝐷∩𝐸|
++ 𝑤2 ∙ (1 −
+𝐻(𝑋)
+log 𝐾
+) ∙ (1 −
+𝐻(𝑋|𝑌)
+𝐻(𝑋)
+)
+− 𝑤3 ∙
+1
+√𝑁
+∙ log
+1
+𝑒 ∙ √𝑁
+(2)
+Here 𝐸 is the set of zeroes in the perturbed frequency table. The disclosure risk of a
+perturbed table is expected to be lower than that of the original table. 𝑅2
+(𝐹, 𝐺, 𝒘)
+satisfies this requirement.
 
 ### Information loss
 However, the process of reducing disclosure risk results in information loss. Some quantitative information loss measures have been developed by Shlomo and Young (2005 & 2006) to determining the impact various statistical disclosure control (SDC) methods have on the original tables.
@@ -31,4 +97,6 @@ A number of different information loss measures are described below, and more te
 In order to allow data suppliers to make informed decisions about optimal disclosure control methods, ONS have developed a user-friendly software application that calculates both disclosure risk measures based on small counts in tables and a wide range of information loss measures (as described above) for disclosure controlled statistical data, Shlomo and Young (2006). The software application also outputs R-U Confidentiality maps.
 
 ### References
-Antal, L., Shlomo, N., & Elliot, M. (2014). Measuring disclosure risk with entropy in population based frequency tables. In *Privacy in Statistical Databases: UNESCO Chair in Data Privacy, International Conference, PSD 2014, Ibiza, Spain, September 17-19, 2014. Proceedings* (pp. 62-78). Springer International Publishing.
+Antal, L., Shlomo, N., & Elliot, M. (2014), Measuring disclosure risk with entropy in population based frequency tables. In *Privacy in Statistical Databases: UNESCO Chair in Data Privacy, International Conference, PSD 2014, Ibiza, Spain, September 17-19, 2014. Proceedings* (pp. 62-78). Springer International Publishing.
+
+Antal, L., & Shlomo, N., & Elliot, M. (2015), Disclosure Risk Measurement with Entropy in Sample Based Frequency Tables, *New Techniques and Technologies for Statistics (NTTS) Reliable Evidence for a Society in Transition, Brussels, Belgium, 9-13 March 2015*, https://cros-legacy.ec.europa.eu/system/files/Antal-etal_NTTS%202015%20abstract%20unblinded%20disclosure%20risk%20measurement.pdf.
