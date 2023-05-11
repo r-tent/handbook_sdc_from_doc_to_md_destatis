@@ -45,6 +45,8 @@ Antal, L., Shlomo, N., & Elliot, M. (2014), Measuring disclosure risk with entro
 
 Antal, L., & Shlomo, N., & Elliot, M. (2015), Disclosure Risk Measurement with Entropy in Sample Based Frequency Tables, *New Techniques and Technologies for Statistics (NTTS) Reliable Evidence for a Society in Transition, Brussels, Belgium, 9-13 March 2015*, https://cros-legacy.ec.europa.eu/system/files/Antal-etal_NTTS%202015%20abstract%20unblinded%20disclosure%20risk%20measurement.pdf.
 
+Gomatam, S. and A. Karr (2003), *Distortion Measures for Categorical Data Swapping*, Technical Report Number 131, National Institute of Statistical Sciences
+
 Shlomo, N., & Young, C. (2005). Information loss measures for frequency tables. *Monographs of official statistics*, Eurostat, Luxembourg, pp. 277-289.
 
-Shlomo, N., & Young, C. (2006). Statistical disclosure control methods through a risk-utility framework. In Privacy in Statistical Databases: CENEX-SDC Project International Conference, PSD 2006, Rome, Italy, December 13-15, 2006. Proceedings (pp. 68-81). Springer Berlin Heidelberg.
+Shlomo, N., & Young, C. (2006). Statistical disclosure control methods through a risk-utility framework. In *Privacy in Statistical Databases: CENEX-SDC Project International Conference, PSD 2006, Rome, Italy, December 13-15, 2006. Proceedings* (pp. 68-81). Springer Berlin Heidelberg.
