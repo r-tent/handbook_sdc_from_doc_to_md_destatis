@@ -130,9 +130,10 @@ own contribution from the aggregate total. Example 1 provides an instance.
 
 For an aggregate which is safe according to the $(2,k)$‑rule with $k = 100 \cdot \frac{100}{100 + p} \ldots$  (i)  and  (ii) will hold:
 
-\begin{enumerate}[i]
+\begin{enumerate}[label=(\roman*)]
 \item $x_{1} \leq \frac{k}{100} \cdot X = \frac{100}{100 + p} \cdot X$ and
-\item $\frac{ \left( X - x_{2} \right) - x_{1} }{ X } \geq 1 - \frac{k}{100} = 1 - \frac{100}{100 + p} = \frac{p} {100 + p}$ (c.f. (3) ). Equal to (*ii*) is
+\item $\frac{ \left( X - x_{2} \right) - x_{1} }{ X } \geq 1 - \frac{k}{100} = 1 - \frac{100}{100 + p} = \frac{p} {100 + p}$ (c.f. (3) ). 
+\\ Equal to (*ii*) is
 \item $\frac{ \left( X - x_{2} \right) - x_{1} }{ x_1 } \geq \frac{p}{100+p}\frac{X}{x1}$
 \end{enumerate}
 
