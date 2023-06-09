@@ -166,9 +166,7 @@ Sometimes, respondents authorize publication of an aggregate even if this public
 
 \begin{itemize}
 \item $X - x_{s} - x_{r} < \frac{p}{100}x_{s}$ , for the $p\%$-rule, and
-
 \item $x_{r} + x_{s} > \frac{k}{100} \cdot X$ , for the $(2,k)$-dominance rule.
-
 \end{itemize}
 
 In foreign trade statistics traditionally a special rule is applied. Only for those enterprises that have actively asked for protection of their information special sensitivity rules are applied. This implies that if the largest contributor to a cell asks for protection and contributes over a certain percentage to the cell total, that cell is considered a primarily unsafe cell.
