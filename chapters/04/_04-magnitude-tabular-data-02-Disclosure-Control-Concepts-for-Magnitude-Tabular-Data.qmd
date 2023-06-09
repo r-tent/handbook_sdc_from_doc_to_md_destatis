@@ -126,9 +126,7 @@ e.g. the upper estimate $\hat{x} = X - x_{2}$ will overestimate
 
 the true value by $15.4\%$. So the aggregate is safe according to the $p\%$-rule at $p = 10$.
 
-On the other hand the two largest contributions are $x_{1} + x_{2} = 102\ 000$. As $102\ 000 > \frac{100} {100 + p } \cdot X = 100\ 000$ the aggregate is not safe according to the $(2,k)$-rule.
-
-own contribution from the aggregate total. Example 1 provides an instance.
+On the other hand the two largest contributions are $x_{1} + x_{2} = 102\ 000$. As $102\ 000 > \frac{100} {100 + p } \cdot X = 100\ 000$ the aggregate is not safe according to the $(2,k)$-rule. Example 1 provides illustrates this.
 
 For an aggregate which is safe according to the $(2,k)$‑rule with $k = 100 \cdot \frac{100}{100 + p} \ldots$  (i)  and  (ii) will hold:
 
