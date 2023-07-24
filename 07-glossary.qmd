@@ -130,7 +130,7 @@ The underlined links in this glossary refer to other term in this glossary. This
 
 **Informed consent:** Basic ethical tenet of scientific research on human populations. Sociologists do not involve a human being as a subject in research without the informed consent of the subject or the subject's legally authorized representative, except as otherwise specified. Informed consent refers to a person's agreement to allow [[personal data]{.underline}](#Personal_data) to be provided for research and statistical purposes. Agreement is based on full exposure of the facts the person needs to make the decision intelligently, including awareness of any risks involved, of uses and users of the data, and of alternatives to providing the data.
 
-[]{#Intruder .anchor}**Intruder:** A data user who attempts to link a respondent to a [[microdata]{.underline}](#Microdata) record or make [[attribution]{.underline}](#Attribution)s about particular population units from aggregate data. Intruders may be motivated by a wish to discredit or otherwise harm the [[NSI]{.underline}](#NSI), the survey or the government in general, to gain notoriety or publicity, or to gain profitable knowledge about particular respondents.
+[]{#Intruder .anchor}**Intruder:** Synonym of [[data intruder]{.underline}](#Data_intruder).
 
 ## J {-}
 
