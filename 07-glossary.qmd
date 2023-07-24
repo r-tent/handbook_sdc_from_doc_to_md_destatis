@@ -1,6 +1,6 @@
 # Glossary
 
-In 2005 Mark Elliot (University of Manchester), Anco Hundepool (Statistics Netherlands), Eric Schulte Nordholt (Statistics Netherlands), Jean-Louis Tambay (Statistics Canada) and Thomas Wende (Destatis, Germany) took the initiative to compile a Glossary on Statistical Disclosure Control. A first version of the Glossary was presented at the UN-ECE worksession on SDC in Geneva in November 2005. This glossary can also be found at the CENEX-website via [[http://neon.vb.cbs.nl/casc/glossary.htm]{.underline}](http://neon.vb.cbs.nl/casc/glossary.htm). If there are comments to the glossary, you will find a link at the OnLine Glossary to submit your update.
+In 2005 Mark Elliot (University of Manchester), Anco Hundepool (Statistics Netherlands), Eric Schulte Nordholt (Statistics Netherlands), Jean-Louis Tambay (Statistics Canada) and Thomas Wende (Destatis, Germany) took the initiative to compile a Glossary on Statistical Disclosure Control. A first version of the Glossary was presented at the UNECE worksession on SDC in Geneva in November 2005. This glossary can also be found at the CENEX-website via [[http://neon.vb.cbs.nl/casc/glossary.htm]{.underline}](http://neon.vb.cbs.nl/casc/glossary.htm). If there are comments to the glossary, you will find a link at the OnLine Glossary to submit your update.
 
 The underlined links in this glossary refer to other term in this glossary. This handbook contains also an index, but to avoid misleading cross references we have not indexed this glossary.
 
