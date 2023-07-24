@@ -168,7 +168,7 @@ The underlined links in this glossary refer to other term in this glossary. This
 
 []{#NSI .anchor}**NSI(s):** Abbreviation for National Statistical Institute(s).
 
-[]{#(n,k)_rule .anchor}**(n,k) rule:** A cell is regarded as confidential, if the n largest units contribute more than k % to the cell total, e.g. n=2 and k=85 means that a cell is defined as risky if the two largest units contribute more than 85 % to the cell total. The n and k are given by the statistical authority. In some [[NSI]{.underline}](#NSI)s the values of n and k are confidential.
+[]{#(n,k)_rule .anchor}**(n,k) rule:** A cell is regarded as confidential, if the n largest units contribute more than k % to the cell total, e.g. n=2 and k=85 means that a cell is defined as risky if the two largest units contribute more than 85% to the cell total. The n and k are given by the statistical authority. In some [[NSI]{.underline}](#NSI)s the values of n and k are confidential.
 
 ## O {-}
 
