@@ -32,8 +32,6 @@ The underlined links in this glossary refer to other term in this glossary. This
 
 ## C {-}
 
-[]{#Calculated_interval .anchor}**Calculated interval:** The interval containing possible values for a suppressed cell in a table, given the table structure and the values published.
-
 []{#Cell_suppression .anchor}**Cell suppression:** In [[tabular data]{.underline}](#Tabular_data) the cell suppression SDC method consists of [[primary]{.underline}](#Primary_suppression) and [[complementary (secondary)]{.underline}](#Secondary_suppression) suppression. [[Primary suppression]{.underline}](#Primary_suppression) can be characterised as withholding the values of all [[risky cells]{.underline}](#Risky_cells) from publication, which means that their value is not shown in the table but replaced by a symbol such as '×' to indicate the suppression. According to the definition of [[risky cells]{.underline}](#Risky_cells), in frequency count tables all cells containing small counts and in tables of magnitudes all cells containing small counts or presenting a case of [[dominance]{.underline}](#Dominance_rule) have to be primary suppressed. To reach the desired protection for [[risky cells]{.underline}](#Risky_cells), it is necessary to suppress additional non- [[risky cells]{.underline}](#Risky_cells), which is called [[complementary (secondary) suppression.]{.underline}](#Secondary_suppression) The pattern of complementary suppressed cells has to be carefully chosen to provide the desired level of ambiguity for the [[risky cells]{.underline}](#Risky_cells) with the least amount of suppressed information.
 
 []{#Complementary_suppression .anchor}**Complementary suppression:** Synonym of [[secondary suppression]{.underline}](#Secondary_suppression).
@@ -103,6 +101,8 @@ The underlined links in this glossary refer to other term in this glossary. This
 []{#Exact_disclosure .anchor}**Exact disclosure:** Exact disclosure occurs if a user is able to determine the exact attribute for an individual entity from released information.
 
 ## F {-}
+
+[]{#Feasibility_interval .anchor}**Feasibility interval:** The interval containing possible values for a suppressed cell in a table, given the table structure and the values published.
 
 []{#Formal_identifier .anchor}**Formal identifier:** Any variable or set of variables which is structurally unique for every population unit, for example a population registration number. If the formal identifier is known to the [[intruder]{.underline}](#Intruder), [[identification]{.underline}](#Identification) of a target individual is directly possible for him or her, without the necessity to have additional knowledge before studying the [[microdata]{.underline}](#Microdata). Some combinations of variables such as name and address are pragmatic formal identifiers, where non-unique instances are empirically possible, but with negligible probability.
 
