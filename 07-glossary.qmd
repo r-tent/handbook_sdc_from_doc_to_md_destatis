@@ -48,8 +48,6 @@ The underlined links in this glossary refer to other term in this glossary. This
 
 ## D {-}
 
-**Data divergence:** The sum of all differences between two datasets (data-data divergence) or between a single dataset and reality (data-world divergence). Sources of data divergence include: data ageing, response errors, coding or data entry errors, differences in coding and the effect of disclosure control.
-
 []{#Data_intruder .anchor}**Data intruder:** A data user who attempts to disclose information about a population unit through [[identification]{.underline}](#Identification) or [[attribution]{.underline}](#Attribution).
 
 **Data intrusion detection:** The detection of a [[data intruder]{.underline}](#Data_intruder) through their behaviour. This is most likely to occur through analysis of a pattern of requests submitted to a [[remote data laboratory]{.underline}](#Remote_data_laboratory). At present this is only a theoretical possibility, but it is likely to become more relevant as [[virtual safe setting]{.underline}](#Virtual_safe_setting)s become more prevalent.
