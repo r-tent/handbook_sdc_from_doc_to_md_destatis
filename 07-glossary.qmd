@@ -6,8 +6,6 @@ The underlined links in this glossary refer to other term in this glossary. This
 
 ## A {-}
 
-**Ambiguity rule:** Synonym of [[(p,q) rule]{.underline}](#(p,q)_rule).
-
 **Analysis server:** A form of [[remote data laboratory]{.underline}](#Remote_data_laboratory) designed to run analysis on data stored on a safe server. The user sees the results of their analysis but not the data.
 
 []{#Anonymised_data .anchor}**Anonymised data:** Data containing only [[anonymised record]{.underline}](#Anonymised_record)s.
