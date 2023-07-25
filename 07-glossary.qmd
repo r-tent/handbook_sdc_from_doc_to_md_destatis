@@ -216,8 +216,6 @@ The limits of what constitutes \"too few\" or \"dominance\" vary among statistic
 
 ## R {-}
 
-**Randomized response:** Randomized response is a technique used to collect sensitive information from individuals in such a way that survey interviewers and those who process the data do not know which of two alternative questions the respondent has answered.
-
 **Random perturbation:** This is a disclosure control method according to which a noise, in the form of a random value is added to the true value or, in the case of categorical variables, where another value is randomly substituted for the true value.
 
 []{#Random_rounding .anchor}**Random rounding:** In order to reduce the amount of data loss that occurs with [[suppression]{.underline}](#Suppression), alternative methods have been investigated to protect [[sensitive cell]{.underline}](#Sensitive_cell)s in tables of frequencies. Perturbation methods such as random rounding and [[controlled rounding]{.underline}](#Controlled_rounding) are examples of such alternatives. In random rounding cell values are rounded, but instead of using standard rounding conventions a random decision is made as to whether they will be rounded up or down. The rounding mechanism can be set up to produce unbiased rounded results.
