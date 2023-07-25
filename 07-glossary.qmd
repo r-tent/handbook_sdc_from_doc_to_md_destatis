@@ -301,8 +301,6 @@ The limits of what constitutes \"too few\" or \"dominance\" vary among statistic
 
 **Synthetic data:** An approach to confidentiality where instead of disseminating real data, synthetic data that have been generated from one or more population models are released.
 
-**Synthetic substitution:** See [[Controlled Tabular Adjustment]{.underline}](#Controlled_Tabular_Adjustment).
-
 ## T {-}
 
 **Table server:** A form of [[remote data laboratory]{.underline}](#Remote_data_laboratory) designed to release safe tables.
