@@ -244,7 +244,7 @@ The limits of what constitutes \"too few\" or \"dominance\" vary among statistic
 
 []{#Rounding .anchor}**Rounding:** Rounding belongs to the group of [[disclosure control methods]{.underline}](#Disclosure_control_methods) based on output-perturbation. It is used to protect small counts in [[tabular data]{.underline}](#Tabular_data) against disclosure. The basic idea behind this disclosure control method is to round each count up or down either deterministically or probabilistically to the nearest integer multiple of a rounding base. The additive nature of the table is generally destroyed by this process. Rounding can also serve as a recoding method for [[microdata]{.underline}](#Microdata).
 
-**R-U map:** A graphical representation of the trade off between [[disclosure risk]{.underline}](#Disclosure_risk) and [[data utility]{.underline}](#Data_utility).
+**R-U confidentiality map:** A graphical representation of the trade off between [[disclosure risk]{.underline}](#Disclosure_risk) and [[data utility]{.underline}](#Data_utility).
 
 ## S {-}
 
