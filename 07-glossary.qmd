@@ -189,7 +189,7 @@ The underlined links in this glossary refer to other term in this glossary. This
 
 []{#Population_unique .anchor}**Population unique:** A record within a dataset which is unique within the population on a given [[key]{.underline}](#Key).
 
-**P-percent rule:** A [[(p,q) rule]{.underline}](#(p,q)_rule) where q is 100 %, meaning that from general knowledge any respondent can estimate the contribution of another respondent to within 100 % (i.e., knows the value to be nonnegative and less than a certain value which can be up to twice the actual value).
+**P-percent rule:** A [[(p,q) rule]{.underline}](#(p,q)_rule) where q is 100%, meaning that from general knowledge any respondent can estimate the contribution of another respondent to within 100% (i.e., knows the value to be nonnegative and less than a certain value which can be up to twice the actual value).
 
 []{#(p,q)_rule .anchor}**(p,q) rule:** It is assumed that out of publicly available information the contribution of one individual to the cell total can be estimated to within q per cent (q=error before publication); after the publication of the statistic the value can be estimated to within p percent (p=error after publication). In the (p,q) rule the ratio p/q represents the information gain through publication. If the information gain is unacceptable the cell is declared as confidential. The parameter values p and q are determined by the statistical authority and thus define the acceptable level of information gain. In some [[NSI]{.underline}](#NSI)s the values of p and q are confidential.
 
