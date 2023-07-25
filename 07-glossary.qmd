@@ -236,8 +236,6 @@ The limits of what constitutes \"too few\" or \"dominance\" vary among statistic
 
 **Restricted access:** Imposing conditions on access to the [[microdata]{.underline}](#Microdata). Users can either have access to the whole range of raw protected data and process individually the information they are interested in - which is the ideal situation for them - or their access to the protected data is restricted and they can only have a certain number of outputs (e.g. tables) or maybe only outputs of a certain structure. Restricted access is sometimes necessary to ensure that linkage between tables cannot happen.
 
-**Restricted data:** Synonym of [[safe data]{.underline}](#Safe_data).
-
 **Restriction based disclosure control method:** Method for the release of [[tabular data]{.underline}](#Tabular_data), which consists in reducing access to the data provided to the external user. This method reduces the content of information provided to the user of the [[tabular data]{.underline}](#Tabular_data). This is implemented by not publishing all the figures derived from the collected data or by not publishing the information in as detailed a form as would be possible.
 
 []{#Risky_cells .anchor}**Risky cells:** The cells of a table which are non-publishable due to the risk of [[statistical disclosure]{.underline}](#Statistical_disclosure) are referred to as risky cells. By definition there are three types of risky cells: small counts, dominance and [[complementary suppression]{.underline}](#Complementary_suppression) cells.
