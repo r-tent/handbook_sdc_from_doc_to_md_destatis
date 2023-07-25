@@ -253,7 +253,7 @@ The limits of what constitutes \"too few\" or \"dominance\" vary among statistic
 
 []{#Safe_setting .anchor}**Safe setting:** An environment such as a [[microdata]{.underline}](#Microdata) lab whereby access to a disclosive dataset can be controlled.
 
-**Safety interval:** The minimal [[calculated interval]{.underline}](#Calculated_interval) that is required for the value of a cell that does not satisfy the [[primary suppression]{.underline}](#Primary_suppression) rule.
+**Safety interval:** The minimal [[feasibility interval]{.underline}](#Feasibility_interval) that is required for the value of a cell that does not satisfy the [[primary suppression]{.underline}](#Primary_suppression) rule.
 
 []{#Sample_unique .anchor}**Sample unique:** A record within a dataset which is unique within that dataset on a given [[key]{.underline}](#Key).
 
