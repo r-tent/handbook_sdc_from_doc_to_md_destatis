@@ -198,7 +198,7 @@ The underlined links in this glossary refer to other term in this glossary. This
 **Primary confidentiality:** It concerns tabular cell data, whose [[dissemination]{.underline}](#Dissemination) would permit [[attribute disclosure]{.underline}](#Attribute_disclosure). The two main reasons for declaring data to be primary confidential are:\
 - too few units in a cell;\
 - dominance of one or two units in a cell.\
-The limits of what constitutes \"too few\" or \"dominance\" vary between statistical domains.
+The limits of what constitutes \"too few\" or \"dominance\" vary among statistical domains.
 
 **Primary protection:** Protection using [[disclosure control methods]{.underline}](#Disclosure_control_methods) for all cells containing small counts or cases of dominance.
 
