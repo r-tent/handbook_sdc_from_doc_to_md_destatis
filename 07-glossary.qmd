@@ -317,6 +317,8 @@ The limits of what constitutes \"too few\" or \"dominance\" vary among statistic
 
 []{#Top_and_bottom_coding .anchor}**Top and bottom coding:** It consists in setting top-codes or bottom-codes on quantitative variables. A top-code for a variable is an upper limit on all published values of that variable. Any value greater than this upper limit is replaced by the upper limit or is not published on the [[microdata]{.underline}](#Microdata) file at all. Similarly, a bottom-code is a lower limit on all published values for a variable. Different limits may be used for different quantitative variables, or for different subpopulations.
 
+**Top coding:** See [[top and bottom coding]{.underline}](#Top_and_bottom_coding).
+
 ## U {-}
 
 **Union unique:** A [[sample unique]{.underline}](#Sample_unique) that is also [[population unique]{.underline}](#Population_unique). The proportion of [[sample unique]{.underline}](#Sample_unique)s that are union uniques is one measure of file level [[disclosure risk]{.underline}](#Disclosure_risk).
