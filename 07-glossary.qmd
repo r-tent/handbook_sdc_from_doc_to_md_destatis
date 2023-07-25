@@ -297,7 +297,7 @@ The limits of what constitutes \"too few\" or \"dominance\" vary among statistic
 
 **SUDA:** A software system for conducting analyses on [[population unique]{.underline}](#Population_unique)s and special [[sample unique]{.underline}](#Sample_unique)s. The [[special uniques analysis]{.underline}](#Special_uniques_analysis) method implemented in SUDA for measuring and assessing [[disclosure risk]{.underline}](#Disclosure_risk) is based on resampling methods and used by the ONS.
 
-**Swapping (or switching):** Swapping (or switching) involves selecting a sample of the records, finding a match in the data base on a set of predetermined variables and swapping all or some of the other variables between the matched records. Swapping (or switching) was illustrated as part of the [[confidentiality edit]{.underline}](#Confidentiality_edit) for tables of frequency data.
+**Swapping (or switching):** Swapping (or switching) involves selecting a sample of the records, finding a match in the data base on a set of predetermined variables and swapping all or some of the other variables between the matched records.
 
 **Synthetic data:** An approach to confidentiality where instead of disseminating real data, synthetic data that have been generated from one or more population models are released.
 
