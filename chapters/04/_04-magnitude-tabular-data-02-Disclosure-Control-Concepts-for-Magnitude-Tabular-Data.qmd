@@ -235,7 +235,7 @@ In section 4.2.2 we introduce into the concepts of secondary tabular data protec
 
 ### Secondary tabular data protection methods
 
-For reasons explained in the introduction of this chapter, we assume here that tables always include margins and overall totals along with their 'inner' cells. Thus, there is always a linear relationship between cells of a table. (Consider for instance example 1a of the introduction to this chapter: The sector result (say: $X_T$) is the sum of the three sub-sector results ($X_1$ to $X_3$), e.g. the linear relationship between these four cells is given by the relation $X_T = X_1 + X_2 + X_3$. As we have seen in example 1a, if it has been established that a disclosure risk is connected to the release of certain cells of a table, then it is not enough to prevent publication of these cells. Other cells (so called 'complementary' or 'secondary' suppressions) must be suppressed, or be otherwise manipulated in order to prevent the value of the protected sensitive cell being recalculated through f.i. differencing.![](Images/media/image176.png){width="0.2in" height="0.2in"}
+For reasons explained in the introduction of this chapter, we assume here that tables always include margins and overall totals along with their 'inner' cells. Thus, there is always a linear relationship between cells of a table. (Consider for instance example 1a of the introduction to this chapter: The sector result (say: $X_T$) is the sum of the three sub-sector results ($X_1$ to $X_3$), i.e. the linear relationship between these four cells is given by the relation $X_T = X_1 + X_2 + X_3$. As we have seen in example 1a, if it has been established that a disclosure risk is connected to the release of certain cells of a table, then it is not enough to prevent publication of these cells. Other cells must be suppressed (so called 'complementary' or 'secondary' suppressions), or be otherwise manipulated in order to prevent the value of the protected sensitive cell being recalculated through f.i. differencing.![](Images/media/image176.png){width="0.2in" height="0.2in"}
 
 Within this section we explain the methodological background of secondary tabular data protection methods.
 
@@ -265,9 +265,9 @@ X_{12} + X_{22} &= 4 \quad \text{(C2)} \\
 \end{align}
 $$
 
-with $X_{ij} \geq 0, \forall (i,j)$. Using linear programming methodology, it is possible to derive systematically for any suppressed cell in a table an upper bound $\left(X^{\max} \right)$ and a lower bound $\left( X_{11}^{\min} \right)$ for the set of feasible values. In the example above, for cell (1,1) these bounds are $\left( X_{11}^{\min} \right)$ = 3 and $X_{11}^{\max}$ = 6 .
+with $X_{ij} \geq 0, \forall (i,j)$. Using linear programming methodology, it is possible to derive systematically for any suppressed cell in a table an upper bound $\left(X^{\max} \right)$ and a lower bound $\left( X^{\min} \right)$ for the set of feasible values. In the example above, for cell (1,1) these bounds are $\left( X_{11}^{\min} \right)$ = 3 and $X_{11}^{\max}$ = 6 .
 
-In this simple instance, however, we do not need linear programming technology to derive this result: Because of the first column relation (C1) $X_{11}$ must be less or equal 6, and because of the second row relation (R2) $X_{21}$ must be less or equal 3. Therefore, and because of the first column relation (R1) $X_{11}$ must be at least 3.
+In this simple instance, however, we do not need linear programming technology to derive this result: Because of the first column relation (C1) $X_{11}$ must be less or equal 6, and because of the second row relation (R2) $X_{21}$ must be less or equal 3. Therefore, and because of the first column relation (C1) $X_{11}$ must be at least 3.
 
 A general mathematical statement for the linear programming problem to compute upper and lower bounds for the suppressed entries of a table is given in Fischetti and Salazar (2000).
 
