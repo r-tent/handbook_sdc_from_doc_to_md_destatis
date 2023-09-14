@@ -1,4 +1,4 @@
-- Website of this V0: [https://julienjamme.quarto.pub/sdc_handbook/](https://julienjamme.quarto.pub/sdc_handbook/)  
+- Website of this V0: [https://julienjamme.github.io/handbook_sdc_from_doc_to_md/]()  
 - PDF version in _book/ directory. 
 
 A first complete review was made (thanks to violeta for the help). All the equations and figures should be in place now.
