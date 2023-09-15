@@ -1,4 +1,4 @@
-- Website of this V0: [https://julienjamme.github.io/handbook_sdc_from_doc_to_md/]()  
+- Click on the link in the About section (top right of the page) to read the book.
 - PDF version in _book/ directory. 
 
 A first complete review was made (thanks to violeta for the help). All the equations and figures should be in place now.
