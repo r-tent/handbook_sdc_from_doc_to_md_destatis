@@ -1,4 +1,4 @@
-# microdata
+# Microdata
 
 {{< include chapters/03/_03-microdata-01-Introduction.qmd >}}
 
