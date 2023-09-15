@@ -1,4 +1,4 @@
-# frequency-tables
+# Frequency tables
 
 {{< include chapters/05/_05-frequency-tables-01-Introduction.qmd >}}
 
