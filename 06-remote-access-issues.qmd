@@ -1,4 +1,4 @@
-# remote-access-issues
+# Remote access issues
 
 {{< include chapters/06/_06-remote-access-issues-01-Introduction.qmd >}}
 
