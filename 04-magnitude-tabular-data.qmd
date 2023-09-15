@@ -1,4 +1,4 @@
-# magnitude-tabular-data
+# Magnitude tabular data
 
 {{< include chapters/04/_04-magnitude-tabular-data-01-Introduction.qmd >}}
 
