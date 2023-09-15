@@ -16,6 +16,8 @@ book:
     - 07-glossary.qmd
     - 08-final-index.qmd
     - 09-references.qmd
+  page-navigation: true
+
 bibliography: references.bib
 
 format:
