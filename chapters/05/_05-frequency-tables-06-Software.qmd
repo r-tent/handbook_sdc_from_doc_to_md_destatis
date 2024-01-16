@@ -16,12 +16,19 @@ where $ub$ is the lower adjacent multiple of $b$ (hence $u$ is the floor value o
 
 $$
 \begin{align}
-a = \begin{cases}
-ub &\text{if}\quad r=0 \\
-(u+1)b &\text{if}\quad r\neq0
+a = 
+\begin{cases}
+  a = ub &\text{if}\quad r=0 
+  \\
+  a=
+  \begin{cases}
+    ub  \\
+    (u+1)b
+  \end{cases} &\text{if}\quad r\neq0.
 \end{cases}
 \end{align}
 $$
+
 
 If $K$ steps are allowed, then $a$, can take values:
 
