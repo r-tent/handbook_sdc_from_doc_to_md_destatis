@@ -36,7 +36,7 @@ a = \begin{cases}
 $$
 
 
-$\left\{ \begin{array} { l } a = \max \{ 0 , ( u + j ) \} b , j = - K , \ldots , K , \text { if } r = 0 \\ a = \max \{ 0 , ( u + j ) \} b , j = - K , \ldots , ( K + 1 ) , \text { if } r \neq 0 \end{array} \right.$)
+
 
 ### Optimal, first feasible and RAPID solutions
 
