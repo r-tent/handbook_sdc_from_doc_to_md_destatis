@@ -16,22 +16,19 @@ A microdata set $V$ can be viewed as a file with $n$ records, where each record 
 
 The purpose of SDC is to prevent confidential information from being linked to specific respondents. Therefore, we will assume in what follows that original microdata sets to be protected have been pre-processed so as to remove identifiers and quasi-identifiers with low ambiguity (such as name).
 
-The purpose of microdata SDC mentioned in the previous section can be stated more formally by saying that, given an original microdata set $V$, the goal is to release a protected microdata set $V^{'}$ in such a way that:
+The purpose of microdata SDC mentioned in the previous section can be stated more formally by saying that, given an original microdata set $V$, the goal is to release a protected microdata set $V'$ in such a way that:
 
-1.  Disclosure risk (*i.e.* the risk that a user or an intruder can use $V^{'}$ to determine confidential variables on a specific individual among those in $V$) is low.
+1.  Disclosure risk (*i.e.* the risk that a user or an intruder can use $V'$ to determine confidential variables on a specific individual among those in $V$) is low.
 
-```{=html}
-<!-- -->
-```
-9.  User analyses (regressions, means, etc.) on $V^{'}$ and on $V$ yield the same or at least similar results.
+2.  User analyses (regressions, means, etc.) on $V'$ and on $V$ yield the same or at least similar results.
 
-Microdata protection methods can generate the protected microdata set $V$\'
+Microdata protection methods can generate the protected microdata set $V'$
 
--   either by *masking original data*, *i.e.* generating $V^{'}$ a modified version of the original microdata set $V$;
+-   either by *masking original data*, *i.e.* generating $V'$ a modified version of the original microdata set $V$;
 
--   or by *generating synthetic data* $V^{'}$ that preserve some statistical properties of the original data $V$.
+-   or by *generating synthetic data* $V'$ that preserve some statistical properties of the original data $V$.
 
-Masking methods can in turn be divided in two categories depending on their effect on the original data (Willenborg and DeWaal, 2001):
+Masking methods can in turn be divided in two categories depending on their effect on the original data (Willenborg and DeWaal, 2001):
 
 -   *Perturbative masking*. The microdata set is distorted before publication. In this way, unique combinations of scores in the original dataset may disappear and new unique combinations may appear in the perturbed dataset; such confusion is beneficial for preserving statistical confidentiality. The perturbation method used should be such that statistics computed on the perturbed dataset do not differ significantly from the statistics that would be obtained on the original dataset.
 
@@ -89,9 +86,9 @@ The main noise addition algorithms in the literature are: ![](Images/media/image
 
 -   Masking by noise addition and linear transformation
 
--   Masking by noise addition and nonlinear transformation (Sullivan, 1989).
+-   Masking by noise addition and nonlinear transformation (Sullivan, 1989).
 
-For more details on specific algorithms, the reader can check Brand (2002).
+For more details on specific algorithms, the reader can check Brand (2002).
 
 In practice, only simple noise addition (two first variants) or noise addition with linear transformation are used. When using linear transformations, a decision has to be made whether to reveal to the data user the parameter $c$ determining the transformations to allow for bias adjustment in the case of subpopulations.
 
@@ -99,7 +96,7 @@ With the exception of the not very practical method of Sullivan(1989), noise add
 
 -   It makes no assumptions on the range of possible values for $V_{i}$ (which may be infinite).
 
--   The noise being added is typically continuous and with mean zero, which suits well continuous original data.
+-   The noise being added is typically continuous and with mean zero, which suits well with continuous original data.
 
 -   No exact matching is possible with external files. Depending on the amount of noise added, approximate (interval) matching might be possible. More details can be found in Section 3.4.2 below.
 
@@ -124,7 +121,7 @@ $$,
 
 where $\mu_{X}$ and $\mu_{X^{a}}$ define the average of the original and anonymised variables, $\sigma_{X}$ and $\sigma_{X^{a}}$ the corresponding standard deviations, respectively.
 
-Particularly if the original data follow a strongly skewed distribution, the deviations using this method may strongly depend on the configuration of the noise factors for some few, but large values. That is, despite consistency, means and sums might be unsatisfactorily reproduced. For this reason, (Höhne, 2004) suggests a slight modification of the method. At first, we generate normal distributed random variables $W_{i}$ with expectation greater than zero and \'small\' variance, s.t. the realisation of $W _ { i }$ yields a positive value. Afterwards, the data is sorted in descending order by the variable under consideration. Then, the record with the largest entry in this variable is diminished by
+Particularly if the original data follow a strongly skewed distribution, the deviations using this method may strongly depend on the configuration of the noise factors for some few, but large values. That is, despite consistency, means and sums might be unsatisfactorily reproduced. For this reason, (Höhne, 2004) suggests a slight modification of the method. At first, we generate normal distributed random variables $W_{i}$ with expectation greater than zero and \'small\' variance, s.t. the realisation of $W_{i}$ yields a positive value. Afterwards, the data is sorted in descending order by the variable under consideration. Then, the record with the largest entry in this variable is diminished by
 
 $$
 X_{1}^{a} = \left( 1 - W_{1} \right) X_{1} \quad .
@@ -160,15 +157,15 @@ Microaggregation exists in several variants:
 
 -   Exact optimal vs. heuristic microaggregation (Hansen and Mukherjee, 2003), (Oganian and Domingo-Ferrer, 2001).
 
--   Categorical microaggregation (V. Torra, 2004).
+-   Categorical microaggregation (V. Torra, 2004).
 
 More details on the microaggregation implemented in μ‑ARGUS are given below.
 
 #### Data swapping and rank swapping
 
-Data swapping was originally presented as an SDC method for databases containing only categorical variables (Dalenius and Reiss, 1978). The basic idea behind the method is to transform a database by exchanging values of confidential variables among individual records. Records are exchanged in such a way that low-order frequency counts or marginals are maintained.![](Images/media/image51.png){width="0.2in" height="0.2in"}
+Data swapping was originally presented as an SDC method for databases containing only categorical variables (Dalenius and Reiss, 1978). The basic idea behind the method is to transform a database by exchanging values of confidential variables among individual records. Records are exchanged in such a way that low-order frequency counts or marginals are maintained.![](Images/media/image51.png){width="0.2in" height="0.2in"}
 
-Even though the original procedure was not very used in practice (see Fienberg and McIntyre, 2004), its basic idea had a clear influence in subsequent methods. In Reiss, Post and Dalenius (1982) and Reiss (1984) data swapping was introduced to protect continuous and categorical microdata, respectively. Another variant of data swapping for microdata is *rank swapping*. Although originally described only for ordinal variables (Greenberg, 1987), rank swapping can also be used for any numerical variable (Moore, 1996). First, values of a variable $X_{i}$ are ranked in ascending order, then each ranked value of $X_{i}$ is swapped with another ranked value randomly chosen within a restricted range (*e.g.* the rank of two swapped values cannot differ by more than $p\text{\%}$ of the total number of records, where $p$ is an input parameter). This algorithm is independently used on each original variable in the original data set.
+Even though the original procedure was not very used in practice (see Fienberg and McIntyre, 2004), its basic idea had a clear influence in subsequent methods. In Reiss, Post and Dalenius (1982) and Reiss (1984) data swapping was introduced to protect continuous and categorical microdata, respectively. Another variant of data swapping for microdata is *rank swapping*. Although originally described only for ordinal variables (Greenberg, 1987), rank swapping can also be used for any numerical variable (Moore, 1996). First, values of a variable $X_{i}$ are ranked in ascending order, then each ranked value of $X_{i}$ is swapped with another ranked value randomly chosen within a restricted range (*e.g.* the rank of two swapped values cannot differ by more than $p\text{\%}$ of the total number of records, where $p$ is an input parameter). This algorithm is independently used on each original variable in the original data set.
 
 It is reasonable to expect that multivariate statistics computed from data swapped with this algorithm will be less distorted than those computed after an unconstrained swap. In earlier empirical work by these authors on continuous microdata protection (Domingo-Ferrer and Torra, 2001), rank swapping has been identified as a particularly well-performing method in terms of the tradeoff between disclosure risk and information loss. Consequently, it is one of the techniques that have been implemented in the μ‑ARGUS package (Hundepool et al., 2005).
 
@@ -218,20 +215,17 @@ The PRAM matrix contains a row for each possible value of each variable to be pr
 
 #### MASSC
 
-MASSC (Singh, Yu and Dunteman, 2003) is a masking method whose acronym summarizes its four steps: Micro Agglomeration, Substitution, Subsampling and Calibration. We briefly recall the purpose of those four steps: ![](Images/media/image55.png){width="0.2in" height="0.2in"}
+MASSC (Singh, Yu and Dunteman, 2003) is a masking method whose acronym summarizes its four steps: Micro Agglomeration, Substitution, Subsampling and Calibration. We briefly recall the purpose of those four steps: ![](Images/media/image55.png){width="0.2in" height="0.2in"}
 
-2.  Micro agglomeration is applied to partition the original dataset into risk strata (groups of records which are at a similar risk of disclosure). These strata are formed using the key variables, *i.e.* the quasi-identifiers in the records. The idea is that those records with rarer combinations of key variables are at a higher risk.
+1.  Micro agglomeration is applied to partition the original dataset into risk strata (groups of records which are at a similar risk of disclosure). These strata are formed using the key variables, *i.e.* the quasi-identifiers in the records. The idea is that those records with rarer combinations of key variables are at a higher risk.
 
-```{=html}
-<!-- -->
-```
-10. Optimal probabilistic substitution is then used to perturb the original data. (i.e. substitution is governed by a Markov matrix like in PRAM, see \[Singh, Yu and Dunteman, 2003\] for details)
+2. Optimal probabilistic substitution is then used to perturb the original data. (i.e. substitution is governed by a Markov matrix like in PRAM, see \[Singh, Yu and Dunteman, 2003\] for details)
 
-11. Optimal probabilistic subsampling is used to suppress some variables or even entire records (i.e. variables and/or records are suppressed with a certain probabilities set as parameters).
+3. Optimal probabilistic subsampling is used to suppress some variables or even entire records (i.e. variables and/or records are suppressed with a certain probability set as parameters).
 
-12. Optimal sampling weight calibration is used to preserve estimates for outcome variables in the treated database whose accuracy is critical for the intended data use.
+4. Optimal sampling weight calibration is used to preserve estimates for outcome variables in the treated database whose accuracy is critical for the intended data use.
 
-MASSC in interesting in that, to the best of our knowledge, it is the first attempt at designing a perturbative masking method in such a way that disclosure risk can be analytically quantified. Its main shortcoming is that its disclosure model simplifies reality by considering only disclosure resulting from linkage of key variables with external sources. Since key variables are typically categorical, the uniqueness approach can be used to analyze the risk of disclosure; however, doing so ignores the fact that continuous outcome variables can also be used for respondent re-identification. As an example, if respondents are companies and turnover is one outcome variable, everyone in a certain industrial sector knows which is the company with largest turnover. Thus, in practice, MASSC is a method only suited when continuous variables are not present.
+MASSC, to the best of our knowledge, is the first attempt at designing a perturbative masking method in such a way that disclosure risk can be analytically quantified. Its main shortcoming is that its disclosure model simplifies reality by considering only disclosure resulting from linkage of key variables with external sources. Since key variables are typically categorical, the uniqueness approach can be used to analyze the risk of disclosure; however, doing so ignores the fact that continuous outcome variables can also be used for respondent re-identification. As an example, if respondents are companies and turnover is one outcome variable, everyone in a certain industrial sector knows which is the company with largest turnover. Thus, in practice, MASSC is a method only suited when continuous variables are not present.
 
 ### Non-perturbative masking
 
@@ -270,11 +264,11 @@ With the above sampling fraction, the maximum absolute error for estimating a ma
 
 #### Global recoding
 
-For a categorical variable $V_{i}$, several categories are combined to form new (less specific) categories, thus resulting in a new $V_{i}^{'}$ with $\left| D\left( V_{i}^{'} \right) \right| < \left| D\left( V_{i} \right) \right|$ where $|\cdot |$ is the cardinality operator. For a continuous variable, global recoding means replacing $V_{i}$ by another variable $V_{i}^{'}$ which is a discretized version of $V_{i}$. In other words, a potentially infinite range $D\left( V_{i} \right)$ is mapped onto a finite range $D\left( V_{i}^{'} \right)$. This is the technique used in the μ‑ARGUS SDC package (Hundepool et al. 2005).![](Images/media/image57.png){width="0.2in" height="0.2in"}
+For a categorical variable $V_{i}$, several categories are combined to form new (less specific) categories, thus resulting in a new $V_{i}'$ with $\left| D\left( V_{i}' \right) \right| < \left| D\left( V_{i} \right) \right|$ where $|\cdot |$ is the cardinality operator. For a continuous variable, global recoding means replacing $V_{i}$ by another variable $V_{i}'$ which is a discretized version of $V_{i}$. In other words, a potentially infinite range $D\left( V_{i} \right)$ is mapped onto a finite range $D\left( V_{i}' \right)$. This is the technique used in the μ‑ARGUS SDC package (Hundepool et al. 2005).![](Images/media/image57.png){width="0.2in" height="0.2in"}
 
 This technique is more appropriate for categorical microdata, where it helps disguise records with strange combinations of categorical variables. Global recoding is used heavily by statistical offices.
 
-**Example.** If there is a record with "Marital status = Widow/er" and "Age = 17", global recoding could be applied to "Marital status" to create a broader category "Widow/er or divorced", so that the probability of the above record being unique would diminish. Global recoding can also be used on a continuous variable, but the inherent discretization leads very often to an unaffordable loss of information. Also, arithmetical operations that were straightforward on the original $V_{i}$ are no longer easy or intuitive on the discretized $V_{i}^{'}$.
+**Example.** If there is a record with "Marital status = Widow/er" and "Age = 17", global recoding could be applied to "Marital status" to create a broader category "Widow/er or divorced", so that the probability of the above record being unique would diminish. Global recoding can also be used on a continuous variable, but the inherent discretization leads very often to an unaffordable loss of information. Also, arithmetical operations that were straightforward on the original $V_{i}$ are no longer easy or intuitive on the discretized $V_{i}'$.
 
 **Example.** We can recode the variable 'Occupation', by combining the categories 'Statistician' and 'Mathematician' into a single category 'Statistician or Mathematician'. When the number of female statisticians in Urk (a small town) plus the number of female mathematicians in Urk is sufficiently high, then the combination 'Place of residence = Urk', 'Gender = Female' and 'Occupation = Statistician or Mathematician' is considered safe for release. Note that instead of recoding 'Occupation' one could also recode 'Place of residence' for instance.
 
@@ -506,7 +500,7 @@ Tendick, P., and Matloff, N. (1994). *A modified random perturbation method for 
 
 ### Microaggregation: further details
 
-Consider a microdata set with $p$ continuous variables and $n$ records (*i.e.* the result of recording $p$ variables on $n$ individuals). A particular record can be viewed as an instance of $X^{'} = \left( X_{1},\cdots,X_{p} \right)$, where the $X_{i}$ are the variables. With these individuals, $g$ groups are formed with $n_{i}$ individuals in the $i$-th group ($n_{i} \geq k$ and $n = \Sigma_{}^{}n_{i}$). Denote by $x_{\text{ij}}$ the $j$-th record in the $i$-th group; denote by ${\overline{x}}_{i}$ the average record over the $i$-th group, and by $\overline{x}$ the average record over the whole set of $n$ individuals.
+Consider a microdata set with $p$ continuous variables and $n$ records (*i.e.* the result of recording $p$ variables on $n$ individuals). A particular record can be viewed as an instance of $X' = \left( X_{1},\cdots,X_{p} \right)$, where the $X_{i}$ are the variables. With these individuals, $g$ groups are formed with $n_{i}$ individuals in the $i$-th group ($n_{i} \geq k$ and $n = \Sigma_{}^{}n_{i}$). Denote by $x_{\text{ij}}$ the $j$-th record in the $i$-th group; denote by ${\overline{x}}_{i}$ the average record over the $i$-th group, and by $\overline{x}$ the average record over the whole set of $n$ individuals.
 
 The optimal $k$-partition (from the information loss point of view) is defined to be the one that maximizes within-group homogeneity; the higher the within-group homogeneity, the lower the information loss, since microaggregation replaces values in a group by the group centroid. The sum of squares criterion is common to measure homogeneity in clustering. The within-groups sum of squares $\text{SSE}$ is defined as
 
@@ -784,13 +778,13 @@ It must be stressed here that the approach described in (Liew, Choi and Liew, 1
 
 Rubin (1993) suggested creating an entirely synthetic dataset based on the original survey data and multiple imputations. Rubin's proposal was more completely developed in Raghunathan, Reiter, and Rubin (2003). A simulation study of it was given in Reiter (2002). In Reiter (2005) inference on synthetic data is discussed and in Reiter (2005b) an application is given. ![](Images/media/image74.png){width="0.2in" height="0.2in"}
 
-We next sketch the operation of the original proposal by Rubin. Consider an original microdata set $X$ of size $n$ records drawn from a much larger population of $N$ individuals, where there are background variables $A$, non-confidential variables $B$ and confidential variables $C$. Background variables are observed and available for all $N$ individuals in the population, whereas $B$ and $C$are only available for the $n$ records in the sample $X$. The first step is to construct from $X$ a multiply-imputed population of $N$ individuals. This population consists of the $n$ records in $X$ and $M$ (the number of multiple imputations, typically between 3 and 10) matrices of $(B,C)$data for the $N$-$n$ non-sampled individuals. The variability in the imputed values ensures, theoretically, that valid inferences can be obtained on the multiply-imputed population. A model for predicting $(B,C)$from $A$ is used to multiply-impute $(B,C)$in the population. The choice of the model is a nontrivial matter. Once the multiply-imputed population is available, a sample $Z$of $n^{'}$ records can be drawn from it whose structure looks like the one a sample of $n^{'}$ records drawn from the original population. This can be done $M$ times to create $M$ replicates of $(B,C)$values. The results are $M$ multiply-imputed synthetic datasets. To make sure no original data are in the synthetic datasets, it is wise to draw the samples from the multiply-imputed population excluding the $n$ original records from it.
+We next sketch the operation of the original proposal by Rubin. Consider an original microdata set $X$ of size $n$ records drawn from a much larger population of $N$ individuals, where there are background variables $A$, non-confidential variables $B$ and confidential variables $C$. Background variables are observed and available for all $N$ individuals in the population, whereas $B$ and $C$are only available for the $n$ records in the sample $X$. The first step is to construct from $X$ a multiply-imputed population of $N$ individuals. This population consists of the $n$ records in $X$ and $M$ (the number of multiple imputations, typically between 3 and 10) matrices of $(B,C)$data for the $N$-$n$ non-sampled individuals. The variability in the imputed values ensures, theoretically, that valid inferences can be obtained on the multiply-imputed population. A model for predicting $(B,C)$from $A$ is used to multiply-impute $(B,C)$in the population. The choice of the model is a nontrivial matter. Once the multiply-imputed population is available, a sample $Z$of $n'$ records can be drawn from it whose structure looks like the one a sample of $n'$ records drawn from the original population. This can be done $M$ times to create $M$ replicates of $(B,C)$values. The results are $M$ multiply-imputed synthetic datasets. To make sure no original data are in the synthetic datasets, it is wise to draw the samples from the multiply-imputed population excluding the $n$ original records from it.
 
 #### Synthetic data by bootstrap
 
 Fienberg (1994) proposed generating synthetic microdata by using bootstrap methods. Later, in Fienberg, Makov and Steele (1998), this approach was used for categorical data.![](Images/media/image75.png){width="0.2in" height="0.2in"}
 
-The bootstrap approach bears some similarity to the data distortion by probability distribution and the multiple-imputation methods described above. Given an original microdata set $X$ with $p$ variables, the data protector computes its empirical $p$-variate cumulative distribution function (c.d.f.) $F$. Now, rather than distorting the original data to obtain masked data, the data protector alters (or "smoothes") the c.d.f. $F$to derive a similar c.d.f. $F^{'}$. Finally, $F^{'}$ is sampled to obtain a synthetic microdata set $Z$.
+The bootstrap approach bears some similarity to the data distortion by probability distribution and the multiple-imputation methods described above. Given an original microdata set $X$ with $p$ variables, the data protector computes its empirical $p$-variate cumulative distribution function (c.d.f.) $F$. Now, rather than distorting the original data to obtain masked data, the data protector alters (or "smoothes") the c.d.f. $F$to derive a similar c.d.f. $F'$. Finally, $F'$ is sampled to obtain a synthetic microdata set $Z$.
 
 #### Synthetic data by Latin Hypercube Sampling
 
@@ -802,7 +796,7 @@ Generating plausible synthetic values for all variables in a database may be dif
 
 In Burridge (2004) a family of methods known as IPSO (Information Preserving Statistical Obfuscation) is proposed for generation of partially synthetic data. It consists of three methods that are described next.
 
-The basic form of IPSO will be called here Method A. Informally, suppose two sets of variables $X$ and $Y$, where the former are the confidential outcome variables and the latter are quasi-identifier variables. Then $X$ are taken as independent and $Y$ as dependent variables. A multiple regression of $Y$ on $X$ is computed and fitted $Y_{A}^{'}$ variables are computed. Finally, variables $X$ and $Y_{A}^{'}$ are released in place of $X$ and $Y$.
+The basic form of IPSO will be called here Method A. Informally, suppose two sets of variables $X$ and $Y$, where the former are the confidential outcome variables and the latter are quasi-identifier variables. Then $X$ are taken as independent and $Y$ as dependent variables. A multiple regression of $Y$ on $X$ is computed and fitted $Y_{A}'$ variables are computed. Finally, variables $X$ and $Y_{A}'$ are released in place of $X$ and $Y$.
 
 More formally, let $y$and $x$ be two data matrices, with rows representing respondents and columns representing variables; the row vectors $y_{i}$ and $x_{i}$ will represent the data for the $i$-th respondent, for $i = 1,\cdots,n$. The column vector $u_{j}$ will represent the quasi-identifier variable $j$, for $j = 1,\cdots,p$; in other words, the $u_{j}$ are the columns of quasi-identifier matrix $Y$. Conditionally on the specific values for confidential variables, quasi-identifier variables for different respondents are assumed to be independent. Conditional on the specific confidential variables $x_{i}$, the quasi-identifier variables $Y_{i}$. are assumed to follow a multivariate normal distribution with covariance matrix $\Sigma = \left\{ \sigma_{\text{jk}} \right\}$ and a mean vector $x_{i}B$, where $B$ is an $m\times p$ matrix with columns $\beta_{j}$. Thus a separate univariate normal multiple regression model is assumed for each column of $Y$ with regression parameter equal to the corresponding column of $B$, that is, $U_{j} \sim  N\left( x\beta_{j},\sigma_{\text{jj}}I \right)$.
 
@@ -811,27 +805,27 @@ Let $\hat{B}$ and $\hat{\Sigma}$ be the maximum likelihood estimates of $B$ and 
 The output of IPSO Method A is 
 
 $$
-y_{A}^{'} = x\hat{B} \quad .
+y_{A}' = x\hat{B} \quad .
 $$
 
-If a user fits a multiple regression model to $\left( y_{A}^{'},x \right)$, she will get estimates ${\hat{B}}_{A}$ and ${\hat{\Sigma}}_{A}$ which, in general, are different from the estimates $\hat{B}$ and $\hat{\Sigma}$ obtained when fitting the model to the original data $(y,x)$.
+If a user fits a multiple regression model to $\left( y_{A}',x \right)$, she will get estimates ${\hat{B}}_{A}$ and ${\hat{\Sigma}}_{A}$ which, in general, are different from the estimates $\hat{B}$ and $\hat{\Sigma}$ obtained when fitting the model to the original data $(y,x)$.
 
-IPSO Method B modifies $y_{A}^{'}$ into $y_{B}^{'}$ in such a way that the estimate ${\hat{B}}_{B}$ obtained by multiple linear regression from $\left( y_{B}^{'},x \right)$ satisfies ${\hat{B}}_{B} = \hat{B}$.
+IPSO Method B modifies $y_{A}'$ into $y_{B}'$ in such a way that the estimate ${\hat{B}}_{B}$ obtained by multiple linear regression from $\left( y_{B}',x \right)$ satisfies ${\hat{B}}_{B} = \hat{B}$.
 
 Suppose that $\overset{\sim}{y}$ is a new, artificial, set of quasi-identifier values. These can be any set of numbers initially, *e.g.* an i.i.d. normal random sample or a deterministically chosen set. For each component new residuals ${\overset{\sim}{r}}_{j}$ are calculated by fitting the above multivariate multiple regression to the new "data" $\overset{\sim}{y}$. Define
 
 $$
-y_{B}^{'} = \hat{\mu} + \overset{\sim}{r} = x\hat{B} + \overset{\sim}{r}
+y_{B}' = \hat{\mu} + \overset{\sim}{r} = x\hat{B} + \overset{\sim}{r}
 $$
 
 The following information preservation result holds for IPSO-B.
 
-**Lemma 3.3.7.1.** *Regardless of the initial choice* $\overset{\sim}{y}$*,* $\left( y_{B}^{'},x \right)$ *preserves the sufficient statistic* $\hat{B}$*.*
+**Lemma 3.3.7.1.** *Regardless of the initial choice* $\overset{\sim}{y}$*,* $\left( y_{B}',x \right)$ *preserves the sufficient statistic* $\hat{B}$*.*
 
 **Proof:** We have that
 
 $$
-y_{B}^{'} = x\hat{B} + \overset{\sim}{r} = x\hat{B} + \left( \overset{\sim}{y} - x\overset{\sim}{B} \right) \qquad \text{(3.3.5.1)}
+y_{B}' = x\hat{B} + \overset{\sim}{r} = x\hat{B} + \left( \overset{\sim}{y} - x\overset{\sim}{B} \right) \qquad \text{(3.3.5.1)}
 $$ 
 
 where $\hat{B}$ is the MLE estimate of $B$ obtained from $\left( \overset{\sim}{y},x \right)$. Now, the expressions of $\hat{B}$ and $\overset{\sim}{B}$ are, respectively,
@@ -846,64 +840,64 @@ $$
 \overset{\sim}{B} = \left( x^{T}x \right)^{- 1}x^{T}\overset{\sim}{y}
 $$
 
-Analogously, the expression of the MLE estimate of ${\hat{B}}_{B}$ obtained from $\left( y_{B}^{'},x \right)$ is
+Analogously, the expression of the MLE estimate of ${\hat{B}}_{B}$ obtained from $\left( y_{B}',x \right)$ is
 
 $$
-{\hat{B}}_{B} = \left( x^{T}x \right)^{- 1}x^{T}y_{B}^{'}
+{\hat{B}}_{B} = \left( x^{T}x \right)^{- 1}x^{T}y_{B}'
 $$
 
-Substituting expression (3.3.5.1) for $y_{B}^{'}$ in the equation above, we get
+Substituting expression (3.3.5.1) for $y_{B}'$ in the equation above, we get
 
 $$
 {\hat{B}}_{B} = \left( x^{T}x \right)^{- 1}\left( x^{T}x \right)\hat{B} + \left( x^{T}x \right)^{- 1}x^{T}(\overset{\sim}{y} - x\overset{\sim}{B}) = \hat{B} + \overset{\sim}{B} - \overset{\sim}{B} = B
 $$
 
-A more ambitious goal is to come up with a data matrix $y_{C}^{'}$ such that, when a multivariate multiple regression model is fitted to $\left( y_{C}^{'},x \right)$, *both* sufficient statistics $\hat{B}$ and $\hat{\Sigma}$ obtained on the original data $(y,x)$ are preserved.
+A more ambitious goal is to come up with a data matrix $y_{C}'$ such that, when a multivariate multiple regression model is fitted to $\left( y_{C}',x \right)$, *both* sufficient statistics $\hat{B}$ and $\hat{\Sigma}$ obtained on the original data $(y,x)$ are preserved.
 
-The algorithm proposed in Burridge (2004) to get $y_{C}^{'}$ is as follows
+The algorithm proposed in Burridge (2004) to get $y_{C}'$ is as follows
 
 1. Generate provisional new "data" $\overset{\sim}{y}$ (this will be an $n\times p$ matrix).
 
 2. Calculate provisional new residuals $\overset{\sim}{r}$ by fitting the multiple regression model to each column of $\overset{\sim}{y}$.
 
-3. Define new residuals ${\overset{\sim}{r}}^{'}$ as a transformation of $\overset{\sim}{r}$ so that ${\overset{\sim}{r}}^{T}{\overset{\sim}{r}}^{'} = n\hat{\Sigma}$. This is easily done as follows:
+3. Define new residuals ${\overset{\sim}{r}}'$ as a transformation of $\overset{\sim}{r}$ so that ${\overset{\sim}{r}}^{T}{\overset{\sim}{r}}' = n\hat{\Sigma}$. This is easily done as follows:
 
 (a) Let $L$ and $L_{O}$ be the lower triangular matrices in the Cholesky factorizations $n\hat{\Sigma} = \text{LL}^{T}$ and ${\overset{\sim}{r}}^{T}\overset{\sim}{r} = L_{O}L_{O}^{T}$.
 
-(b) Define ${\overset{\sim}{r}}^{'} = \overset{\sim}{r}L_{O}^{- T}L^{T}$. It is easily verified that ${\overset{\sim}{r}}^{T}{\overset{\sim}{r}}^{'} = n\hat{\Sigma}$.
+(b) Define ${\overset{\sim}{r}}' = \overset{\sim}{r}L_{O}^{- T}L^{T}$. It is easily verified that ${\overset{\sim}{r}}^{T}{\overset{\sim}{r}}' = n\hat{\Sigma}$.
 
 Define
 
 $$
-y_{C}^{'} = x\hat{B} + {\overset{\sim}{r}}^{'}
+y_{C}' = x\hat{B} + {\overset{\sim}{r}}'
 $$
 
 Information preservation in IPSO-C is as follows.
 
-**Lemma 3.3.7.2.** $\left( y_{C}^{'},x \right)$ *preserves the sufficient statistics* $\hat{B}$ *and* $\hat{\Sigma}$*.*
+**Lemma 3.3.7.2.** $\left( y_{C}',x \right)$ *preserves the sufficient statistics* $\hat{B}$ *and* $\hat{\Sigma}$*.*
 
-**Proof:** The expression of the MLE estimate of $\hat{B}$ obtained from $\left( y_{C}^{'},x \right)$ is
+**Proof:** The expression of the MLE estimate of $\hat{B}$ obtained from $\left( y_{C}',x \right)$ is
 
 $$
 \begin{align}
-{\hat{B}}_{C} &= \left( x^{T}x \right)^{- 1}x^{T}y_{C}^{'} = \left( x^{T}x \right)^{- 1}x^{T}\left( x\hat{B} + {\overset{\sim}{r}}^{'} \right) \\
+{\hat{B}}_{C} &= \left( x^{T}x \right)^{- 1}x^{T}y_{C}' = \left( x^{T}x \right)^{- 1}x^{T}\left( x\hat{B} + {\overset{\sim}{r}}' \right) \\
 &= \hat{B} + \left( x^{T}x \right)^{- 1}x^{T}\overset{\sim}{r}L_{O}^{T}L^{T} = \hat{B} + \left( x^{T}x \right)^{- 1}x^{T}\left( \overset{\sim}{y} - x\overset{\sim}{B} \right)L_{O}^{T}L^{T} \\
 &= \hat{B} + \left( \overset{\sim}{B} - \overset{\sim}{B} \right)L_{O}^{T}L^{T} = \hat{B} \\
 \end{align}
 $$
 
-Using that ${\hat{B}}_{C} = \hat{B}$, the expression of the MLE estimate of $\hat{\Sigma}$ obtained from $\left( y_{C}^{'},x \right)$ is
+Using that ${\hat{B}}_{C} = \hat{B}$, the expression of the MLE estimate of $\hat{\Sigma}$ obtained from $\left( y_{C}',x \right)$ is
 
 $$
 \begin{align}
-{\hat{\Sigma}}_{C} &= \frac{\left( y_{C}^{'},x\hat{B} \right)^{T}\left( y_{C}^{'},x\hat{B} \right)}{n}\\
-&= \frac{\left( x\hat{B} + {\overset{\sim}{r}}^{'} - x\hat{B} \right)^{T}\left( x\hat{B} + {\overset{\sim}{r}}^{'} - x\hat{B} \right)}{n} \\ 
-&= \frac{{\overset{\sim}{r}}^{T}{\overset{\sim}{r}}^{'}}{n} \\ 
+{\hat{\Sigma}}_{C} &= \frac{\left( y_{C}',x\hat{B} \right)^{T}\left( y_{C}',x\hat{B} \right)}{n}\\
+&= \frac{\left( x\hat{B} + {\overset{\sim}{r}}' - x\hat{B} \right)^{T}\left( x\hat{B} + {\overset{\sim}{r}}' - x\hat{B} \right)}{n} \\ 
+&= \frac{{\overset{\sim}{r}}^{T}{\overset{\sim}{r}}'}{n} \\ 
 &= \hat{\Sigma}
 \end{align}
 $$
 
-where in the last equality we have used the property required on ${\overset{\sim}{r}}^{'}$.
+where in the last equality we have used the property required on ${\overset{\sim}{r}}'$.
 
 In Mateo-Sanz, Martínez-Ballesté and Domingo-Ferrer (2004), a non-iterative method for generating entirely synthetic continuous microdata through Cholesky decomposition is proposed. This can be viewed as a special case of IPSO. In a single step of computation, the method exactly reproduces the means and the covariance matrix of the original dataset. The running time grows linearly with the number of records. Exact preservation of the original covariance matrix implies that variances and Pearson correlations are also exactly preserved in the synthetic dataset.
 
@@ -1069,4 +1063,115 @@ Reiter, J. P. (2005b). *Significance tests for multi-component estimands from mu
 Rubin, D. E. (1993). *Discussion of statistical disclosure limitation.* Journal of Official Statistics, 9(2):461--468.
 
 Sebé, F., Domingo-Ferrer, J., Mateo-Sanz, J. M. and Torra, V. (2002). *Post-masking optimization of the tradeoff between information loss and disclosure risk in masked microdata sets.* In J. Domingo-Ferrer, editor, Inference Control in Statistical Databases, volume 2316 of LNCS, pages 163--171, Berlin Heidelberg, Springer.
+
+
+### Targeted Record Swapping
+
+Targeted Records Swapping (TRS) is a pre-tabular perturbation method. It's intended use is to apply a swapping procedure to the micro data before generating a table.
+Although it is applied solely on micro data it is generally considered a protection method used for tabular data and not recommended for protecting micro data.
+TRS can be used for tables with and without spatial characteristics, with the prior case containing also grid data products or tables created by cross-tabulating with grid cells.   
+During the TRS the spatial character of the data can be taken into account to some degree. 
+
+
+#### The TRS noise mechanism
+
+Regardless of the table, be it count data or a magnitude table, the methodology of the TRS does not change. This is a direct consequence of the fact that the method is applied to the underlying micro data before generating any table.
+
+Consider population units $i = 1, \ldots, N$ where each unit $i$ has $p$ characteristics or variables $\{x\}_{i,j} = \mathbf{X} \in \mathbb{R}^{n\times p}$. Furthermore there exists a geographic hierarchy $\mathcal{G}^{1} \succ \mathcal{G}^{2} \succ \ldots \succ \mathcal{G}^{K}$ where each $\mathcal{G}^{k}$ is the set of disjointly split areas $g_m^{k}$, $m=1,\ldots,M_k$ and each $g_m^{k}$ is further disjointly subdivided into smaller areas $g_m^{k+1}$,$m=1,\ldots,M_{k+1}$:
+
+
+$$
+\mathcal{G}^{k} = \{g_m^{k}| g_i^{k}\cap g_j^{k} = \varnothing \text{ for }i\neq j \} \quad \forall k = 1,\ldots,K
+$$
+
+where
+
+$$
+g_m^{k} = \dot{\bigcup}_{m=1}^{M_{k+1}}g_m^{k+1} \quad \forall k = 1,\ldots,K-1 \quad .
+$$
+
+Each unit $i$ in the population can be assigned to a single area $g_{m_i}^{k}$ for each geographic hierarchy level $\mathcal{G}^{k}$, $k = 1,\ldots,K$.
+Consider as geographic hierarchy for example the NUTS regions, NUTS1 $\succ$ NUTS2 $\succ$ NUTS3, or grid cells, 1000m grid cells $\succ$ 500m grid cells $\succ$ 250m grid cells.
+
+
+Calculate for each unit $i = 1, \ldots, N$ risk values $r_{i,k}$ on each geographic hierarchy level $\mathcal{G}^{k}$, $k = 1,\ldots,K$, given a specified set of variables $\mathbf{x}_{q_1},\ldots,\mathbf{x}_{q_Q}$.
+As an example one can choose k-anonymity as risk measure to derive risk values $r_{i,k}$. They can be defined by calculating the number of units $j$ which have the same values for variables $\mathbf{x}_{q_1},\ldots,\mathbf{x}_{q_Q}$ as unit $i$ and taking the inverse.
+
+$$
+c_{i,k} = \sum\limits_{j=1}^N \mathbf{1}[x_{i,q_1} = x_{j,q_1}, x_{i,q_2} = x_{j,q_2}, \ldots, x_{i,q_Q} = x_{j,q_Q}]
+$$
+
+$$
+r_{i,k} = \frac{1}{c_i,k}
+$$
+
+
+Having the risk values $r_{i,k}$ for each unit $i$ and each geographic hierarchy level calculated the TRS can be defined as follows:
+
+
+1. Define initial, use-case specific, parameter.
+
+
+  - A global swap rate $p$ 
+  - Define a risk value $r_{high}$ beyond which all units with $r_{i,k}$ are considered \textbf{high risk} for the geographic hierarchy level $k$.
+  - A set of variables $\mathbf{x}_{t_1},\ldots,\mathbf{x}_{t_T}$ which are considered while swapping units 
+
+2. Begin at the first hierarchy level $\mathcal{G}^{1}$ and select all units $j$ for which $r_{i,1} \geq r_{high}$.
+
+3. For each $j$ select all units $l_1,\ldots,l_L$, which do not belong to the same area $g_{m_j}^{1}$ and have the same values for variables $\mathbf{x}_{t_1},\ldots,\mathbf{x}_{t_T}$
+as unit $j$. In addition units $l_1,\ldots,l_L$ cannot have been swapped already. 
+
+$$
+g_{m_j}^{1} \neq g_{m_l}^{1}
+$$
+$$
+x_{j,t_1} = x_{l,t_1}, x_{j,t_2} = x_{l,t_2}, \ldots, x_{j,t_T} = x_{l,t_T}
+$$
+
+4. Sample for each $j$ one unit from the set $\{l | g_{m_j}^{1} \neq g_{m_l}^{1} \land x_{j,t_1} = x_{l,t_1} \land, \ldots, \land x_{j,t_T} = x_{l,t_T}\}$ by normalising corresponding risk value $r_{l,1}$ and using them as sampling probabilities.
+
+  - Previously swapped units should be excuded from this set. 
+  
+5. Swap all variables, holding geographic information in $\mathbf{X}$, between unit $j$ and the sampled unit.
+
+  
+  
+  - Some implementation of targeted record swapping consider only swapping specific variable values from $\mathbf{X}$ between $j$ and the sampled unit.
+
+6. Iterate through the geographic hierarchies $k=2,\ldots,K$ and repeat in each of them steps 3. - 5.
+
+7. At the final geographic hierarchy $k=K$ if the number of already swapped units is less than $p\times N$ additional units are swapped to reach $p\times N$ overall swaps. 
+
+
+If the population units refer to people living in dwellings and the aim is to swap only full dwellings with each other and not only individuals it can be useful to set 
+
+$$
+r_{i,k} = \max_{j \text{ living in same dwelling as }i}r_{j,k}
+$$
+
+prior to applying the swapping procedure. In addition $\mathbf{x}_{1(q)},\ldots,\mathbf{x}_q$ should be defined such that they refer to variables holding dwelling information.
+
+The above described procedure is implemented in the R package `sdcMicro` as well as `muArgus`, alongside a multitude of parameters to fine tune the procedure.
+
+
+#### Pros and cons of targeted record swapping
+
+Indicated by the name of the method the TRS aims to swap micro data records prior to building a table and specifically targeting records during the swapping procedure which have a higher risk of disclosure with respect to the final tables. The protection of the TRS itself is considered to be the uncertainty that an identified unit $i$ has a considerable chance of actually being a swapped unit and that the information derived from this unit does not contain the information of the original unit $i$. 
+In general it is recommended to apply the TRS on the micro data set only once and afterwards build various tables from the same perturbed micro data. 
+This creates a more drastic trade off between the number of records to swap and the utility of the final tables. 
+The swapping procedure can indirectly take into account the structure of the final tables through the risk value derived from the variables $\mathbf{x}_{q_1},\ldots,\mathbf{x}_{q_Q}$ and choice of the geographic hierarchy. However a large number of variables $\mathbf{x}_{q_1},\ldots,\mathbf{x}_{q_Q}$ and a high resolution in the geographic hierarchy can result in a high share of units with high risk values and consequently many potential swaps. A high swap rate, for instance beyond 10%, can quickly lead to high information loss, because the noise introduced through the swapping is not controlled for while drawing the swapped units. Thus it is not feasible to both address all possible disclosure risk scenarios while maintaining high utility in the final tables.
+
+As with any method it is advised to thoroughly tune parameters to balance information loss disclosure risk. Possible tuning parameters are:
+
+\begin{itemize}
+\item The geographic hierarchy and its depth of granularity.
+\item The construction of the risk values $r_{i,k}$ and $r_{high}$ 
+\item The choice of $\mathbf{x}_1,\ldots,\mathbf{x}_s$ 
+\item The global swap rate $p$
+\end{itemize}
+
+Because the noise is applied to the micro data before building any tables the additivity between inner and marginal aggregates will always be preserved.
+
+
+
 
