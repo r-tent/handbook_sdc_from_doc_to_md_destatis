@@ -10,7 +10,7 @@ Gomatam, S. and A. Karr (2003), *Distortion Measures for Categorical Data Swappi
 
 Salazar, JJ, Staggermeier, A and Bycroft, C, (2005) *Controlled rounding implementation*, Proceeding of the Joint UNECE/Eurostat Work Session on Statistical Data Confidentiality, Geneva
 
-Shlomo, N. (2007) Statistical Disclosure Control Methods for Census Frequency Tables.[[International Statistical Review]{.underline}](http://www.ingentaconnect.com/content/bpl/iinsr;jsessionid=2i0ojl04la3hm.alice), Volume 75, Number 2, August 2007 , pp. 199-217(19) Blackwell Publishing.
+Shlomo, N. (2007) Statistical Disclosure Control Methods for Census Frequency Tables. International Statistical Review, Volume 75, Number 2, August 2007 , pp. 199-217(19) Blackwell Publishing.
 
 Shlomo, N. and Young, C. (2005) *Information Loss Measures for Frequency Tables,* Proceeding of the Joint UNECE/Eurostat Work Session on Statistical Data Confidentiality, Geneva.
 
