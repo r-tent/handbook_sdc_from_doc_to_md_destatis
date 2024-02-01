@@ -1,12 +1,10 @@
 # Glossary
 
-In 2005 Mark Elliot (University of Manchester), Anco Hundepool (Statistics Netherlands), Eric Schulte Nordholt (Statistics Netherlands), Jean-Louis Tambay (Statistics Canada) and Thomas Wende (Destatis, Germany) took the initiative to compile a Glossary on Statistical Disclosure Control. A first version of the Glossary was presented at the UN-ECE worksession on SDC in Geneva in November 2005. This glossary can also be found at the CENEX-website via [[http://neon.vb.cbs.nl/casc/glossary.htm]{.underline}](http://neon.vb.cbs.nl/casc/glossary.htm). If there are comments to the glossary, you will find a link at the OnLine Glossary to submit your update.
+In 2005 Mark Elliot (University of Manchester), Anco Hundepool (Statistics Netherlands), Eric Schulte Nordholt (Statistics Netherlands), Jean-Louis Tambay (Statistics Canada) and Thomas Wende (Destatis, Germany) took the initiative to compile a Glossary on Statistical Disclosure Control. A first version of the Glossary was presented at the UNECE worksession on SDC in Geneva in November 2005. This glossary can also be found via [[https://research.cbs.nl/casc/glossary.htm]{.underline}](https://research.cbs.nl/casc/glossary.htm).
 
 The underlined links in this glossary refer to other term in this glossary. This handbook contains also an index, but to avoid misleading cross references we have not indexed this glossary.
 
 ## A {-}
-
-**Ambiguity rule:** Synonym of [[(p,q) rule]{.underline}](#(p,q)_rule).
 
 **Analysis server:** A form of [[remote data laboratory]{.underline}](#Remote_data_laboratory) designed to run analysis on data stored on a safe server. The user sees the results of their analysis but not the data.
 
@@ -34,8 +32,6 @@ The underlined links in this glossary refer to other term in this glossary. This
 
 ## C {-}
 
-[]{#Calculated_interval .anchor}**Calculated interval:** The interval containing possible values for a suppressed cell in a table, given the table structure and the values published.
-
 []{#Cell_suppression .anchor}**Cell suppression:** In [[tabular data]{.underline}](#Tabular_data) the cell suppression SDC method consists of [[primary]{.underline}](#Primary_suppression) and [[complementary (secondary)]{.underline}](#Secondary_suppression) suppression. [[Primary suppression]{.underline}](#Primary_suppression) can be characterised as withholding the values of all [[risky cells]{.underline}](#Risky_cells) from publication, which means that their value is not shown in the table but replaced by a symbol such as '×' to indicate the suppression. According to the definition of [[risky cells]{.underline}](#Risky_cells), in frequency count tables all cells containing small counts and in tables of magnitudes all cells containing small counts or presenting a case of [[dominance]{.underline}](#Dominance_rule) have to be primary suppressed. To reach the desired protection for [[risky cells]{.underline}](#Risky_cells), it is necessary to suppress additional non- [[risky cells]{.underline}](#Risky_cells), which is called [[complementary (secondary) suppression.]{.underline}](#Secondary_suppression) The pattern of complementary suppressed cells has to be carefully chosen to provide the desired level of ambiguity for the [[risky cells]{.underline}](#Risky_cells) with the least amount of suppressed information.
 
 []{#Complementary_suppression .anchor}**Complementary suppression:** Synonym of [[secondary suppression]{.underline}](#Secondary_suppression).
@@ -44,8 +40,6 @@ The underlined links in this glossary refer to other term in this glossary. This
 
 **Concentration rule:** Synonym of [[(n,k) rule]{.underline}](#(n,k)_rule).
 
-[]{#Confidentiality_edit .anchor}**Confidentiality edit:** The confidentiality edit is a procedure developed by the U.S. Census Bureau to provide protection in data tables prepared from the 1990 Census. There are two different approaches: one was used for the regular Census data; the other was used for the long-form data, which were filled by a sample of the population. Both techniques apply [[statistical disclosure limitation]{.underline}](#Statistical_Disclosure_Limitation) techniques to the [[microdata]{.underline}](#Microdata) files before they are used to prepare tables. The adjusted files themselves are not released; they are used only to prepare tables. For the regular Census [[microdata]{.underline}](#Microdata) file, the confidentiality edit involves \"[[data swapping]{.underline}](#Data_swapping)\" or \"switching\" of attributes between matched records from different geographical units. For small blocks, the Census Bureau increases the [[sampling fraction]{.underline}](#Sampling_fraction). After the [[microdata]{.underline}](#Microdata) file has been treated in this way, it can be used directly to prepare tables and no further disclosure analysis is needed. For long form data, [[sampling]{.underline}](#Sampling) provides sufficient confidentiality protection, except in small geographic regions. To provide additional protection in small geographic regions, one household is randomly selected and a sample of its data fields are blanked and replaced by imputed values.
-
 []{#Controlled_rounding .anchor}**Controlled rounding:** To solve the additivity problem, a procedure called controlled rounding was developed. It is a form of [[random rounding]{.underline}](#Random_rounding), but it is constrained to have the sum of the published entries in each row and column equal to the appropriate published marginal totals. Linear programming methods are used to identify a controlled rounding pattern for a table.
 
 []{#Controlled_Tabular_Adjustment .anchor}**Controlled Tabular Adjustment (CTA):** A method to protect [[tabular data]{.underline}](#Tabular_data) based on the selective adjustment of cell values. [[Sensitive cell]{.underline}](#Sensitive_cell) values are replaced by either of their closest safe values and small adjustments are made to other cells to restore the table additivity. Controlled tabular adjustment has been developed as an alternative to [[cell suppression]{.underline}](#Cell_suppression).
@@ -53,8 +47,6 @@ The underlined links in this glossary refer to other term in this glossary. This
 []{#Conventional_rounding .anchor}**Conventional rounding:** A disclosure control method for tables of counts. When using conventional rounding, each count is rounded to the nearest multiple of a fixed base. For example, using a base of 5, counts ending in 1 or 2 are rounded down and replaced by counts ending in 0 and counts ending in 3 or 4 are rounded up and replaced by counts ending in 5. Counts ending between 6 and 9 are treated similarly. Counts with a last digit of 0 or 5 are kept unchanged. When rounding to base 10, a count ending in 5 may always be rounded up, or it may be rounded up or down based on a rounding convention.
 
 ## D {-}
-
-**Data divergence:** The sum of all differences between two datasets (data-data divergence) or between a single dataset and reality (data-world divergence). Sources of data divergence include: data ageing, response errors, coding or data entry errors, differences in coding and the effect of disclosure control.
 
 []{#Data_intruder .anchor}**Data intruder:** A data user who attempts to disclose information about a population unit through [[identification]{.underline}](#Identification) or [[attribution]{.underline}](#Attribution).
 
@@ -106,6 +98,8 @@ The underlined links in this glossary refer to other term in this glossary. This
 
 ## F {-}
 
+[]{#Feasibility_interval .anchor}**Feasibility interval:** The interval containing possible values for a suppressed cell in a table, given the table structure and the values published.
+
 []{#Formal_identifier .anchor}**Formal identifier:** Any variable or set of variables which is structurally unique for every population unit, for example a population registration number. If the formal identifier is known to the [[intruder]{.underline}](#Intruder), [[identification]{.underline}](#Identification) of a target individual is directly possible for him or her, without the necessity to have additional knowledge before studying the [[microdata]{.underline}](#Microdata). Some combinations of variables such as name and address are pragmatic formal identifiers, where non-unique instances are empirically possible, but with negligible probability.
 
 ## G {-}
@@ -136,7 +130,7 @@ The underlined links in this glossary refer to other term in this glossary. This
 
 **Informed consent:** Basic ethical tenet of scientific research on human populations. Sociologists do not involve a human being as a subject in research without the informed consent of the subject or the subject's legally authorized representative, except as otherwise specified. Informed consent refers to a person's agreement to allow [[personal data]{.underline}](#Personal_data) to be provided for research and statistical purposes. Agreement is based on full exposure of the facts the person needs to make the decision intelligently, including awareness of any risks involved, of uses and users of the data, and of alternatives to providing the data.
 
-[]{#Intruder .anchor}**Intruder:** A data user who attempts to link a respondent to a [[microdata]{.underline}](#Microdata) record or make [[attribution]{.underline}](#Attribution)s about particular population units from aggregate data. Intruders may be motivated by a wish to discredit or otherwise harm the [[NSI]{.underline}](#NSI), the survey or the government in general, to gain notoriety or publicity, or to gain profitable knowledge about particular respondents.
+[]{#Intruder .anchor}**Intruder:** Synonym of [[data intruder]{.underline}](#Data_intruder).
 
 ## J {-}
 
@@ -170,11 +164,11 @@ The underlined links in this glossary refer to other term in this glossary. This
 
 []{#NSI .anchor}**NSI(s):** Abbreviation for National Statistical Institute(s).
 
-[]{#(n,k)_rule .anchor}**(n,k) rule:** A cell is regarded as confidential, if the n largest units contribute more than k % to the cell total, e.g. n=2 and k=85 means that a cell is defined as risky if the two largest units contribute more than 85 % to the cell total. The n and k are given by the statistical authority. In some [[NSI]{.underline}](#NSI)s the values of n and k are confidential.
+[]{#(n,k)_rule .anchor}**(n,k) rule:** A cell is regarded as confidential, if the n largest units contribute more than k % to the cell total, e.g. n=2 and k=85 means that a cell is defined as risky if the two largest units contribute more than 85% to the cell total. The n and k are given by the statistical authority. In some [[NSI]{.underline}](#NSI)s the values of n and k are confidential.
 
 ## O {-}
 
-**On-site facility:** A facility that has been established on the premises of several [[NSI]{.underline}](#NSI)s. It is a place where external researchers can be permitted access to potentially disclosive data under contractual agreements which cover the maintenance of confidentiality, and which place strict controls on the uses to which the data can be put. The on-site facility can be seen as a \' [[safe setting]{.underline}](#Safe_setting)\' in which confidential data can be analysed. The on-site facility itself would co[[nsi]{.underline}](#NSI)st of a secure hermetic working and data storage environment in which the confidentiality of the data for research can be ensured. Both the physical and the IT aspects of [[security]{.underline}](#Security) would be considered here. The on-site facility also includes administrative and support facilities to external users, and ensures that the agreed conditions for access to the data were complied with.
+**On-site facility:** A facility that has been established on the premises of several [[NSI]{.underline}](#NSI)s. It is a place where external researchers can be permitted access to potentially disclosive data under contractual agreements which cover the maintenance of confidentiality, and which place strict controls on the uses to which the data can be put. The on-site facility can be seen as a \'[[safe setting]{.underline}](#Safe_setting)\' in which confidential data can be analysed. The on-site facility itself would co[[nsi]{.underline}](#NSI)st of a secure hermetic working and data storage environment in which the confidentiality of the data for research can be ensured. Both the physical and the IT aspects of [[security]{.underline}](#Security) would be considered here. The on-site facility also includes administrative and support facilities to external users, and ensures that the agreed conditions for access to the data were complied with.
 
 **Ordinary rounding:** Synonym of [[conventional rounding]{.underline}](#Conventional_rounding).
 
@@ -195,7 +189,7 @@ The underlined links in this glossary refer to other term in this glossary. This
 
 []{#Population_unique .anchor}**Population unique:** A record within a dataset which is unique within the population on a given [[key]{.underline}](#Key).
 
-**P-percent rule:** A [[(p,q) rule]{.underline}](#(p,q)_rule) where q is 100 %, meaning that from general knowledge any respondent can estimate the contribution of another respondent to within 100 % (i.e., knows the value to be nonnegative and less than a certain value which can be up to twice the actual value).
+**P-percent rule:** A [[(p,q) rule]{.underline}](#(p,q)_rule) where q is 100%, meaning that from general knowledge any respondent can estimate the contribution of another respondent to within 100% (i.e., knows the value to be nonnegative and less than a certain value which can be up to twice the actual value).
 
 []{#(p,q)_rule .anchor}**(p,q) rule:** It is assumed that out of publicly available information the contribution of one individual to the cell total can be estimated to within q per cent (q=error before publication); after the publication of the statistic the value can be estimated to within p percent (p=error after publication). In the (p,q) rule the ratio p/q represents the information gain through publication. If the information gain is unacceptable the cell is declared as confidential. The parameter values p and q are determined by the statistical authority and thus define the acceptable level of information gain. In some [[NSI]{.underline}](#NSI)s the values of p and q are confidential.
 
@@ -204,7 +198,7 @@ The underlined links in this glossary refer to other term in this glossary. This
 **Primary confidentiality:** It concerns tabular cell data, whose [[dissemination]{.underline}](#Dissemination) would permit [[attribute disclosure]{.underline}](#Attribute_disclosure). The two main reasons for declaring data to be primary confidential are:\
 - too few units in a cell;\
 - dominance of one or two units in a cell.\
-The limits of what constitutes \"too few\" or \"dominance\" vary between statistical domains.
+The limits of what constitutes \"too few\" or \"dominance\" vary among statistical domains.
 
 **Primary protection:** Protection using [[disclosure control methods]{.underline}](#Disclosure_control_methods) for all cells containing small counts or cases of dominance.
 
@@ -221,8 +215,6 @@ The limits of what constitutes \"too few\" or \"dominance\" vary between statist
 []{#Quasi-identifier .anchor}**Quasi-identifier:** Variable values or combinations of variable values within a dataset that are not structural uniques but might be empirically unique and therefore in principle uniquely identify a population unit.
 
 ## R {-}
-
-**Randomized response:** Randomized response is a technique used to collect sensitive information from individuals in such a way that survey interviewers and those who process the data do not know which of two alternative questions the respondent has answered.
 
 **Random perturbation:** This is a disclosure control method according to which a noise, in the form of a random value is added to the true value or, in the case of categorical variables, where another value is randomly substituted for the true value.
 
@@ -244,8 +236,6 @@ The limits of what constitutes \"too few\" or \"dominance\" vary between statist
 
 **Restricted access:** Imposing conditions on access to the [[microdata]{.underline}](#Microdata). Users can either have access to the whole range of raw protected data and process individually the information they are interested in - which is the ideal situation for them - or their access to the protected data is restricted and they can only have a certain number of outputs (e.g. tables) or maybe only outputs of a certain structure. Restricted access is sometimes necessary to ensure that linkage between tables cannot happen.
 
-**Restricted data:** Synonym of [[safe data]{.underline}](#Safe_data).
-
 **Restriction based disclosure control method:** Method for the release of [[tabular data]{.underline}](#Tabular_data), which consists in reducing access to the data provided to the external user. This method reduces the content of information provided to the user of the [[tabular data]{.underline}](#Tabular_data). This is implemented by not publishing all the figures derived from the collected data or by not publishing the information in as detailed a form as would be possible.
 
 []{#Risky_cells .anchor}**Risky cells:** The cells of a table which are non-publishable due to the risk of [[statistical disclosure]{.underline}](#Statistical_disclosure) are referred to as risky cells. By definition there are three types of risky cells: small counts, dominance and [[complementary suppression]{.underline}](#Complementary_suppression) cells.
@@ -254,7 +244,7 @@ The limits of what constitutes \"too few\" or \"dominance\" vary between statist
 
 []{#Rounding .anchor}**Rounding:** Rounding belongs to the group of [[disclosure control methods]{.underline}](#Disclosure_control_methods) based on output-perturbation. It is used to protect small counts in [[tabular data]{.underline}](#Tabular_data) against disclosure. The basic idea behind this disclosure control method is to round each count up or down either deterministically or probabilistically to the nearest integer multiple of a rounding base. The additive nature of the table is generally destroyed by this process. Rounding can also serve as a recoding method for [[microdata]{.underline}](#Microdata).
 
-**R-U map:** A graphical representation of the trade off between [[disclosure risk]{.underline}](#Disclosure_risk) and [[data utility]{.underline}](#Data_utility).
+**R-U confidentiality map:** A graphical representation of the trade off between [[disclosure risk]{.underline}](#Disclosure_risk) and [[data utility]{.underline}](#Data_utility).
 
 ## S {-}
 
@@ -263,7 +253,7 @@ The limits of what constitutes \"too few\" or \"dominance\" vary between statist
 
 []{#Safe_setting .anchor}**Safe setting:** An environment such as a [[microdata]{.underline}](#Microdata) lab whereby access to a disclosive dataset can be controlled.
 
-**Safety interval:** The minimal [[calculated interval]{.underline}](#Calculated_interval) that is required for the value of a cell that does not satisfy the [[primary suppression]{.underline}](#Primary_suppression) rule.
+**Safety interval:** The minimal [[feasibility interval]{.underline}](#Feasibility_interval) that is required for the value of a cell that does not satisfy the [[primary suppression]{.underline}](#Primary_suppression) rule.
 
 []{#Sample_unique .anchor}**Sample unique:** A record within a dataset which is unique within that dataset on a given [[key]{.underline}](#Key).
 
@@ -277,7 +267,7 @@ The limits of what constitutes \"too few\" or \"dominance\" vary between statist
 
 **Secondary disclosure risk:** It concerns data which is not primary disclosive, but whose [[dissemination]{.underline}](#Dissemination), when combined with other data permits the [[identification]{.underline}](#Identification) of a [[microdata]{.underline}](#Microdata) unit or the disclosure of a unit's attribute.
 
-[]{#Secondary_suppression .anchor}**Secondary suppression:** To reach the desired protection for [[risky cells]{.underline}](#Risky_cells), it is necessary to suppress additional non- [[risky cells]{.underline}](#Risky_cells), which is called secondary suppression or [[complementary suppression]{.underline}](#Complementary_suppression). The pattern of complementary suppressed cells has to be carefully chosen to provide the desired level of ambiguity for the [[disclosive cells]{.underline}](#Disclosive_cells) at the highest level of information contained in the released statistics.
+[]{#Secondary_suppression .anchor}**Secondary suppression:** To reach the desired protection for [[risky cells]{.underline}](#Risky_cells), it is necessary to suppress additional non-[[risky cells]{.underline}](#Risky_cells), which is called secondary suppression or [[complementary suppression]{.underline}](#Complementary_suppression). The pattern of complementary suppressed cells has to be carefully chosen to provide the desired level of ambiguity for the [[disclosive cells]{.underline}](#Disclosive_cells) at the highest level of information contained in the released statistics.
 
 []{#Security .anchor}**Security:** An efficient disclosure control method provides protection against [[exact disclosure]{.underline}](#Exact_disclosure) or unwanted narrow estimation of the attributes of an individual entity, in other words, a useful technique prevents exact or [[partial disclosure]{.underline}](#Partial_disclosure). The security level is accordingly high. In the case of [[disclosure control methods]{.underline}](#Disclosure_control_methods) for the release of [[microdata]{.underline}](#Microdata) this protection is ensured if the [[identification]{.underline}](#Identification) of a respondent is not possible, because the [[identification]{.underline}](#Identification) is the prerequisite for disclosure.
 
@@ -307,11 +297,9 @@ The limits of what constitutes \"too few\" or \"dominance\" vary between statist
 
 **SUDA:** A software system for conducting analyses on [[population unique]{.underline}](#Population_unique)s and special [[sample unique]{.underline}](#Sample_unique)s. The [[special uniques analysis]{.underline}](#Special_uniques_analysis) method implemented in SUDA for measuring and assessing [[disclosure risk]{.underline}](#Disclosure_risk) is based on resampling methods and used by the ONS.
 
-**Swapping (or switching):** Swapping (or switching) involves selecting a sample of the records, finding a match in the data base on a set of predetermined variables and swapping all or some of the other variables between the matched records. Swapping (or switching) was illustrated as part of the [[confidentiality edit]{.underline}](#Confidentiality_edit) for tables of frequency data.
+**Swapping (or switching):** Swapping (or switching) involves selecting a sample of the records, finding a match in the data base on a set of predetermined variables and swapping all or some of the other variables between the matched records.
 
 **Synthetic data:** An approach to confidentiality where instead of disseminating real data, synthetic data that have been generated from one or more population models are released.
-
-**Synthetic substitution:** See [[Controlled Tabular Adjustment]{.underline}](#Controlled_Tabular_Adjustment).
 
 ## T {-}
 
@@ -325,9 +313,11 @@ The limits of what constitutes \"too few\" or \"dominance\" vary between statist
 
 []{#Target_dataset .anchor}**Target dataset:** An [[anonymised data]{.underline}](#Anonymised_data)set in which an [[intruder]{.underline}](#Intruder) attempts to identify particular population units.
 
-**Threshold rule:** Usually, with the threshold rule, a cell in a table of frequencies is defined to be sensitive if the number of respondents is less than some specified number. Some agencies require at least five respondents in a cell, others require three. When thresholds are not respected, an agency may restructure tables and combine categories or use [[cell suppression]{.underline}](#Cell_suppression), [[rounding]{.underline}](#Rounding) or the [[confidentiality edit]{.underline}](#Confidentiality_edit), or provide other additional protection in order to satisfy the rule.
+**Threshold (rule):** Usually, with the threshold rule, a cell in a table of frequencies is defined to be sensitive if the number of respondents is less than some specified number. Some agencies require at least five respondents in a cell, others require three. When thresholds are not respected, an agency may restructure tables and combine categories or use [[cell suppression]{.underline}](#Cell_suppression) or [[rounding]{.underline}](#Rounding), or provide other additional protection in order to satisfy the rule.
 
 []{#Top_and_bottom_coding .anchor}**Top and bottom coding:** It consists in setting top-codes or bottom-codes on quantitative variables. A top-code for a variable is an upper limit on all published values of that variable. Any value greater than this upper limit is replaced by the upper limit or is not published on the [[microdata]{.underline}](#Microdata) file at all. Similarly, a bottom-code is a lower limit on all published values for a variable. Different limits may be used for different quantitative variables, or for different subpopulations.
+
+**Top coding:** See [[top and bottom coding]{.underline}](#Top_and_bottom_coding).
 
 ## U {-}
 
