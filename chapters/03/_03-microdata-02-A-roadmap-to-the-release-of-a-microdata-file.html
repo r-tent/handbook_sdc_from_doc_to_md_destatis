@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>microdata-02-a-roadmap-to-the-release-of-a-microdata-file</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="_03-microdata-02-A-roadmap-to-the-release-of-a-microdata-file_files/libs/clipboard/clipboard.min.js"></script>
+<script src="_03-microdata-02-A-roadmap-to-the-release-of-a-microdata-file_files/libs/quarto-html/quarto.js"></script>
+<script src="_03-microdata-02-A-roadmap-to-the-release-of-a-microdata-file_files/libs/quarto-html/popper.min.js"></script>
+<script src="_03-microdata-02-A-roadmap-to-the-release-of-a-microdata-file_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="_03-microdata-02-A-roadmap-to-the-release-of-a-microdata-file_files/libs/quarto-html/anchor.min.js"></script>
+<link href="_03-microdata-02-A-roadmap-to-the-release-of-a-microdata-file_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="_03-microdata-02-A-roadmap-to-the-release-of-a-microdata-file_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="_03-microdata-02-A-roadmap-to-the-release-of-a-microdata-file_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="_03-microdata-02-A-roadmap-to-the-release-of-a-microdata-file_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="_03-microdata-02-A-roadmap-to-the-release-of-a-microdata-file_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="a-roadmap-to-the-release-of-a-microdata-file" class="level2">
+<h2 class="anchored" data-anchor-id="a-roadmap-to-the-release-of-a-microdata-file">A roadmap to the release of a microdata file</h2>
+<blockquote class="blockquote">
+<p>This section aims at introducing the reader to the process that, starting from the original microdata file as it is produced by survey specialists, ends with the creation of a file for external users. This roadmap will drive you through the five stage process for disclosure outlined in Section 1.4 i.e.</p>
+</blockquote>
+<ol type="1">
+<li><p>why is confidentiality protection needed;</p></li>
+<li><p>what are the key characteristics and use of the data;</p></li>
+<li><p>disclosure risk;</p></li>
+<li><p>disclosure control methods;</p></li>
+<li><p>implementation</p></li>
+</ol>
+<p>Specifying, for each stage, the peculiarities of microdata release. In <a href="#tbl-roadmap">Table&nbsp;1</a> we present an overview of the process.</p>
+<div id="tbl-roadmap" class="anchored">
+<table class="table">
+<caption>Table&nbsp;1: Roadmap to releasing a microdata file</caption>
+<colgroup>
+<col style="width: 23%">
+<col style="width: 76%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Stage of disclosure process</strong></td>
+<td style="text-align: center;"><p><strong>Analyses to be carried out / problem to be addressed</strong></p>
+<p>⇓</p>
+<p><strong><em>Results expected</em></strong></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1. Why is confidentiality protection needed</td>
+<td style="text-align: center;"><p>Does the data refer to individuals or legal entity?</p>
+<p>⇓</p>
+<p><em>We need to protect the statistical unit</em></p></td>
+</tr>
+<tr class="odd">
+<td rowspan="5" style="text-align: left;">2. What are the key characteristics and use of the data</td>
+<td style="text-align: center;"><p>Analysis of the type/structure of the data</p>
+<p>⇓</p>
+<p><em>Clear vision of which units need protections</em></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p>Analysis of survey methodology</p>
+<p>⇓</p>
+<p><em>Type of sampling frame, sample/complete enumeration of strata, further analysis of survey methodology, calibration</em></p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><p>Analysis of NSI objectives</p>
+<p>⇓</p>
+<p><em>Type of release (PUF, MFR),dissemination policies, peculiarities of the phenomenon, coherence between multiple releases (PUF and MFR), coherence with released tables and on-line databases, etc.</em></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p>Analysis of user needs</p>
+<p>⇓</p>
+<p><em>Priorities for variables, type of analysis, etc.</em></p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><p>Analysis of the questionnaire</p>
+<p>⇓</p>
+<p><em>List of variables to be removed, variables to be included, some ideas of level of details of structural variables</em></p></td>
+</tr>
+<tr class="even">
+<td rowspan="3" style="text-align: left;">3. Disclosure risk</td>
+<td style="text-align: center;"><p>Disclosure scenario</p>
+<p>⇓</p>
+<p><em>List of identifying variables</em></p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Definition of risk</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p>Risk assessment</p>
+<p>⇓</p>
+<p><em>If the risk is deemed too high need of disclosure limitation methods</em></p></td>
+</tr>
+<tr class="odd">
+<td rowspan="2" style="text-align: left;">4. Disclosure limitation methods</td>
+<td style="text-align: center;"><p>Analysis of type of data involved, NSI policies and users needs</p>
+<p>⇓</p>
+<p><em>Identification of a disclosure limitation method</em></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Information loss analysis</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">5. Implementation</td>
+<td style="text-align: center;">Choice of software, parameters and thresholds for different methods</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The idea is to identify for each stage of the process choices that have to be made, analyses that need to be done, problems that need to be addressed and methods to be selected. References to the relevant sections where technical topics are discussed in detail will help the beginners in following the process without getting lost in too technical aspects.</p>
+<p>We now analyse in turn each of the five stages.</p>
+<section id="need-of-confidentiality-protection" class="level3">
+<h3 class="anchored" data-anchor-id="need-of-confidentiality-protection">Need of confidentiality protection</h3>
+<p>The starting point deals with the need of confidentiality protection which is at the base of any release of microdata. If the microdata do not refer to legal entity or individual persons it can be released without confidentiality protection: an example is the amount of rain fall in a region. If microdata pertain only of public variables they might be released according to certain legislation. However, in general, data refer to individual or enterprises and contains confidential variables (income, turnover, expenses, etc.) and therefore need to be protected.</p>
+</section>
+<section id="characteristics-and-uses-of-microdata" class="level3">
+<h3 class="anchored" data-anchor-id="characteristics-and-uses-of-microdata">Characteristics and uses of microdata</h3>
+<p>Of course different levels of protection are needed for different type of users. This theme leads us to the second stage of the process i.e.&nbsp;the study of the key uses and characteristics of the data. Here the initial question is whether the microdata file we are going to release is intended for a general public (public use file) or whether it is created for research purpose (research use files). In the latter case the microdata will be released according to predefined procedures and legal binding (see also Section 6.5). The difference in user’s type implies different user’s needs, different disclosure scenarios, different types of analyses we expect to be performed with the released data, different statistics we may intend to preserve and different amount of protection we intend to apply. We now analyse all these issues in terms.</p>
+<p>Analysis of user needs involves first a study of the survey information content. This should be done together with a survey expert that has a deeper knowledge of the data, phenomenon and possible types of analysis that can be performed on the data.</p>
+<p>Typical questions that need to be addressed are:</p>
+<p><em>Which statistical units are involved in the survey?</em> Individual, enterprises, household, etc. The type of units has a big influence on the risk assessment stage.</p>
+<p><em>Do data present a particular structure</em>? Hierarchical data: students inside schools, graduates inside universities, employees inside an enterprise, individual inside household etc. If this is the case care needs to be taken in checking both levels/types of units involved. E.g. Do schools/ universities/ enterprises need to be protected besides students/ graduates/employees?</p>
+<p><em>What type of sampling design has been used?</em> Are there strata which have been censured? Of course a complete enumeration of a strata (typical in business surveys) implies different and higher risks than a sample.</p>
+<p>An analysis of the questionnaire is useful to analyse the type of information present in the file: possible identifying variables, confidential variables and sensitive variables.</p>
+<p>In this stage the setting of objectives from the viewpoint of the NSI and the user are defined. From the NSI side dissemination policies are clarified (e.g.&nbsp;level of dissemination of NACE, geography, etc. or coherence with published tables). From the user point of view a list of priorities in the structural variables of the survey, requests for minimum level of details for such variables and type of analysis to be performed (ratios, weighted totals, regressions, etc).</p>
+<p>The characteristics of the phenomenon under study should also be considered as well as the dissemination policy of the Statistical Institute. This is particularly true for example in business data where some NACE classifications may never be released by their own, but always aggregated with others. Such a-priori aggregations generally depend on the economic structure of the country. It is not a sampling or dissemination problem, but rather a feature of the surveyed phenomenon. This will bring to aggregation of categories of some identifying variables deemed too detailed.</p>
+<p>The output of this questionnaire analysis should be a preliminary list of variables to be removed and those to be released (because relevant to users need) together with some ideas of their level of details (depending on whether we are releasing a public use file or a research use file). Some examples to clarify these ideas. Variables that shouldn’t be released comprise variables used as internal checks, flags for imputation, variables that were not validated, variables deemed as not useful because containing too many missing values, information on the design stratum from which the unit comes from etc. Obviously also direct identifiers should not be released. The case studies A1 and A2 on microdata release provide examples of such stage.</p>
+<p>Categories of identifying variables with too significant identifying power are commonly aggregated into a single category.</p>
+<p>This is particularly true when releasing public use files as certain variables when too detailed could retain a level of “sensitivity”. This may not be felt useful and/or appropriate for the general public. For example, in an household expenditure survey we might avoid releasing for the public use file very detailed information on the expenditure for housing (mortgage, rent) or detailed information on the age of the house or its number of rooms (when this is very high) as these might be considered as giving too much information for particular outlying cases.</p>
+<p>Another example is related to the level of geographical details that maybe different for a public use file or a research use file (especially if a data limitation technique is used). This happens because geographical information is a strongly identifying variable. Moreover, the geographical information collected from the respondent may be available in different variables for different purposes (place of birth, place of residence, place of work, place of study, commuting, etc.). All such geographical details need to be coherent/consistent throughout the file. To this end it may be convenient releasing relative information instead of absolute one: for example place of residence can be given at a certain detail (e.g.&nbsp;region) and then the other geographical information (place of work, study etc.) can be released with respect to this one; examples of possible relative recodings (e.g.&nbsp;with respect to region of residence) are: region of work same as region of residence, different region but same macroregion, different macroregion).</p>
+<p>At this initial stage of the analysis information should be collected on what has already been published/what it is going to be released from the microdata set: dissemination plan, which type of tables and what classification/aggregation was used for the variables. This is to avoid different classifications in different release: the geographical breakdown, as well as classification of other variables in the survey (e.g.&nbsp;age, type of work etc.), should be coherent with the published marginals. For example, if a certain classification of the variable age is published in a table the microdata file should use a classification which has compatible break points so that to avoid gaining information by differencing. Release of date of birth is highly discouraged. Also, as far as possible, published totals should be preserved for transparency.</p>
+</section>
+<section id="disclosure-risk" class="level3">
+<h3 class="anchored" data-anchor-id="disclosure-risk">Disclosure risk</h3>
+<p>Moreover, in case of multiple release of the same survey (e.g.&nbsp;PUF and microdata for research) coherence should be maintained also between different released files in the sense that releasing different files at the same time shouldn’t allow the gaining of more information than for one file alone (see, Trottini et al., 2006). The principles apply also to the release of longitudinal or panel microdata, where the differences between records pertaining to the same case in different waves will relect ‘events’ that have occurred to that case, as well as the attributes of the individuals.</p>
+<p>Once the characteristics and uses of the survey data are clear, it is time to start the real analysis of the disclosure risk. This implies first a definition of possible situations at risk (disclosure scenarios) and second a proper definition of the “risk” in order to quantify the phenomenon (risk assessment).</p>
+<p>A disclosure scenario is the definition of realistic assumptions about what an intruder might know about respondents and what information would be available to him to match against the microdata to be released and potentially make an identification and disclosure.</p>
+<p>Again different types of releases may require different disclosure scenarios and different definitions of risk. For example the nosy neighbourhood scenario described in Section 3.3.2, possibly with knowledge of the presence of the respondent in the sample (implying that sample uniques are a relevant quantity of interest for risk definition), maybe deemed adequate for a public use file. A different trust might be put in a researcher that needs to perform an analysis for research purposes. This implies, as a minimum step, a higher level of acceptable risk and a different scenario the spontaneous identification scenario.</p>
+<p>Spontaneous recognition where the researchers might unintentionally recognize some units. For example, when releasing enterprise microdata, it is publicly known that the largest enterprises are generally included in the microdata file because of their significant impact on the studied phenomenon. Moreover, the largest enterprises are also the most identifiable ones as recognisable by all (the largest car producer factory, the national mail delivery enterprise, etc.). Consequently, a spontaneous identification or recognition might occur. A description of different scenarios is presented in Section 3.3.2; examples of spontaneous identification scenarios for MFR are reported in case studies A1 and A2). From the adopted scenario we can extract the list of identifying variables i.e.&nbsp;the variables that may allow the identification of a unit. These will be the basis for defining the risk of disclosure. Intuitively, a unit is at risk of identification when it cannot be confused with several other units. The difficulty is to express this simple concept using sound statistical methodology.</p>
+<p>Different approaches are used if the identifying variables are categorical of continuous. In the former case at the basis of the definition is the concept of key (i.e.&nbsp;the combination of categories of the identifying variables): see Section 3.3.1 for a classification of different definitions. Whereas if continuous identifying variables are present in the file a possibility is to use the concept of density: see Ichim&nbsp;(2009) for a detailed analysis of definitions of risk in the case of continuous variables. Of course, the problem is even more complicated when we deal with a mixture of categorical and numerical key variables; for an example of this situation (quite common in enterprise microdata) see case study A1 (Community Innovation Survey).</p>
+<p>Once a formal definition of risk has been chosen we need to measure/estimate it. There are several possibilities for categorical identifying variables (these are reported in various subsections of 3.3) and for a mixture of categorical and continuous identifying variable we have already mentioned Case study A1. The final step of the risk assessment is the definition of a threshold to define when a unit or a file presents an acceptable risk and when, on the contrary, it has to be considered at risk. This threshold depends of course on the type of measure adopted and details on how to choose a threshold are reported in the relevant subsequent sections.</p>
+<p>Choice of scenarios and level of acceptable risk are extremely dependent on different cultural situations in different member states, different policies applied by different institutes, different approaches to statistical analysis, different perceived risk. To this end it must be stressed that different countries may have extremely different situation/phenomenon therefore different scenarios and risk methods are indeed necessary.</p>
+<p>Currently there is no general agreement on which risk methodology is best although different methods give in general similar answers for the extreme cases. However, as already stated in Section 3.3.1, there is a strong need to further compare and understand differences between available methods. Pros and cons of each method are described in the relevant sections may be used as a guidelines for the most appropriate choice of the risk estimation in different situations. Further advice can be gained by studying of the examples and case studies.</p>
+</section>
+<section id="sdc-methods" class="level3">
+<h3 class="anchored" data-anchor-id="sdc-methods">SDC-methods</h3>
+<p>If the risk assessment stage shows that the disclosure risk is high then the application of statistical disclosure limitation methods is necessary to produce a microdata file for external users.</p>
+<p>Microdata protection methods can generate a protected microdata set either by <em>masking original data</em>, <em>i.e.</em> generating a modified version of the original microdata set or by <em>generating synthetic data</em> that preserve some statistical properties of the original data. Synthetic data are still difficult to implement; a description can be found in Section 3.4.7. Masking methods are divided into two categories depending on their effect on the original data&nbsp;(Willenborg and DeWaal, 2001): p<em>erturbative</em> and <em>non perturbative masking</em> methods.</p>
+<p>Perturbative methods either modify the identifying variables or modify the confidential variables before publication. In the former way, unique combinations of scores of identifying variables in the original dataset may disappear and new unique combinations may appear in the perturbed dataset. In this way a user cannot be certain of an identification. Alternatively confidential variables can be modified; in this case even if an identification occurs, the wrong value is associated and disclosure of the original value is avoided (for an example of this case see case study A2). For a description of a variety of perturbative methods see 3.4.2, 3.4.4 and 3.4.5 and 3.4.6.</p>
+<p>Non-perturbative methods do not alter the values of the variables (either identifying or confidential); rather, they produce a reduction of detail in the original dataset. Examples of non-perturbative masking are presented in section 3.4.3.</p>
+<p>The choice between a data reduction and a data perturbation method strongly depends on the policy of an institute and on the type of data/survey to be released. While the policy of an institute is outside of this debate, technical reasons may suggest the use of perturbative methods for the protection of continuous variables (mainly business data). Analysis of information loss should always be part of the selection process. The usual difference between types of release remains valid and it is linked to the difference between users needs. Again the examples and the case studies A1 and A2 may help in clarifying different situations.</p>
+<p>From the needs of the users and the types of analyses that could be performed on the data one could gain information for the choice of the type of protection that could be applied to the microdata. Also users could express priorities in the need of maintaining some variables intact (e.g., for business usually NACE is the most important variable, then employees, and so on). For research purposes maybe we could be interested in maintaining the possibility of being able to reproduce the published tables. For a public use file maybe we could avoid, as much as possible, the use of local suppression as this may render data analysis difficult for non sophisticated users. In general, the implementation of perturbative methods should take into account what variables and relationships among them need to be kept from the user point of view. An assessment of information loss caused by the protection methods adopted is highly recommended. A brief description of information loss measures is reported in section 3.5; examples of how to check in practice the amount of distortion or modification in the protected microdata is presented in case studies A1 and A2.</p>
+<p>Finally, every time a data perturbation method is applied attention should be placed at relationships between different types of release (PUF, MFR, tables) so as to avoid as much as possible, different marginal totals from different sources.</p>
+<p>An example of the application of this reasoning for the definition of a dissemination strategy can be found, for example, in Trottini et al.&nbsp;(2006).</p>
+</section>
+<section id="implementation" class="level3">
+<h3 class="anchored" data-anchor-id="implementation">Implementation</h3>
+<p>The last stage is the implementation of the whole procedure, choice of software, parameters and levels of acceptable risks.</p>
+<p>Documentation is an essential part of any dissemination strategy both for auditing from external authorities and transparency towards users. The former may include description of legal and administrative steps for a risk management policy together with the technical solution applied. The latter is essential for a user to understand what has been changed or limited in the data because of confidentiality constraints. If a data perturbation method has been applied then, for transparency reasons, this should be clearly stated. Information on which statistics have been preserved and which have been modified and some order of magnitude of possible changes should be provided as far as possible. If a data reduction method has been applied with some local suppression then the distribution of such suppressions should be given for a series of different dimensions of interest (distribution by variables, by household size, household type, etc.) and any other statistics that are deemed relevant for the user. The released microdata should be obviously accompanied by all necessary metadata and information on methodologies used at various stage of the survey process (sampling, imputation, validation, etc.) together with information on magnitude of sampling errors, estimation domains etc.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,6 +1,6 @@
 ## Laws
 
-> For statistical disclosure control the following two laws are of importance.
+For statistical disclosure control the following two laws are of importance.
 
 -   **Commission Regulation (EC) No 831/2002 of 17 May 2002 implementing Council Regulation (EC) No 322/97 on Community Statistics, concerning access to confidential data for scientific purposes.** This Regulation aims to serve scientific users (mainly researchers of universities and legally established research institutes) of European microdata. Admission of new users requires explicit approval of the Member States. Discussions about the level of detail for the microdata (to which the researchers get restricted access) take place in the relevant Working Groups. Originally, this Regulation covered four surveys: Labour Force Survey (LFS), Continuing Vocational Training Survey (CVTS), European Community Household Panel (ECHP) and Community Innovation Survey (CIS). From 2003 the European Union Statistics on Income and Living Conditions (EU-SILC) replaced the ECHP. The Structure of Earnings Survey (SES) was added to this Regulation by Commission Regulation (EC) No 1104/2006 of 18 July 2006. Later also the Adult Education Survey (AES) and the Farm Structure Survey (FSS) became part of this Regulation. Article 3 of this Commission Regulation foresees a fairly straightforward and simple request process for researchers from the following categories or organisations:
 
@@ -12,19 +12,19 @@
 
     -   the European Central Bank and the national central banks of the Member States (since 2007).
 
-> For other bodies, article 3 of the regulation lays down the condition that they must first be approved by the Committee on Statistical Confidentiality (CSC) if they wish to make requests to access confidential data for scientific purposes. The prerequisite to achieve admissibility is that the institution has demonstrated that it fulfils a set of criteria.
->
-> The existing Commission Regulation 831/2002 continues to apply but its revision is necessary in order to better correspond to the new regulatory framework and to take account of other developments since 2002.
->
-> The European Statistical System Committee (ESSC) suggested at its first meeting in May 2009 to leave the decision on the way the revision of the Regulation will be carried out to the High-level Working Group on Statistical Confidentiality (HLWGSC). The first meeting of the HLWGSC took place in October 2009 and it was decided there to appoint a Task Force to deal with that subject. In December 2009 the first meeting of this Task Force on the revision of Commission Regulation 831/2002 took place.
+For other bodies, article 3 of the regulation lays down the condition that they must first be approved by the Committee on Statistical Confidentiality (CSC) if they wish to make requests to access confidential data for scientific purposes. The prerequisite to achieve admissibility is that the institution has demonstrated that it fulfils a set of criteria.
+
+The existing Commission Regulation 831/2002 continues to apply but its revision is necessary in order to better correspond to the new regulatory framework and to take account of other developments since 2002.
+
+The European Statistical System Committee (ESSC) suggested at its first meeting in May 2009 to leave the decision on the way the revision of the Regulation will be carried out to the High-level Working Group on Statistical Confidentiality (HLWGSC). The first meeting of the HLWGSC took place in October 2009 and it was decided there to appoint a Task Force to deal with that subject. In December 2009 the first meeting of this Task Force on the revision of Commission Regulation 831/2002 took place.
 
 -   **Commission Regulation (EC) No 223/2009 of the European Parliament and Council of 11 March 2009 on European statistics.** This regulation has entered into force on the 1 April 2009 and replaced the Regulation 322/97 on Community Statistics and Regulation 1101/2008 (previously 1588/90) on the transmission of data subject to statistical confidentiality.
 
-> This Regulation establishes the legal framework for the development, production and dissemination of European statistics, including the rules on confidentiality.
->
-> Article 2, clause 1(e) defines statistical confidentiality as \"the protection of confidential data related to single statistical units which are obtained directly for statistical purposes or indirectly from administrative or other sources and implying the prohibition of use for non-statistical purposes of the data obtained and of their unlawful disclosure\".
->
-> Confidential data are defined as \"data which allow statistical units to be identified, either directly or indirectly, thereby disclosing individual information. To determine whether a statistical unit is identifiable, account shall be taken of all relevant means that might reasonably be used by a third party to identify the statistical unit\".
->
-> Chapter V \'Statistical Confidentiality\' describes in detail rules and measures that shall apply to ensure that confidential data are exclusively used for statistical purposes and how their unlawful disclosure shall be prevented (Articles 20 -26). Article 23, in particular, makes provision for the access to confidential data for scientific purposes.
+This Regulation establishes the legal framework for the development, production and dissemination of European statistics, including the rules on confidentiality.
+
+Article 2, clause 1(e) defines statistical confidentiality as \"the protection of confidential data related to single statistical units which are obtained directly for statistical purposes or indirectly from administrative or other sources and implying the prohibition of use for non-statistical purposes of the data obtained and of their unlawful disclosure\".
+
+Confidential data are defined as \"data which allow statistical units to be identified, either directly or indirectly, thereby disclosing individual information. To determine whether a statistical unit is identifiable, account shall be taken of all relevant means that might reasonably be used by a third party to identify the statistical unit\".
+
+Chapter V \'Statistical Confidentiality\' describes in detail rules and measures that shall apply to ensure that confidential data are exclusively used for statistical purposes and how their unlawful disclosure shall be prevented (Articles 20 -26). Article 23, in particular, makes provision for the access to confidential data for scientific purposes.
 
