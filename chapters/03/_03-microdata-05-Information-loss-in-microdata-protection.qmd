@@ -13,18 +13,12 @@ Since that data often must be protected with no specific data use in mind, gener
 Defining what a generic information loss measure is can be a tricky issue. Roughly speaking, it should capture the amount of information loss for a reasonable range of data uses. We will say there is little information loss if the protected dataset is analytically valid and interesting according to the following definitions by Winkler (1998):
 
 -   A protected microdata set is an *analytically valid* microdata set if it approximately preserves the following with respect to the original data (some conditions apply only to continuous variables):
-
-1.  Means and covariances on a small set of subdomains (subsets of records and/or variables)
-
-2. Marginal values for a few tabulations of the data
-
-3. At least one distributional characteristic
-
+    1.  Means and covariances on a small set of subdomains (subsets of records and/or variables)
+    2. Marginal values for a few tabulations of the data
+    3. At least one distributional characteristic
 -   A microdata set is an *analytically interesting microdata set,* if six variables on important subdomains are provided that can be validly analyzed.\
     More precise conditions of analytical validity and analytical interest cannot be stated without taking specific data uses into account. As imprecise as they may be, the above definitions suggest some possible measures:
-
 -   Compare raw records in the original and the protected dataset. The more similar the SDC method to the identity function, the less the impact (but the higher the disclosure risk! ). This requires pairing records in the original dataset and records in the protected dataset. For masking methods, each record in the protected dataset is naturally paired to the record in the original dataset it originates from. For synthetic protected datasets, pairing is more artificial. In Dandekar, Domingo-Ferrer and Sebé (2002) we proposed to pair a synthetic record to the nearest original record according to some distance.
-
 -   Compare some statistics computed on the original and the protected datasets. The above definitions list some statistics which should be preserved as much as possible by an SDC method.
 
 ### Information loss measures for continuous data
@@ -32,16 +26,12 @@ Defining what a generic information loss measure is can be a tricky issue. Rough
 Assume a microdata set with $n$ individuals (records) $I_{1},I_{2},\cdots,I_{n}$ and $p$ continuous variables $Z_{1},Z_{2},\cdots,Z_{p}$. Let $X$ be the matrix representing the original microdata set (rows are records and columns are variables). Let $X^{'}$ be the matrix representing the protected microdata set. The following tools are useful to characterize the information contained in the dataset:
 
 -   Covariance matrices $V$ (on $X$) and $V^{'}$ (on $X^{'}$).
-
 -   Correlation matrices $R$ and $R^{'}$.
+-   Correlation matrices $RF$ and ${RF}^{'}$ between the $p$ variables and the $p$ factors principal components ${PC}_{1},{PC}_{2},\cdots,{PC}_{p}$ obtained through principal components analysis.
+-   Communality between each of the $p$ variables and the first principal component ${PC}_{1}$ (or other principal components ${PC}_{i}$'s). Communality is the percent of each variable that is explained by ${PC}_{1}$ (or ${PC}_{i}$). Let $C$ be the vector of communalities for $X$ and $C^{'}$ the corresponding vector for $X^{'}$.
+-   Matrices $F$ and $F^{'}$containing the loadings of each variable in $X$ on each principal component. The $i$-th variable in $X$ can be expressed as a linear combination of the principal components plus a residual variation, where the $j$-th principal component is multiplied by the loading in $F$ relating the $i$-th variable and the $j$-th principal component (Chatfield and Collins, 1980\]. $F^{'}$is the corresponding matrix for $X^{'}$.
 
--   Correlation matrices $\text{RF}$ and $\text{RF}^{'}$ between the $p$ variables and the $p$ factors principal components $\text{PC}_{1},\text{PC}_{2},\cdots,\text{PC}_{p}$ obtained through principal components analysis.
-
--   Communality between each of the $p$ variables and the first principal component $\text{PC}_{1}$ (or other principal components $\text{PC}_{i}$*'s*). Communality is the percent of each variable that is explained by $\text{PC}_{1}$ (or $\text{PC}_{i}$). Let $C$ be the vector of communalities for $X$ and $C^{'}$ the corresponding vector for $X^{'}$.
-
--   Matrices $F$ and $F^{'}$containing the loadings of each variable in $X$on each principal component. The $i$-th variable in $X$ can be expressed as a linear combination of the principal components plus a residual variation, where the $j$-th principal component is multiplied by the loading in $F$ relating the $i$-th variable and the $j$-th principal component (Chatfield and Collins, 1980\]. $F^{'}$is the corresponding matrix for $X^{'}$.
-
-There does not seem to be a single quantitative measure which completely reflects those structural differences. Therefore, we proposed in Domingo-Ferrer, Mateo-Sanz, and Torra (2001) and Domingo-Ferrer and Torra (2001) to measure information loss through the discrepancies between matrices $X$, $V$, $R$, $\text{RF}$, $C$and $F$ obtained on the original data and the corresponding $X^{'}$, $V^{'}$, $R^{'}$, $\text{RF}^{'}$, $C^{'}$and $F^{'}$ obtained on the protected dataset. In particular, discrepancy between correlations is related to the information loss for data uses such as regressions and cross tabulations.
+There does not seem to be a single quantitative measure which completely reflects those structural differences. Therefore, we proposed in Domingo-Ferrer, Mateo-Sanz, and Torra (2001) and Domingo-Ferrer and Torra (2001) to measure information loss through the discrepancies between matrices $X$, $V$, $R$, ${RF}$, $C$ and $F$ obtained on the original data and the corresponding $X^{'}$, $V^{'}$, $R^{'}$, ${RF}^{'}$, $C^{'}$ and $F^{'}$ obtained on the protected dataset. In particular, discrepancy between correlations is related to the information loss for data uses such as regressions and cross tabulations.
 
 Matrix discrepancy can be measured in at least three ways:
 
@@ -51,21 +41,24 @@ Matrix discrepancy can be measured in at least three ways:
 
 **Mean variation** Sum of absolute percent variation of components in the matrix computed on protected data with respect to components in the matrix computed on original data, divided by the number of cells in either matrix. This approach has the advantage of not being affected by scale changes of variables.
 
-@tbl-loss-information summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, *p* is the number of variables, *n* the number of records, and components of matrices are represented by the corresponding lowercase letters (*e.g.* $x_{\text{ij}}$ is a component of matrix $X$). Regarding $X - X^{'}$ measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant $\overline{X} - \overline{X^{'}}$. Similarly, for $V - V^{'}$measures, it would also be sensible to use them to compare only the variances of the variables, *i.e.* to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant $S - S^{'}$).
+@tbl-loss-information summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, $p$ is the number of variables, $n$ the number of records, and components of matrices are represented by the corresponding lowercase letters (*e.g.* $x_{\text{ij}}$ is a component of matrix $X$). Regarding $X - X^{'}$ measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant $\overline{X^{\phantom{'}}} - \overline{X^{'}}$). Similarly, for $V - V^{'}$measures, it would also be sensible to use them to compare only the variances of the variables, *i.e.* to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant $S - S^{'}$).
 
 
 |          	|                                  Mean square error                                  	|                                   Mean abs. error                                   	|                                             Mena variation                                             	|
 |:--------:	|:-----------------------------------------------------------------------------------:	|:-----------------------------------------------------------------------------------:	|:------------------------------------------------------------------------------------------------------:	|
 |  $X-X'$  	|            $\frac{\sum\limits_{j=1}^{p}\sum\limits_{i=1}^{n}(x_{ij} - x_{ij}')^2}{np}$            	|            $\frac{\sum\limits_{j=1}^{p}\sum\limits_{i=1}^{n}|x_{ij} - x_{ij}'|}{np}$            	|            $\frac{\sum\limits_{j=1}^{p}\sum\limits_{i=1}^{n}\frac{|x_{ij} - x_{ij}'|}{|x_{ij}|}}{np}$            	|
-|  $V-V'$  	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}(v_{ij} - v_{ij}')^2}{\frac{p(p+1)}{2}}$ 	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}|v_{ij} - v_{ij}'|}{\frac{p(p+1)}{2}}$ 	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}\frac{|v_{ij} - v_{ij}'|}{|v_{ij}|}}{\frac{p(p+1)}{2}}$ 	|
-|  $R-R'$  	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}(r_{ij} - r_{ij}')^2}{\frac{p(p-1)}{2}}$ 	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}|r_{ij} - r_{ij}'|}{\frac{p(p-1)}{2}}$ 	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}\frac{|r_{ij} - r_{ij}'|}{|r_{ij}|}}{\frac{p(p-1)}{2}}$ 	|
+|  $V-V'$  	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}(v_{ij} - v_{ij}')^2}{p(p+1)/2}$ 	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}|v_{ij} - v_{ij}'|}{p(p+1)/2}$ 	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}\frac{|v_{ij} - v_{ij}'|}{|v_{ij}|}}{p(p+1)/2}$ 	|
+|  $R-R'$  	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}(r_{ij} - r_{ij}')^2}{p(p-1)/2}$ 	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}|r_{ij} - r_{ij}'|}{p(p-1)/2}$ 	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}\frac{|r_{ij} - r_{ij}'|}{|r_{ij}|}}{p(p-1)/2}$ 	|
 | $RF-RF'$ 	|         $\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}(rf_{ij} - rf_{ij}')^2}{p^2}$         	|         $\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}|rf_{ij} - rf_{ij}'|}{p^2}$         	|        $\frac{\sum\limits_{j=1}^{p} w_j \sum\limits_{i=1}^{p}\frac{|rf_{ij} - rf_{ij}'|}{|rf_{ij}|}}{p^2}$       	|
 |  $C-C'$  	|                       $\frac{\sum\limits_{i=1}^{p}(c_i - c_i')^2}{p}$                      	|                       $\frac{\sum\limits_{i=1}^{p}|c_i - c_i'|}{p}$                      	|                       $\frac{\sum\limits_{i=1}^{p}\frac{|c_i - c_{i}'|}{|c_i|}}{p}$                       	|
 |  $F-F'$  	|          $\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}(f_{ij} - f_{ij}')^2}{p^2}$          	|          $\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}|f_{ij} - f_{ij}'|}{p^2}$          	|         $\frac{\sum\limits_{j=1}^{p} w_j \sum\limits_{i=1}^{p}\frac{|f_{ij} - f_{ij}'|}{|f_{ij}|}}{p^2}$         	|
 
 : Information loss measures for continuous microdata {#tbl-loss-information}
 
-In Yancey, Winkler and Creecy (2002), it is observed that dividing by $x_{\text{ij}}$ causes the $X - X^{'}$mean variation to rise sharply when the original value $x_{\text{ij}}$ is close to 0. This dependency on the particular original value being undesirable in an information loss measure, Yancey, Winkler and Creecy (2002) propose to replace the mean variation of $X - X^{'}$by the more stable measure
+In Yancey, Winkler and Creecy (2002), it is observed that dividing by $x_{\text{ij}}$ causes the $X - X^{'}$mean variation to rise sharply when the original value $x_{\text{ij}}$ is close to 0. This dependency on the particular original value being undesirable in an information loss measure, Yancey, Winkler and Creecy (2002) propose to replace the mean variation of $X - X^{'}$ by the more stable measure
+$$
+  \frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x'_{ij}|}{\sqrt{2} S_j}
+$$
 
 where $S_{j}$ is the standard deviation of the $j$-th variable in the original dataset.
 
@@ -76,39 +69,43 @@ Trottini (2003) argues that, since information loss is to be traded off for disc
 Straightforward computation of measures in @tbl-loss-information on categorical data is not possible. The following alternatives are considered in Domingo-Ferrer and Torra (2001):
 
 -   Direct comparison of categorical values
-
 -   Comparison of contingency tables
-
 -   Entropy-based measures
 
 #### Direct comparison of categorical values
-
-Comparison of matrices $X$ and $X^{'}$ for categorical data requires the definition of a distance for categorical variables. Definitions consider only the distances between pairs of categories that can appear when comparing an original record and its protected version (see discussion above on pairing original and protected records).![](Images/media/image130.png){width="0.2in" height="0.2in"}
+:::{.callout}
+Expert level
+:::
+<blockquote>
+Comparison of matrices $X$ and $X'$ for categorical data requires the definition of a distance for categorical variables. Definitions consider only the distances between pairs of categories that can appear when comparing an original record and its protected version (see discussion above on pairing original and protected records).
 
 For a nominal variable $V$ (a categorical variable taking values over an unordered set), the only permitted operation is comparison for equality. This leads to the following distance definition:
-
-
 $$
-dv(c,c')=\begin{cases}
+d_V(c,c')=\begin{cases}
 0, & \text{if }c=c' \\
 1, & \text{if } c \neq c'
 \end{cases}
 $$
 
-where $c$ is a category in an original record and $c^{'}$ is the category which has replaced $c$ in the corresponding protected record.
+where $c$ is a category in an original record and $c'$ is the category which has replaced $c$ in the corresponding protected record.
 
-For an ordinal variable $V$ (a categorical variable taking values over a totally ordered set), let $\leq V$ be the total order operator over the range $D(V)$ of $V$. Define the distance between categories $c$ and $c^{'}$ as the number of categories between the minimum and the maximum of $c$ and $c^{'}$ divided by the cardinality of the range:
+For an ordinal variable $V$ (a categorical variable taking values over a totally ordered set), let $\leq_V$ be the total order operator over the range $D(V)$ of $V$. Define the distance between categories $c$ and $c'$ as the number of categories between the minimum and the maximum of $c$ and $c'$ divided by the cardinality of the range:
 
 $$
-\text{dc}\left( c,c^{'} \right) = \frac{\left| c^{''}\text{:min}\left( c,c^{'} \right) \leq c^{''} < \text{max}\left( c,c^{'} \right) \right|}{\left| D(V) \right|}
+d_V(c,c') = \frac{\left| c'': \min(c,c') \leq c'' < \max(c,c') \right|}{\left| D(V) \right|}
 $$
+where $|\cdot|$ stands for the cardinality operator.
+</blockquote>
 
 #### Comparison of contingency tables
-
-An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets $F$ and $G$ (the original and the protected set, respectively) and their corresponding $t$-dimensional contingency tables for $t \leq K$, we can define a contingency table-based information loss measure $\text{CTBIL}$ for a subset $W$ of variables as follows: ![](Images/media/image134.png){width="0.2in" height="0.2in"}
+:::{.callout}
+Expert level
+:::
+<blockquote>
+An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets $F$ and $G$ (the original and the protected set, respectively) and their corresponding $t$-dimensional contingency tables for $t \leq K$, we can define a contingency table-based information loss measure $\text{CTBIL}$ for a subset $W$ of variables as follows: 
 
 $$
-\text{CTBIL}(F,G; W,K) = \sum\limits_{ \{ V_{ji} \cdots V_{jt} \} f\subseteq W \atop | \{ V_{ji} \cdots V_{jt} \} | \leq K} \sum\limits_{i_1 \cdots i_t} | x^F_{i_1 \cdots i_t} - x^G_{i_1 \cdots i_t} | \qquad \text{(3.4.3.1)}
+CTBIL(F,G; W,K) = \sum\limits_{ \{ V_{ji} \cdots V_{jt} \} f\subseteq W \atop | \{ V_{ji} \cdots V_{jt} \} | \leq K} \sum\limits_{i_1 \cdots i_t} | x^F_{i_1 \cdots i_t} - x^G_{i_1 \cdots i_t} | \qquad \text{(3.4.3.1)}
 $$
 
 where $x_{\text{subscripts}}^{\text{file}}$ is the entry of the contingency table of $\text{file}$ at position given by $\text{subscripts}$.
@@ -116,30 +113,35 @@ where $x_{\text{subscripts}}^{\text{file}}$ is the entry of the contingency tabl
 Because the number of contingency tables to be considered depends on the number of variables $|W|$, the number of categories for each variable, and the dimension $K$, a normalized version of Expression (3.4.3.1) may be desirable. This can be obtained by dividing Expression (3.4.2.1) by the total number of cells in all considered tables.
 
 Distance between contingency tables generalizes some of the information loss measures used in the literature. For example, the μ‑ARGUS software (Hundepool et al. 2005) measures information loss for local suppression by counting the number of suppressions. The distance between two contingency tables of dimension one returns twice the number of suppressions. This is because, when category $A$ is suppressed for one record, two entries of the contingency table are changed: the count of records with category $A$ decreases and the count of records with the "missing" category increases.
+</blockquote>
 
 #### Entropy-based measures
-
-In DeWaal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw, (1998) and Willenborg and DeWaal (2001), the use of Shannon's entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.![](Images/media/image135.png){width="0.2in" height="0.2in"}
+:::{.callout}
+Expert level
+:::
+<blockquote>
+In De Waal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw, (1998) and Willenborg and De Waal (2001), the use of Shannon's entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.
 
 As noted earlier, PRAM is a method that generalizes noise addition, suppression and recoding methods. Therefore, our description of the use of entropy will be limited to PRAM.
 
-Let $V$ be a variable in the original dataset and $V^{'}$ be the corresponding variable in the PRAM-protected dataset. Let $P_{V,V^{'}} = \left\{ p\left( V^{'} = j|V = i \right) \right\}$ be the PRAM Markov matrix. Then, the conditional uncertainty of $V$ given that $V^{'} = j$ is:
+Let $V$ be a variable in the original dataset and $V'$ be the corresponding variable in the PRAM-protected dataset. Let $P_{V,V'} = \left\{ p\left( V' = j \mid V = i \right) \right\}$ be the PRAM Markov matrix. Then, the conditional uncertainty of $V$ given that $V' = j$ is:
 
 $$
-H\left( V|V^{'} = j \right) = - \sum\limits_{i = 1}^{n}{p\left( V = i|V^{'} = j \right)\log p}\left( V = i|V^{'} = j| \right) \qquad \text{(3.4.3.2)}
+H\left( V \mid V' = j \right) = - \sum\limits_{i = 1}^{n}{p\left( V = i \mid V' = j \right)\log p}\left( V = i \mid V' = j \right) \qquad \text{(3.4.3.2)}
 $$ 
 
-The probabilities in Expression (3.4.3.2) can be derived from $P_{V,V^{'}}$ using Bayes's formula. Finally, the entropy-based information loss measure $\text{EBIL}$ is obtained by accumulating Expression 3.4.3.2 for all individuals $r$ in the protected dataset $G$
+The probabilities in Expression (3.4.3.2) can be derived from $P_{V,V'}$ using Bayes's formula. Finally, the entropy-based information loss measure $EBIL$ is obtained by accumulating Expression 3.4.3.2 for all individuals $r$ in the protected dataset $G$
 
 $$
-\text{EBIL}\left( P_{V,V^{'}},G \right) = \sum\limits_{r \in G}^{}{H\left( V|V^{'} = j_{r} \right)}
+EBIL\left( P_{V,V'},G \right) = \sum\limits_{r \in G}^{}{H\left( V \mid V' = j_{r} \right)}
 $$
 
-where $j_{r}$ is the value taken by $V^{'}$ in record $r$.
+where $j_{r}$ is the value taken by $V'$ in record $r$.
 
-The above measure can be generalized for multivariate datasets if $V$ and $V^{'}$ are taken as being multidimensional variables (*i.e.* representing several one-dimensional variables).
+The above measure can be generalized for multivariate datasets if $V$ and $V'$ are taken as being multidimensional variables (*i.e.* representing several one-dimensional variables).
 
 While using entropy to measure information loss is attractive from a theoretical point of view, its interpretation in terms of data utility loss is less obvious than for the previously discussed measures.
+</blockquote>
 
 ### References
 
@@ -147,19 +149,19 @@ Chatfield, C., and Collins, A. J., (1980). *Introduction to Multivariate Analysi
 
 Dandekar, R., Domingo-Ferrer, J., and Sebé, F., (2002). *LHS-based hybrid microdata vs. rank swapping and microaggregation for numeric microdata protection.* In J. Domingo-Ferrer, editor, Inference Control in Statistical Databases, volume 2316 of LNCS, pages 153--162, Berlin Heidelberg, 2002. Springer.
 
-DeWaal, A. G., and Willenborg, L. C. R. J. (1999). *Information loss through global recoding and local suppression.* Netherlands Official Statistics, 14:17--20, 1999. special issue on SDC.
+De Waal, A. G., and Willenborg, L. C. R. J. (1999). *Information loss through global recoding and local suppression.* Netherlands Official Statistics, 14:17--20, 1999. special issue on SDC.
 
 Domingo-Ferrer, J., Mateo-Sanz, J. M., and Torra, V. (2001). *Comparing sdc methods for microdata on the basis of information loss and disclosure risk*. In Pre-proceedings of ETK-NTTS'2001 (vol. 2), pages 807--826, Luxemburg, 2001. Eurostat.
 
 Domingo-Ferrer, J., and Torra, V. (2001). *Disclosure protection methods and information loss for microdata.* In P. Doyle, J. I. Lane, J. J. M. Theeuwes, and L. Zayatz, editors, Confidentiality, Disclosure and Data Access: Theory and Practical Applications for Statistical Agencies, pages 91--110, Amsterdam, 2001. North-Holland. [[http://vneumann.etse.urv.es/publications/bcpi]{.underline}](http://vneumann.etse.urv.es/publications/bcpi).
 
-Hundepool, A., Van de Wetering, A., Ramaswamy, R., Franconi, L., Capobianchi, A., DeWolf, P.-P., Domingo-Ferrer, J., Torra, V., Brand, R:, and Giessing, S. (2005). *µ-ARGUS version 4.0 Software and User's Manual*. Statistics Netherlands, Voorburg NL, may 2005. [[http://neon.vb.cbs.nl/casc]{.underline}](http://neon.vb.cbs.nl/casc/deliv/MUmanual4.0.pdf).
+Hundepool, A., Van de Wetering, A., Ramaswamy, R., Franconi, L., Capobianchi, A., De Wolf, P.-P., Domingo-Ferrer, J., Torra, V., Brand, R:, and Giessing, S. (2005). *µ-ARGUS version 4.0 Software and User's Manual*. Statistics Netherlands, Voorburg NL, may 2005. [[https://research.cbs.nl/casc]{.underline}](https://research.cbs.nl/casc/deliv/MUmanual4.0.pdf).
 
 Kooiman, P. L., Willenborg, L. and Gouweleeuw, J. (1998). *PRAM: A method for disclosure limitation of microdata.* Technical report, Statistics Netherlands (Voorburg, NL), 1998.
 
 Trottini, M. (2003) . *Decision models for data disclosure limitation*. PhD thesis, Carnegie Mellon University, 2003. [[http://www.niss.org/dgii/TR/Thesis-Trottini-final.pdf]{.underline}](http://www.niss.org/dgii/TR/Thesis-Trottini-final.pdf).
 
-Willenborg, L., and DeWaal, T., (2001). *Elements of Statistical Disclosure Control*. Springer-Verlag, New York, 2001.
+Willenborg, L., and De Waal, T., (2001). *Elements of Statistical Disclosure Control*. Springer-Verlag, New York, 2001.
 
 Winkler, W. E. (1998). *Re-identification methods for evaluating the confidentiality of analytically valid microdata.* In J. Domingo-Ferrer, editor, Statistical Data Protection, Luxemburg, 1999. Office for Official Publications of the European Communities. (Journal version in Research in Official Statistics, vol. 1, no. 2, pp. 50-69, 1998).
 
