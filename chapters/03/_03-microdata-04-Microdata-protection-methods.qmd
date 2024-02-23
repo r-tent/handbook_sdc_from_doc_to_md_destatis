@@ -64,10 +64,9 @@ where $A$ is a record-transforming mask, $B$ is a variable-transforming mask and
 : Perturbative methods vs. data types. "X" denotes applicable and "(X)" denotes applicable with some adaptation. {#tbl-perturbative-methods}
 
 #### Noise addition
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 The main noise addition algorithms in the literature are: 
 
 -   Masking by uncorrelated noise addition
@@ -84,13 +83,12 @@ With the exception of the not very practical method of Sullivan(1989), noise add
 -   It makes no assumptions on the range of possible values for $V_{i}$ (which may be infinite).
 -   The noise being added is typically continuous and with mean zero, which suits well with continuous original data.
 -   No exact matching is possible with external files. Depending on the amount of noise added, approximate (interval) matching might be possible. More details can be found in Section 3.4.2 below.
-</blockquote>
+:::
 
 #### Multiplicative Noise
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 One main challenge regarding additive noise with constant variance is that on one hand small values are strongly perturbed and on the other large values are weakly perturbed. For instance, in a business microdata set the large enterprises \-- which are much easier to re-identify than the smaller ones \-- remain still high at risk after noise addition. A possible way out is given by the multiplicative noise approach explained below.
 
 Let $X$ be the matrix of the original data and $W$ the matrix of continuous perturbation variables with expectation 1 and variance $\sigma_{w}^{2} > 0$. The corresponding anonymised data $X^{a}$ is then obtained as
@@ -132,13 +130,12 @@ X_{n}^{a} = X_{n} - \left( \sum\limits_{k=1}^{n-1} X_{k}^{a} - \sum\limits_{k=1}
 $$
 
 in order to preserve the overall sum.
-</blockquote>
+:::
 
 #### Microaggregation
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Microaggregation is a family of SDC techniques for continuous microdata. The rationale behind microaggregation is that confidentiality rules in use allow publication of microdata sets if records correspond to groups of $k$ or more individuals, where no individual dominates (*i.e.* contributes too much to) the group and $k$ is a threshold value. Strict application of such confidentiality rules leads to replacing individual values with values computed on small aggregates (microaggregates) prior to publication. This is the basic principle of microaggregation.
 
 To obtain microaggregates in a microdata set with $n$ records, these are combined to form $g$ groups of size at least $k$. For each variable, the average value over each group is computed and is used to replace each of the original averaged values. Groups are formed using a criterion of maximal similarity. Once the procedure has been completed, the resulting (modified) records can be published.
@@ -149,15 +146,13 @@ Microaggregation exists in several variants:
 -   Exact optimal vs. heuristic microaggregation (Hansen and Mukherjee, 2003), (Oganian and Domingo-Ferrer, 2001).
 -   Categorical microaggregation (V. Torra, 2004).
 
-\
 More details on the microaggregation implemented in μ‑ARGUS are given below.
-</blockquote>
+:::
 
 #### Data swapping and rank swapping
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Data swapping was originally presented as an SDC method for databases containing only categorical variables (Dalenius and Reiss, 1978). The basic idea behind the method is to transform a database by exchanging values of confidential variables among individual records. Records are exchanged in such a way that low-order frequency counts or marginals are maintained.
 
 Even though the original procedure was not very used in practice (see Fienberg and McIntyre, 2004), its basic idea had a clear influence in subsequent methods. In Reiss, Post and Dalenius (1982) and Reiss (1984) data swapping was introduced to protect continuous and categorical microdata, respectively. Another variant of data swapping for microdata is *rank swapping*. Although originally described only for ordinal variables (Greenberg, 1987), rank swapping can also be used for any numerical variable (Moore, 1996). First, values of a variable $X_{i}$ are ranked in ascending order, then each ranked value of $X_{i}$ is swapped with another ranked value randomly chosen within a restricted range (*e.g.* the rank of two swapped values cannot differ by more than $p\%$ of the total number of records, where $p$ is an input parameter). This algorithm is independently used on each original variable in the original data set.
@@ -199,43 +194,39 @@ It is reasonable to expect that multivariate statistics computed from data swapp
 
 Example of rank swapping.
 :::
-</blockquote>
+:::
 
 #### Rounding
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Rounding methods replace original values of variables with rounded values. For a given variable $X_{i}$, rounded values are chosen among a set of rounding points defining a *rounding set*. In a multivariate original dataset, rounding is usually performed one variable at a time (*univariate* rounding); however, multivariate rounding is also possible (Willenborg and DeWaal, 2001). The operating principle of rounding makes it suitable for continuous data. 
 
 **Example** Assume a non-negative continuous variable $X$. Then we have to determine a set of rounding points$\left\{ p_0,\cdots,p_r \right\}$. One possibility is to take rounding points as multiples of a base value $b$, that is, $p_{i} = b i$ for $i = 1,\cdots,r$. The set of attraction for each rounding point $p_i$ is defined as the interval $\left\lbrack p_{i} - b/2,p_{i} + b/2 \right)$, for $i = 1$ to $r - 1$. For $p_0$ and $p_r$, respectively, the sets of attraction are $\left\lbrack 0, b/2 \right)$ and $\left\lbrack p_{r} - b/2, X_{\text{max}} \right\rbrack$, where $X_{\text{max}}$ is the largest possible value for variable $X$. Now an original value $x$ of $X$ is replaced with the rounding point corresponding to the set of attraction where $x$ lies.
-</blockquote>
+:::
 
 #### Resampling
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Originally proposed for protecting tabular data (Heer, 1993), (Domingo-Ferrer and Mateo-Sanz, 1999), resampling can also be used for microdata. Take $t$ independent samples $S_{1},\cdots,S_{t}$ of the values of an original variable $X_{i}$. Sort all samples using the same ranking criterion. Build the masked variable $Z_{i}$ as ${\overline{x}}_{1},\cdots,{\overline{x}}_{n}$, where $n$ is the number of records and ${\overline{x}}_{j}$ is the average of the $j$-th ranked values in $S_{1},\cdots,S_{t}$.
-</blockquote>
+:::
 
 #### PRAM
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 The Post-RAndomization Method or PRAM (Gouweleeuw et al., 1997) is a probabilistic, perturbative method for disclosure protection of categorical variables in microdata files. In the masked file, the scores on some categorical variables for certain records in the original file are changed to a different score according to a prescribed probability mechanism, namely a Markov matrix. The Markov approach makes PRAM very general, because it encompasses noise addition, data suppression and data recoding.
 
 PRAM information loss and disclosure risk largely depend on the choice of the Markov matrix and are still (open) research topics (DeWolf et al., 1999).
 
 The PRAM matrix contains a row for each possible value of each variable to be protected. This rules out using the method for continuous data. More details on PRAM can be found below.
-</blockquote>
+:::
 
 #### MASSC
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 MASSC (Singh, Yu and Dunteman, 2003) is a masking method whose acronym summarizes its four steps: Micro Agglomeration, Substitution, Subsampling and Calibration. We briefly recall the purpose of those four steps: 
 
 1.  Micro agglomeration is applied to partition the original dataset into risk strata (groups of records which are at a similar risk of disclosure). These strata are formed using the key variables, *i.e.* the quasi-identifiers in the records. The idea is that those records with rarer combinations of key variables are at a higher risk.
@@ -243,9 +234,8 @@ MASSC (Singh, Yu and Dunteman, 2003) is a masking method whose acronym summarize
 3. Optimal probabilistic subsampling is used to suppress some variables or even entire records (i.e. variables and/or records are suppressed with a certain probability set as parameters).
 4. Optimal sampling weight calibration is used to preserve estimates for outcome variables in the treated database whose accuracy is critical for the intended data use.
 
-\
 MASSC, to the best of our knowledge, is the first attempt at designing a perturbative masking method in such a way that disclosure risk can be analytically quantified. Its main shortcoming is that its disclosure model simplifies reality by considering only disclosure resulting from linkage of key variables with external sources. Since key variables are typically categorical, the uniqueness approach can be used to analyze the risk of disclosure; however, doing so ignores the fact that continuous outcome variables can also be used for respondent re-identification. As an example, if respondents are companies and turnover is one outcome variable, everyone in a certain industrial sector knows which is the company with largest turnover. Thus, in practice, MASSC is a method only suited when continuous variables are not present.
-</blockquote>
+:::
 
 ### Non-perturbative masking
 
@@ -261,10 +251,9 @@ Non-perturbative masking does not rely on distortion of the original data but on
 | Local suppression     	|                   	|          X         	|
 
 #### Sampling
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Instead of publishing the original microdata file, what is published is a sample $S$ of the original set of records. 
 
 Sampling methods are suitable for categorical microdata, but their adequacy for continuous microdata is less clear in a general disclosure scenario. The reason is that such methods leave a continuous variable $V_{i}$ unperturbed for all records in $S$. Thus, if variable $V_{i}$ is present in an external administrative public file, unique matches with the published sample are very likely: indeed, given a continuous variable $V_{i}$ and two respondents $o_{1}$ and $o_{2}$, it is highly unlikely that $V_{i}$ will take the same value for both $o_{1}$ and $o_{2}$ unless $o_{1} = o_{2}$ (this is true even if $V_{i}$ has been truncated to represent it digitally).
@@ -279,15 +268,13 @@ If, for a continuous identifying variable, the score of a respondent is only app
 -   Sample size: 245,944 individual records
 -   Sampling fraction: *0.0406*
 
-\
 With the above sampling fraction, the maximum absolute error for estimating a maximum-variance proportion is 0.2 percent.
-</blockquote>
+:::
 
 #### Global recoding
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 For a categorical variable $V_{i}$, several categories are combined to form new (less specific) categories, thus resulting in a new $V_{i}'$ with $\left| D\left( V_{i}' \right) \right| < \left| D\left( V_{i} \right) \right|$ where $|\cdot |$ is the cardinality operator and $D(V_i)$ denotes the domain of variable $V_i$, *i.e.*, the possible values $V_i$ can have. For a continuous variable, global recoding means replacing $V_{i}$ by another variable $V_{i}'$ which is a discretized version of $V_{i}$. In other words, a potentially infinite range $D\left( V_{i} \right)$ is mapped onto a finite range $D\left( V_{i}' \right)$. This is the technique used in the μ‑ARGUS SDC package (Hundepool et al. 2005).
 
 This technique is more appropriate for categorical microdata, where it helps disguise records with strange combinations of categorical variables. Global recoding is used heavily by statistical offices.
@@ -297,27 +284,25 @@ This technique is more appropriate for categorical microdata, where it helps dis
 **Example.** We can recode the variable 'Occupation', by combining the categories 'Statistician' and 'Mathematician' into a single category 'Statistician or Mathematician'. When the number of female statisticians in Urk (a small town) plus the number of female mathematicians in Urk is sufficiently high, then the combination 'Place of residence = Urk', 'Gender = Female' and 'Occupation = Statistician or Mathematician' is considered safe for release. Note that instead of recoding 'Occupation' one could also recode 'Place of residence' for instance.
 
 It is important to realise that global recoding is applied to the whole data set, not only to the unsafe part of the set. This is done to obtain a uniform categorisation of each variable. Suppose, for instance, that we recode the 'Occupation' in the above way. Suppose furthermore that both the combinations 'Place of residence = Amsterdam', 'Gender = Female' and 'Occupation = Statistician', and 'Place of residence = Amsterdam', 'Gender = Female' and 'Occupation = Mathematician' are considered safe. To obtain a uniform categorisation of 'Occupation' we would, however, not publish these combinations, but only the combination 'Place of residence = Amsterdam', 'Gender = Female' and 'Occupation = Statistician or Mathematician'.
-</blockquote>
+:::
 
 #### Top and bottom coding
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Top and bottom coding is a special case of global recoding which can be used on variables that can be ranked, that is, continuous or categorical ordinal. The idea is that top values (those above a certain threshold) are lumped together to form a new category. The same is done for bottom values (those below a certain threshold). See the μ‑ARGUS manual (Hundepool et al. 2005).
-</blockquote>
+:::
 
 #### Local suppression
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Certain values of individual variables are suppressed with the aim of increasing the set of records agreeing on a combination of key values. Ways to combine local suppression and global recoding are discussed in (De Waal and Willenborg, 1995) and implemented in the μ‑ARGUS SDC package (Hundepool et al. 2005).
 
 If a continuous variable $V_{i}$ is part of a set of key variables, then each combination of key values is probably unique. Since it does not make sense to systematically suppress the values of $V_{i}$, we conclude that local suppression is rather oriented to categorical variables.
 
 When local suppression is applied, one or more values in an unsafe combination are suppressed, i.e. replaced by a missing value. For instance, in the above example we can protect the unsafe combination 'Place of residence = Urk', 'Gender = Female' and 'Occupation = Statistician' by suppressing the value of 'Occupation', assuming that the number of females in Urk is sufficiently high. The resulting combination is then given by 'Place of residence = Urk', 'Gender = Female' and 'Occupation = missing'. Note that instead of suppressing the value of 'Occupation' one could also suppress the value of another variable of the unsafe combination. For instance, when the number of female statisticians in the Netherlands is sufficiently high then one could suppress the value of 'Place of residence' instead of the value of 'Occupation' in the above example to protect the unsafe combination. A local suppression is only applied to a particular value. When, for instance, the value of 'Occupation' is suppressed in a particular record, then this does not imply that the value of 'Occupation' has to be suppressed in another record. The freedom that one has in selecting the values that are to be suppressed allows one to minimise the number of local suppressions.
-</blockquote>
+:::
 
 #### References
 
@@ -392,10 +377,9 @@ Winkler, W. E. (2004). *Re-identification methods for masked microdata.* In J. 
 We sketch in this Section the operation of the main noise addition algorithms in the literature for microdata protection. For more details on specific algorithms, the reader can check (Brand, 2002).
 
 #### Masking by uncorrelated noise addition
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Masking by additive noise assumes that the vector of observations $x_{j}$ for the *j*-th variable of the original dataset $X_{j}$ is replaced by a vector where $\varepsilon_{j}$ is a vector of normally distributed errors drawn from a random variable $\varepsilon_{j} \sim  N\left( 0,\sigma_{\varepsilon_{j}}^{2} \right)$, such that $\text{Cov}\left( \varepsilon_{t},\varepsilon_{l} \right)=0$ for all $t \neq l$ (white noise).
 
 The general assumption in the literature is that the variances of the $\varepsilon_{j}$ are proportional to those of the original variables. Thus, if $\sigma_{j}^{2}$ is the variance of $X_{j}$, then $\sigma_{\varepsilon_{j}}^{2}: = \alpha\sigma_{j}^{2}$.
@@ -422,13 +406,12 @@ $$
 $$
 \rho(Z_j, Z_l)=\frac{\operatorname{Cov}(Z_j, Z_l)}{\sqrt{\operatorname{Var}(X_j)\operatorname{Var}(X_l)}} = \frac{1}{1+\alpha} \rho(X_j, X_l),\forall j \neq l
 $$
-</blockquote>
+:::
 
 #### Masking by correlated noise addition
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Correlated noise addition also preserves means and additionally allows preservation of correlation coefficients. The difference with the previous method is that the covariance matrix of the errors is now proportional to the covariance matrix of the original data, *i.e.* $\varepsilon \sim  (0,\Sigma)$, where $\Sigma_{\varepsilon} = \alpha\Sigma$.
 
 With this method, we have that the covariance matrix of the masked data is
@@ -446,13 +429,12 @@ $$
 Regarding variances and covariances, we can see from Equation (3.3.2.1) that masked data only provide biased estimates for them. However, it is shown in Kim (1990) that the covariance matrix of the original data can be consistently estimated from the masked data as long as $\alpha$ is known.
 
 As a summary, masking by correlated noise addition outputs masked data with higher analytical validity than masking by uncorrelated noise addition. Consistent estimators for several important statistics can be obtained as long as α is revealed to the data user. However, simple noise addition as discussed in this section and in the previous one is seldom used because of the very low level of protection it provides (Tendick, 1991), (Tendick and Matloff, 1994).
-</blockquote>
+:::
 
 #### Masking by noise addition and linear transformations
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 In Kim (1986), a method is proposed that ensures by additional transformations that the sample covariance matrix of the masked variables is an unbiased estimator for the covariance matrix of the original variables. The idea is to use simple additive noise on the $p$ original variables to obtain overlayed variables 
 
 $$
@@ -481,13 +463,12 @@ where $X \sim  N(\mu,\Sigma),\varepsilon \sim  \left( 0,\alpha\Sigma \right),G \
 Due to the restrictions used to determine $c$, this methods preserves expected values and covariances of the original variables and is quite good in terms of analytical validity. Regarding analysis of regression estimates in subpopulations, it is shown in Kim (1990) that (masked) sample means and covariances are asymptotically biased estimates of the corresponding statistics on the original subpopulations. The magnitude of the bias depends on the parameter $c$, so that estimates can be adjusted by the data user as long as $c$ is revealed to her ---revealing $c$ to the user has a fundamental disadvantage, though: the user can undo the linear transformation, so that this method becomes equivalent to plain uncorrelated noise addition (Domingo-Ferrer, Sebé, and Castellà, 2004)
 
 The most prominent shortcomings of this method are that it does not preserve the univariate distributions of the original data and that it cannot be applied to discrete variables due to the structure of the transformations.
-</blockquote>
+:::
 
 #### Masking by noise addition and nonlinear transformations
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 An algorithm combining simple additive noise and nonlinear transformation is proposed in Sullivan (1989). The advantages of this proposal are that it can be applied to discrete variables and that univariate distributions are preserved.
 
 The method consists of several steps:
@@ -501,13 +482,12 @@ The method consists of several steps:
 
 In the European project CASC (IST-2000-25069), the practicality and usability of this algorithm was assessed. Unfortunately, the internal CASC report by Brand (2002b) concluded that:\
 *"All in all, the results indicate that an algorithm as complex as the one proposed by Sullivan can only be applied by experts. Every application is very time-consuming and requires expert knowledge on the data and the algorithm."*
-</blockquote>
+:::
 
 #### Summary on noise addition
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Thus, in practice, only simple noise addition or noise addition with linear transformation are used. When using linear transformations, a decision has to be made whether to reveal to the data user the parameter $c$ determining the transformations to allow for bias adjustment in the case of subpopulations.
 
 With the exception of the not very practical method of Sullivan (1989), additive noise is not suitable to protect categorical data. On the other hand, it is well suited for continuous data for the following reasons:
@@ -515,7 +495,7 @@ With the exception of the not very practical method of Sullivan (1989), additiv
 -   It makes no assumptions on the range of possible values for $V_{i}$ (which may be infinite).
 -   The noise being added is typically continuous and with mean zero, which suits well continuous original data.
 -   No exact matching is possible with external files. Depending on the amount of noise added, approximate (interval) matching might be possible.
-</blockquote>
+:::
 
 #### References
 
@@ -594,22 +574,20 @@ For a microdata set consisting of $p$ variables, these can be microaggregated to
 : Example - 3-anonymous version of the SME dataset after optimal microaggregation of key variables {#tbl-ex-three-anonym-sme}
 
 #### Fixed vs. variable group size 
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Classical microaggregation algorithms (Defays and Nanopoulos, 1993) required that all groups except perhaps one be of size $k$; allowing groups to be of size $k$ depending on the structure of data was termed *data-oriented microaggregation* (Mateo-Sanz and Domingo-Ferrer, 1999), (Domingo-Ferrer and Mateo-Sanz, 2002). @fig-fixed-vs-variable-sized-group illustrates the advantages of variable-sized groups. If classical fixed-size microaggregation with $k = 3$ is used, we obtain a partition of the data into three groups, which looks rather unnatural for the data distribution given. On the other hand, if variable-sized groups are allowed then the five data on the left can be kept in a single group and the four data on the right in another group; such a variable-size grouping yields more homogeneous groups, which implies lower information loss.
 
 However, except for specific cases such as the one depicted in @fig-fixed-vs-variable-sized-group, the small gain in within-group homogeneity obtained with variable-sized groups hardly justifies the higher computational overhead of this option with respect to fixed-sized groups. This is particularly evident for multivariate data, as noted by Sande (2002).
 
 ![Variable-sized groups versus fixed-sized groups](Images/media/image66.png){#fig-fixed-vs-variable-sized-group width="3.8in" height="2.4in"}
-</blockquote>
+:::
 
 #### Exact optimal vs. heuristic microaggregation
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 For $p = 1$, *i.e.* a univariate dataset or a multivariate dataset where variables are microaggregated one at a time, an exact polynomial shortest-path algorithm exists to find the $k$-partition that optimally solves the microaggregation problem (Hansen and Mukherjee, 2003). See its description below.
 
 For $p > 1$, finding an exact optimal solution to the microaggregation problem, *i.e.* finding a grouping where groups have maximal homogeneity and size at least $k$, has been shown to be NP-hard (Oganian and Domingo-Ferrer, 2001).
@@ -621,16 +599,13 @@ Thus, practical methods in the literature are heuristic:
 -   Univariate methods deal with multivariate datasets by microaggregating one variable at a time, *i.e.* variables are sequentially and independently microaggregated. These heuristics are known as individual ranking (Defays and Nanopoulos, 1993). While they are fast and cause little information loss, these univariate heuristics have the same problem of high disclosure risk as univariate optimal microaggregation.
 -   Multivariate methods either rank multivariate data by projecting them onto a single axis (*e.g.* using the first principal component or the sum of $z$-scores (Defays and Nanopoulos, 1993) or directly deal with unprojected data (Mateo-Sanz and Domingo-Ferrer, 1999), (Domingo-Ferrer and Mateo-Sanz, 2002). When working on unprojected data, we can microaggregate all variables of the dataset at a time, or independently microaggregate groups of two variables at a time, three variables at a time, etc. In any case, it is preferable that variables within a group which is microaggregated at a time be correlated (W.E. Winkler, 2004) in order to keep as much as possible the analytic properties of the file.
 
-\
 We next describe the two microaggregation algorithms implemented in μ‑ARGUS.
-</blockquote>
-
-#### Hansen-Mukherjee's optimal univariate microaggregation
-:::{.callout} 
-Expert level 
 :::
 
-<blockquote>
+#### Hansen-Mukherjee's optimal univariate microaggregation
+:::{.callout-warning collapse=true}
+## Expert level
+
 In Hansen and Mukherjee (2003) a polynomial-time algorithm was proposed for *univariate* optimal microaggregation. Authors formulate the microaggregation problem as a shortest-path problem on a graph. They first construct the graph and then show that the optimal microaggregation corresponds to the shortest path in this graph. Each arc of the graph corresponds to a possible group that may be part of an optimal partition. The arc label is the $\text{SSE}$ that would result if that group were to be included in the partition. We next detail the graph construction.
 
 Let $V = \left\{ v_{1},\cdots,v_{n} \right\}$ be a vector consisting of $n$ real numbers sorted into ascending order, so that $v_{1}$ is the smallest value and $v_{n}$ the largest value. Let $k$ be an integer group size such that $1 \leq k < n$. Now, a graph $G_{n,k}$ is constructed as follows:
@@ -644,14 +619,12 @@ $$
 where ${\overline{v}}_{(i,j)} = \frac{1}{j - i}\sum_{h=i+1}^{j}v_{h}$
 
 It is proven in Hansen and Mukherjee (2003) that the optimal $k$-partition for $V$ is found by taking as groups the $C(i,j)$ corresponding to the arcs in the shortest path between nodes 0 and $n$. For minimal group size $k$and a dataset of $n$ real numbers sorted in ascending order, the complexity of this optimal univariate microaggregation is $O\left( k^{2}n \right)$, that is, linear in the size of the dataset.
-</blockquote>
-
-#### The MDAV heuristic for multivariate microaggregation
-:::{.callout}
-Expert level
 :::
 
-<blockquote>
+#### The MDAV heuristic for multivariate microaggregation
+:::{.callout-warning collapse=true}
+## Expert level
+
 The multivariate microaggregation heuristic implemented in μ‑ARGUS is called MDAV (Maximum Distance to Average Vector). MDAV performs multivariate fixed group size microaggregation on unprojected data. MDAV is also described in Domingo-Ferrer and Torra (2005).
 
 MDAV Algorithm
@@ -667,13 +640,12 @@ MDAV Algorithm
     d) form another group containing the rest of records. Exit the Algorithm. 
 6. If there are less than $2k$ records which do not belong to the groups formed in Step 3, form a new group with those records and exit the Algorithm.
 
-\
 The above algorithm can be applied independently to each group of variables resulting from partitioning the set of variables in the dataset.
-</blockquote>
+:::
 
 #### Categorical microaggregation
 
-> Recently (Torra, 2004), microaggregation has been extended to categorical data. Such an extension is based on existing definitions for aggregation and clustering, the two basic operations required in microaggregation. Specifically, the median is used for aggregating ordinal data and the plurality rule (voting) for aggregating nominal data. Clustering of categorical data is based on the $k$-modes algorithm, which is a partitive clustering method similar to $c$-means.
+Recently (Torra, 2004), microaggregation has been extended to categorical data. Such an extension is based on existing definitions for aggregation and clustering, the two basic operations required in microaggregation. Specifically, the median is used for aggregating ordinal data and the plurality rule (voting) for aggregating nominal data. Clustering of categorical data is based on the $k$-modes algorithm, which is a partitive clustering method similar to $c$-means.
 
 #### References
 
@@ -715,10 +687,9 @@ Since the probability mechanism that is used when applying PRAM is known, charac
 PRAM was used in 2001 UK Census to produce an end-user licence version of the Samples of Anonymised Records (SARs). See Gross(2004) [[www.ccsr.ac.uk/sars/events/2004-09-30/gross.pdf]{.underline}](http://www.ccsr.ac.uk/sars/events/2004-09-30/gross.pdf) for a full description.
 
 #### PRAM, the method
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 In this section a short theoretical description of PRAM is given. For a detailed description of the method, see e.g., Gouweleeuw et al. (1998a and 1998b). For a discussion of several issues concerning the method and its consequences, see e.g., De Wolf et al. (1998).
 
 Let $\xi$ denote a categorical variable in the original file to which PRAM will be applied and let $X$ denote the same variable in the perturbed file. Moreover, assume that $\xi$, and hence $X$ as well, has $K$ categories, labelled $1,\ldots,K$. The probabilities that define PRAM are denoted as
@@ -767,13 +738,12 @@ The exact choice of transition probabilities influences both the amount of infor
 It is thus important to choose the transition probabilities in an appropriate way. Illogical changes could be avoided by appointing a probability of 0 to the illogical scores. In the example given above, PRAM should not be applied to the variable gender individually, but to the crossing of the variables gender and diseases. In that case, each transition probability of changing a score into the score (male, ovarian cancer) should be set equal to 0.
 
 The choice of the transition probabilities in relation to the disclosure limitation and the information loss is more delicate. An empirical study on these effects is given in De Wolf and Van Gelder (2004). A theoretical discussion on the possibility to choose the transition probabilities in an optimal way (in some sense) is given in Cator et al. (2005).
-</blockquote>
+:::
 
 #### When to use PRAM
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 In certain situations methods like global recoding, local suppression and top-coding would yield too much loss of detail in order to produce a safe microdata file. In these circumstances, PRAM is an alternative. Using PRAM, the amount of detail is preserved whereas the level of disclosure control is achieved by introducing uncertainty in the scores on identifying variables.
 
 However, in order to make adequate inferences on a microdata file to which PRAM has been applied, the statistician needs to include sophisticated changes to the standard methods. This demands a good knowledge of both PRAM and the statistical analysis that is to be applied.
@@ -781,7 +751,7 @@ However, in order to make adequate inferences on a microdata file to which PRAM 
 In case a researcher is willing to make use of a remote execution facility, PRAM might be used to produce a microdata file with the same structure as the original microdata file, but with some kind of synthetic data. Such microdata files might be used as a 'test' microdata file on which a researcher can try her scripts before sending these scripts to the remote execution facility. Since the results of the script are not used directly, the amount of distortion of the original microdata file can be chosen to be quite large. That way a safe microdata file is produced that still exhibits the same structure (and amount of detail) as the original microdata file.
 
 In other situations, PRAM might produce a microdata file that is safe and leaves certain statistical characteristics of that file (more or less) unchanged. In that case, a researcher might perform his research on that microdata file in order to get an idea on the eventually needed research strategy. Once that strategy has been determined, the researcher might come to an on-site facility in order to perform the analyses once more on the original microdata hence reducing the amount of time that she has to be at the on-site facility.
-</blockquote>
+:::
 
 #### References on Pram
 
@@ -809,10 +779,9 @@ Publication of synthetic ---*i.e.* simulated--- data was proposed long ago as a 
 We next review some approaches in the literature to synthetic data generation and then proceed to discuss the global pros and cons of using synthetic data.
 
 #### A forerunner: data distortion by probability distribution
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Data distortion by probability distribution was proposed in 1985 (Liew, Choi and Liew, 1985) and is not usually included in the category of synthetic data generation methods. However, its operating principle is to obtain a protected dataset by randomly drawing from the underlying distribution of the original dataset. Thus, it can be regarded as a forerunner of synthetic methods. 
 
 This method is suitable for both categorical and continuous variables and consists of three steps:
@@ -830,41 +799,37 @@ Finally, the mapping and replacement stage is only needed if the distorted varia
 It must be stressed here that the approach described in (Liew, Choi and Liew, 1985) was for one variable at a time. One could imagine a generalization of the method using multivariate density functions. However such a generalization: i) is not trivial, because it requires multivariate ranking-mapping; and ii) can lead to very poor fitting.
 
 **Example 1** A distribution fitting software (Crystal.Ball, 2004) has been used on the original (ranked) data set 186, 693, 830, 1177, 1219, 1428, 1902, 1903, 2496, 3406. Continuous distributions tried were normal, triangular, exponential, lognormal, Weibull, uniform, beta, gamma, logistic, Pareto and extreme value; discrete distributions tried were binomial, Poisson, geometric and hypergeometric. The software allowed for three fitting criteria to be used: Kolmogorov-Smirnov, $\chi^{2}$ and Anderson-Darling. According to the first criterion, the best fit happened for the extreme value distribution with modal and scale parameters 1105.78 and 732.43, respectively; the Kolmogorov statistic for this fit was 0.1138. Using the fitted distribution, the following (ranked) dataset was generated and used to replace the original one: 425.60, 660.97, 843.43, 855.76, 880.68, 895.73, 1086.25, 1102.57, 1485.37, 2035.34.
-</blockquote>
+:::
 
 #### Synthetic data by multiple imputation
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Rubin (1993) suggested creating an entirely synthetic dataset based on the original survey data and multiple imputations. Rubin's proposal was more completely developed in Raghunathan, Reiter, and Rubin (2003). A simulation study of it was given in Reiter (2002). In Reiter (2005) inference on synthetic data is discussed and in Reiter (2005b) an application is given. 
 
 We next sketch the operation of the original proposal by Rubin. Consider an original microdata set $X$ of size $n$ records drawn from a much larger population of $N$ individuals, where there are background variables $A$, non-confidential variables $B$ and confidential variables $C$. Background variables are observed and available for all $N$ individuals in the population, whereas $B$ and $C$ are only available for the $n$ records in the sample $X$. The first step is to construct from $X$ a multiply-imputed population of $N$ individuals. This population consists of the $n$ records in $X$ and $M$ (the number of multiple imputations, typically between 3 and 10) matrices of $(B,C)$ data for the $N - n$ non-sampled individuals. The variability in the imputed values ensures, theoretically, that valid inferences can be obtained on the multiply-imputed population. A model for predicting $(B,C)$ from $A$ is used to multiply-impute $(B,C)$ in the population. The choice of the model is a nontrivial matter. Once the multiply-imputed population is available, a sample $Z$ of $n'$ records can be drawn from it whose structure looks like the one a sample of $n'$ records drawn from the original population. This can be done $M$ times to create $M$ replicates of $(B,C)$ values. The results are $M$ multiply-imputed synthetic datasets. To make sure no original data are in the synthetic datasets, it is wise to draw the samples from the multiply-imputed population excluding the $n$ original records from it.
-</blockquote>
+:::
 
 #### Synthetic data by bootstrap
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Fienberg (1994) proposed generating synthetic microdata by using bootstrap methods. Later, in Fienberg, Makov and Steele (1998), this approach was used for categorical data.
 
 The bootstrap approach bears some similarity to the data distortion by probability distribution and the multiple-imputation methods described above. Given an original microdata set $X$ with $p$ variables, the data protector computes its empirical $p$-variate cumulative distribution function (c.d.f.) $F$. Now, rather than distorting the original data to obtain masked data, the data protector alters (or "smoothes") the c.d.f. $F$ to derive a similar c.d.f. $F'$. Finally, $F'$ is sampled to obtain a synthetic microdata set $Z$.
-</blockquote>
+:::
 
 #### Synthetic data by Latin Hypercube Sampling
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Latin Hypercube Sampling (LHS) appears in the literature as another method for generating multivariate synthetic datasets. In Huntington and Lyrintzis (1998), the LHS updated technique of Florian (1992) was improved, but the proposed scheme is still time-intensive even for a moderate number of records. In Dandekar, Cohen and Kirkendall (2002) LHS is used along with a rank correlation refinement to reproduce both the univariate (*i.e.* mean and covariance) and multivariate structure (in the sense of rank correlation) of the original dataset. In a nutshell, LHS-based methods rely on iterative refinement, are time-intensive and their running time does not only depend on the number of values to be reproduced, but on the starting values as well.
-</blockquote>
+:::
 
 #### Partially synthetic data by Cholesky decomposition
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Generating plausible synthetic values for all variables in a database may be difficult in practice. Thus, several authors have considered mixing actual and synthetic data.
 
 In Burridge (2004) a family of methods known as IPSO (Information Preserving Statistical Obfuscation) is proposed for generation of partially synthetic data. It consists of three methods that are described next.
@@ -960,23 +925,21 @@ where in the last equality we have used the property required on ${\tilde{r}}'$.
 In Mateo-Sanz, Martínez-Ballesté and Domingo-Ferrer (2004), a non-iterative method for generating entirely synthetic continuous microdata through Cholesky decomposition is proposed. This can be viewed as a special case of IPSO. In a single step of computation, the method exactly reproduces the means and the covariance matrix of the original dataset. The running time grows linearly with the number of records. Exact preservation of the original covariance matrix implies that variances and Pearson correlations are also exactly preserved in the synthetic dataset.
 
 The idea of the method is as follows. A dataset $X$ is viewed as a $n\times m$ matrix, where rows are records and columns are variables. First, the covariance matrix $C$ of $X$ is computed (covariance is defined between variables, *i.e.* between columns). Then, a random $n\times m$ matrix $A$ is generated, whose covariance matrix is the identity matrix. Next, the Cholesky decomposition of $C$ is computed, *i.e.*, an upper triangular matrix $U$ is found such that $C=U^t U$. Finally, the synthetic microdata set $Z$ is an $n\times m$ matrix $Z = A U$.
-</blockquote>
+:::
 
 #### Other partially synthetic microdata approaches
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 The multiple imputation approach described in Rubin (1993) for creating entirely synthetic microdata can be extended for partially synthetic microdata. As a result, multiply-imputed, partially synthetic datasets are obtained that contain a mix of actual and imputed (synthetic) values. The idea is to multiply-impute confidential values and release non-confidential values without perturbation. This approach was first applied to protect the US Survey of Consumer Finances (Kennickell, 1999), (Kennickell, 1999b). In Abowd and Woodcock (2001) and Abowd and Woodcock (2004), this technique was adopted to protect longitudinal linked data, that is, microdata that contain observations from two or more related time periods (successive years, etc.). Methods for valid inference on this kind of partial synthetic data were developed in Reiter (2003) and a non-parametric method was presented in Reiter (2003b) to generate multiply-imputed, partially synthetic data.
 
 Closely related to multiply imputed, partially synthetic microdata is model-based disclosure protection (Franconi and Stander, 2002), (Polettini, Franconi, and Stander, 2002). In this approach, a set of confidential continuous outcome variables is regressed on a disjoint set non-confidential variables; then the fitted values are released for the confidential variables instead of the original values.
-</blockquote>
+:::
 
 #### Muralidhar-Sarathy hybrid generator
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Hybrid data are a mixture of original data and synthetic data. Let $V$ an original data set whose attributes are numerical and fall into confidential attributes $X (=X_1\dots X_L)$ and non-confidential attributes $Y (=Y_1\dots Y_M)$. Let $V'$ be a hybrid data set obtained from $V$, whose attributes are $X (=X'_1\dots X'_L)$ (hybrid versions of $X$) and $Y$.
 
 Muralidhar and Sarathy (2008) proposed a procedure (called MS in the sequel) for generating hybrid data as follows
@@ -998,12 +961,11 @@ Thus, $\alpha$ completely specifies the procedure. The authors of MS admit that 
 1. Take $\alpha$ as a diagonal matrix with all values in the diagonal being equal. In this case, $\Sigma_{ee}$ is positive semidefinite and the value of the hybrid attribute $X_i'$ depends only on $X_i$, but not on $X_j$ for $j \neq i$. All confidential attributes $X_i$ are perturbed at the same level.
 2. Take $\alpha$ as a diagonal matrix, with values in the diagonal being not all equal. In this case, $X_i'$ still depends only on $X_i$, but not on $X_j$ for $j \neq i$. The differences are that the confidential attributes are perturbed at different levels and there is no guarantee that $\Sigma_{ee}$ is positive semidefinite, so it may be necessary to try several values of $\alpha$ until positive semidefiniteness is achieved.
 3. Taking $\alpha$ as a non-diagonal matrix does not guarantee positive semidefiniteness either and the authors of MS do not see any advantage in it, although it would be the only way to have $X_i'$ depend on several attributes among $(X_1 \dots X_L)$. With $\mathbb{R}$-Microhybrid, the dependence of $X_i'$ on the original confidential attributes is the one provided by the underlying IPSO method.
+:::
 
 #### Microaggregation-based hybrid data
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
 
 In (Domingo-Ferrer and González-Nicolás, 2009) an alternative procedure to generate hybrid data based on microaggregation was proposed. Let $V$ be an original data set consisting of $n$ records. On input an integer parameter $k \in \{1,\dots,n\}$, the procedure described in this section generates a hybrid data set $V'$. The greater $k$, the more synthetic is $V'$. Extreme cases are: i) $k$ = 1, which yields $V' = V$ (the output data are exactly the original input data); and ii) $k = n$, which yields a completely synthetic output data set $V'$.
 
@@ -1037,13 +999,12 @@ We justify here the role of parameter $k$ in Microhybrid:
 It must be noted here that, depending on the synthetic generator used, there may be a lower bound for $k$ higher than 1. For example, if using IPSO (see section 3.4.7.5) with $|X|$ confidential attributes and $|Y|$ non-confidential attributes, it turns out that $k$ must be at least $2|X|+|Y|+1$; otherwise there are not enough degrees of freedom for the generator to work.
 
 Note that the choice of parameter $k$ is more straightforward than the choice of $\alpha$ in the MS procedure above. Also, for the case of numerical microdata, Microhybrid can offer, in addition to mean and covariance exact preservation, approximate preservation of third-order and fourth-order moments, and also approximate preservation of all moments up to order four in randomly chosen subdomains of the dataset. Details are given in the above-referenced paper describing Microhybrid.
-</blockquote>
+:::
 
 #### Other hybrid microdata approaches
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 A different approach called hybrid masking was proposed in Dandekar, Domingo-Ferrer and Sebé (2002). The idea is to compute masked data as a combination of original and synthetic data. Such a combination allows better control than purely synthetic data over the individual characteristics of masked records. For hybrid masking to be feasible, a rule must be used to pair one original data record with one synthetic data record. An option suggested in Dandekar, Domingo-Ferrer and Sebé (2002) is to go through all original data records and pair each original record with the nearest synthetic record according to some distance. Once records have been paired, Dandekar, Domingo-Ferrer, and Sebé (2002) suggest two possible ways for combining one original record $X$ with one synthetic record $X_{S}$: additive combination and multiplicative combination. Additive combination yields 
 
 $$
@@ -1059,7 +1020,7 @@ $$
 where $\alpha$ is an input parameter in $[0,1]$ and $Z$ is the hybrid record. The authors present empirical results comparing the hybrid approach with rank swapping and microaggregation masking (the synthetic component of hybrid data is generated using Latin Hypercube Sampling by Dandekar, Cohen, and Kirkendall, 2002).
 
 Post-masking optimization is another approach to combining original and synthetic microdata is proposed in Sebé et al. (2002) . The idea here is to first mask an original dataset using a masking method. Then a hill-climbing optimization heuristic is run which seeks to modify the masked data to preserve the first and second-order moments of the original dataset as much as possible without increasing the disclosure risk with respect to the initial masked data. The optimization heuristic can be modified to preserve higher-order moments, but this significantly increases computation. Also, the optimization heuristic can use take as initial dataset a random dataset instead of a masked dataset; in this case, the output dataset is purely synthetic.
-</blockquote>
+:::
 
 #### Pros and cons of synthetic and hybrid microdata
 
@@ -1134,14 +1095,12 @@ During the TRS the spatial character of the data can be taken into account to so
 
 
 #### The TRS noise mechanism
-:::{.callout}
-Expert level
-:::
-<blockquote>
+:::{.callout-warning collapse=true}
+## Expert level
+
 Regardless of the table, be it count data or a magnitude table, the methodology of the TRS does not change. This is a direct consequence of the fact that the method is applied to the underlying micro data before generating any table.
 
 Consider population units $i = 1, \ldots, N$ where each unit $i$ has $p$ characteristics or variables $\{x\}_{i,j} = \mathbf{X} \in \mathbb{R}^{n\times p}$. Furthermore there exists a geographic hierarchy $\mathcal{G}^{1} \succ \mathcal{G}^{2} \succ \ldots \succ \mathcal{G}^{K}$ where each $\mathcal{G}^{k}$ is the set of disjointly split areas $g_m^{k}$, $m=1,\ldots,M_k$ and each $g_m^{k}$ is further disjointly subdivided into smaller areas $g_m^{k+1}$,$m=1,\ldots,M_{k+1}$:
-
 
 $$
 \mathcal{G}^{k} = \{g_m^{k} \mid g_i^{k}\cap g_j^{k} = \varnothing \text{ for }i\neq j \} \quad \forall k = 1,\ldots,K
@@ -1168,9 +1127,7 @@ $$
 r_{i,k} = \frac{1}{c_{i,k}}
 $$
 
-
 Having the risk values $r_{i,k}$ for each unit $i$ and each geographic hierarchy level calculated the TRS can be defined as follows:
-
 
 1. Define initial, use-case specific, parameter.
     - A global swap rate $p$ 
@@ -1192,7 +1149,6 @@ $$
 6. Iterate through the geographic hierarchies $k=2,\ldots,K$ and repeat in each of them steps 3. - 5.
 7. At the final geographic hierarchy $k=K$ if the number of already swapped units is less than $p\times N$ additional units are swapped to reach $p\times N$ overall swaps. 
 
-
 If the population units refer to people living in dwellings and the aim is to swap only full dwellings with each other and not only individuals it can be useful to set 
 
 $$
@@ -1202,7 +1158,7 @@ $$
 prior to applying the swapping procedure. In addition $\mathbf{x}_{1(q)},\ldots,\mathbf{x}_q$ should be defined such that they refer to variables holding dwelling information.
 
 The above described procedure is implemented in the R package `sdcMicro` as well as in the software `muArgus`, alongside a multitude of parameters to fine tune the procedure.
-</blockquote>
+:::
 
 #### Pros and cons of targeted record swapping
 
@@ -1219,7 +1175,3 @@ As with any method it is advised to thoroughly tune parameters to balance inform
 - The global swap rate $p$
 
 Because the noise is applied to the micro data before building any tables the additivity between inner and marginal aggregates will always be preserved.
-
-
-
-
