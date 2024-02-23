@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>microdata-08-further-examples</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="_03-microdata-08-Further-examples_files/libs/clipboard/clipboard.min.js"></script>
+<script src="_03-microdata-08-Further-examples_files/libs/quarto-html/quarto.js"></script>
+<script src="_03-microdata-08-Further-examples_files/libs/quarto-html/popper.min.js"></script>
+<script src="_03-microdata-08-Further-examples_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="_03-microdata-08-Further-examples_files/libs/quarto-html/anchor.min.js"></script>
+<link href="_03-microdata-08-Further-examples_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="_03-microdata-08-Further-examples_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="_03-microdata-08-Further-examples_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="_03-microdata-08-Further-examples_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="_03-microdata-08-Further-examples_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="further-examples" class="level2">
+<h2 class="anchored" data-anchor-id="further-examples">Further examples</h2>
+<p>In this section we provide examples based on real surveys of the various steps described in the previous sections in order to describe a possible process of microdata anonymisation in practice. The two surveys analysed are one from the social domain, the Labour Force Survey (LFS), and one on business data, the Community Innovation Survey (CIS). Notice how the complexity of the reasoning on business data may rise sharply as compared to social microdata.</p>
+<section id="labour-force-survey" class="level3">
+<h3 class="anchored" data-anchor-id="labour-force-survey">Labour Force Survey</h3>
+<p>The Labour Force Survey<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> is one of the surveys subject to Regulation EC 831/2002 on access to microdata for scientific purposes. The Labour Force Survey (LFS) is the main data source for the analysis of the labour market, employment, unemployment as well as the conditions and the level of involvement at the labour market. Some of the main observed variables are:</p>
+<ol type="1">
+<li>demographic variable: (gender, year of birth, marital status, relationship to reference person, place of residence);</li>
+<li>labour status: (labour status during the reference week, etc.);</li>
+<li>employment characteristics of the main job: (professional status, economic activity of local unit, country of place of work, etc.);</li>
+<li>education and training;</li>
+<li>income;</li>
+<li>technical item relating to the interview.</li>
+</ol>
+<p>The sampling designs in the EU-LFS<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> are extremely varied. Most NSIs employ some kind of multistage stratified random sampling design, especially those that do not have central population register available.</p>
+<p>In the document Eurostat (2004) a proposal for the anonymisation of the LFS is presented. Here we show a possible approach to disclosure scenario definition that leads to the definition of the identifying variables.</p>
+<p><em>Disclosure scenarios</em><br>
+A spontaneous identification (see Section 3.3.2) can happen when an intruder has a direct knowledge of some statistical units belonging to the sample and, whether such units assume extremely particular values for some variables or for some combinations. In the Labour Force data set there are several variables that may lead to a spontaneous identification. Some of these variables are: professional status, number of persons working at local unit, income, economic activity, etc. To avoid a possible spontaneous identification such variables are usually checked to see whether there are unusual patterns or very rare keys and, if necessary some recoding or suppression may be suggested.</p>
+<p>Also the external register scenario could be considered for the LFS data. The two external archives taken as example in the Italian study are: (i) the Electoral roll for the Individual archive scenario, and (ii) the Population register for the Household archive scenario (see Section 3.3.2). The <em>Electoral roll</em> is a register containing information on people having electoral rights, mainly demographic variables (gender, age, place of residence and birth) and sometimes variables such as, marital status, professional and/or educational information. The key variables considered as reliable for re‑identification attempts under this scenario are: gender, age and residence. Place of birth is removed from the MF and the others are not considered as their quality was not deemed sufficient for re-identification purposes. The <em>Population register</em> maybe a public register containing demographic information at individual and household level. Particularly, the set of key variables considered for the household archive scenario comprises the variables: gender, age, place of residence and marital status as individual information, the household size and parental relationship as household information.</p>
+<p><em>Risk assessment</em><br>
+The definition of the identifying variables allows for a definition of risk assessment. This can be performed as in Eurostat (2004) following the reasoning of Section 3.7 or other risk measures can be used. If the survey employs a complex multi-staged stratified random sample design possibly with calibration, then the Argus individual risk may be used especially when hierarchical information on the household need to be released.</p>
+<p><em>Protection</em><br>
+The risk assessment procedure will show the keys at risk and based on this information a strategy for microdata protection needs to be adopted. If the number of keys at risk is very large then some variables are too detailed and some global recoding is advisable in order to avoid the application of a high percentage of local suppressions. If the keys at risk are particularly concentrated on certain values of an identifying variable a local recoding of such variable could be sufficient to solve the problem.</p>
+</section>
+<section id="community-innovation-survey" class="level3">
+<h3 class="anchored" data-anchor-id="community-innovation-survey">Community Innovation Survey</h3>
+<p>The Community Innovation Survey is one of the surveys subject to Regulation CE 831/2002 on access to microdata for scientific purpose. A lot of effort has been put in anonymising this microdata set, see for example Eurostat (2006).</p>
+<p>In this section we propose a study of disclosure scenarios to define identifying variables and a risk assessment analysis to single out the records at risk for the Community Innovation Survey (CIS) based on Ichim (2006). A protection stage is then outlined giving different choices. The interested reader is referred to that paper for more information on the whole process.</p>
+<p>CIS provides information on the characteristics of innovation activity at enterprise level<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. The CIS statistical population is determined by the size of the enterprise (all enterprises with 10 or more employees) and its principal economic activity.</p>
+<p><em>Disclosure scenario</em><br>
+Since generally business registers are publicly available, it is supposed that an intruder could use such information to identify an enterprise. Public business registers report general information on name, address, turnover (TURN), number of employees (EMP), principal activity of an enterprise (NACE), region (NUTS). Therefore, the identifying variables of the hypothesized disclosure scenario are: economic classification (NACE), region (NUTS), number of employees (EMP) and turnover (TURN). The information content of these variables must be somehow reduced in order to increase the intruder uncertainty. An initial coding performed on such variables was: NACE at 2 digits, Nuts recoded at national level (no regional breakdown) and three enterprise size classes.</p>
+<p>Additionally, in the CIS data set there are several confidential variables that may be subject to spontaneous identification. Some examples are total expenditure on innovation (RTOT), exports, number of persons involved in intra RD, etc. Such variables are never published in an external register, but they can assume extremely particular values on some units. Mere additional information would then clearly identify an enterprise. Special attention must be paid on these variables. A check performed by the <strong>survey experts</strong> is generally suggested. These assessments must be performed with respect to each combination of categorical identifying variables to be released. The analysis by the survey expert suggested to remove from the data to be released the variable Country of head office. With the given details on NACE, size class and NUTS all the other continuous variables were not deemed sufficiently spread to lead to a spontaneous identification of a unit. For this reason it maybe suggested to let them unchanged.</p>
+<p><em>Risk assessment</em><br>
+A unit is considered at risk if it is “recognisable” either in the external register scenario or in the spontaneous identification scenario. It is assumed that an intruder may confuse a unit U with others when there is a sufficient number of units in a well-defined (and not too large) neighbourhood of U. The anonymisation proposal developed in Ichim (2006) is based on the idea that similarity based on clusters and confusion both express the same concept, although in different frameworks. : When a unit belongs to a cluster, it belongs to a high density (sufficient number of close units) subset of data. Hence the unit may be considered as being confused with others. The algorithms taking into account these two features (distance from each other and number of neighbours) are called density based algorithms and Ichim (2006) uses one of these algorithms to identify isolated units i.e.&nbsp;units at risk with respect to the identifying variables.</p>
+<p><em>Protection by perturbation</em><br>
+Once the units at risk have been identified, protection should be applied. Several different proposals in the field of data perturbation methods are possible. The proposal by Eurostat protection is achieved by the application to the main continuous variables in the data set of individual ranking and some local suppression of particular values. This microaggregation would be applied to the whole file irrespective to different economic classifications or size classes and without taking into account possible relationships between variables (for example turnover needs to be greater than export or expenditures). This strategy is perfectly acceptable if a slight modification of the data is deemed sufficient.</p>
+<p>An alternative could be to apply a perturbation only to these records at risk (mainly the large size enterprises in single NACE 2 digits) whereas the rest of the file is released unchanged. Ichim (2006) suggests different perturbations of the points at risk whereas these are in the middle of the distribution of points (nearest cluster imputation) or if they are in the tail (microaggregation). A further adjustment is proposed in order to preserve turnover totals for each combination of categorical identifying variables. This is deemed important by users who need to compare results with published tables. A study of the information loss of this approach is presented in Ichim (2006).</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<p>Eurostat (2004). <em>Proposal on anonymised LFS microdata.</em> CSC 2004/B5/ item 2.2.2.</p>
+<p>Eurostat (2006). <em>The CIS4. An amended version of the micro-data anonymisation method</em>. Doc. Eurostat/F4/STI/CIS/M2/8.</p>
+<p>Ichim, D. (2006). <em>Microdata anonymisation of the Community Innovation Survey: a density based clustering approach for risk assessment.</em> Contribution Istat. Shortly available from <a href="http://www.istat.it/dati/pubbsci/contributi/"><u>http://www.istat.it/dati/pubbsci/contributi/</u></a></p>
+<p>Trottini, M., Franconi, L. and Polettini, S. (2006). <em>Italian Household Expenditure Survey: A proposal for Data Dissemination.</em> In Domingo Ferrer, J and Franconi, L. (eds) Privacy in Statistical Databases, CENEX-SDC Project International Conference, Rome, Italy, December 2006, 318-333.</p>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>The European Union Labour Force Survey (EU LFS)? is conducted in the 25 Member States of the European Union and 3 countries of the European Free Trade Association (EFTA) in accordance with Council Regulation (EEC) No.&nbsp;577/98 of 9 March 98: <a href="http://epp.eurostat.ec.europa.eu/portal/page?_pageid=1913,47567825,1913_47568351&amp;_dad=portal&amp;_schema=PORTAL">http://epp.eurostat.ec.europa.eu/portal/page?_pageid=1913,47567825,1913_47568351&amp;_dad=portal&amp;_schema=PORTAL</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="http://epp.eurostat.ec.europa.eu/cache/ITY_OFFPUB/KS-CC-06-007/EN/KS-CC-06-007-EN.PDF">http://epp.eurostat.ec.europa.eu/cache/ITY_OFFPUB/KS-CC-06-007/EN/KS-CC-06-007-EN.PDF</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Some of the main observed variables in the CIS3 are : principal economic activity, geographical information, number of employees in 1998 and 2000, turnover in 1998 and 2000, exports in 1998 and 2000, gross investment in tangible goods: 2000, number of valid patents at end of 2000, number of employees with higher education (in line with the number of employees in 2000), expenditure in intramural RD (in line with the turnover in 2000), expenditure in extramural RD (in line with the turnover in 2000), expenditure in acquisition of machinery (in line with the turnover in 2000), expenditure in other external knowledge (in line with the turnover in 2000), expenditure in training, market (in line with the turnover in 2000), total innovation expenditure (in line with the turnover in 2000), number of persons involved in intra RD (in line with the number of employees in 2000).<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

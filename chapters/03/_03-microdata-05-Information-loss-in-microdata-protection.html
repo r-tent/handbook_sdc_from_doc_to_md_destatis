@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>microdata-05-information-loss-in-microdata-protection</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="_03-microdata-05-Information-loss-in-microdata-protection_files/libs/clipboard/clipboard.min.js"></script>
+<script src="_03-microdata-05-Information-loss-in-microdata-protection_files/libs/quarto-html/quarto.js"></script>
+<script src="_03-microdata-05-Information-loss-in-microdata-protection_files/libs/quarto-html/popper.min.js"></script>
+<script src="_03-microdata-05-Information-loss-in-microdata-protection_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="_03-microdata-05-Information-loss-in-microdata-protection_files/libs/quarto-html/anchor.min.js"></script>
+<link href="_03-microdata-05-Information-loss-in-microdata-protection_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="_03-microdata-05-Information-loss-in-microdata-protection_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="_03-microdata-05-Information-loss-in-microdata-protection_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="_03-microdata-05-Information-loss-in-microdata-protection_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="_03-microdata-05-Information-loss-in-microdata-protection_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="information-loss-in-microdata-protection" class="level2">
+<h2 class="anchored" data-anchor-id="information-loss-in-microdata-protection">Information loss in microdata protection</h2>
+<section id="introduction" class="level3">
+<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<p>A strict evaluation of information loss must be based on the data uses to be supported by the protected data. The greater the differences between the results obtained on original and protected data for those uses, the higher the loss of information. However, very often microdata protection cannot be performed in a data use specific manner, for the following reasons:</p>
+<p>• Potential data uses are very diverse and it may be even hard to identify them all at the moment of data release by the data protector.</p>
+<p>• Even if all data uses can be identified, issuing several versions of the same original dataset so that the <span class="math inline">\(i\)</span>-th version has an information loss optimized for the <span class="math inline">\(i\)</span>-th data use may result in unexpected disclosure.</p>
+<p>Since that data often must be protected with no specific data use in mind, generic information loss measures are desirable to guide the data protector in assessing how much harm is being inflicted to the data by a particular SDC technique.</p>
+<p>Defining what a generic information loss measure is can be a tricky issue. Roughly speaking, it should capture the amount of information loss for a reasonable range of data uses. We will say there is little information loss if the protected dataset is analytically valid and interesting according to the following definitions by Winkler (1998):</p>
+<ul>
+<li>A protected microdata set is an <em>analytically valid</em> microdata set if it approximately preserves the following with respect to the original data (some conditions apply only to continuous variables):
+<ol type="1">
+<li>Means and covariances on a small set of subdomains (subsets of records and/or variables)</li>
+<li>Marginal values for a few tabulations of the data</li>
+<li>At least one distributional characteristic</li>
+</ol></li>
+<li>A microdata set is an <em>analytically interesting microdata set,</em> if six variables on important subdomains are provided that can be validly analyzed.<br>
+More precise conditions of analytical validity and analytical interest cannot be stated without taking specific data uses into account. As imprecise as they may be, the above definitions suggest some possible measures:</li>
+<li>Compare raw records in the original and the protected dataset. The more similar the SDC method to the identity function, the less the impact (but the higher the disclosure risk! ). This requires pairing records in the original dataset and records in the protected dataset. For masking methods, each record in the protected dataset is naturally paired to the record in the original dataset it originates from. For synthetic protected datasets, pairing is more artificial. In&nbsp;Dandekar, Domingo-Ferrer and Sebé (2002) we proposed to pair a synthetic record to the nearest original record according to some distance.</li>
+<li>Compare some statistics computed on the original and the protected datasets. The above definitions list some statistics which should be preserved as much as possible by an SDC method.</li>
+</ul>
+</section>
+<section id="information-loss-measures-for-continuous-data" class="level3">
+<h3 class="anchored" data-anchor-id="information-loss-measures-for-continuous-data">Information loss measures for continuous data</h3>
+<p>Assume a microdata set with <span class="math inline">\(n\)</span> individuals (records) <span class="math inline">\(I_{1},I_{2},\cdots,I_{n}\)</span> and <span class="math inline">\(p\)</span> continuous variables <span class="math inline">\(Z_{1},Z_{2},\cdots,Z_{p}\)</span>. Let <span class="math inline">\(X\)</span> be the matrix representing the original microdata set (rows are records and columns are variables). Let <span class="math inline">\(X^{'}\)</span> be the matrix representing the protected microdata set. The following tools are useful to characterize the information contained in the dataset:</p>
+<ul>
+<li>Covariance matrices <span class="math inline">\(V\)</span> (on <span class="math inline">\(X\)</span>) and <span class="math inline">\(V^{'}\)</span> (on <span class="math inline">\(X^{'}\)</span>).</li>
+<li>Correlation matrices <span class="math inline">\(R\)</span> and <span class="math inline">\(R^{'}\)</span>.</li>
+<li>Correlation matrices <span class="math inline">\(RF\)</span> and <span class="math inline">\({RF}^{'}\)</span> between the <span class="math inline">\(p\)</span> variables and the <span class="math inline">\(p\)</span> factors principal components <span class="math inline">\({PC}_{1},{PC}_{2},\cdots,{PC}_{p}\)</span> obtained through principal components analysis.</li>
+<li>Communality between each of the <span class="math inline">\(p\)</span> variables and the first principal component <span class="math inline">\({PC}_{1}\)</span> (or other principal components <span class="math inline">\({PC}_{i}\)</span>’s). Communality is the percent of each variable that is explained by <span class="math inline">\({PC}_{1}\)</span> (or <span class="math inline">\({PC}_{i}\)</span>). Let <span class="math inline">\(C\)</span> be the vector of communalities for <span class="math inline">\(X\)</span> and <span class="math inline">\(C^{'}\)</span> the corresponding vector for <span class="math inline">\(X^{'}\)</span>.</li>
+<li>Matrices <span class="math inline">\(F\)</span> and <span class="math inline">\(F^{'}\)</span>containing the loadings of each variable in <span class="math inline">\(X\)</span> on each principal component. The <span class="math inline">\(i\)</span>-th variable in <span class="math inline">\(X\)</span> can be expressed as a linear combination of the principal components plus a residual variation, where the <span class="math inline">\(j\)</span>-th principal component is multiplied by the loading in <span class="math inline">\(F\)</span> relating the <span class="math inline">\(i\)</span>-th variable and the <span class="math inline">\(j\)</span>-th principal component (Chatfield and Collins, 1980]. <span class="math inline">\(F^{'}\)</span>is the corresponding matrix for <span class="math inline">\(X^{'}\)</span>.</li>
+</ul>
+<p>There does not seem to be a single quantitative measure which completely reflects those structural differences. Therefore, we proposed in Domingo-Ferrer, Mateo-Sanz, and Torra (2001) and Domingo-Ferrer and Torra (2001) to measure information loss through the discrepancies between matrices <span class="math inline">\(X\)</span>, <span class="math inline">\(V\)</span>, <span class="math inline">\(R\)</span>, <span class="math inline">\({RF}\)</span>, <span class="math inline">\(C\)</span> and <span class="math inline">\(F\)</span> obtained on the original data and the corresponding <span class="math inline">\(X^{'}\)</span>, <span class="math inline">\(V^{'}\)</span>, <span class="math inline">\(R^{'}\)</span>, <span class="math inline">\({RF}^{'}\)</span>, <span class="math inline">\(C^{'}\)</span> and <span class="math inline">\(F^{'}\)</span> obtained on the protected dataset. In particular, discrepancy between correlations is related to the information loss for data uses such as regressions and cross tabulations.</p>
+<p>Matrix discrepancy can be measured in at least three ways:</p>
+<p><strong>Mean square error</strong> Sum of squared componentwise differences between pairs of matrices, divided by the number of cells in either matrix.</p>
+<p><strong>Mean absolute error</strong> Sum of absolute componentwise differences between pairs of matrices, divided by the number of cells in either matrix.</p>
+<p><strong>Mean variation</strong> Sum of absolute percent variation of components in the matrix computed on protected data with respect to components in the matrix computed on original data, divided by the number of cells in either matrix. This approach has the advantage of not being affected by scale changes of variables.</p>
+<p><a href="#tbl-loss-information">Table&nbsp;1</a> summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, <span class="math inline">\(p\)</span> is the number of variables, <span class="math inline">\(n\)</span> the number of records, and components of matrices are represented by the corresponding lowercase letters (<em>e.g.</em> <span class="math inline">\(x_{\text{ij}}\)</span> is a component of matrix <span class="math inline">\(X\)</span>). Regarding <span class="math inline">\(X - X^{'}\)</span> measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant <span class="math inline">\(\overline{X^{\phantom{'}}} - \overline{X^{'}}\)</span>). Similarly, for <span class="math inline">\(V - V^{'}\)</span>measures, it would also be sensible to use them to compare only the variances of the variables, <em>i.e.</em> to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant <span class="math inline">\(S - S^{'}\)</span>).</p>
+<div id="tbl-loss-information" class="anchored">
+<table class="table">
+<caption>Table&nbsp;1: Information loss measures for continuous microdata</caption>
+<colgroup>
+<col style="width: 3%">
+<col style="width: 29%">
+<col style="width: 29%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Mean square error</th>
+<th style="text-align: center;">Mean abs. error</th>
+<th style="text-align: center;">Mena variation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(X-X'\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p}\sum\limits_{i=1}^{n}(x_{ij} - x_{ij}')^2}{np}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p}\sum\limits_{i=1}^{n}|x_{ij} - x_{ij}'|}{np}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p}\sum\limits_{i=1}^{n}\frac{|x_{ij} - x_{ij}'|}{|x_{ij}|}}{np}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(V-V'\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}(v_{ij} - v_{ij}')^2}{p(p+1)/2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}|v_{ij} - v_{ij}'|}{p(p+1)/2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}\frac{|v_{ij} - v_{ij}'|}{|v_{ij}|}}{p(p+1)/2}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(R-R'\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}(r_{ij} - r_{ij}')^2}{p(p-1)/2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}|r_{ij} - r_{ij}'|}{p(p-1)/2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}\frac{|r_{ij} - r_{ij}'|}{|r_{ij}|}}{p(p-1)/2}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(RF-RF'\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}(rf_{ij} - rf_{ij}')^2}{p^2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}|rf_{ij} - rf_{ij}'|}{p^2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p} w_j \sum\limits_{i=1}^{p}\frac{|rf_{ij} - rf_{ij}'|}{|rf_{ij}|}}{p^2}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(C-C'\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{i=1}^{p}(c_i - c_i')^2}{p}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{i=1}^{p}|c_i - c_i'|}{p}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{i=1}^{p}\frac{|c_i - c_{i}'|}{|c_i|}}{p}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(F-F'\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}(f_{ij} - f_{ij}')^2}{p^2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}|f_{ij} - f_{ij}'|}{p^2}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\frac{\sum\limits_{j=1}^{p} w_j \sum\limits_{i=1}^{p}\frac{|f_{ij} - f_{ij}'|}{|f_{ij}|}}{p^2}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In&nbsp;Yancey, Winkler and Creecy (2002), it is observed that dividing by <span class="math inline">\(x_{\text{ij}}\)</span> causes the <span class="math inline">\(X - X^{'}\)</span>mean variation to rise sharply when the original value <span class="math inline">\(x_{\text{ij}}\)</span> is close to 0. This dependency on the particular original value being undesirable in an information loss measure, Yancey, Winkler and Creecy (2002) propose to replace the mean variation of <span class="math inline">\(X - X^{'}\)</span> by the more stable measure <span class="math display">\[
+  \frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x'_{ij}|}{\sqrt{2} S_j}
+\]</span></p>
+<p>where <span class="math inline">\(S_{j}\)</span> is the standard deviation of the <span class="math inline">\(j\)</span>-th variable in the original dataset.</p>
+<p>Trottini (2003) argues that, since information loss is to be traded off for disclosure risk and the latter is bounded —there is no risk higher than 100%—, upper bounds should be enforced for information loss measures. In practice, the proposal in Trottini (2003) is to limit those measures in <a href="#tbl-loss-information">Table&nbsp;1</a> based on the mean variation to a predefined maximum value.</p>
+</section>
+<section id="information-loss-measures-for-categorical-data" class="level3">
+<h3 class="anchored" data-anchor-id="information-loss-measures-for-categorical-data">Information loss measures for categorical data</h3>
+<p>Straightforward computation of measures in <a href="#tbl-loss-information">Table&nbsp;1</a> on categorical data is not possible. The following alternatives are considered in Domingo-Ferrer and Torra (2001):</p>
+<ul>
+<li>Direct comparison of categorical values</li>
+<li>Comparison of contingency tables</li>
+<li>Entropy-based measures</li>
+</ul>
+<section id="direct-comparison-of-categorical-values" class="level4">
+<h4 class="anchored" data-anchor-id="direct-comparison-of-categorical-values">Direct comparison of categorical values</h4>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Expert level</p>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Comparison of matrices <span class="math inline">\(X\)</span> and <span class="math inline">\(X'\)</span> for categorical data requires the definition of a distance for categorical variables. Definitions consider only the distances between pairs of categories that can appear when comparing an original record and its protected version (see discussion above on pairing original and protected records).</p>
+<p>For a nominal variable <span class="math inline">\(V\)</span> (a categorical variable taking values over an unordered set), the only permitted operation is comparison for equality. This leads to the following distance definition: <span class="math display">\[
+d_V(c,c')=\begin{cases}
+0, &amp; \text{if }c=c' \\
+1, &amp; \text{if } c \neq c'
+\end{cases}
+\]</span></p>
+<p>where <span class="math inline">\(c\)</span> is a category in an original record and <span class="math inline">\(c'\)</span> is the category which has replaced <span class="math inline">\(c\)</span> in the corresponding protected record.</p>
+<p>For an ordinal variable <span class="math inline">\(V\)</span> (a categorical variable taking values over a totally ordered set), let <span class="math inline">\(\leq_V\)</span> be the total order operator over the range <span class="math inline">\(D(V)\)</span> of <span class="math inline">\(V\)</span>. Define the distance between categories <span class="math inline">\(c\)</span> and <span class="math inline">\(c'\)</span> as the number of categories between the minimum and the maximum of <span class="math inline">\(c\)</span> and <span class="math inline">\(c'\)</span> divided by the cardinality of the range:</p>
+<span class="math display">\[
+d_V(c,c') = \frac{\left| c'': \min(c,c') \leq c'' &lt; \max(c,c') \right|}{\left| D(V) \right|}
+\]</span> where <span class="math inline">\(|\cdot|\)</span> stands for the cardinality operator.
+</blockquote>
+</section>
+<section id="comparison-of-contingency-tables" class="level4">
+<h4 class="anchored" data-anchor-id="comparison-of-contingency-tables">Comparison of contingency tables</h4>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Expert level</p>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets <span class="math inline">\(F\)</span> and <span class="math inline">\(G\)</span> (the original and the protected set, respectively) and their corresponding <span class="math inline">\(t\)</span>-dimensional contingency tables for <span class="math inline">\(t \leq K\)</span>, we can define a contingency table-based information loss measure <span class="math inline">\(\text{CTBIL}\)</span> for a subset <span class="math inline">\(W\)</span> of variables as follows:</p>
+<p><span class="math display">\[
+CTBIL(F,G; W,K) = \sum\limits_{ \{ V_{ji} \cdots V_{jt} \} f\subseteq W \atop | \{ V_{ji} \cdots V_{jt} \} | \leq K} \sum\limits_{i_1 \cdots i_t} | x^F_{i_1 \cdots i_t} - x^G_{i_1 \cdots i_t} | \qquad \text{(3.4.3.1)}
+\]</span></p>
+<p>where <span class="math inline">\(x_{\text{subscripts}}^{\text{file}}\)</span> is the entry of the contingency table of <span class="math inline">\(\text{file}\)</span> at position given by <span class="math inline">\(\text{subscripts}\)</span>.</p>
+<p>Because the number of contingency tables to be considered depends on the number of variables <span class="math inline">\(|W|\)</span>, the number of categories for each variable, and the dimension <span class="math inline">\(K\)</span>, a normalized version of Expression (3.4.3.1) may be desirable. This can be obtained by dividing Expression (3.4.2.1) by the total number of cells in all considered tables.</p>
+Distance between contingency tables generalizes some of the information loss measures used in the literature. For example, the μ‑ARGUS software (Hundepool et al.&nbsp;2005) measures information loss for local suppression by counting the number of suppressions. The distance between two contingency tables of dimension one returns twice the number of suppressions. This is because, when category <span class="math inline">\(A\)</span> is suppressed for one record, two entries of the contingency table are changed: the count of records with category <span class="math inline">\(A\)</span> decreases and the count of records with the “missing” category increases.
+</blockquote>
+</section>
+<section id="entropy-based-measures" class="level4">
+<h4 class="anchored" data-anchor-id="entropy-based-measures">Entropy-based measures</h4>
+<div class="callout callout-style-simple callout-none no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Expert level</p>
+</div>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>In De Waal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw, (1998) and Willenborg and De Waal (2001), the use of Shannon’s entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.</p>
+<p>As noted earlier, PRAM is a method that generalizes noise addition, suppression and recoding methods. Therefore, our description of the use of entropy will be limited to PRAM.</p>
+<p>Let <span class="math inline">\(V\)</span> be a variable in the original dataset and <span class="math inline">\(V'\)</span> be the corresponding variable in the PRAM-protected dataset. Let <span class="math inline">\(P_{V,V'} = \left\{ p\left( V' = j \mid V = i \right) \right\}\)</span> be the PRAM Markov matrix. Then, the conditional uncertainty of <span class="math inline">\(V\)</span> given that <span class="math inline">\(V' = j\)</span> is:</p>
+<p><span class="math display">\[
+H\left( V \mid V' = j \right) = - \sum\limits_{i = 1}^{n}{p\left( V = i \mid V' = j \right)\log p}\left( V = i \mid V' = j \right) \qquad \text{(3.4.3.2)}
+\]</span></p>
+<p>The probabilities in Expression (3.4.3.2) can be derived from <span class="math inline">\(P_{V,V'}\)</span> using Bayes’s formula. Finally, the entropy-based information loss measure <span class="math inline">\(EBIL\)</span> is obtained by accumulating Expression 3.4.3.2 for all individuals <span class="math inline">\(r\)</span> in the protected dataset <span class="math inline">\(G\)</span></p>
+<p><span class="math display">\[
+EBIL\left( P_{V,V'},G \right) = \sum\limits_{r \in G}^{}{H\left( V \mid V' = j_{r} \right)}
+\]</span></p>
+<p>where <span class="math inline">\(j_{r}\)</span> is the value taken by <span class="math inline">\(V'\)</span> in record <span class="math inline">\(r\)</span>.</p>
+<p>The above measure can be generalized for multivariate datasets if <span class="math inline">\(V\)</span> and <span class="math inline">\(V'\)</span> are taken as being multidimensional variables (<em>i.e.</em> representing several one-dimensional variables).</p>
+While using entropy to measure information loss is attractive from a theoretical point of view, its interpretation in terms of data utility loss is less obvious than for the previously discussed measures.
+</blockquote>
+</section>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
+<p>Chatfield, C., and Collins, A. J., (1980). <em>Introduction to Multivariate Analysis</em>, Chapman and Hall, London, 1980.</p>
+<p>Dandekar, R., Domingo-Ferrer, J., and Sebé, F., (2002). <em>LHS-based hybrid microdata vs.&nbsp;rank swapping and microaggregation for numeric microdata protection.</em> In J.&nbsp;Domingo-Ferrer, editor, Inference Control in Statistical Databases, volume 2316 of LNCS, pages 153–162, Berlin Heidelberg, 2002. Springer.</p>
+<p>De Waal, A. G., and Willenborg, L.&nbsp;C. R.&nbsp;J. (1999). <em>Information loss through global recoding and local suppression.</em> Netherlands Official Statistics, 14:17–20, 1999. special issue on SDC.</p>
+<p>Domingo-Ferrer, J., Mateo-Sanz, J. M., and Torra, V. (2001). <em>Comparing sdc methods for microdata on the basis of information loss and disclosure risk</em>. In Pre-proceedings of ETK-NTTS’2001 (vol.&nbsp;2), pages 807–826, Luxemburg, 2001. Eurostat.</p>
+<p>Domingo-Ferrer, J., and Torra, V. (2001). <em>Disclosure protection methods and information loss for microdata.</em> In P.&nbsp;Doyle, J.&nbsp;I. Lane, J.&nbsp;J.&nbsp;M. Theeuwes, and L.&nbsp;Zayatz, editors, Confidentiality, Disclosure and Data Access: Theory and Practical Applications for Statistical Agencies, pages 91–110, Amsterdam, 2001. North-Holland. <a href="http://vneumann.etse.urv.es/publications/bcpi"><u>http://vneumann.etse.urv.es/publications/bcpi</u></a>.</p>
+<p>Hundepool, A., Van de&nbsp;Wetering, A., Ramaswamy, R., Franconi, L., Capobianchi, A., De Wolf, P.-P., Domingo-Ferrer, J., Torra, V., Brand, R:, and Giessing, S. (2005). <em>µ-ARGUS version 4.0 Software and User’s Manual</em>. Statistics Netherlands, Voorburg NL, may 2005. <a href="https://research.cbs.nl/casc/deliv/MUmanual4.0.pdf"><u>https://research.cbs.nl/casc</u></a>.</p>
+<p>Kooiman, P. L., Willenborg, L. and Gouweleeuw, J. (1998). <em>PRAM: A method for disclosure limitation of microdata.</em> Technical report, Statistics Netherlands (Voorburg, NL), 1998.</p>
+<p>Trottini, M. (2003) . <em>Decision models for data disclosure limitation</em>. PhD thesis, Carnegie Mellon University, 2003. <a href="http://www.niss.org/dgii/TR/Thesis-Trottini-final.pdf"><u>http://www.niss.org/dgii/TR/Thesis-Trottini-final.pdf</u></a>.</p>
+<p>Willenborg, L., and De Waal, T., (2001). <em>Elements of Statistical Disclosure Control</em>. Springer-Verlag, New York, 2001.</p>
+<p>Winkler, W. E. (1998). <em>Re-identification methods for evaluating the confidentiality of analytically valid microdata.</em> In J.&nbsp;Domingo-Ferrer, editor, Statistical Data Protection, Luxemburg, 1999. Office for Official Publications of the European Communities. (Journal version in Research in Official Statistics, vol.&nbsp;1, no. 2, pp.&nbsp;50-69, 1998).</p>
+<p>Winkler, W. E. (2004). <em>Re-identification methods for masked microdata.</em> In J.&nbsp;Domingo-Ferrer and V.&nbsp;Torra, editors, Privacy in Statistical Databases, volume 3050 of LNCS, pages 216–230, Berlin Heidelberg, 2004. Springer.</p>
+<p>Yancey, W. E., Winkler, W. E., and Creecy, R. H. (2002). <em>Disclosure risk assessment in perturbative microdata protection.</em> In J.&nbsp;Domingo-Ferrer, editor, Inference Control in Statistical Databases, volume 2316 of LNCS, pages 135–152, Berlin Heidelberg, 2002. Springer.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
