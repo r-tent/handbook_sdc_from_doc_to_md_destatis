@@ -78,7 +78,7 @@ The program criteria developed are sent in the form of a letter to the researche
 
 From the viewpoint of the research data centres, the individual items are maximum requirements for developing perfect program codes. If the criteria are not entirely met in some cases, it is up to the discretion of the RDC staff member to decide to what extent it is possible for him to check the results. As the research projects are handled individually and personally, interpreting the rules to the users' benefit is rather liberal. If, however, a project is getting very difficult to follow, the research data centres may refer to the rules that must be adhered to.
 
-#### Programming example in SPSS [#sec-programmingSPSS]
+#### Programming example in SPSS {#sec-programmingSPSS}
 
 ```
 ***************************************************************************.
