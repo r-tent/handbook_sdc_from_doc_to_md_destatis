@@ -4,9 +4,9 @@
 
 {{< include chapters/04/_04-magnitude-tabular-data-02-Disclosure-Control-Concepts-for-Magnitude-Tabular-Data.qmd >}}
 
-{{< include chapters/04/_04-magnitude-tabular-data-03-The-$\tau$‑ARGUS-Implementation-of-Cell-Suppression.qmd >}}
+{{< include chapters/04/_04-magnitude-tabular-data-03-The-tau‑ARGUS-Implementation-of-Cell-Suppression.qmd >}}
 
-{{< include chapters/04/_04-magnitude-tabular-data-04-Methodological-concepts-of-secondary-cell-suppression-algorithms-in-$\tau$‑ARGUS.qmd >}}
+{{< include chapters/04/_04-magnitude-tabular-data-04-Methodological-concepts-of-secondary-cell-suppression-algorithms-in-tau‑ARGUS.qmd >}}
 
 {{< include chapters/04/_04-magnitude-tabular-data-05-Controlled-Tabular-AdjustmentControlled-Tabular-Adjustment.qmd >}}
 
