@@ -201,7 +201,7 @@ Consider to apply a threshold $r^{h^{\ast}}$ on the household risk. In order for
 
 This is clearly an approach possibly leading to overprotection, as we check whether a *bound* on the household risk is below a given threshold.
 
-It is important to remark that the threshold $δ_g$ just defined depends on the size of the household to which individual $i$ belongs. This implies that for two individuals that are classified in the same key $k$ (and therefore have the same individual risk $r_{k}$), but belong to different households with different sizes, it might happen that one is classified safe, while the other unsafe (unless the household size is included in the set of identifying variables).
+It is important to remark that the threshold $\delta_g$ just defined depends on the size of the household to which individual $i$ belongs. This implies that for two individuals that are classified in the same key $k$ (and therefore have the same individual risk $r_{k}$), but belong to different households with different sizes, it might happen that one is classified safe, while the other unsafe (unless the household size is included in the set of identifying variables).
 
 In practice, denoting by $g(i)$ the household to which record $i$ belongs, the approach pursued so far consists in turning a threshold $r^{h^{\ast}}$ on the household risk into a *vector of thresholds* on the *individual risks* $r_{i} = 1,\ldots,n$:
 
