@@ -4,5 +4,6 @@
 .Ruserdata
 /.quarto/
 _book/
+/_site/
 _bookdown_files
 README_files
