@@ -1,4 +1,4 @@
-# Glossary
+# Glossary {.unnumbered}
 
 In 2005 Mark Elliot (University of Manchester), Anco Hundepool (Statistics Netherlands), Eric Schulte Nordholt (Statistics Netherlands), Jean-Louis Tambay (Statistics Canada) and Thomas Wende (Destatis, Germany) took the initiative to compile a Glossary on Statistical Disclosure Control. A first version of the Glossary was presented at the UNECE worksession on SDC in Geneva in November 2005. This glossary can also be found via [[https://research.cbs.nl/casc/glossary.htm]{.underline}](https://research.cbs.nl/casc/glossary.htm).
 
