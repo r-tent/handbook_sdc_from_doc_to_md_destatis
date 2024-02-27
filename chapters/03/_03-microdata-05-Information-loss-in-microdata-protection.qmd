@@ -110,7 +110,7 @@ where $x_{\text{subscripts}}^{\text{file}}$ is the entry of the contingency tabl
 
 Because the number of contingency tables to be considered depends on the number of variables $|W|$, the number of categories for each variable, and the dimension $K$, a normalized version of Expression (3.4.3.1) may be desirable. This can be obtained by dividing Expression (3.4.2.1) by the total number of cells in all considered tables.
 
-Distance between contingency tables generalizes some of the information loss measures used in the literature. For example, the μ‑ARGUS software (Hundepool et al. 2005) measures information loss for local suppression by counting the number of suppressions. The distance between two contingency tables of dimension one returns twice the number of suppressions. This is because, when category $A$ is suppressed for one record, two entries of the contingency table are changed: the count of records with category $A$ decreases and the count of records with the "missing" category increases.
+Distance between contingency tables generalizes some of the information loss measures used in the literature. For example, the $\mu$‑ARGUS software (Hundepool et al. 2005) measures information loss for local suppression by counting the number of suppressions. The distance between two contingency tables of dimension one returns twice the number of suppressions. This is because, when category $A$ is suppressed for one record, two entries of the contingency table are changed: the count of records with category $A$ decreases and the count of records with the "missing" category increases.
 :::
 
 #### Entropy-based measures
@@ -152,7 +152,7 @@ Domingo-Ferrer, J., Mateo-Sanz, J. M., and Torra, V. (2001). *Comparing sdc meth
 
 Domingo-Ferrer, J., and Torra, V. (2001). *Disclosure protection methods and information loss for microdata.* In P. Doyle, J. I. Lane, J. J. M. Theeuwes, and L. Zayatz, editors, Confidentiality, Disclosure and Data Access: Theory and Practical Applications for Statistical Agencies, pages 91--110, Amsterdam, 2001. North-Holland. [[http://vneumann.etse.urv.es/publications/bcpi]{.underline}](http://vneumann.etse.urv.es/publications/bcpi).
 
-Hundepool, A., Van de Wetering, A., Ramaswamy, R., Franconi, L., Capobianchi, A., De Wolf, P.-P., Domingo-Ferrer, J., Torra, V., Brand, R:, and Giessing, S. (2005). *µ-ARGUS version 4.0 Software and User's Manual*. Statistics Netherlands, Voorburg NL, may 2005. [[https://research.cbs.nl/casc]{.underline}](https://research.cbs.nl/casc/deliv/MUmanual4.0.pdf).
+Hundepool, A., Van de Wetering, A., Ramaswamy, R., Franconi, L., Capobianchi, A., De Wolf, P.-P., Domingo-Ferrer, J., Torra, V., Brand, R:, and Giessing, S. (2005). *$\mu$-ARGUS version 4.0 Software and User's Manual*. Statistics Netherlands, Voorburg NL, may 2005. [[https://research.cbs.nl/casc]{.underline}](https://research.cbs.nl/casc/deliv/MUmanual4.0.pdf).
 
 Kooiman, P. L., Willenborg, L. and Gouweleeuw, J. (1998). *PRAM: A method for disclosure limitation of microdata.* Technical report, Statistics Netherlands (Voorburg, NL), 1998.
 
