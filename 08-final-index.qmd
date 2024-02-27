@@ -314,7 +314,7 @@ multiply-imputed, partially synthetic datasets 87
 
 Muralidhar-Sarathy hybrid generator 87
 
-μ−ARGUS 33, 39, 60, 102, 104
+$\mu$−ARGUS 33, 39, 60, 102, 104
 
 N
 
