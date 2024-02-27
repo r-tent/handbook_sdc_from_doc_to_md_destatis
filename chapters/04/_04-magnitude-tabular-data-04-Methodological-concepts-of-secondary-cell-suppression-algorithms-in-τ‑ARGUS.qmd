@@ -1,6 +1,6 @@
-## Methodological concepts of secondary cell suppression algorithms in τ‑ARGUS
+## Methodological concepts of secondary cell suppression algorithms in $\tau$‑ARGUS
 
-Within this section we briefly explain the methodological concepts of the secondary cell suppression algorithms offered by τ-ARGUS.
+Within this section we briefly explain the methodological concepts of the secondary cell suppression algorithms offered by $\tau$-ARGUS.
 
 ### Optimal {#optimal}
 
@@ -54,7 +54,7 @@ However the current implementation of the network flows do (not yet) protect aga
 
 ### Hypercube {#hypercube}
 
-In order to ensure tractability also of big applications, τ−ARGUS interfaces with the GHM*ITER* hypercube method of R. D. Repsilber of the Landesamt für Datenverarbeitung und Statistik in Nordrhein-Westfalen/Germany, offering a quick heuristic solution. The method has been described in depth in (Repsilber, 1994), or (Repsilber, 2002). For a briefer description see (Giessing and Repsilber, 2002).
+In order to ensure tractability also of big applications, $\tau$−ARGUS interfaces with the GHM*ITER* hypercube method of R. D. Repsilber of the Landesamt für Datenverarbeitung und Statistik in Nordrhein-Westfalen/Germany, offering a quick heuristic solution. The method has been described in depth in (Repsilber, 1994), or (Repsilber, 2002). For a briefer description see (Giessing and Repsilber, 2002).
 
 > The approach builds on the fact that a suppressed cell in a simple n‑dimensional table without substructure cannot be disclosed exactly if that cell is contained in a pattern of suppressed, nonzero cells, forming the corner points of a hypercube.
 
@@ -70,7 +70,7 @@ The 'hypercube criterion' is a sufficient but not a necessary criterion for a 's
 
 -   does not consider the sensitivity of multi‑contributor primary suppressions properly, that is, it does not consider the protection already provided to the individual respondent contributions in advance of cell suppression through aggregation of these contributions.
 
-In the implementation offered by τ‑ARGUS, GHMITER makes sure that a single respondent cell will never appear to be corner point of one hypercube only, but of two hypercubes at least. Otherwise it could happen that a single respondent, who often can be reasonably assumed to know that he is the only respondent, could use his knowledge on the amount of his own contribution to recalculate the value of any other suppressed corner point of this hypercube. Because of this strategy, the method yields $\text{PS2}^*$ standard (c.f. section ).
+In the implementation offered by $\tau$‑ARGUS, GHMITER makes sure that a single respondent cell will never appear to be corner point of one hypercube only, but of two hypercubes at least. Otherwise it could happen that a single respondent, who often can be reasonably assumed to know that he is the only respondent, could use his knowledge on the amount of his own contribution to recalculate the value of any other suppressed corner point of this hypercube. Because of this strategy, the method yields $\text{PS2}^*$ standard (c.f. section ).
 
-When protection against inferential disclosure is requested, the settings of the method are determined on basis of the assumptions that an intruder could estimate each cell value to within bounds of $\pm q\%$ prior to the publication, where the percentage of $q$ for those *a priori* bounds is selected by the τ‑ARGUS user. Considering these *a priori* bounds, τ‑ARGUS determines the settings for the hypercube method in such a way, that it yields $\text{PS1}^*$ protection standard (c.f. section ). Because the method is unable to \'add\' the protection given by multiple hypercubes, in certain situations it will be unable to confirm that a cell has been protected properly according to $\text{PS1}^*$ standard and will attempt to select the hypercube that provides the largest amount of protection to the target suppression in that situation.
+When protection against inferential disclosure is requested, the settings of the method are determined on basis of the assumptions that an intruder could estimate each cell value to within bounds of $\pm q\%$ prior to the publication, where the percentage of $q$ for those *a priori* bounds is selected by the $\tau$‑ARGUS user. Considering these *a priori* bounds, $\tau$‑ARGUS determines the settings for the hypercube method in such a way, that it yields $\text{PS1}^*$ protection standard (c.f. section ). Because the method is unable to \'add\' the protection given by multiple hypercubes, in certain situations it will be unable to confirm that a cell has been protected properly according to $\text{PS1}^*$ standard and will attempt to select the hypercube that provides the largest amount of protection to the target suppression in that situation.
 
