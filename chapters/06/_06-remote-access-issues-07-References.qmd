@@ -1,13 +1,12 @@
 ## References
 
-John Coder and Marc Cigrang (2003), *LISSY: A system for providing Restricted Access to Survey Microdata from Remote Sites,* Monographs in Official Statistics, Luxembourg
+John Coder and Marc Cigrang (2003), *LISSY: A system for providing Restricted Access to Survey Microdata from Remote Sites*, Monographs in Official Statistics, Luxembourg
 
-Anco Hundepool and Peter-Paul de Wolf(2005). *OnSite\@Home: Remote Access at Statistics Netherlands,* Monographs of Official Statistics, Luxembourg
+Anco Hundepool and Peter-Paul de Wolf(2005), *OnSite\@Home: Remote Access at Statistics Netherlands*, Monographs of Official Statistics, Luxembourg
 
-Lars-Johan Söderberg (2005). *MONA,- Microdata On liNe Access as Statistics Sweden.* Monographs of Official Statistics, Luxembourg
+Lars-Johan Söderberg (2005), *MONA,- Microdata On liNe Access as Statistics Sweden*, Monographs of Official Statistics, Luxembourg
 
-Lars Borchsenius (2005). N*ew developments in the Danish system for access to micro data,* Monographs of Official Statistics, Luxembourg
+Lars Borchsenius (2005), *New developments in the Danish system for access to micro data*, Monographs of Official Statistics, Luxembourg
 
-Dr. Sylvia Zühlke, Markus Zwick, Sebastian Scharnhorst and Thomas Wende (2005). *The research data centres of the Federal Statistical Office and the statistical offices of the Länder,* Forschungsdatenzentrum, Statistisches Bundesamt, [[http://www.forschungsdatenzentrum.de/publikationen/veroeffentlichungen/fdz_arbeitspapier-03.pdf]{.underline}](http://www.forschungsdatenzentrum.de/publikationen/veroeffentlichungen/fdz_arbeitspapier-03.pdf)
-
+Dr. Sylvia Zühlke, Markus Zwick, Sebastian Scharnhorst and Thomas Wende (2005), *The research data centres of the Federal Statistical Office and the statistical offices of the Länder*, Forschungsdatenzentrum, Statistisches Bundesamt. <!-- URL no longer works [[http://www.forschungsdatenzentrum.de/publikationen/veroeffentlichungen/fdz_arbeitspapier-03.pdf]{.underline}](http://www.forschungsdatenzentrum.de/publikationen/veroeffentlichungen/fdz_arbeitspapier-03.pdf) -->
 

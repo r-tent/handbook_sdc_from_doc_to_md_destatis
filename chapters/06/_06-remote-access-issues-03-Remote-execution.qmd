@@ -6,5 +6,5 @@ For the researcher this system has the advantage that he does no longer have to 
 
 For the researcher remote execution has several advantages (no need for travel) but also some drawbacks (slow turn around time). For the NSIs it is very time-consuming, as they have to check so many scripts and results. It is not uncommon in statistical analysis that several scripts are submitted and executed. But then the outcome proves to be not the optimal model and a new script is submitted. However the NSI does not know in advance which script is successful and has to check everything. This is very time-consuming if the NSI takes this seriously.
 
-Current examples of this kind of systems are the Luxembourg Income Study (Lissy) and the Australian RADL
+Current examples of this kind of systems are the Luxembourg Income Study (Lissy) and the Australian RADL.
 

@@ -10,7 +10,11 @@ Manual confidentiality checks are time-consuming and labour-intensive, as is sho
 
 #### Rules for program design
 
-To simplify project handling, and especially the confidentiality checks, the research data centres of the Federation and the Länder have developed a catalogue of rules for program design when using controlled teleprocessing[^9]. Its purpose is to allow
+_**Goals**_
+
+To simplify project handling, and especially the confidentiality checks, the research data centres of the Federation and the Länder have developed a catalogue of rules for program design when using controlled teleprocessing[^9]. Its purpose is to allow:
+
+[^9]: The main persons involved in developing the rules for program design as part of the ad-hoc working group on "confidentiality and documentation" of the research data centres of the Federation and the Länder are: Heike Habla, Jörg Höhne, Ricarda Nauenburg, Ramona Pohl, Dr. Heinz Stralla and Alexander Vogel. The chapter was written by Andrea Harausz and Ricarda Nauenburg.
 
 -   to shape the envisaged analysis steps in a traceable manner,
 
@@ -22,39 +26,59 @@ To simplify project handling, and especially the confidentiality checks, the res
 
 The benefits obtained from those rules for the research data centres involve a considerable advantage for users, too: The checking time for the output, for which users undoubtedly are urgently waiting for, will substantially be reduced.
 
+_**Program heading**_
+
 Specifically, the following requirements have been included in the rules:
 
 The program developed by the researcher should include a program heading, indicating the project title, the data material used, and contact information of the data user. The project title and the information on data material used allow rapid identification of the program at the research data centre. The contact information is important because in case of faulty programs the user can immediately be contacted by telephone or e-mail in order to agree on modifications.
 
+_**Program explanation**_
+
 Also, a program explanation should be provided at the beginning of the program, describing its purpose. Where applicable, information is also required on how the current analyses fit into the project's state of affairs and progress, on the reference to previous and future analyses, or possible changes in the analysis strategy. The explanation should also contain a list of variables of the original data set used and of the new variables created by the program code, including its labels. Such information facilitates orientation when checking the results. Repeated analyses involving minor changes will more easily be recognised and cross-table confidentiality, which requires comparison with previous outputs, can be performed more rapidly. The names and contents of newly formed variables are more easily recognised by the checking person if they have been mentioned before.
+
+_**Output tables**_
 
 The output tables should meet specific format requirements. Every output element should have a title and a serial number. Tables must be self-explanatory, i.e. the table stub and rows must clearly show the table content. Tables should be manageable, that is, they must not exceed a reasonable size. Tables showing totals must have a column for the underlying number of cases to allow checking the frequency and dominance rules. These requirements are based, among other things, on the experience made with confidentiality checks of poorly structured and oversized tables. Output numbering has proved necessary to allow referring to a number when communicating with the data user, rather than having to describe in detail the content of an analysis (often quite similar to other ones) to identify the table.
 
+_**Path reference**_
+
 Path references to files used should be put at the beginning of the program. This provides an overview of what files are loaded by the program and what files are stored. This allows the research data centre to adjust the paths (which is frequently necessary) more rapidly than when having to search the entire program for load and store commands.
+
+_**Structure**_
 
 The program code should be clearly structured visually; loops should be indented and some space should be left between program blocks. Capital and small letters should be used consistently, program sections should be numbered, and long programs should be subdivided into modules. This, together with the following three items, will allow reducing the time required for getting acquainted with different programming styles and for understanding the program goals and output content.
 
+_**Comments**_
+
 Comments should be given on the program. All program blocks and individual commands needing explanation or analyses should be provided with intelligible and sufficiently detailed comments to facilitate understanding of the program steps. Especially the macros must be documented in detail. Variables must be indicated with their labels in the comment.
+
+_**Variable names**_
 
 Descriptive names should be given to newly formed variables; intelligible variable labels and, where applicable, value labels should be added.
 
-> Designations of elements used in the code should not be changed (example: relations \[everywhere either ">" or "GT"\], missing values \[0 or -x\], etc.).
->
-> The log function of the statistics software (creating log files) must be activated by the user's program code or in any case must not be deactivated, depending on the statistics software. Creating the logs allows archiving the project, so that possible disclosures can be detected later.
->
-> Where minor changes are applied to the program, only the relevant program elements should be recalculated. The usual procedure for one's own workplace is to perform complete runs of a program with minor changes again and again until a satisfactory result has been obtained. For controlled teleprocessing, however, this means that nearly identical outputs have to be checked again and again.
+_**Presentation**_
+
+Designations of elements used in the code should not be changed (example: relations \[everywhere either "$>$" or "GT"\], missing values \[$0$ or $-x$\], etc.).
+
+_**Logging**_
+
+The log function of the statistics software (creating log files) must be activated by the user's program code or in any case must not be deactivated, depending on the statistics software. Creating the logs allows archiving the project, so that possible disclosures can be detected later.
+
+_**Changing the code**_
+
+Where minor changes are applied to the program, only the relevant program elements should be recalculated. The usual procedure for one's own workplace is to perform complete runs of a program with minor changes again and again until a satisfactory result has been obtained. For controlled teleprocessing, however, this means that nearly identical outputs have to be checked again and again.
 
 #### Summary
 
 Different from the program rules required by automated systems, these rules do not completely block certain procedures and commands. Manual handling allows taking individual decisions -- when calling up critical procedures, and depending on the data or the specific analysis -- to what extent the analysis results thus obtained can be transmitted to the user or must be retained for confidentiality reasons. In this manner, users can make optimal use of the information content of the data.
 
-Supplementary to the catalogue of rules, a model program (cf. 6.6.1.4) has been designed and is available for the statistics packages offered (SPSS, STATA and SAS). In addition, a glossary is provided, containing the terms used in the jargon of official statistics, in programming languages and statistical packages, scientific notation and everyday language and translating them into each other.
+Supplementary to the catalogue of rules, a model program (cf. @sec-programmingSPSS) has been designed and is available for the statistics packages offered (SPSS, STATA and SAS). In addition, a glossary is provided, containing the terms used in the jargon of official statistics, in programming languages and statistical packages, scientific notation and everyday language and translating them into each other.
 
 The program criteria developed are sent in the form of a letter to the researchers and are part of the data usage contract. The purpose of the letter is to ask users for understanding of the list of rules, to avoid misunderstandings from the beginning, and to rapidly and efficiently make users acquainted with the rules of controlled teleprocessing, which may be quite different from the work methods they are used to at their own workplace. When developing the criteria, the model programs and the glossary, the aim was to make them generally acceptable, thus making it easier for the very different scientific users to meet the requirements.
 
 From the viewpoint of the research data centres, the individual items are maximum requirements for developing perfect program codes. If the criteria are not entirely met in some cases, it is up to the discretion of the RDC staff member to decide to what extent it is possible for him to check the results. As the research projects are handled individually and personally, interpreting the rules to the users' benefit is rather liberal. If, however, a project is getting very difficult to follow, the research data centres may refer to the rules that must be adhered to.
 
-#### Programming example in SPSS
+#### Programming example in SPSS {#sec-programmingSPSS}
 
 ```
 ***************************************************************************.
