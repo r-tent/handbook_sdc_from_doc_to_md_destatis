@@ -14,26 +14,26 @@ $z = u b + r$,
 
 where $ub$ is the lower adjacent multiple of $b$ (hence $u$ is the floor value of $z/b$) and $r$ is the remainder. In the zero-restricted solution the rounded value, $a$, can take values:
 
-$$
+
 \begin{align}
 a = \begin{cases}
 ub &\text{if}\quad r=0 \\
 (u+1)b &\text{if}\quad r\neq0
 \end{cases}
 \end{align}
-$$
+
 
 If $K$ steps are allowed, then $a$, can take values:
 
 
-$$
+
 \begin{align}
 a = \begin{cases}
 \max_{j\in{-K,\ldots,K}}(0,(u+j))\cdot b   &\text{if}\quad r=0\\
 \max_{j\in{-K,\ldots,K+1}}(0,(u+j))\cdot b &\text{if}\quad r\neq0
 \end{cases}
 \end{align}
-$$
+
 
 
 $\left\{ \begin{array} { l } a = \max \{ 0 , ( u + j ) \} b , j = - K , \ldots , K , \text { if } r = 0 \\ a = \max \{ 0 , ( u + j ) \} b , j = - K , \ldots , ( K + 1 ) , \text { if } r \neq 0 \end{array} \right.$)
@@ -58,28 +58,28 @@ The protection provided by controlled rounding can be assessed by considering th
 
 Given a rounded value, *a*, an intruder can compute the following existence intervals for the true value, *z*:
 
-$$
+
 \begin{align}
 z \in \begin{cases}
 [0,b-1]       &\text{if} \quad a = 0 \\
 [a-b+1,a+b-1] &\text{if} \quad a \neq 0
 \end{cases}
 \end{align}
-$$
+
 
 For example, if the rounding base is $b=5$ and the rounded value is $a=0$, a user can determine that the original value is between $0$ and $4$. If the rounded value is not $0$, then users can determine that the true value is between $\pm 4$ units from the published value.
 
 **K-step rounding**
 As mentioned above, it is assumed that the number of steps allowed is released together with the rounded table. Let $K$* be the number of steps allowed, then an intruder can compute the following existence intervals for the true value $z$:
 
-$$
+
 \begin{align}
 z \in \begin{cases}
 [0,(K+1)b-1]            &\text{if} \quad a < (K+1)b \\
 [a-(K+1)b+1,a+(K+1)b-1] &\text{if} \quad a \geq (K+1)b
 \end{cases}
 \end{align}
-$$
+
 
 
 For example, assume that for controlled rounding with $b=5$ and $K=1$, $a=15$, then a user can determine that $z \in [ 6,24 ]$.
