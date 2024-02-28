@@ -1,23 +1,23 @@
 ## Software
 
-### µ-ARGUS
+### $\mu$-ARGUS
 
-The μ‑ARGUS software has been developed to facilitate statisticians, mainly in the NSI's, to apply the SDC-methods described above to create safe micro data files. It is a tool to apply the SDC-methodology, not a black-box that will create a safe file without knowing the background of the SDC-methodology. The development of μ‑ARGUS has started at Statistics Netherlands by implementing the Dutch methods and rules (see also section 3.7). With this software as a starting point many other methods have been added. Several of these methods have been developed and/or actually implemented during the CASC-project.
+The $\mu$‑ARGUS software has been developed to facilitate statisticians, mainly in the NSI's, to apply the SDC-methods described above to create safe micro data files. It is a tool to apply the SDC-methodology, not a black-box that will create a safe file without knowing the background of the SDC-methodology. The development of $\mu$‑ARGUS has started at Statistics Netherlands by implementing the Dutch methods and rules (see also section 3.7). With this software as a starting point many other methods have been added. Several of these methods have been developed and/or actually implemented during the CASC-project.
 
-In this section we will just a short overview of μ‑ARGUS, as an extensive manual is available, fully describing the software.
+In this section we will just a short overview of $\mu$‑ARGUS, as an extensive manual is available, fully describing the software.
 
-The starting point of μ‑ARGUS has been implementation of the threshold rules for identifying unsafe records and procedures for global recoding and local suppression.
+The starting point of $\mu$‑ARGUS has been implementation of the threshold rules for identifying unsafe records and procedures for global recoding and local suppression.
 
-**Data:** μ‑ARGUS can both protect fixed and free format ASCII files. 
+**Data:** $\mu$‑ARGUS can both protect fixed and free format ASCII files. 
 
 ![Overview of $\mu$-ARGUS](Images/media/mu_argus_overview.png){#fig-mu-argus-overview}
 
-Many of the methods described previously in the methodology section can be applied with μ‑ARGUS to a dataset. It is our aim to include other methods as well in the near future, if time permits
+Many of the methods described previously in the methodology section can be applied with $\mu$‑ARGUS to a dataset. It is our aim to include other methods as well in the near future, if time permits
 
-μ‑ARGUS is a flexible interactive program that will guide you through the process of data protection. In a typically μ‑ARGUS run you will typically go through the following steps, given that the microdata set is ready.
+$\mu$‑ARGUS is a flexible interactive program that will guide you through the process of data protection. In a typically $\mu$‑ARGUS run you will typically go through the following steps, given that the microdata set is ready.
 
-1.  **Meta data**. μ‑ARGUS needs to know the structure of the data set. Not only the general aspects but also additional SDC-specific information. As there is till now no suitable flexible standard for meta data allowing us to specify also the SDC-specific parts of the meta data, we have to rely on the ARGUS meta data format.\
-This can be prepared (partially) externally or it can be specified interactively during a μ‑ARGUS session.
+1.  **Meta data**. $\mu$‑ARGUS needs to know the structure of the data set. Not only the general aspects but also additional SDC-specific information. As there is till now no suitable flexible standard for meta data allowing us to specify also the SDC-specific parts of the meta data, we have to rely on the ARGUS meta data format.\
+This can be prepared (partially) externally or it can be specified interactively during a $\mu$‑ARGUS session.
 2. **Threshold-rule/risk models.** Selection and computation of frequency tables on which several SDC-methods (like risk models, threshold rule) are based
 3. **Global recoding.** Selection of possible recodings and inspection of the results.
 4. Selection and application of **other protection methods** like:
@@ -30,7 +30,7 @@ This can be prepared (partially) externally or it can be specified interactively
 5. **Risk model:** selection of the risk-level
 6. **Generate the safe micro file.** During this process all data transformations specified above. This is also the moment that all remaining unsafe combinations will be protected by local suppressions. Also an extensive report will be generated.
 
-When the above scheme has been followed a safe microdata file has been generated. μ‑ARGUS is capable of handling very large datasets. Only during the first phase, when the datafile is explored and the frequency tables are computed some heavy computations are performed. This might take some time depending on the size of the datafile. However all the real SDC-work (global recoding and the other methods named under 4 and 5 above) are done at the level of the information prepared during this first phase. This will be done very quickly. Only in the final phase when the protected datafile is made, the operation might be time consuming depending on the size of the datafile.
+When the above scheme has been followed a safe microdata file has been generated. $\mu$‑ARGUS is capable of handling very large datasets. Only during the first phase, when the datafile is explored and the frequency tables are computed some heavy computations are performed. This might take some time depending on the size of the datafile. However all the real SDC-work (global recoding and the other methods named under 4 and 5 above) are done at the level of the information prepared during this first phase. This will be done very quickly. Only in the final phase when the protected datafile is made, the operation might be time consuming depending on the size of the datafile.
 
-This architecture of μ‑ARGUS has the advantage that all real SDC-work, that will be done interactively, will have a very quick response time. Inspecting the results of various recodings is easy and simple.
+This architecture of $\mu$‑ARGUS has the advantage that all real SDC-work, that will be done interactively, will have a very quick response time. Inspecting the results of various recodings is easy and simple.
 

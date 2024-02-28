@@ -2,7 +2,7 @@
 
 As has been shown in the previous sections there are many sophisticated ways of making a safe protected microdata set. And it is far from a simple straightforward task to select the most appropriate method for the Disclosure Protection of a microdata set. This requires a solid knowledge of the survey in question as well as a good overview of all the methods described in the previous sections.
 
-However as an introduction we will describe here a method/set of rules inspired by those currently applied at Statistics Netherlands for making both microdata files for researchers as well as public use files. This approach can be easily applied, as it is readily available in μ‑ARGUS. These rules are based on the ARGUS threshold-rule in combination with global recoding and local suppression (see section 3.4.3.2 and 3.4.3.4). This rule only concentrates on the identifying variables or key-variables, as these are the starting point for an intrusion. There rules have primarily been developed for microdata about persons.
+However as an introduction we will describe here a method/set of rules inspired by those currently applied at Statistics Netherlands for making both microdata files for researchers as well as public use files. This approach can be easily applied, as it is readily available in $\mu$‑ARGUS. These rules are based on the ARGUS threshold-rule in combination with global recoding and local suppression (see section 3.4.3.2 and 3.4.3.4). This rule only concentrates on the identifying variables or key-variables, as these are the starting point for an intrusion. There rules have primarily been developed for microdata about persons.
 
 *Microdata for researchers*\
 For the microdata for researchers one could use the following set of rules:
@@ -18,7 +18,7 @@ If these rules are violated, global recoding and local suppression are applied t
 For business microdata these rules are not appropriate. Opposite to personal microdata business data tends to be much more skewed. Each business is much more visible in a microdata set. This makes it very hard to make a safe business micro dataset.
 
 *Microdata for the general public*\
-The software package μ‑ARGUS (Hundepool et al, 2005) is also of help in producing public use microdata files. For public use microdata files one could use the following set of rules:
+The software package $\mu$‑ARGUS (Hundepool et al, 2005) is also of help in producing public use microdata files. For public use microdata files one could use the following set of rules:
 
 1. The microdata must be at least one year old before they may be released.
 2. Direct identifiers should not be released. Also direct regional variables, nationality, country of birth and ethnicity should not be released.

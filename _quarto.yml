@@ -24,6 +24,28 @@ format:
     theme: 
       - cosmo
       - custom.scss
+  pdf:
+    fig-pos: 'h'
+    documentclass: book
+    toc: true
+    keep-tex: true
+    include-in-header: 
+      text: |
+        \usepackage[english]{babel}
+        \usepackage[margin=3cm]{geometry}
+        \usepackage[utf8]{inputenc}
+        \usepackage{float}
+        \makeatletter
+        \renewenvironment{table}
+          {\@float{table}[H]}
+          {\end@float}
+        \makeatother
+        \counterwithout{footnote}{chapter}
+        \usepackage{makeidx}
+        \makeindex
+    include-after-body: 
+      text: |
+        \printindex
 
 execute:
   freeze: auto

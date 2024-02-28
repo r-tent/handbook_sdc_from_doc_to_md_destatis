@@ -20,7 +20,7 @@ When the identifying variables are categorical (as it is usually the case in soc
 Several definitions of risk have been proposed in the literature; here we focus mainly on those for which tools are available to compute/estimate them easily. We can broadly classify disclosure risk measures into three types: risk measures based on keys in the sample, those based on keys in the population and that make use of statistical models or heuristics to estimate the quantities of interest and those based on the theory of record linkage. Whereas the first two classes are devoted to risk assessment for categorical identifying variables the third one may be used for categorical and continuous variables.
 
 *Risk based on keys in the sample*\
-For the first class of risk measures a unit is at risk if its combination of scores on the identifying variables is below a given threshold. The threshold rule used within the software package μ‑ARGUS, as presented in Section , is an example of this class of risk measures.
+For the first class of risk measures a unit is at risk if its combination of scores on the identifying variables is below a given threshold. The threshold rule used within the software package $\mu$‑ARGUS, as presented in Section , is an example of this class of risk measures.
 
 *Risk based on keys in the population*\
 For the second type of approach we are concerned with the risk of a unit as determined by its combination of scores on the identifying variables within the population or its probability of re-identification. The idea then is that a unit is at risk if such quantity is above a given threshold. Because the frequency in the population is generally unknown, it may be estimated through a modelling process. Examples of this reasoning are the individual risk of disclosure based on the Negative Binomial distribution developed by Benedetti and Franconi (1998) and Franconi and Polettini (2004), which is outlined in Section 3.3.5, and the one based on the Poisson distribution and log-linear models developed by Skinner and Holmes (1998) and Elamir and Skinner (2004) which is described in Section 3.3.6 along with current research on other probabilistic methods. Another approach based on keys in the population is the Special Uniques Detection (SUDA) Algorithm developed by Elliot et al. (2002) that uses a heuristic method to estimate the risk; this is outlined in Section 3.3.7.
@@ -118,11 +118,11 @@ We assume that the $f_k$ are observed but the $F_k$ are not observed.
 
 ### ARGUS threshold rule
 
-The ARGUS threshold rule is based on easily applicable rules and views of safety/unsafety of microdata that is used at Statistics Netherlands. The implementation of these rules was the main reason to start the development of the software package μ‑ARGUS.
+The ARGUS threshold rule is based on easily applicable rules and views of safety/unsafety of microdata that is used at Statistics Netherlands. The implementation of these rules was the main reason to start the development of the software package $\mu$‑ARGUS.
 
 In a disclosure scenario, keys a combination of identifying variables, are supposed to be used by an intruder to re-identify a respondent. Re-identification of a respondent can occur when this respondent is rare in the population with respect to a certain key value, i.e. a combination of values of identifying variables. Hence, rarity of respondents in the population with respect to certain key values should be avoided. When a respondent appears to be rare in the population with respect to a key value, then disclosure control measures should be taken to protect this respondent against re-identification.
 
-Following the Nosy Neighbour scenario, the aim of the μ‑ARGUS threshold rule is to avoid the occurrence of combinations of scores that are rare in the population and not only avoiding population-uniques. To define what is meant by rare the data protector has to choose a threshold value for each key. If a key occurs more often than this threshold the key is considered safe, otherwise the key must be protected because of the risk of re-identification.
+Following the Nosy Neighbour scenario, the aim of the $\mu$‑ARGUS threshold rule is to avoid the occurrence of combinations of scores that are rare in the population and not only avoiding population-uniques. To define what is meant by rare the data protector has to choose a threshold value for each key. If a key occurs more often than this threshold the key is considered safe, otherwise the key must be protected because of the risk of re-identification.
 
 The level of the threshold and the number and size of the keys to be inspected depend of course on the level of protection you want to achieve. Public use files require much more protection than microdata files under contract that are only available to researchers under a contract. How this rule is used in practice is given in the example of section 3.7
 
@@ -132,7 +132,7 @@ If a key is considered unsafe according to this rule, protection is required. Th
 :::{.callout-warning collapse=true}
 ## Expert level
 
-If a distinction between units rare in the sample from a unit rare in the population wants to be made then an inferential step may be followed. In the initial proposal by Benedetti and Franconi (1998), further developed in Franconi and Polettini (2004) and implemented in μ‑ARGUS, the uncertainty on $F_k$ is accounted for in a Bayesian fashion by introducing the distribution of the population frequencies given the sample frequencies. The individual risk of disclosure is then measured as the (posterior) mean of $\frac{1}{F_k}$ with respect to the distribution of $F_k|f_k$:
+If a distinction between units rare in the sample from a unit rare in the population wants to be made then an inferential step may be followed. In the initial proposal by Benedetti and Franconi (1998), further developed in Franconi and Polettini (2004) and implemented in $\mu$‑ARGUS, the uncertainty on $F_k$ is accounted for in a Bayesian fashion by introducing the distribution of the population frequencies given the sample frequencies. The individual risk of disclosure is then measured as the (posterior) mean of $\frac{1}{F_k}$ with respect to the distribution of $F_k|f_k$:
 
 $$
 r_{i} = \mathbb{E} \left( \frac{1}{F_{k}} \mid f_{k} \right) = \sum\limits_{h\geq f_{k}} \frac{1}{h} \mathbb{P} \left(F_{k} = h \mid f_{k} \right). \qquad\text{(3.2.5.1)}
@@ -149,10 +149,10 @@ where $\sum\limits_{i:k(i)=k}^{}w_{i}$ is an estimate of $F_k$ based on the samp
 *When is it possible to apply the individual risk estimation*\
 The procedure relies on the assumption that the available data are a sample from a larger population. *If the sampling weights are not available, or if data represent the whole population, the strategy used to estimate the individual risk is not meaningful*.
 
-In the μ‑ARGUS manual (Hundepool *et al.*, 2004) a fully detailed description of the approach is reported. This brief note is based on Polettini (2004).
+In the $\mu$‑ARGUS manual (Hundepool *et al.*, 2004) a fully detailed description of the approach is reported. This brief note is based on Polettini (2004).
 
 *Assessing the risk for the whole file*\
-The individual risk provides a measure of risk *at the individual level*. A *global* measure of disclosure risk for the whole file can be expressed in terms of the expected number of re-identifications in the file. The *expected number of re*-*identifications* is a measure of disclosure that depends on the number of records. For this reason, μ‑ARGUS evaluates also the *re‑identification rate* that is independent of $n$:
+The individual risk provides a measure of risk *at the individual level*. A *global* measure of disclosure risk for the whole file can be expressed in terms of the expected number of re-identifications in the file. The *expected number of re*-*identifications* is a measure of disclosure that depends on the number of records. For this reason, $\mu$‑ARGUS evaluates also the *re‑identification rate* that is independent of $n$:
 
 $$
 \xi = \frac{1}{n}\sum\limits_{k=1}^{K}{f_{k}r_{k}} \quad .
@@ -165,7 +165,7 @@ The *percentage of expected re-identifications*, i.e. the value $\psi=100\cdot\x
 *Application of local suppression within the individual risk methodology*\
 After the risk has been estimated, protection takes place. One option in protection is the application of *local suppression* (see Section 3.4.3.4).
 
-In μ‑ARGUS the technique of local suppression, when combined with the individual risk, is applied only to unsafe cells or combinations. Therefore, the user must input a *threshold* in terms of risk, e.g. probability of re-identification, to classify these as either safe or unsafe. Local suppression is applied to the unsafe individuals, so as to lower their probability of being re‑identified under the given threshold.
+In $\mu$‑ARGUS the technique of local suppression, when combined with the individual risk, is applied only to unsafe cells or combinations. Therefore, the user must input a *threshold* in terms of risk, e.g. probability of re-identification, to classify these as either safe or unsafe. Local suppression is applied to the unsafe individuals, so as to lower their probability of being re‑identified under the given threshold.
 
 In order to select the risk threshold, that represents a level of *acceptable risk,* i.e. a risk value under which an individual can be considered safe, the *re‑identification rate* can be used. A *release* will be considered *safe* when the expected rate of correct re-identifications is below a level the NSI considers acceptable. As the re-identification rate is cast in terms of the individual risk, a threshold on the re-identification rate can be transformed into a threshold on the individual risk (see below). Under this approach, individuals are at risk because their probability of re-identification contributes a large proportion of expected re-identifications in the file.
 
@@ -201,7 +201,7 @@ Consider to apply a threshold $r^{h^{\ast}}$ on the household risk. In order for
 
 This is clearly an approach possibly leading to overprotection, as we check whether a *bound* on the household risk is below a given threshold.
 
-It is important to remark that the threshold $δ_g$ just defined depends on the size of the household to which individual $i$ belongs. This implies that for two individuals that are classified in the same key $k$ (and therefore have the same individual risk $r_{k}$), but belong to different households with different sizes, it might happen that one is classified safe, while the other unsafe (unless the household size is included in the set of identifying variables).
+It is important to remark that the threshold $\delta_g$ just defined depends on the size of the household to which individual $i$ belongs. This implies that for two individuals that are classified in the same key $k$ (and therefore have the same individual risk $r_{k}$), but belong to different households with different sizes, it might happen that one is classified safe, while the other unsafe (unless the household size is included in the set of identifying variables).
 
 In practice, denoting by $g(i)$ the household to which record $i$ belongs, the approach pursued so far consists in turning a threshold $r^{h^{\ast}}$ on the household risk into a *vector of thresholds* on the *individual risks* $r_{i} = 1,\ldots,n$:
 
@@ -241,7 +241,7 @@ Skinner and Shlomo (2005, 2006) have developed goodness-of-fit criteria for sele
 
 This method is still under development. At present there is a need to develop clear and user-friendly software to implement the method. However, the Office for National Statistics in the UK has used it to inform microdata release decisions. The method is based on theoretical well-defined disclosure risk measures and goodness of fit criteria which ensure the fit of the log-linear model and the accuracy of the disclosure risk measures. It requires a model search algorithm which takes some computer time and requires intervention.
 
-New methods for probabilistic risk assessment are under development based on a generalized Negative Binomial smoothing model for sample disclosure risk estimation which subsumes both the model used in μ‑ARGUS and the Poisson log-linear model above. The method is useful for key variables that are ordinal where local neighbourhoods can be defined for inference on cell $k$.
+New methods for probabilistic risk assessment are under development based on a generalized Negative Binomial smoothing model for sample disclosure risk estimation which subsumes both the model used in $\mu$‑ARGUS and the Poisson log-linear model above. The method is useful for key variables that are ordinal where local neighbourhoods can be defined for inference on cell $k$.
 The Bayesian assumption of $\lambda_{k} \sim \text{Gamma}(\alpha_{k},\beta_{k})$ is added independently to the Poisson model above which then transforms the marginal distribution to the generalized Negative Binomial Distribution: 
 $$
 f_{k} \sim \text{NB}(\alpha_{k},p_{k} = \frac{1}{1 + \text{N}\pi_{k}\beta_{k}})
@@ -300,7 +300,7 @@ Distance-based record linkage was first proposed in Pagliuca and Seri (1999) to 
 
 The record linkage algorithm introduced in (Bacher, Brand and Bender, 2002) is similar in spirit to distance-based record linkage. This is so because it is based on cluster analysis and, therefore, links records that are near to each other.
 
-The main advantages of using distances for record linkage are simplicity for the implementer and intuitiveness for the user. Another strong point is that subjective information (about individuals or variables) can be included in the re-identification process by properly modifying distances. In fact, the next version of the μ‑ARGUS microdata protection package (Hundepool et al., 2005) will incorporate distance-based record linkage as a disclosure risk assessment method.
+The main advantages of using distances for record linkage are simplicity for the implementer and intuitiveness for the user. Another strong point is that subjective information (about individuals or variables) can be included in the re-identification process by properly modifying distances. In fact, the next version of the $\mu$‑ARGUS microdata protection package (Hundepool et al., 2005) will incorporate distance-based record linkage as a disclosure risk assessment method.
 
 The main difficulty of distance-based record linkage consists of coming up with appropriate distances for the variables under consideration. For one thing, the weight of each variable must be decided and this decision is often not obvious. Choosing a suitable distance is also especially thorny in the cases of categorical variables and of masking methods such as local recoding where the masked file contains new labels with respect to the original dataset.
 :::
@@ -358,11 +358,11 @@ Elliot, M. J., Skinner, C. J., and Dale, A. (1998). *\'Special Uniques, Random U
 
 Fellegi, I. P., and Sunter, A.B. (1969), *A theory for record linkage*. Journal of the American Statistical Association, 64(328):1183--1210.
 
-Franconi, L. and Polettini, S. (2004). *Individual risk estimation in µ-ARGUS: a review.* In: Domingo-Ferrer, J. (Ed.), Privacy in Statistical Databases. Lecture Notes in Computer Science. Springer, 262‑272
+Franconi, L. and Polettini, S. (2004). *Individual risk estimation in $\mu$-ARGUS: a review.* In: Domingo-Ferrer, J. (Ed.), Privacy in Statistical Databases. Lecture Notes in Computer Science. Springer, 262‑272
 
 Franconi, L. and Seri, G. (2000). *Microdata Protection at the Italian National Statistical Insititute (Istat): A User Perspective. Of Significance* Journal of the Association of Public Data Users -- Volume 2 Number 1 2000, page. 57-64.
 
-Hundepool, A., Van de Wetering, A., Ramaswamy, R., Franconi, L., Capobianchi, A., DeWolf, P.-P., Domingo-Ferrer, J., Torra, V., Brand, R., and Giessing, S. (2005), *µ-ARGUS version 4.0 Software and User's Manual*. Statistics Netherlands, Voorburg NL, may 2005. [[https://research.cbs.nl/casc]{.underline}](http://neon.vb.cbs.nl/casc/deliv/MUmanual4.0.pdf).
+Hundepool, A., Van de Wetering, A., Ramaswamy, R., Franconi, L., Capobianchi, A., DeWolf, P.-P., Domingo-Ferrer, J., Torra, V., Brand, R., and Giessing, S. (2005), *$\mu$-ARGUS version 4.0 Software and User's Manual*. Statistics Netherlands, Voorburg NL, may 2005. [[https://research.cbs.nl/casc]{.underline}](http://neon.vb.cbs.nl/casc/deliv/MUmanual4.0.pdf).
 
 Jackson, P., Longhurst, J. (2005), *Providing access to data and making microdata safe, experiences of the ONS*, proceedings of the UNECE/Eurostat work session on statistical data confidentiality, Geneva, November 2005
 
