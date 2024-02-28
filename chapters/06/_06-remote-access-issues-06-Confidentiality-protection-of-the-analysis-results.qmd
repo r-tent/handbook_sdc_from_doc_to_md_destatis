@@ -183,7 +183,10 @@ WEIGHT BY gew .
 *(5)***compare household number (hhnr)  - family number (famnr) - person number (persnr).
 COMPUTE nrdiff=0.
 
-**** if family number (famnr) unequal household number (hhnr) then consistency of hausehold number and family number (nrdiff) = 1.
+**** if family number (famnr) unequal household number (hhnr) then consistency 
+
+of household number and family number (nrdiff) = 1.
+
 DO IF famnr NE hhnr.
 	COMPUTE nrdiff=1.
 END IF.
