@@ -48,11 +48,11 @@ We consider two different types of re-identification, *spontaneous recognition* 
 
 Moreover, as far as statistical disclosure control is concerned, experts are used to distinguish between social and economic microdata (without loss of generality we can consider respectively individuals and enterprises). In fact, the concept of disclosure risk is mainly based on the idea of rareness with respect to a set of identifying variables. For social survey microdata, because of the characteristics of the population under investigation and the nature of the data collected, identifying variables are mainly (or exclusively) categorical. For much of the information collected on enterprises however the identifying variables often take the form of quantitative variables with asymmetric distributions (Willenborg and de Waal, 2001). Disclosure scenarios are then described according to this statement.
 
-The case study part of the Handbook  contains examples of the Nosy Neighbour scenario and the EA scenario for social survey data. The issues involved with hierarchical and longitudinal data are also addressed. Finally, scenarios for business survey data are discussed.
+The case study part of the Handbook contains examples of the Nosy Neighbour scenario and the EA scenario for social survey data. The issues involved with hierarchical and longitudinal data are also addressed. Finally, scenarios for business survey data are discussed.
 
 In any case the definition of the scenario is essential as it defines the hypothesis underneath the risk estimation and the subsequent protection of the data.
 
-### Concepts and notation
+### Concepts and notation {#sec-risk-concepts-and-notation}
 
 For microdata, disclosure risk measures quantify the risk of re-identification. Individual per record disclosure risk measures are useful for identifying high-risk records and targeting the SDC methods. These individual risk measures can be aggregated to obtain global file level disclosure risk measures. These global risk measures are particularly useful to NSIs for their decision making process on whether the microdata is safe to be released and allows comparisons across different files.
 
@@ -128,7 +128,7 @@ The level of the threshold and the number and size of the keys to be inspected d
 
 If a key is considered unsafe according to this rule, protection is required. Therefore often global recoding and local suppression are applied. These techniques are described in the sections 3.4.3.2 and 3.4.3.4
 
-### ARGUS individual risk methodology 
+### ARGUS individual risk methodology {#sec-indiv-risk}
 :::{.callout-warning collapse=true}
 ## Expert level
 
@@ -256,7 +256,7 @@ where $\pi_{k}$ is the sampling fraction.
 In each local neighbourhood of cell *k* a smoothing polynomial regression model is carried out to estimate $\alpha_{k}$ and $\beta_{k}$, and disclosure risk measures are estimated based on the Negative Binomial Distribution, ${\hat{\tau}}_{2} = \sum_{k \in \text{SU}}^{}{\hat{r_k} =}\sum_{k \in \text{SU}}^{}\frac{{\hat{\rho}}_{k}(1 - {\hat{\rho}}_{k})^{{\hat{\alpha}}_{k}}}{{\hat{\alpha}}_{k}(1 - {\hat{\rho}}_{k})}$ , see: Rinott and Shlomo (2005, 2006).
 :::
 
-### SUDA
+### SUDA {#sec-suda}
 :::{.callout-warning collapse=true}
 ## Expert level
 
