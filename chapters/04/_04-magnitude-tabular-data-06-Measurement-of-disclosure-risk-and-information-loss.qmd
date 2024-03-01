@@ -47,18 +47,18 @@ As one can observe, the absolute deviation of square roots has a sense in practi
 
 Using the metrics given above one can define complex measures of information loss for a given aggregate $A$ (it can be the whole table or a specific subset of table cells, referring to, for example, the same spatial unit - such as population numbers by age groups for a LAU 1 unit). The first of these measures is the average absolute deviation - the mean of absolute differences between cell values in original and modified tables:
 $$
-\textmd{AD}(A)=\frac{\sum_{c\in A}{|T_1(c)-T_0(c)|}}{n_A},
+\text{AD}(A)=\frac{\sum_{c\in A}{|T_1(c)-T_0(c)|}}{n_A},
 $$
 where $n_A$ is the number of cells included in the aggregate $A$.
 
 One can also propose to use in this context the sum of relative absolute deviations, i.e. the the sum of relative differences between cell values in both tables:
 $$
-\textmd{RAD}(A)=\sum_{c\in A}{\frac{|T_1(c)-T_0(c)|}{T_0(c)}}.
+\text{RAD}(A)=\sum_{c\in A}{\frac{|T_1(c)-T_0(c)|}{T_0(c)}}.
 $$
 
 The last - but not least - measure which we would like to present here is the measure based on absolute differences between square roots from cell values in original nad perturbed tables using the formula of Hellinger's distance (proposed in 1909 by German mathematician Ernst Hellinger (1883-1950)):
 $$
-\textmd{HD}(A)=\sqrt{\frac{1}{2}\sum_{c\in A}{\left(\sqrt{T_1(c)}-\sqrt{T_0(c)}\right)^2}}.
+\text{HD}(A)=\sqrt{\frac{1}{2}\sum_{c\in A}{\left(\sqrt{T_1(c)}-\sqrt{T_0(c)}\right)^2}}.
 $$
 
 However, there may be missing data in the tables. When perturbative SDC methods are applied, these gaps will result mainly from missing data occurring in the original microdata being a basis of construction of tables. In this case, during computation of cell values one can omit these gaps or earlier make an imputation of them. The only inconvenience may appear when there are no data concerning the categories defined by the cell. Then one must either resign from a given structure of the table (e.g. by combining some of the original categories into another, more coarse one), or the measure of loss should be based on the measurement of loss at the level of microdata corresponding to this cell, performed in the manner described in chapter 3.
@@ -71,8 +71,8 @@ More difficult is the situation where non-perturbative post-tabular SDC methods 
 If a strong asymmetry of data distribution preferring preferring to leave the cells with the highest value unsuppressed may lead to too large imbalance for the cost fuction. In this case a tranformation of the cost function is reommended. One of possible - and often applied - solutions is here the power transformation (cf. Box and Cox (1964)):
 $$
 y=\begin{cases}
-x^\lambda&\textmd{for}\;\lambda\ne 0,\cr
-\log(x)&\textmd{for}\;\lambda=0.
+x^\lambda&\text{for}\;\lambda\ne 0,\cr
+\log(x)&\text{for}\;\lambda=0.
 \end{cases}
 $$
 
