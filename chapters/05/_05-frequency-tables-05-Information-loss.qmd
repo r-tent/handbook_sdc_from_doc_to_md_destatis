@@ -1,7 +1,7 @@
 ## Measurement of dislosure risk and information loss
 
 ### Disclosure risk
-As described in Section 5.3 and 5.4 there are a number of different disclosure control methods used to protect frequency tables. Each of these methods modifies the original data in the table in order to reduce the disclosure risk from small cells (e.g. 0's, 1's and 2's). The fundament of assessment of disclosure risk in this case it then the $k$-anonymity rule. Most often it is assumed that $k=3$, although sometimes also $k=2$ or $k=5$ is applied. So, in the frequency tables the primary risk results only for direct identification of an unit resulting from too low frequency and the secondary risk assessment is connected with possibility of deduction of suppressed/perturbed cells by relevant differenciation of table.
+As described in Section 5.3 and 5.4 there are a number of different disclosure control methods used to protect frequency tables. Each of these methods modifies the original data in the table in order to reduce the disclosure risk from small cells (e.g. 0's, 1's and 2's). The fundament of assessment of disclosure risk in this case is then the $k$-anonymity rule. Most often it is assumed that $k=3$, although sometimes also $k=2$ or $k=5$ is applied. So, in the frequency tables the primary risk results only for direct identification of an unit resulting from too low frequency and the secondary risk assessment is connected with possibility of deduction of suppressed/perturbed cells by relevant differenciation of table.
 
 Lupp and Langsrud (2021) describe the main idea of secondary risk in frequency tables as follows. Assume that an attacker has knowledge of $k$ (where $k$ is the natural number) contributors to the table (called *a $k$-coalition*). In the most basic case, an attacker has no background knowledge whatsoever, i.e., for him/her is $k=0$. This situation is, however, rather impossible in practice. The statistical unit know usually themself, and hence can identify cell which it belong to. Thus, most often, we have $k=1$. An attacker can then use their background knowledge to disclose information about other units by removing themselves from the data and analyzing the resulting table. Lupp and Langsrud (2021) regard a cell $c$ in a frequency table as *directly disclosive with reference to k*, if there exists a published marginal cell $pC$ within a sensitive variable, such that
 • $C$ is a cell contributing to $pC$, and
@@ -10,9 +10,9 @@ where $|T|$ denotes the number of units belonging to the cell $T$. In other word
 
 Similarly as in the case of magnitude tables (see Section 4.6) a cell is regarded as unsafe if it violates the $k$-anonymity. Therefore the dislosure risk can be measured as the share of cells having this property in the total number of cells in a table.
 
-As regards the secondary risk, its measure should satisfy four conditions formulated by Antal, Shlomo and Elliot (2014) and recalled in Section 4.6. Then the measure (4.6.1) and (4.6.2) can be applied directly in this case. They have proposed also a measure of risk for population tables. Let $F_l$ be population frequency of cell $C_l$, $l=1,2,\ldots,k$ (where $k$ is the total number of cells). Let $N$ be the number of population, $N=\sum_{l=1}^k{F_k}$ and $D=\{l\n\{1,2,\ldots,n\}:F_l=0\}$. The disclosure risk for a population based frequency table is then defined as
+As regards the secondary risk, its measure should satisfy four conditions formulated by Antal, Shlomo and Elliot (2014) and recalled in Section 4.6. Then the measure (4.6.1) and (4.6.2) can be applied directly in this case. They have proposed also a measure of risk for population tables. Let $F_l$ be population frequency of cell $C_l$, $l=1,2,\ldots,k$ (where $k$ is the total number of cells). Let $N$ be the number of population, $N=\sum_{l=1}^k{F_k}$ and $D=\{l\in\{1,2,\ldots,n\}:F_l=0\}$. The disclosure risk for a population based frequency table is then defined as
 $$
-r=w_1\freq{|D|}{k}+w_2\left(1-\frac{H}{\log k}\right)-w_3\frac{1}{\sqrt{N}}\log\frac{1}{e\cdot\sqrt{N}},
+r=w_1\frac{|D|}{k}+w_2\left(1-\frac{H}{\log k}\right)-w_3\frac{1}{\sqrt{N}}\log\frac{1}{e\cdot\sqrt{N}},
 $$
 where $|A|$ denotes the number of elements of the set $A$, $H$ is the value defined in (4.6.1) but adjusted to the current situation as 
 $$
@@ -20,11 +20,11 @@ H=-\sum_{i=1}^{k}{\frac{F_i}{N}\cdot\log{\frac{F_i}{N}}},
 $$
 and $\mathbf{w}=(w_1,w_2,w_3)$ is the vector of weights ($e$ is, of course, the base of the natural logarithm). This measure has all above mentioned properties.
 
-Assume that the original table was perturbed. The frequency of cell $C_l$ is then $F_l^#$, $l=1,2,\ldots,k$. Because the modified table has more uncertainty, the proposed measure of disclosure risk in this case is as follows: 
+Assume that the original table was perturbed. The frequency of cell $C_l$ is then $F_l^\#$, $l=1,2,\ldots,k$. Because the modified table has more uncertainty, the proposed measure of disclosure risk in this case is as follows: 
 $$
-r^#=w_1\left(\freq{|D|}{k}\right)^{\frac{|D\cup Q|}{|D\cap Q|}}+w_2\left(1-\frac{H}{\log k}\right)\left(1-\frac{H^#}{H}\right)-w_3\frac{1}{\sqrt{N}}\log\frac{1}{e\cdot\sqrt{N}}
+r^\#=w_1\left(\freq{|D|}{k}\right)^{\frac{|D\cup Q|}{|D\cap Q|}}+w_2\left(1-\frac{H}{\log k}\right)\left(1-\frac{H^\#}{H}\right)-w_3\frac{1}{\sqrt{N}}\log\frac{1}{e\cdot\sqrt{N}}
 $$
-where $Q$ is the set of zeroes in the perturbed frequency table and $H^#=-\sum_{i=1}^{k}{\frac{F_i^#}{N}\cdot\sum_{j=1}^{k}{\frac{F_{ij}^#}{N\cdot F_j^#}\cdot\log{\frac{F_{ij}^#}{n\cdot F_j^#}}}$, $F_{ij}^#$ is the number of units which belong to $C_i$ before and to $C_j$ after perturbation. The disclosure risk of a perturbed table is expected to be lower than that of the original table. $r^#$ satisfies this requirement.
+where $Q$ is the set of zeroes in the perturbed frequency table and $H^\#=-\sum_{i=1}^{k}{\frac{F_i^\#}{N}\cdot\sum_{j=1}^{k}{\frac{F_{ij}^\#}{N\cdot F_j^\#}\cdot\log{\frac{F_{ij}^\#}{n\cdot F_j^\#}}}$, $F_{ij}^\#$ is the number of units which belong to $C_i$ before and to $C_j$ after perturbation. The disclosure risk of a perturbed table is expected to be lower than that of the original table. $r^\#$ satisfies this requirement.
 
 ### Information loss
 The process of reducing disclosure risk results also in information loss. Some quantitative information loss measures have been developed by Shlomo and Young (2005 & 2006) to determining the impact various statistical disclosure control (SDC) methods have on the original tables.
