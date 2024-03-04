@@ -24,7 +24,7 @@ Assume that the original table was perturbed. The frequency of cell $C_l$ is the
 $$
 r^\#=w_1\left(\frac{|D|}{k}\right)^{\frac{|D\cup Q|}{|D\cap Q|}}+w_2\left(1-\frac{H}{\log k}\right)\left(1-\frac{H^\#}{H}\right)-w_3\frac{1}{\sqrt{N}}\log\frac{1}{e\cdot\sqrt{N}}
 $$
-where $Q$ is the set of zeroes in the perturbed frequency table and $H^\#=-\sum_{i=1}^{k}{\frac{F_i^\#}{N}\cdot\sum_{j=1}^{k}{\frac{F_{ij}^\#}{N\cdot F_j^\#}\cdot\log{\frac{F_{ij}^\#}{n\cdot F_j^\#}}}$, $F_{ij}^\#$ is the number of units which belong to $C_i$ before and to $C_j$ after perturbation. The disclosure risk of a perturbed table is expected to be lower than that of the original table. $r^\#$ satisfies this requirement.
+where $Q$ is the set of zeroes in the perturbed frequency table and $H^\#=-\sum_{i=1}^{k}{\frac{F_i^\#}{N}\cdot\sum_{j=1}^{k}{\frac{F_{ij}^\#}{N\cdot F_j^\#}\cdot\log{\frac{F_{ij}^\#}{n\cdot F_j^\#}}}}$, $F_{ij}^\#$ is the number of units which belong to $C_i$ before and to $C_j$ after perturbation. The disclosure risk of a perturbed table is expected to be lower than that of the original table. $r^\#$ satisfies this requirement.
 
 ### Information loss
 The process of reducing disclosure risk results also in information loss. Some quantitative information loss measures have been developed by Shlomo and Young (2005 & 2006) to determining the impact various statistical disclosure control (SDC) methods have on the original tables.
