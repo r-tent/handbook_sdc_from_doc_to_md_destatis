@@ -22,7 +22,7 @@ and $\mathbf{w}=(w_1,w_2,w_3)$ is the vector of weights ($e$ is, of course, the 
 
 Assume that the original table was perturbed. The frequency of cell $C_l$ is then $F_l^\#$, $l=1,2,\ldots,k$. Because the modified table has more uncertainty, the proposed measure of disclosure risk in this case is as follows: 
 $$
-r^\#=w_1\left(\freq{|D|}{k}\right)^{\frac{|D\cup Q|}{|D\cap Q|}}+w_2\left(1-\frac{H}{\log k}\right)\left(1-\frac{H^\#}{H}\right)-w_3\frac{1}{\sqrt{N}}\log\frac{1}{e\cdot\sqrt{N}}
+r^\#=w_1\left(\frac{|D|}{k}\right)^{\frac{|D\cup Q|}{|D\cap Q|}}+w_2\left(1-\frac{H}{\log k}\right)\left(1-\frac{H^\#}{H}\right)-w_3\frac{1}{\sqrt{N}}\log\frac{1}{e\cdot\sqrt{N}}
 $$
 where $Q$ is the set of zeroes in the perturbed frequency table and $H^\#=-\sum_{i=1}^{k}{\frac{F_i^\#}{N}\cdot\sum_{j=1}^{k}{\frac{F_{ij}^\#}{N\cdot F_j^\#}\cdot\log{\frac{F_{ij}^\#}{n\cdot F_j^\#}}}$, $F_{ij}^\#$ is the number of units which belong to $C_i$ before and to $C_j$ after perturbation. The disclosure risk of a perturbed table is expected to be lower than that of the original table. $r^\#$ satisfies this requirement.
 
