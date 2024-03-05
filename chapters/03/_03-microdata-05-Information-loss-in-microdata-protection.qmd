@@ -1,82 +1,113 @@
-## Information loss in microdata protection
+## Measurement of disclosure risk and information loss
 
 ### Introduction
 
+The key aim of the Statistical Disclosure Control is to achieve optimal balance between minimization of disclosure risk and simultaneous minimization of the information loss arising from the SDC process (what is equivalent to maximization of data utility for the possible users). So, both aspects of this problem will be described and critically discussed in this subchapter. We will present types of disclosure risk, show how one can measure of disclosure risk for categorical variables and continuous variables. Because usually for each of such types separate measures are applied, we investigate also a possibility of complex measurement of disclosure risk taking them jointly into account. A similar approach was also applied to measures of information loss: types of information loss and its measures for categorical and continuous variables are presented and next complex measures providing synthetic information in this respect are discussed. They are available already in the literature and implemented to the specialized statistical software. Finally, some remarks on the practical realization of trade-off between safety and utility of microdata are collected.
+  
+### Types of disclosure risk
+
+The assessment of the risk of re-identification using disclosed data involves identifying unsafe combinations for categorical variables or their values in the neighbourhood of relevant original values (for continuous variables) or levels (individual, global or hierarchical). The unsafe combinations of values of categorical variables are recognized using e.g. the $k$-anonymity or $l$-diversity rules. It is possible also when the $t$-closeness criterion is applied: in this case all records - and themselves the combinations of values of categorical variables – belonging to unsafe class are regarded to be unsafe. There are several criteria to classify the risk. We present the most important from them.
+
+Due to the range of data that can be used to identify the individual one can distinguish two types of disclosure risk for a dataset obtained once the SDC process has been applied (cf. Młodak, Pietrzak and Józefowski (2022)): 
+    • internal risk -- when there is a threat of identifying  units only using modified data (it is worth noting that the measures of internal risk can obviously be used to assess the risk of disclosure in the original data),
+    • external risk -- when there is a threat of identifying units by attempting to link data after SDC with information from other sources possibly available to the user.
+
+Internal risk results from the existence of unique combinations of values (exact for categorical variables and -- if possible -- within a certain precision level for continuous variables). External risk depends on the possibility of linking records contained in a statistical dataset (which underwent SDC) with relevant records from other data sources available to the user. 
+
+Internal risk refers to the risk of a user/intruder identifying a given unit only by using information included in the file that has been made available by the data provider (e.g. statistical office). In this case, it is assumed that the user can only rely on information that can be obtained from the data set made available to to him/her. In contrast, external risk refers to the situation when the user can access alternative data sources and use them in an attempt to identify units by linking relevant data from different sources. As can be seen, these two kinds of risks are rather different.
+
+Internal risk seems to be easier to compute than the external risk. Internal threats for confidentiality can be modelled by violation of the aforementioned rules based on frequency of combinations of values of categorical variables and of observations falling into an re-identification precision interval around a given value of continuous variable. However, the estimation of external risk requires a knowledge about possible alternative data sources available for the user. This knowledge is hard to obtain, but we can (with large probability) suppose which possibilities in this respect he/she can have. For instance, if the user is employed in the labour office, one can suppose the he/she has an access to the basis of unemployed persons, which can be linked by him/her with the database from the Labour Force Survey obtained from the official statistics or similar data holder). The internal and external risk can be combined to obtain a total disclosure risk.   
+
 A strict evaluation of information loss must be based on the data uses to be supported by the protected data. The greater the differences between the results obtained on original and protected data for those uses, the higher the loss of information. However, very often microdata protection cannot be performed in a data use specific manner, for the following reasons:
 
-• Potential data uses are very diverse and it may be even hard to identify them all at the moment of data release by the data protector.
+Another classification of disclosure risk is connected with the reference object. That is, the following types of risk from this point of view are distinguished (cf. Templ (2017)):
+    • individual risk - the risk of disclosing data for a single record and thus identifying the corresponding individual,
+    • hierarchical risk - the aggregated risk estimated for units of particular levels of a given hierarchy established within a dataset (e.g. according to territorial or economic classification),
+    • global risk - the aggregated disclosure risk for the whole data set.
 
-• Even if all data uses can be identified, issuing several versions of the same original dataset so that the $i$-th version has an information loss optimized for the $i$-th data use may result in unexpected disclosure.
+The statistician involved in processing and dissemination of data should estimate disclosure risk at each stage of the SDC process. It allows to track changes and efficiency of data protection made using various SDC methods and taking all relevant data struktures into account. Due to the fact, that information on the disclosure risk can contribute to re-identification of individuals, it should be, however, confidential itself and cannot be known by the user.  
+
+### Measures of disclosure risk for categorical variables
+
+The key measures of disclosure risk for categorical variables in microdata are, in general, based on the frequency rules in the internal dimension. That is, they are expressed by number or percentage of records violating $k$-anonymity or $l$-diversity rule or being regarded as unsafe according to the $t$-closeness principle. These indicators can be applied, however, only for the raw microdata. However, we have to take also into account the fact that the microdata are usually a sample from some general population, and verify that relevant population values are also safe. Of course, one should take also the specificity of individual and global risk into account. As regards the hierachical risk, Templ (2017) proposes to measure it in any case as $1-\prod_{i\in A}{(1-r_i)}$, where $r_i$ is the individual risk for $i$-th record and $A$ is a given aggregate.
+
+Hundepool et al. (2012) present the measure of individual risk being a probability of correct link between record and unit in a worst case scenario. On the other hand, the global risk is here computed as a sum of inverted frequencies of combinations (also in an option restricted only to limited only to those combinations that have the frequency equal to 1). It is presented also in subchapter 3.3.3. This approach was further developed by Taylor, Zhou, and Rise (2018), who proposed an additional measure: the probability of a correct match given a unique match and probability of correct match. The former is a relation of the number of combinations with frequency 1 in the sample and relevant number in the population, the latter is the average expected value of inverted population frequency of a combination given relevant sample frequency. Moreover, Hundepool et al. (2012) and Taylor et al. (2018) as well as Templ (2017) discuss the use of Benedetti–Franconi and Poisson approaches in this context. Let $f_k$ be frequency of combination of values of categorical variables in $k$-th records in a sample and $F_k$ - the relevant frequency in the population and $\pi_k$ - its inclusion probability. Then the individual risk, $r_k$, is given as a function of these quantities. Templ (2017) provides the complete formula. However, in practice, most risky are situations where $f_k=1$ or $f_k=2$. In the former case the estimate of individual risk as
+$$\hat{r}_k=\frac{\hat{p}_k}{1-\hat{p}_k}\log\left(\frac{1}{\hat{p}_k}\right)$$,
+where 
+$\hat{p}_k=\frac{f_k}{\hat{F}_k}=\frac{f_k}{\sum_{i\in\{j:x_j=x_k\}}{\pi_i}}$ and $x_l$ is the combination of values of categorical variables preset in $l$-th record. In the latter situation,
+$$\hat{r}_k=\frac{\hat{p}_k}{1-\hat{p}_k}-\left(\frac{\hat{p}_k}{1-\hat{p}_k}\right)^2\log\left(\frac{1}{\hat{p}_k}\right)$$
+The parameters of these methods are estimated taking the aforementioned frequencies and dependencies into account. 
+For large samples one can use the following approximation
+$$\hat{r}_k=\frac{\hat{p}_k}{f_k-(1-\hat{p}_k)}=\frac{f_k}{f_k\hat{F}_k-(\hat{F}_k-\hat{f}_k)}$$.
+
+Shlomo (2022) proposes measures disclosure risk in synthetic data based on the comparison of the overall distributions in the original data versus synthetic data and using Kullback–Leibler Total Variation and Hellinger’s Distance formulas. Shlomo and Skinner (2022) introduced a new approach to measure the risk of re-identification for a subpopulation in a register that is not representative of the general population based on the numbers of combinations which frequency equals in the sample in the subpopulation and in the population using the Poisson model.
+
+### Measures of disclosure risk for continuous variables
+
+For continuous variables the situation is much more complicated. They are measured on the interval or ratio scale and have continuous distributions. Hence, we cannot use frequency of occurrence of individual values as a basis for measurement of the dislosure risk in this case. Therefore, different solutions for measurement of disclosure risk have to be be applied. The famous approach in this context is used in the sdcMicro package of the R environment dedicated to carry out the SDC process on microdata (cf. R Development Core Team (2008), Templ, Kowarik, and Meindl (2023)) and described by Templ (2017). It reports the percentage of observations falling within an interval centered on its masked value whereas the upper bound corresponds to a worst case scenario where an intruder is sure that each nearest neighbour is indeed the true link. More precisely, for a given variable $X$ a minimal level of re-identificaion error can be established (say, $p\in (0,1)$ and as the basis of measurement of the risk the number of records for which the values of $X$ belong to the interval $(x(1-p),x(1+p))$ (where $x$ is the actual value of $X$). If this number is too low (e.g. smaller than 3) then the value $x$ is regarded as unsafe. 
+
+However, the variant of this approach applied in the sdcMicro can be used only in comparative terms, i.e. when data before and after SDC process are compared. For raw data the result is always that the risk lies between 0% and 100%, what is not informative. Alfalayleh and Brankovic (2015) presented a solution related in some sense to this idea based on the precision interval of rediscovering a confidential value, the Shannon’s entropy and the dynamic programming algorithm. Another approaches
+in this context are: 
+• distance-based linking (Pagliuca and Seri (1999)): based on the distances between records of the original data set and the dataset modified during the SDC process. For each record in protected dataset its nearest and second nearest neighbour in the original dataset is found (using the assumed distance formula). If the record and its nearest neighbour in original data set refer to the same respondent, then the former is regarded to be "linked". Similarly, if the second nearest neighbour in the original dataset and the current record in the protected datsaset correspond to the same individual, then the latter is regarded to be "linked to the second nearest". The measure of risk is here the percentage of records in the protected data set marked as "linked" or "linked to the second nearest", 
+• probabilistic record linkage (Jaro (1989)): the disclosure risk is here understood as percentage of "linked" pairs of records from the original and protected datasets, i.e. such that weights (values of likelihood that two paired records refer to the same respondent assigned by a special algorithm) are greater than an arbitrarily established threshold.
+One can easily observe that in both cases also original and protected data sets are compared. This makes it impossible to assess the original risk of disclosure, which is usually the basis of any data disclosure control activities.
+
+### Possibility of complex measurement of disclosure risk
+
+It is worth noting that the classical construction of measures of disclosure risk is focused on the development of separate tools for categorical and continuous variables. As it was indicated earlier it is justified by their different nature. However, using them means that the actual disclosure risk may be underestimated. For instance, assume that (2,6,7,1) is a combination of categories of four categorical variables occurring 12 times in a given microdata set and $Y$ is a continuous variable in the same set for which 10 values is contained in the interval $(43.7(1-0.2),43.7(1+0.2))$, where 0.2 is the minimum allowable level of error during trial of rediscovering of the sensitive value 43.7. So, treating the combinations of categorical variables and the values of $Y$ separately, one can say that both (2,6,7,1) and $Y= 43.7$ are safe. However, imagine that there is only one record for which the categorical variables have the realization of (2,6,7,1) and simultaneously $Y$ takes value from $(43.7(1-0.2),43.7(1+0.2))$. Then the threat of identification of a unit associated with thus record is very high.
+
+On the other hand, the data users (in this case to concerns mainly statisticians involved in data processing and their preparation for dissemination – as the information on the disclosure risk is usually confidential) are interested in obtaining precise, reliable and comprehensive information on the disclosure risk. Too low quality of estimation of such risk can lead to insufficient protection of sensible information and, consequently, to violation of privacy of a respondent.
+
+Taking these premises into account, Młodak, Pietrzak, and Józefowski (2022) discussed the possibility of use in this context the distance based on the idea of the Gower’s formula. Recall, that this approach takes all types of variables (according to their measurement scales) into account. In this way, the disclosure risk has been assessed in context of possible re-identification by linking relevant record from a given data set and record from a related alternative database available for the user. It is in fact the measure of external risk. A similar idea can be used also to complex assessment of internal disclosure risk using the distance-based approach, where application of the analogous concept of distance allows for joint estimation of change of the risk before and after performing SDC process. Also the probabilistic record linkage, where the conditional probability that a pair of records has an agreement pattern $\gamma$, given that it is a true match and the conditional probability that a pair of records has an agreement pattern $\gamma$ given they are true unmatched records (cf. Sayers et al. (2016)) can be computed using using a properly selected categorization of continuous variables. 
+
+However, as one can see, these methods can be also applied only in comparative terms. If we would like to assess the primary individual disclosure risks in the original dataset, we will have to use a combination of risks associated with categorical and continuous variables which are computed on the basis of the frequency rules (in the case of countinuous variables - using the sumber of observations falling into $(x(1-p),x(1+p))$, as it was stated before). The global risk is e.g. the arithmetic mean of individual risks. When it is also possible to use a comprehensive measure of disclosure risk, achieving a balance between minimizing these two quantities will become much easier.
+
+### Concepts and types of information loss and its measures
+
+The application of SDC methods entails the loss of some information. It arises as a result e.g. from gaps occurring in data when non-perturbative SDC methods are used, or perturbations when perturbative SDC tools are used. Because of this loss the analytical worth of the disclosed data for the user decreases, which means there is a possibility that results of computations and analyses based on such data will be inadequate (e.g. the precision of estimation could be much worse). 
+
+A strict evaluation of information loss must be based on the data uses to be supported by the protected data. The greater the differences between the results obtained on original and protected data for those uses, the higher the loss of information. However, very often microdata protection cannot be performed in a data use specific manner, for the following reasons:
+• potential data uses are very diverse and it may be even hard to identify them all at the moment of data release by the data protector.
+• even if all data uses can be identified, issuing several versions of the same original dataset so that the *i*-th version has an information loss optimized for the *i*-th data use may result in unexpected disclosure.
 
 Since that data often must be protected with no specific data use in mind, generic information loss measures are desirable to guide the data protector in assessing how much harm is being inflicted to the data by a particular SDC technique.
 
-Defining what a generic information loss measure is can be a tricky issue. Roughly speaking, it should capture the amount of information loss for a reasonable range of data uses. We will say there is little information loss if the protected dataset is analytically valid and interesting according to the following definitions by Winkler (1998):
+Defining what a generic information loss measure is can be a difficult issue. Roughly speaking, it should capture the amount of information loss for a reasonable range of data uses. We will say there is little information loss if the protected dataset is analytically valid and interesting according to the following definitions by Winkler (1998):
 
--   A protected microdata set is an *analytically valid* microdata set if it approximately preserves the following with respect to the original data (some conditions apply only to continuous variables):
-    1.  Means and covariances on a small set of subdomains (subsets of records and/or variables)
-    2. Marginal values for a few tabulations of the data
-    3. At least one distributional characteristic
--   A microdata set is an *analytically interesting microdata set,* if six variables on important subdomains are provided that can be validly analyzed.\
+1. A protected microdata set is an *analytically valid* microdata set if it approximately preserves the following with respect to the original data (some conditions apply only to continuous variables):
+• means and covariances on a small set of subdomains (subsets of records and/or variables),
+• marginal values for a few tabulations of the data (the information loss in this approach concerns mainly tables created on the basis of microdata and therefore it will be discussed in chapters 4 and 5),
+• at least one distributional characteristic.
+
+2. A microdata set is an *analytically interesting microdata set,* if six variables on important subdomains are provided that can be validly analyzed.
+    
     More precise conditions of analytical validity and analytical interest cannot be stated without taking specific data uses into account. As imprecise as they may be, the above definitions suggest some possible measures:
--   Compare raw records in the original and the protected dataset. The more similar the SDC method to the identity function, the less the impact (but the higher the disclosure risk! ). This requires pairing records in the original dataset and records in the protected dataset. For masking methods, each record in the protected dataset is naturally paired to the record in the original dataset it originates from. For synthetic protected datasets, pairing is more artificial. In Dandekar, Domingo-Ferrer and Sebé (2002) we proposed to pair a synthetic record to the nearest original record according to some distance.
--   Compare some statistics computed on the original and the protected datasets. The above definitions list some statistics which should be preserved as much as possible by an SDC method.
 
-### Information loss measures for continuous data
+1. Compare raw records in the original and the protected dataset. The more similar the SDC method to the identity function, the less the impact (but the higher the disclosure risk!). This requires pairing records in the original dataset and records in the protected dataset. For masking methods, each record in the protected dataset is naturally paired to the record in the original dataset it originates from. For synthetic protected datasets, pairing is more artificial. In Dandekar, Domingo-Ferrer and Sebé (2002) we proposed to pair a synthetic record to the nearest original record according to some distance.
 
-Assume a microdata set with $n$ individuals (records) $I_{1},I_{2},\cdots,I_{n}$ and $p$ continuous variables $Z_{1},Z_{2},\cdots,Z_{p}$. Let $X$ be the matrix representing the original microdata set (rows are records and columns are variables). Let $X^{'}$ be the matrix representing the protected microdata set. The following tools are useful to characterize the information contained in the dataset:
+2. Compare some statistics computed on the original and the protected datasets. The above definitions list some statistics which should be preserved as much as possible by an SDC method.
 
--   Covariance matrices $V$ (on $X$) and $V^{'}$ (on $X^{'}$).
--   Correlation matrices $R$ and $R^{'}$.
--   Correlation matrices $RF$ and ${RF}^{'}$ between the $p$ variables and the $p$ factors principal components ${PC}_{1},{PC}_{2},\cdots,{PC}_{p}$ obtained through principal components analysis.
--   Communality between each of the $p$ variables and the first principal component ${PC}_{1}$ (or other principal components ${PC}_{i}$'s). Communality is the percent of each variable that is explained by ${PC}_{1}$ (or ${PC}_{i}$). Let $C$ be the vector of communalities for $X$ and $C^{'}$ the corresponding vector for $X^{'}$.
--   Matrices $F$ and $F^{'}$containing the loadings of each variable in $X$ on each principal component. The $i$-th variable in $X$ can be expressed as a linear combination of the principal components plus a residual variation, where the $j$-th principal component is multiplied by the loading in $F$ relating the $i$-th variable and the $j$-th principal component (Chatfield and Collins, 1980\]. $F^{'}$is the corresponding matrix for $X^{'}$.
+  Taking the aforementioned premises into account, for microdata the information loss can concern the differences in distributions, in diversification and in shape and power of connections between various features. Therefore, the following types of measures of information loss are distinguished:    
 
-There does not seem to be a single quantitative measure which completely reflects those structural differences. Therefore, we proposed in Domingo-Ferrer, Mateo-Sanz, and Torra (2001) and Domingo-Ferrer and Torra (2001) to measure information loss through the discrepancies between matrices $X$, $V$, $R$, ${RF}$, $C$ and $F$ obtained on the original data and the corresponding $X^{'}$, $V^{'}$, $R^{'}$, ${RF}^{'}$, $C^{'}$ and $F^{'}$ obtained on the protected dataset. In particular, discrepancy between correlations is related to the information loss for data uses such as regressions and cross tabulations.
-
-Matrix discrepancy can be measured in at least three ways:
-
-**Mean square error** Sum of squared componentwise differences between pairs of matrices, divided by the number of cells in either matrix.
-
-**Mean absolute error** Sum of absolute componentwise differences between pairs of matrices, divided by the number of cells in either matrix.
-
-**Mean variation** Sum of absolute percent variation of components in the matrix computed on protected data with respect to components in the matrix computed on original data, divided by the number of cells in either matrix. This approach has the advantage of not being affected by scale changes of variables.
-
-@tbl-loss-information summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, $p$ is the number of variables, $n$ the number of records, and components of matrices are represented by the corresponding lowercase letters (*e.g.* $x_{\text{ij}}$ is a component of matrix $X$). Regarding $X - X^{'}$ measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant $\overline{X^{\phantom{'}}} - \overline{X^{'}}$). Similarly, for $V - V^{'}$measures, it would also be sensible to use them to compare only the variances of the variables, *i.e.* to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant $S - S^{'}$).
-
-
-|          	|                                  Mean square error                                  	|                                   Mean abs. error                                   	|                                             Mena variation                                             	|
-|:--------:	|:-----------------------------------------------------------------------------------:	|:-----------------------------------------------------------------------------------:	|:------------------------------------------------------------------------------------------------------:	|
-|  $X-X'$  	|            $\frac{\sum\limits_{j=1}^{p}\sum\limits_{i=1}^{n}(x_{ij} - x_{ij}')^2}{np}$            	|            $\frac{\sum\limits_{j=1}^{p}\sum\limits_{i=1}^{n}|x_{ij} - x_{ij}'|}{np}$            	|            $\frac{\sum\limits_{j=1}^{p}\sum\limits_{i=1}^{n}\frac{|x_{ij} - x_{ij}'|}{|x_{ij}|}}{np}$            	|
-|  $V-V'$  	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}(v_{ij} - v_{ij}')^2}{p(p+1)/2}$ 	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}|v_{ij} - v_{ij}'|}{p(p+1)/2}$ 	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}\frac{|v_{ij} - v_{ij}'|}{|v_{ij}|}}{p(p+1)/2}$ 	|
-|  $R-R'$  	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}(r_{ij} - r_{ij}')^2}{p(p-1)/2}$ 	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}|r_{ij} - r_{ij}'|}{p(p-1)/2}$ 	| $\frac{\sum\limits_{j=1}^{p}\sum\limits_{1 \leq i \leq j}\frac{|r_{ij} - r_{ij}'|}{|r_{ij}|}}{p(p-1)/2}$ 	|
-| $RF-RF'$ 	|         $\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}(rf_{ij} - rf_{ij}')^2}{p^2}$         	|         $\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}|rf_{ij} - rf_{ij}'|}{p^2}$         	|        $\frac{\sum\limits_{j=1}^{p} w_j \sum\limits_{i=1}^{p}\frac{|rf_{ij} - rf_{ij}'|}{|rf_{ij}|}}{p^2}$       	|
-|  $C-C'$  	|                       $\frac{\sum\limits_{i=1}^{p}(c_i - c_i')^2}{p}$                      	|                       $\frac{\sum\limits_{i=1}^{p}|c_i - c_i'|}{p}$                      	|                       $\frac{\sum\limits_{i=1}^{p}\frac{|c_i - c_{i}'|}{|c_i|}}{p}$                       	|
-|  $F-F'$  	|          $\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}(f_{ij} - f_{ij}')^2}{p^2}$          	|          $\frac{\sum\limits_{j=1}^{p}w_j\sum\limits_{i=1}^{p}|f_{ij} - f_{ij}'|}{p^2}$          	|         $\frac{\sum\limits_{j=1}^{p} w_j \sum\limits_{i=1}^{p}\frac{|f_{ij} - f_{ij}'|}{|f_{ij}|}}{p^2}$         	|
-
-: Information loss measures for continuous microdata {#tbl-loss-information}
-
-In Yancey, Winkler and Creecy (2002), it is observed that dividing by $x_{\text{ij}}$ causes the $X - X^{'}$mean variation to rise sharply when the original value $x_{\text{ij}}$ is close to 0. This dependency on the particular original value being undesirable in an information loss measure, Yancey, Winkler and Creecy (2002) propose to replace the mean variation of $X - X^{'}$ by the more stable measure
-$$
-  \frac{1}{np}\sum_{j=1}^p\sum_{i=1}^n\frac{|x_{ij}-x'_{ij}|}{\sqrt{2} S_j}
-$$
-
-where $S_{j}$ is the standard deviation of the $j$-th variable in the original dataset.
-
-Trottini (2003) argues that, since information loss is to be traded off for disclosure risk and the latter is bounded ---there is no risk higher than 100%---, upper bounds should be enforced for information loss measures. In practice, the proposal in Trottini (2003) is to limit those measures in @tbl-loss-information based on the mean variation to a predefined maximum value.
+1. Measures of distribution disturbance – measures based on distances between original and perturbed values of variables (e.g. mean, mean of relative
+distances, complex distances, etc.),
+2. Measures of impact on variance of estimation – computed using distances between variances for averages of continuous variables before and after SDC or multi-factor ANOVA for a selected dependent variable in relation to selected independent categorical variables (in this case, the measure of information loss involves a comparison of components of coefficients of determination $R^2$ - in terms of within-group and inter-group variance - for relevant models based on original and perturbed values (cf. Hundepool et al. (2012)),
+3. Measures of impact on the intensity of connections – comparisons of measures of direction and intensity of connections between original continuous variables and between relevant perturbed ones; such measures can be e.g. correlation coefficients or test of independence.
 
 ### Information loss measures for categorical data
 
-Straightforward computation of measures in @tbl-loss-information on categorical data is not possible. The following alternatives are considered in Domingo-Ferrer and Torra (2001):
+Straightforward computation of measures based on basic arithmetic opereations (addition, subtraction, multiplication, division) or most descriptive statistics (Euclidean distance, mean, variance, correlation, etc.) on categorical data is not possible. The following alternatives are considered in Domingo-Ferrer and Torra (2001):
+• direct comparison of categorical values,
+• comparison of contingency tables,
+• entropy-based measures.
 
--   Direct comparison of categorical values
--   Comparison of contingency tables
--   Entropy-based measures
+Below we will describe each of such types of measures.
 
 #### Direct comparison of categorical values
 :::{.callout-warning collapse=true}
 ## Expert level
 
-Comparison of matrices $X$ and $X'$ for categorical data requires the definition of a distance for categorical variables. Definitions consider only the distances between pairs of categories that can appear when comparing an original record and its protected version (see discussion above on pairing original and protected records).
+Comparison of matrices $X$ and $X^'$ for categorical data requires the definition of a distance for categorical variables. Definitions consider only the distances between pairs of categories that can appear when comparing an original record and its protected version (see discussion above on pairing original and protected records).
 
 For a nominal variable $V$ (a categorical variable taking values over an unordered set), the only permitted operation is comparison for equality. This leads to the following distance definition:
 $$
@@ -86,59 +117,157 @@ d_V(c,c')=\begin{cases}
 \end{cases}
 $$
 
-where $c$ is a category in an original record and $c'$ is the category which has replaced $c$ in the corresponding protected record.
+$$dv(c,c')=\begin{cases}
+0, & \text{if $c=c'$},\\
+1, & \text{if $c\neq c'$},
+\end{cases}$$ (3.5.1)
+where $c$ is a category in an original record and $c^'$ is the category which has replaced *c* in the corresponding protected record.
 
-For an ordinal variable $V$ (a categorical variable taking values over a totally ordered set), let $\leq_V$ be the total order operator over the range $D(V)$ of $V$. Define the distance between categories $c$ and $c'$ as the number of categories between the minimum and the maximum of $c$ and $c'$ divided by the cardinality of the range:
+For an ordinal variable $V$ (a categorical variable taking values over a totally ordered set), let $\leq V$ be the total order operator over the range $D(V)$ of $V$. Define the distance between categories $c$ and $c^'$ as the number of categories between the minimum and the maximum of $c$ and $c^'$ divided by the cardinality of the range:
 
-$$
-d_V(c,c') = \frac{\left| c'': \min(c,c') \leq c'' < \max(c,c') \right|}{\left| D(V) \right|}
-$$
-where $|\cdot|$ stands for the cardinality operator.
+$$\text{dc}\left(c,c^'\right)=\frac{\left|c^{''}\text{:min}\left(c,c^'\right\leq c^{''}<\text{max}\left(c,c^'\right)\right|}{\left|D(V)\right|}$$ (3.5.2)
 :::
 
 #### Comparison of contingency tables
 :::{.callout-warning collapse=true}
 ## Expert level
 
-An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets $F$ and $G$ (the original and the protected set, respectively) and their corresponding $t$-dimensional contingency tables for $t \leq K$, we can define a contingency table-based information loss measure $\text{CTBIL}$ for a subset $W$ of variables as follows: 
+An alternative to directly comparing the values of categorical variables is to compare their contingency tables. Given two datasets $F$ and $G$ (the original and the protected set, respectively) and their corresponding $t$-dimensional contingency tables for $t\leq K$, we can define a contingency table-based information loss measure *CTBIL* for a subset $W$ of variables as follows:
 
-$$
-CTBIL(F,G; W,K) = \sum\limits_{ \{ V_{ji} \cdots V_{jt} \} f\subseteq W \atop | \{ V_{ji} \cdots V_{jt} \} | \leq K} \sum\limits_{i_1 \cdots i_t} | x^F_{i_1 \cdots i_t} - x^G_{i_1 \cdots i_t} | \qquad \text{(3.4.3.1)}
-$$
+$$\text{CTBIL}(F,G;W,K)=\sum_{\{V_{ji}\cdots V_{jt}\} f\subseteq W\atop|\{V_{ji}\cdots V_{jt}\}|\leq K}\sum_{i_1\cdots i_t}|x^F_{i_1\cdots i_t}-x^G_{i_1\cdots i_t} |$$(3.5.3)
 
 where $x_{\text{subscripts}}^{\text{file}}$ is the entry of the contingency table of $\text{file}$ at position given by $\text{subscripts}$.
 
-Because the number of contingency tables to be considered depends on the number of variables $|W|$, the number of categories for each variable, and the dimension $K$, a normalized version of Expression (3.4.3.1) may be desirable. This can be obtained by dividing Expression (3.4.2.1) by the total number of cells in all considered tables.
+Because the number of contingency tables to be considered depends on the number of variables $|W|$, the number of categories for each variable, and the dimension $K$, a normalized version of Expression (3.5.3) may be desirable. This can be obtained by dividing Expression (3.4.2.1) by the total number of cells in all considered tables.
 
-Distance between contingency tables generalizes some of the information loss measures used in the literature. For example, the $\mu$‑ARGUS software (Hundepool et al. 2005) measures information loss for local suppression by counting the number of suppressions. The distance between two contingency tables of dimension one returns twice the number of suppressions. This is because, when category $A$ is suppressed for one record, two entries of the contingency table are changed: the count of records with category $A$ decreases and the count of records with the "missing" category increases.
+Distance between contingency tables generalizes some of the information loss measures used in the literature. For example, the μ‑ARGUS software (Hundepool et al. (2005)) measures information loss for local suppression by counting the number of suppressions. The distance between two contingency tables of dimension one returns twice the number of suppressions. This is because, when category $A$ is suppressed for one record, two entries of the contingency table are changed: the count of records with category $A$ decreases and the count of records with the "missing" category increases.
 :::
 
 #### Entropy-based measures
 :::{.callout-warning collapse=true}
 ## Expert level
 
-In De Waal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw, (1998) and Willenborg and De Waal (2001), the use of Shannon's entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.
+In De Waal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw (1998) and Willenborg and De Waal (2001), the use of Shannon's entropy to measure information loss is discussed for the following methods: local suppression, global recoding and PRAM. Entropy is an information-theoretic measure, but can be used in SDC if the protection process is modelled as the noise that would be added to the original dataset in the event of it being transmitted over a noisy channel.
 
 As noted earlier, PRAM is a method that generalizes noise addition, suppression and recoding methods. Therefore, our description of the use of entropy will be limited to PRAM.
 
-Let $V$ be a variable in the original dataset and $V'$ be the corresponding variable in the PRAM-protected dataset. Let $P_{V,V'} = \left\{ p\left( V' = j \mid V = i \right) \right\}$ be the PRAM Markov matrix. Then, the conditional uncertainty of $V$ given that $V' = j$ is:
+Let $V$ be a variable in the original dataset and $V^'$ be the corresponding variable in the PRAM-protected dataset. Let $P_{V,V^'}=\left\{p\left(V^'=j|V=i\right) \right\}$ be the PRAM Markov matrix. Then, the conditional uncertainty of $V$ given that $V^'=j$ is:
 
-$$
-H\left( V \mid V' = j \right) = - \sum\limits_{i = 1}^{n}{p\left( V = i \mid V' = j \right)\log p}\left( V = i \mid V' = j \right) \qquad \text{(3.4.3.2)}
-$$ 
+$H\left(V|V^'=j\right)=-\sum_{i=1}^n{p\left(V=i|V^'=j\right)\text{log}p}\left(V=i|V^'=j|\right)$ (3.5.4)
 
-The probabilities in Expression (3.4.3.2) can be derived from $P_{V,V'}$ using Bayes's formula. Finally, the entropy-based information loss measure $EBIL$ is obtained by accumulating Expression 3.4.3.2 for all individuals $r$ in the protected dataset $G$
+The probabilities in Expression (3.5.4) can be derived from $P_{V,V^'}$ using Bayes's formula. Finally, the entropy-based information loss measure *EBIL* is obtained by accumulating Expression (3.5.4) for all individuals $r$ in the protected dataset $G$
 
-$$
-EBIL\left( P_{V,V'},G \right) = \sum\limits_{r \in G}^{}{H\left( V \mid V' = j_{r} \right)}
-$$
+$\text{EBIL}\left(P_{V,V^'},G\right)=\sum_{r\in G}{H\left(V|V^'=j_{r}\right)}$
 
-where $j_{r}$ is the value taken by $V'$ in record $r$.
+where $j_r$ is the value taken by $V^'$ in record $r$.
 
-The above measure can be generalized for multivariate datasets if $V$ and $V'$ are taken as being multidimensional variables (*i.e.* representing several one-dimensional variables).
+The above measure can be generalized for multivariate datasets if $V$ and $V^'$ are taken as being multidimensional variables (*i.e.* representing several one-dimensional variables).
 
 While using entropy to measure information loss is attractive from a theoretical point of view, its interpretation in terms of data utility loss is less obvious than for the previously discussed measures.
 :::
+
+### Information loss measures for continuous data
+
+Assume a microdata set with $n$ individuals (records) $I_1,I_2,\cdots,I_n$ and $p$ continuous variables $Z_1,Z_2,\cdots,Z_p$. Let $X$ be the matrix representing the original microdata set (rows are records and columns are variables). Let $X^{'}$ be the matrix representing the protected microdata set. The following tools are useful to characterize the information contained in the dataset:
+• covariance matrices $V$ (on $X$) and $V^'$ (on $X^'$).
+• correlation matrices $R$ and $R^'$.
+• correlation matrices $\text{RF}$ and $RF^'$ between the $p$ variables and the $p$ factors principal components $\text{PC}_1,\text{PC}_2,\cdots,\text{PC}_p$ obtained through principal components analysis.
+• communality between each of the $p$ variables and the first principal component $\text{PC}_{1}$ (or other principal components $\text{PC}_i$*'s*). Communality is the percent of each variable that is explained by $\text{PC}_{1}$ (or $\text{PC}_i$). Let $C$ be the vector of communalities for $X$ and $C^'$ the corresponding vector for $X^'$.
+• matrices $F$ and $F^'$ containing the loadings of each variable in $X$ on each principal component. The i-th variable in $X$ can be expressed as a linear combination of the principal components plus a residual variation, where the $j$-th principal component is multiplied by the loading in $F$ relating the $i$-th variable and the $j$-th principal component (Chatfield and Collins, 1980\]. $F^'$ is the corresponding matrix for $X^'$.
+
+There does not seem to be a single quantitative measure which completely reflects those structural differences. Therefore, we proposed in Domingo-Ferrer, Mateo-Sanz, and Torra (2001) and Domingo-Ferrer and Torra (2001) to measure information loss through the discrepancies between matrices $X$, $V$, $R$, $\text{RF}$, $C$ and $F$ obtained on the original data and the corresponding $X^'$, $V^'$, $R^'$, $RF^'$, $C^'$ and $F^'$ obtained on the protected dataset. In particular, discrepancy between correlations is related to the information loss for data uses such as regressions and cross tabulations.
+
+Matrix discrepancy can be measured in at least three ways:
+• *Mean square error* - sum of squared componentwise differences between pairs of matrices, divided by the number of cells in either matrix,
+• *Mean absolute error* - sum of absolute componentwise differences between pairs of matrices, divided by the number of cells in either matrix,
+• *Mean variation* - sum of absolute percent variation of components in the matrix computed on protected data with respect to components in the matrix computed on original data, divided by the number of cells in either matrix. This approach has the advantage of not being affected by scale changes of variables.
+
+Table 1 summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, $p$ is the number of variables, $n$ - the number of records, and components of matrices are represented by the corresponding lowercase letters (*e.g.* $x_{\text{ij}}$ is a component of matrix $X$). Regarding $X-X^'$ measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant $\overline{X} - \overline{X^'}$. Similarly, for $V-V^'$ measures, it would also be sensible to use them to compare only the variances of the variables, *i.e.* to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant $S-S^'$).
+
+Table 1. Examples of measures of information loss for continuous variables.  
+
+|          	|                                  Mean square error                                  	|                                   Mean abs. error                                   	|                                             Mean variation                                             	|
+|:--------:	|:-----------------------------------------------------------------------------------:	|:-----------------------------------------------------------------------------------:	|:------------------------------------------------------------------------------------------------------:	|
+|  $X-X'$  	|            $\frac{\sum_{j=1}^{p}\sum_{i=1}^{n}(x_{ij}-x_{ij}')^2}{np}$            	|            $\frac{\sum_{j=1}^{p}\sum_{i=1}^{n}|x_{ij}-x_{ij}'|}{np}$            	|            $\frac{\sum_{j=1}^{p}\sum_{i=1}^{n}\frac{|x_{ij}-x_{ij}'|}{|x_{ij}|}}{np}$            	|
+|  $V-V'$  	| $\frac{\sum_{j=1}^{p}\sum_{1\leq i\leq j}(v_{ij}-v_{ij}')^2}{\frac{p(p+1)}{2}}$ 	| $\frac{\sum_{j=1}^{p}\sum_{1\leq i\leq j}|v_{ij}-v_{ij}'|}{\frac{p(p+1)}{2}}$ 	| $\frac{\sum_{j=1}^{p}\sum_{1\leq i\leq j}\frac{|v_{ij}-v_{ij}'|}{|v_{ij}|}}{\frac{p(p+1)}{2}}$ 	|
+|  $R-R'$  	| $\frac{\sum_{j=1}^{p}\sum_{1 \leq i\leq j}(r_{ij}-r_{ij}')^2}{\frac{p(p-1)}{2}}$ 	| $\frac{\sum_{j=1}^{p}\sum_{1 \leq i \leq j}|r_{ij}-r_{ij}'|}{\frac{p(p-1)}{2}}$ 	| $\frac{\sum_{j=1}^{p}\sum_{1\leq i \leq j}\frac{|r_{ij}-r_{ij}'|}{|r_{ij}|}}{\frac{p(p-1)}{2}}$ 	|
+| $RF-RF'$ 	|         $\frac{\sum_{j=1}^{p}w_j\sum_{i=1}^{p}(rf_{ij}-rf_{ij}')^2}{p^2}$         	|         $\frac{\sum_{j=1}^{p}w_j\sum_{i=1}^{p}|rf_{ij}-rf_{ij}'|}{p^2}$         	|        $\frac{\sum_{j=1}^{p} w_j\sum_{i=1}^{p}\frac{|rf_{ij}-rf_{ij}'|}{|rf_{ij}|}}{p^2}$       	|
+|  $C-C'$  	|                       $\frac{\sum_{i=1}^{p}(c_i-c_i')^2}{p}$                      	|                       $\frac{\sum_{i=1}^{p}|c_i-c_i'|}{p}$                      	|                       $\frac{\sum_{i=1}^{p}\frac{|c_i-c_{i}'|}{|c_i|}}{p}$                       	|
+|  $F-F'$  	|          $\frac{\sum_{j=1}^{p}w_j\sum_{i=1}^{p}(f_{ij}-f_{ij}')^2}{p^2}$          	|          $\frac{\sum_{j=1}^{p}w_j\sum_{i=1}^{p}|f_{ij}-f_{ij}'|}{p^2}$          	|         $\frac{\sum_{j=1}^{p} w_j\sum_{i=1}^{p}\frac{|f_{ij}-f_{ij}'|}{|f_{ij}|}}{p^2}$         	|
+
+Source: Domingo-Ferrer, Mateo-Sanz and Torra (2001).
+
+In Yancey, Winkler and Creecy (2002), it is observed that dividing by $x_{\text{ij}}$ causes the $X-X^'$ mean variation to rise sharply when the original value $x_{\text{ij}}$ is close to 0. This dependency on the particular original value being undesirable in an information loss measure, Yancey, Winkler and Creecy (2002) propose to replace the mean variation of $X-X^'$ by the more stable measure
+$$IL1=\frac{1}{np}\sum_{j=1}^p{\sum_{i=1}^n{\frac{|x_{ij}-x{ij}'|}{\sqrt{2}S_j}}},$$
+where $S_j$ is the standard deviation of the $j$-th variable in the original dataset. This measure was incorporated into the sdcMicro R package. The IL1 measure, in turn, is highly sensitive to small disturbances and weak differentiation of feature values - it may take too high values for variables with low differentiation, and too low - when the differentiation is significant. In practice, if $S_j$ is very close to zero, we obtain as a results INF. It means infinity. In this case, the measure becomes really useless, because it will not allow to compare the loss of information in several microdata sets with statistical confidentiality protected in various ways - if for each of such sets the IL1 measure will be equal to INF.
+
+Trottini (2003) argues that, since information loss is to be traded off for disclosure risk and the latter is bounded ---there is no risk higher than 100%---, upper bounds should be enforced for information loss measures. In practice, the proposal in Trottini (2003) is to limit those measures in @tbl-loss-information based on the mean variation to a predefined maximum value.
+
+Młodak (2020) proposed a new measure of information loss for continuous variables in terms of assesment of impact on the intensity of connections, which was slighthly improved by Młodak, Pietrzak and Józefowski (2022). It is based on on diagonal entries of inversed correlation matrices for continuous variables in the original ($R^{-1}$) and perturbed (${R^'}^{-1}$) data sets, i.e. $\rho_{jj}^{(-1)}$ and ${\rho_{jj}^'}^{(-1)}$), $j=1,2,\ldots,m_c$ (where $m_c$ is the number of continuous variables):
+
+$$\gamma=\frac{1}{\sqrt{2}}\sqrt{\sum_{j=1}^{m_c}{\left(\frac{\rho_{jj}^{(-1)}}{\sqrt{\sum_{l=1}^m{\left(\rho_{ll}^{(-1)}\right)^2}}}-\frac{\rho_{jj}^{*(-1)}}{\sqrt{\sum_{l=1}^m{\left(\rho_{ll}^{*(-1)}\right)^2}}}\right)^2}}\in [0,1].$$ (3.5.6)
+
+Values of (3.5.6) are also easily interpretable - it can be understood as the expected loss of information about connections between variables. As one can easily see, the result can be expressed in $\%$. Of course, both matrices - $R$ and $R'$ - must be based on the same correlation coefficient. The most obvious choice in this respect is the Pearson's index. However, when tau-Kendall correlation matrix is used, one can also apply it to ordinal variables. The method will be not applicable if the correlation matrix is singular. The main advantage of the measure $\gamma$ is that it treats all variables as an inseparable whole and takes all connections between analysed variables, even those hard to observe, into account. $\gamma$ can be computed in the sdcMicro R package using the function *IL_correl()*. 
+
+### Complex measures of information loss
+
+The above presented concepts of information loss prompt the question whether it is possible to construct complex measure of information loss taking variables of all measurement scales into account. The relevant proposal was formulated by Młodak (2020) and applied by Młodak, Pietrzak and Józefowski (2022) to the case of microdata from the Polish survey of accodents at work. For categorical variables it is based on the approaches (3.5.1) and (3.5.2), i.e. if the variable $X_j$ is nominal, then (treating NA as a separate level)
+$$
+d({x_{ij}}^',x_{ij})=\begin{cases}
+1&\textmd{if}\;x_{ij}}^'=x_{ij},\cr
+0&\textmd{if}\;x_{ij}}^'\ne x_{ij}. (3.5.7)
+$$
+If $X_j$ is ordinal (assuming for simplification and without loss of generality that categories are numbered from 1 to $\mathfrak{r}_j$, where $\mathfrak{r}_j$ is the number of categories), then (NA is treated as a separate, lowest category)
+$$
+d({x_{ij}}^',x_{ij})=\frac{\mathfrak{r}(x_{ij}}^',x_{ij})}{\mathfrak{r}_j-1}, (3.5.8)
+$$
+where $\mathfrak{r}(x_{ij}}^',x_{ij})$ is the absolute difference in categories between $x_{ij}}^'$ and $x_{ij}$. These partial distances take always values from [0,1]. There are, however, some problems with using them, especially if recoding is applied. The number of categories of a recoded variable in the original set and in the set after SDC will be different. Therefore, in the first place, it should be ensured that the numbers of the categories left unchanged are identical in both variants. For example, if before recoding the variable $X_j$ had $\mathfrak{r}_j$=8 categories marked as 1,2,3,4,5,6,7,8 and as a result of recoding categories 2 and 3 and 6 and 7 were combined, then the new categories should have respectively numbers 1,2,4,5,6,8. Then the option (3.5.8) for categorical variables applies in this case as well.
+
+Much more complicated situation occurs for continuous variables. Młodak (2020) proposed several options is this respect, e.g. normalized absolute value or normalized square of difference between ${x_{ij}}^'$ and $x_{ij}$, i.e. 
+$$d({x_{ij}}^',x_{ij})=|{x_{ij}}^'-x_{ij}|/\max_{k=1,2,\ldots,n}⁡|{x_{kj}}^'-x_{kj}|,$$ (3.5.9)
+or
+$$d({x_{ij}}^',x_{ij})=({x_{ij}}^'-x_{ij})^2/\max_(k=1,2,\lots,n)⁡({x_{kj}}^'-x_{kj})^2,$$ (3.5.10)
+$i=1,2,\ldots,n$, $j=1,2,\ldots,m_c$, where $n$ is the number of records and $m_c$ - the number of continuous variables.
+
+Measures (3.5.8) and (3.5.9) also have another significant weakness. The measure of information loss should be an increasing function due to individual partial information losses. This means that, for example, if for some $i\in\{1,2,\ldots,n\}$ the value $|x_{ij}^'-x_{ij}|$ will increase and all $|x_{hj}^'-x_{hj}|$ for $h\ne i$ remain the same, the value of the distance should increase. Meanwhile, in the case of formulas (3.5.9) and (3.5.10), this will not be the case. If, for the same, the indicated absolute difference (or the square of the difference, respectively) between the original value and the value after SDC reaches a maximum, then the partial loss of information for $i$ will remain unchanged - it will be 1, and for the others it will turn out to be smaller. As a result, we get a smaller metric value, while the information loss actually increased.
+
+Taking the aforementioned observations into account Młodak (2020) proposed in the discussed case the distance of the form: 
+$$
+d({x_{ij}}^',x_{ij})=\frac{2}{\pi}\arctan|{x_{ij}}^'-x_{ij}|.  (3.5.11)
+$$
+The arcus tangens (arctan) function was used to ensure that the distance between original and perturbed values takes values from $[0,1]$. To achieve this, an ascending function bounded on both sides (both from the top and from the bottom) should be applied. The arctan seems to be a good solution and is also easy to compute. Of course -- like any function of this type -- it is not perfect: for larger absolute differences between original and perturbed values it tends to be close to $\frac{\pi}{2}$ (and, in consequence, $d(x_{ij}^',x_{ij})$ to be close to 1). On the other hand, owing to this property it exhibits more clearly all information losses due to perturbation.
+
+The complex measure of distribution disturbance is given by (cf. Młodak, Pietrzak and Józefowski (2022)):
+$$
+\lambda=\sum_{j=1}^m{\sum_{i=1}^n{\frac{d(x_{ij}^',x_{ij})}{mn}}}\in [0,1],   (3.5.12)
+$$
+where $d(\cdot,\cdot)\in [0,1]$ is measure of distance according to the formulas (3.5.7), (3.5.8) or (3.5.11) according to the measurement scale of a given value.
+
+Authors of the aforementioned paper indicated also than one can measure the contribution of particular variables $X_j$ to total information loss as follows  
+$$
+\lambda_j=\sum_{i=1}^n{\frac{d(x_{ij}^',x_{ij})}{n}}\in [0,1],    (3.5.13)
+$$
+$j=1,2,\ldots,m$.
+
+An additional problem occurs if non-perturbative SDC tools are used. In this case the original values are either suppressed or remained unchanged. How to proceed in this case during computation of the measures (3.5.10) and (3.5.11) also depends on the measurement scale of the variables. The used If $X_j$ is nominal, then if $x_{ij}^'$ is hidden then one should assume $d(x_{ij}^',x_{ij})=1$; if $X_j$ is ordinal, then we assign $x_{ij}^':=1$ if $x_{ij}$ is closer to $\mathfrak{r}_j$ or $x_{ij}^':=\mathfrak{r}_j$ if $X_j$ is closer to 1; if $X_j$ is continuous, then
+$$
+x_{ij}^':=\begin{cases}
+\max\limits_{h=1,2,\ldots,n}{x_{hj}}&\textmd{if}\quad x_{ij}\le\med_{h=1,2,\ldots,n}{x_{hj}},\\
+\min\limits_{h=1,2,\ldots,n}{x_{hj}}&\textmd{if}\quad x_{ij}>\med_{h=1,2,\ldots,n}{x_{hj}}.
+\end{cases}
+$$
+
+The measures (3.5.12) and (3.5.13) can be expressed as a percentages and show total information loss and contribution of particular variables to it, respectively. the-- the greater the value of $\lambda$/$\lambda_j$, the bigger the loss/contribution. In this way users obtain clear and easily understandable information about expected information loss owing to the application of SDC. These measures were implemented to the sdcMicro R package and are computed by the function *IL_variables*.
+
+### Practical realization of trade-off between safety and utility of microdata
+
+Achieving the optimal balance between minimization of dislosure risk and minimization of the information loss is not easy. It is very hard (if even possible) to take all aspects deciding on level of these quantities (especially in the case of risk) into account. Moreover, both risk and information loss can be assessed from various point of views. Thus, first one should establish the possible factors which may decide on the type and level of dislosure risk and the most preferred direction of data use by the user. In the case of risk, one should assess not only internal risk (including different types of variables and their relationships) but also assess what alternative data sources the interested data user could have access to due to his place of employment and position held (such information is usually provided in official data access request. The priorities in measurement of information loss preferred by the user should be a basis for establishment of used measure in this context. For instance, if the users prefers comparison of distributions of some phenomena, then the measures of distribution disturbance should have much higher priority than others. On the other hand, if the subject of interest of an user are connections between some features, then for categorical variables the information loss should be assessed using the measures for contingency tables (as they are in fact frequency tables, this problem is discussed in chapter 5). For continuous variables the aforementioned measures of impact on the intensity of connections can be, of course, applied.
+
+Similarly as e.g. in the case of significance and loss in testing of statistical hypotheses, the most obvious and easy approach to obtain reasonable compromise between these two expectations is to apply one of two following ways:
+• establishing arbitrarily maximum allowable level of disclosure risk and minimize the information loss in this situation - it defends, first of all, the data confidentiality and trust to data holder in terms of privacy protection,
+• establishing arbitrarily maximum allowable level of information loss and minimize the disclosure risk in this situation - it defends, first of all, the data utility  for users and data provider as a source of reliable, creadible and useful data. 
+
+In practice, the data holder (e.g. official statistics) prefers rather the first approach as the strict protection of data privacy is usually an obligation imposaed by valid law regulations. So, assurance of the safety of confidential information is very important.     
 
 ### References
 
@@ -154,7 +283,31 @@ Domingo-Ferrer, J., and Torra, V. (2001). *Disclosure protection methods and inf
 
 Hundepool, A., Van de Wetering, A., Ramaswamy, R., Franconi, L., Capobianchi, A., De Wolf, P.-P., Domingo-Ferrer, J., Torra, V., Brand, R:, and Giessing, S. (2005). *$\mu$-ARGUS version 4.0 Software and User's Manual*. Statistics Netherlands, Voorburg NL, may 2005. [[https://research.cbs.nl/casc]{.underline}](https://research.cbs.nl/casc/deliv/MUmanual4.0.pdf).
 
+Hundepool, A., Domingo–Ferrer, J., Franconi, L., Giessing, S., Nordholt, E. S., Spicer, K., & de Wolf, P. (2012). *Statistical Disclosure Control*. John Wiley & Sons, Ltd.
+
+Jaro, M. A. (1989). Advances in record-linkage methodology as applied to matching the 1985 census of Tampa, Florida. *Journal of the American Statistical Association*, 84 (406), 414–420.
+
 Kooiman, P. L., Willenborg, L. and Gouweleeuw, J. (1998). *PRAM: A method for disclosure limitation of microdata.* Technical report, Statistics Netherlands (Voorburg, NL), 1998.
+
+Młodak, A. (2020). Information loss resulting from statistical disclosure control of output data. *Wiadomości Statystyczne. The Polish Statistician*, 65 (9), 7–27. (in Polish)
+
+Młodak, A., Pietrzak, M., & Józefowski, T. (2022). The trade–off between the risk of disclosure and data utility in SDC: A case of data from a survey of accidents at work. *Statistical Journal of the IAOS*, 38 (4), 1503–1511.
+
+Pagliuca, D., & Seri, G. (1999). Some results of individual ranking method on the system of enterprise accounts annual survey. *Esprit SDC Project, Deliverable MI-3 D, 2*.
+
+*R Development Core Team. (2008). R: A Language and Environment for Statistical Computing [Computer software manual]*. Vienna, Austria. Retrieved from http://www.R-project.org (ISBN 3-900051-07-0)
+
+Sayers, A., Ben-Shlomo, Y., Blom, A. W., & Steele, F. (2016). Probabilistic record linkage. *International Journal of Epidemiology*, 45(3), 954-964.
+
+Shlomo, N. (2022). How to Measure Disclosure Risk in Microdata? *The Survey Statistician*, 86, 13–21.
+
+Shlomo, N., & Skinner, C. (2022). Measuring risk of re-identification in microdata: state-of-the art and new directions. *Journal of the Royal Statistical Society. Series A: Statistics in Society*, 185 (4), 1644–1662.
+
+Taylor, L., Zhou, X.-H., & Rise, P. (2018). A tutorial in assessing disclosure risk in microdata. *Statistics in Medicine*, 37 (25), 3693–3706.
+
+Templ, M. (2017). *Statistical Disclosure Control for Microdata. Methods and Applications in R.* Springer International Publishing AG, Cham, Switzerland.
+
+Templ, M., Kowarik, A., & Meindl, B. (2023). *sdcMicro: Statistical Disclosure Control Methods for Anonymization of Data and Risk Estimation. Manual and Package.* R package version 5.7.5 [Computer software manual]. (http://CRAN.R-project.org/package=sdcMicro)
 
 Trottini, M. (2003) . *Decision models for data disclosure limitation*. PhD thesis, Carnegie Mellon University, 2003. [[http://www.niss.org/dgii/TR/Thesis-Trottini-final.pdf]{.underline}](http://www.niss.org/dgii/TR/Thesis-Trottini-final.pdf).
 
@@ -165,4 +318,3 @@ Winkler, W. E. (1998). *Re-identification methods for evaluating the confidentia
 Winkler, W. E. (2004). *Re-identification methods for masked microdata.* In J. Domingo-Ferrer and V. Torra, editors, Privacy in Statistical Databases, volume 3050 of LNCS, pages 216--230, Berlin Heidelberg, 2004. Springer.
 
 Yancey, W. E., Winkler, W. E., and Creecy, R. H. (2002). *Disclosure risk assessment in perturbative microdata protection.* In J. Domingo-Ferrer, editor, Inference Control in Statistical Databases, volume 2316 of LNCS, pages 135--152, Berlin Heidelberg, 2002. Springer.
-
