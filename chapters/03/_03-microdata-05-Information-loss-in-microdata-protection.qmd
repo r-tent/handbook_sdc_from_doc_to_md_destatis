@@ -16,7 +16,7 @@ Internal risk results from the existence of unique combinations of values (exact
 
 Internal risk refers to the risk of a user/intruder identifying a given unit only by using information included in the file that has been made available by the data provider (e.g. statistical office). In this case, it is assumed that the user can only rely on information that can be obtained from the data set made available to to him/her. In contrast, external risk refers to the situation when the user can access alternative data sources and use them in an attempt to identify units by linking relevant data from different sources. As can be seen, these two kinds of risks are rather different.
 
-Internal risk seems to be easier to compute than the external risk. Internal threats for confidentiality can be modelled by violation of the aforementioned rules based on frequency of combinations of values of categorical variables and of observations falling into an re-identification precision interval around a given value of continuous variable. However, the estimation of external risk requires a knowledge about possible alternative data sources available for the user. This knowledge is hard to obtain, but we can (with large probability) suppose which possibilities in this respect he/she can have. For instance, if the user is employed in the labour office, one can suppose the he/she has an access to the basis of unemployed persons, which can be linked by him/her with the database from the Labour Force Survey obtained from the official statistics or similar data holder). The internal and external risk can be combined to obtain a total disclosure risk.   
+Internal risk seems to be easier to compute than the external risk. Internal threats for confidentiality can be modelled by violation of the aforementioned rules based on frequency of combinations of values of categorical variables and of observations falling into an re-identification precision interval around a given value of continuous variable. However, the estimation of external risk requires a knowledge about possible alternative data sources available for the user. This knowledge is hard to obtain, but we can (with large probability) suppose which possibilities in this respect he/she can have. For instance, if the user is employed in the labour office, one can suppose the he/she has an access to the basis of unemployed persons, which can be linked by him/her with the database from the Labour Force Survey obtained from the official statistics or similar data holder. The internal and external risk can be combined to obtain a total disclosure risk.   
 
 A strict evaluation of information loss must be based on the data uses to be supported by the protected data. The greater the differences between the results obtained on original and protected data for those uses, the higher the loss of information. However, very often microdata protection cannot be performed in a data use specific manner, for the following reasons:
 
@@ -107,7 +107,7 @@ Below we will describe each of such types of measures.
 :::{.callout-warning collapse=true}
 ## Expert level
 
-Comparison of matrices $X$ and $X^'$ for categorical data requires the definition of a distance for categorical variables. Definitions consider only the distances between pairs of categories that can appear when comparing an original record and its protected version (see discussion above on pairing original and protected records).
+Comparison of matrices $X$ and $X^{\prime}$ for categorical data requires the definition of a distance for categorical variables. Definitions consider only the distances between pairs of categories that can appear when comparing an original record and its protected version (see discussion above on pairing original and protected records).
 
 For a nominal variable $V$ (a categorical variable taking values over an unordered set), the only permitted operation is comparison for equality. This leads to the following distance definition:
 $$
@@ -121,11 +121,11 @@ $$dv(c,c')=\begin{cases}
 0, & \text{if $c=c'$},\\
 1, & \text{if $c\neq c'$},
 \end{cases}$$ (3.5.1)
-where $c$ is a category in an original record and $c^'$ is the category which has replaced *c* in the corresponding protected record.
+where $c$ is a category in an original record and $c^{\prime}$ is the category which has replaced *c* in the corresponding protected record.
 
-For an ordinal variable $V$ (a categorical variable taking values over a totally ordered set), let $\leq V$ be the total order operator over the range $D(V)$ of $V$. Define the distance between categories $c$ and $c^'$ as the number of categories between the minimum and the maximum of $c$ and $c^'$ divided by the cardinality of the range:
+For an ordinal variable $V$ (a categorical variable taking values over a totally ordered set), let $\leq V$ be the total order operator over the range $D(V)$ of $V$. Define the distance between categories $c$ and $c^{\prime}$ as the number of categories between the minimum and the maximum of $c$ and $c^{\prime}$ divided by the cardinality of the range:
 
-$$\text{dc}\left(c,c^'\right)=\frac{\left|c^{''}\text{:min}\left(c,c^'\right\leq c^{''}<\text{max}\left(c,c^'\right)\right|}{\left|D(V)\right|}$$ (3.5.2)
+$$\text{dc}\left(c,c^{\prime}\right)=\frac{\left|c^{\dprime}\text{:min}\left(c,c^{\prime}\right)\leq c^{\dprime}<\text{max}\left(c,c^{\prime}\right)\right|}{\left|D(V)\right|}$$ (3.5.2)
 :::
 
 #### Comparison of contingency tables
@@ -151,17 +151,17 @@ In De Waal and Willenborg (1999), Kooiman, Willenborg and Gouweleeuw (1998) and 
 
 As noted earlier, PRAM is a method that generalizes noise addition, suppression and recoding methods. Therefore, our description of the use of entropy will be limited to PRAM.
 
-Let $V$ be a variable in the original dataset and $V^'$ be the corresponding variable in the PRAM-protected dataset. Let $P_{V,V^'}=\left\{p\left(V^'=j|V=i\right) \right\}$ be the PRAM Markov matrix. Then, the conditional uncertainty of $V$ given that $V^'=j$ is:
+Let $V$ be a variable in the original dataset and $V^{\prime}$ be the corresponding variable in the PRAM-protected dataset. Let $P_{V,V^{\prime}}=\left\{p\left(V^{\prime}=j|V=i\right) \right\}$ be the PRAM Markov matrix. Then, the conditional uncertainty of $V$ given that $V^{\prime}=j$ is:
 
-$H\left(V|V^'=j\right)=-\sum_{i=1}^n{p\left(V=i|V^'=j\right)\text{log}p}\left(V=i|V^'=j|\right)$ (3.5.4)
+$H\left(V|V^{\prime}=j\right)=-\sum_{i=1}^n{p\left(V=i|V^{\prime}=j\right)\text{log}p}\left(V=i|V^{\prime}=j|\right)$ (3.5.4)
 
-The probabilities in Expression (3.5.4) can be derived from $P_{V,V^'}$ using Bayes's formula. Finally, the entropy-based information loss measure *EBIL* is obtained by accumulating Expression (3.5.4) for all individuals $r$ in the protected dataset $G$
+The probabilities in Expression (3.5.4) can be derived from $P_{V,V^{\prime}}$ using Bayes's formula. Finally, the entropy-based information loss measure *EBIL* is obtained by accumulating Expression (3.5.4) for all individuals $r$ in the protected dataset $G$
 
-$\text{EBIL}\left(P_{V,V^'},G\right)=\sum_{r\in G}{H\left(V|V^'=j_{r}\right)}$
+$\text{EBIL}\left(P_{V,V^{\prime}},G\right)=\sum_{r\in G}{H\left(V|V^{\prime}=j_{r}\right)}$
 
-where $j_r$ is the value taken by $V^'$ in record $r$.
+where $j_r$ is the value taken by $V^{\prime}$ in record $r$.
 
-The above measure can be generalized for multivariate datasets if $V$ and $V^'$ are taken as being multidimensional variables (*i.e.* representing several one-dimensional variables).
+The above measure can be generalized for multivariate datasets if $V$ and $V^{\prime}$ are taken as being multidimensional variables (*i.e.* representing several one-dimensional variables).
 
 While using entropy to measure information loss is attractive from a theoretical point of view, its interpretation in terms of data utility loss is less obvious than for the previously discussed measures.
 :::
@@ -169,20 +169,20 @@ While using entropy to measure information loss is attractive from a theoretical
 ### Information loss measures for continuous data
 
 Assume a microdata set with $n$ individuals (records) $I_1,I_2,\cdots,I_n$ and $p$ continuous variables $Z_1,Z_2,\cdots,Z_p$. Let $X$ be the matrix representing the original microdata set (rows are records and columns are variables). Let $X^{'}$ be the matrix representing the protected microdata set. The following tools are useful to characterize the information contained in the dataset:
-• covariance matrices $V$ (on $X$) and $V^'$ (on $X^'$).
-• correlation matrices $R$ and $R^'$.
-• correlation matrices $\text{RF}$ and $RF^'$ between the $p$ variables and the $p$ factors principal components $\text{PC}_1,\text{PC}_2,\cdots,\text{PC}_p$ obtained through principal components analysis.
-• communality between each of the $p$ variables and the first principal component $\text{PC}_{1}$ (or other principal components $\text{PC}_i$*'s*). Communality is the percent of each variable that is explained by $\text{PC}_{1}$ (or $\text{PC}_i$). Let $C$ be the vector of communalities for $X$ and $C^'$ the corresponding vector for $X^'$.
-• matrices $F$ and $F^'$ containing the loadings of each variable in $X$ on each principal component. The i-th variable in $X$ can be expressed as a linear combination of the principal components plus a residual variation, where the $j$-th principal component is multiplied by the loading in $F$ relating the $i$-th variable and the $j$-th principal component (Chatfield and Collins, 1980\]. $F^'$ is the corresponding matrix for $X^'$.
+• covariance matrices $V$ (on $X$) and $V^{\prime}$ (on $X^{\prime}$).
+• correlation matrices $R$ and $R^{\prime}$.
+• correlation matrices $\text{RF}$ and $RF^{\prime}$ between the $p$ variables and the $p$ factors principal components $\text{PC}_1,\text{PC}_2,\cdots,\text{PC}_p$ obtained through principal components analysis.
+• communality between each of the $p$ variables and the first principal component $\text{PC}_{1}$ (or other principal components $\text{PC}_i$*'s*). Communality is the percent of each variable that is explained by $\text{PC}_{1}$ (or $\text{PC}_i$). Let $C$ be the vector of communalities for $X$ and $C^{\prime}$ the corresponding vector for $X^{\prime}$.
+• matrices $F$ and $F^{\prime}$ containing the loadings of each variable in $X$ on each principal component. The i-th variable in $X$ can be expressed as a linear combination of the principal components plus a residual variation, where the $j$-th principal component is multiplied by the loading in $F$ relating the $i$-th variable and the $j$-th principal component (Chatfield and Collins, 1980\]. $F^{\prime}$ is the corresponding matrix for $X^{\prime}$.
 
-There does not seem to be a single quantitative measure which completely reflects those structural differences. Therefore, we proposed in Domingo-Ferrer, Mateo-Sanz, and Torra (2001) and Domingo-Ferrer and Torra (2001) to measure information loss through the discrepancies between matrices $X$, $V$, $R$, $\text{RF}$, $C$ and $F$ obtained on the original data and the corresponding $X^'$, $V^'$, $R^'$, $RF^'$, $C^'$ and $F^'$ obtained on the protected dataset. In particular, discrepancy between correlations is related to the information loss for data uses such as regressions and cross tabulations.
+There does not seem to be a single quantitative measure which completely reflects those structural differences. Therefore, we proposed in Domingo-Ferrer, Mateo-Sanz, and Torra (2001) and Domingo-Ferrer and Torra (2001) to measure information loss through the discrepancies between matrices $X$, $V$, $R$, $\text{RF}$, $C$ and $F$ obtained on the original data and the corresponding $X^{\prime}$, $V^{\prime}$, $R^{\prime}$, $RF^{\prime}$, $C^{\prime}$ and $F^{\prime}$ obtained on the protected dataset. In particular, discrepancy between correlations is related to the information loss for data uses such as regressions and cross tabulations.
 
 Matrix discrepancy can be measured in at least three ways:
 • *Mean square error* - sum of squared componentwise differences between pairs of matrices, divided by the number of cells in either matrix,
 • *Mean absolute error* - sum of absolute componentwise differences between pairs of matrices, divided by the number of cells in either matrix,
 • *Mean variation* - sum of absolute percent variation of components in the matrix computed on protected data with respect to components in the matrix computed on original data, divided by the number of cells in either matrix. This approach has the advantage of not being affected by scale changes of variables.
 
-Table 1 summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, $p$ is the number of variables, $n$ - the number of records, and components of matrices are represented by the corresponding lowercase letters (*e.g.* $x_{\text{ij}}$ is a component of matrix $X$). Regarding $X-X^'$ measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant $\overline{X} - \overline{X^'}$. Similarly, for $V-V^'$ measures, it would also be sensible to use them to compare only the variances of the variables, *i.e.* to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant $S-S^'$).
+Table 1 summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, $p$ is the number of variables, $n$ - the number of records, and components of matrices are represented by the corresponding lowercase letters (*e.g.* $x_{\text{ij}}$ is a component of matrix $X$). Regarding $X-X^{\prime}$ measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant $\overline{X} - \overline{X^{\prime}}$. Similarly, for $V-V^{\prime}$ measures, it would also be sensible to use them to compare only the variances of the variables, *i.e.* to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant $S-S^{\prime}$).
 
 Table 1. Examples of measures of information loss for continuous variables.  
 
@@ -197,13 +197,13 @@ Table 1. Examples of measures of information loss for continuous variables.
 
 Source: Domingo-Ferrer, Mateo-Sanz and Torra (2001).
 
-In Yancey, Winkler and Creecy (2002), it is observed that dividing by $x_{\text{ij}}$ causes the $X-X^'$ mean variation to rise sharply when the original value $x_{\text{ij}}$ is close to 0. This dependency on the particular original value being undesirable in an information loss measure, Yancey, Winkler and Creecy (2002) propose to replace the mean variation of $X-X^'$ by the more stable measure
+In Yancey, Winkler and Creecy (2002), it is observed that dividing by $x_{\text{ij}}$ causes the $X-X^{\prime}$ mean variation to rise sharply when the original value $x_{\text{ij}}$ is close to 0. This dependency on the particular original value being undesirable in an information loss measure, Yancey, Winkler and Creecy (2002) propose to replace the mean variation of $X-X^{\prime}$ by the more stable measure
 $$IL1=\frac{1}{np}\sum_{j=1}^p{\sum_{i=1}^n{\frac{|x_{ij}-x{ij}'|}{\sqrt{2}S_j}}},$$
 where $S_j$ is the standard deviation of the $j$-th variable in the original dataset. This measure was incorporated into the sdcMicro R package. The IL1 measure, in turn, is highly sensitive to small disturbances and weak differentiation of feature values - it may take too high values for variables with low differentiation, and too low - when the differentiation is significant. In practice, if $S_j$ is very close to zero, we obtain as a results INF. It means infinity. In this case, the measure becomes really useless, because it will not allow to compare the loss of information in several microdata sets with statistical confidentiality protected in various ways - if for each of such sets the IL1 measure will be equal to INF.
 
 Trottini (2003) argues that, since information loss is to be traded off for disclosure risk and the latter is bounded ---there is no risk higher than 100%---, upper bounds should be enforced for information loss measures. In practice, the proposal in Trottini (2003) is to limit those measures in @tbl-loss-information based on the mean variation to a predefined maximum value.
 
-Młodak (2020) proposed a new measure of information loss for continuous variables in terms of assesment of impact on the intensity of connections, which was slighthly improved by Młodak, Pietrzak and Józefowski (2022). It is based on on diagonal entries of inversed correlation matrices for continuous variables in the original ($R^{-1}$) and perturbed (${R^'}^{-1}$) data sets, i.e. $\rho_{jj}^{(-1)}$ and ${\rho_{jj}^'}^{(-1)}$), $j=1,2,\ldots,m_c$ (where $m_c$ is the number of continuous variables):
+Młodak (2020) proposed a new measure of information loss for continuous variables in terms of assesment of impact on the intensity of connections, which was slighthly improved by Młodak, Pietrzak and Józefowski (2022). It is based on on diagonal entries of inversed correlation matrices for continuous variables in the original ($R^{-1}$) and perturbed (${R^{\prime}}^{-1}$) data sets, i.e. $\rho_{jj}^{(-1)}$ and ${\rho_{jj}^{\prime}}^{(-1)}$), $j=1,2,\ldots,m_c$ (where $m_c$ is the number of continuous variables):
 
 $$\gamma=\frac{1}{\sqrt{2}}\sqrt{\sum_{j=1}^{m_c}{\left(\frac{\rho_{jj}^{(-1)}}{\sqrt{\sum_{l=1}^m{\left(\rho_{ll}^{(-1)}\right)^2}}}-\frac{\rho_{jj}^{*(-1)}}{\sqrt{\sum_{l=1}^m{\left(\rho_{ll}^{*(-1)}\right)^2}}}\right)^2}}\in [0,1].$$ (3.5.6)
 
@@ -213,45 +213,45 @@ Values of (3.5.6) are also easily interpretable - it can be understood as the ex
 
 The above presented concepts of information loss prompt the question whether it is possible to construct complex measure of information loss taking variables of all measurement scales into account. The relevant proposal was formulated by Młodak (2020) and applied by Młodak, Pietrzak and Józefowski (2022) to the case of microdata from the Polish survey of accodents at work. For categorical variables it is based on the approaches (3.5.1) and (3.5.2), i.e. if the variable $X_j$ is nominal, then (treating NA as a separate level)
 $$
-d({x_{ij}}^',x_{ij})=\begin{cases}
-1&\textmd{if}\;x_{ij}}^'=x_{ij},\cr
-0&\textmd{if}\;x_{ij}}^'\ne x_{ij}. (3.5.7)
+d({x_{ij}}^{\prime},x_{ij})=\begin{cases}
+1&\textmd{if}\;x_{ij}}^{\prime}=x_{ij},\cr
+0&\textmd{if}\;x_{ij}}^{\prime}\ne x_{ij}. (3.5.7)
 $$
 If $X_j$ is ordinal (assuming for simplification and without loss of generality that categories are numbered from 1 to $\mathfrak{r}_j$, where $\mathfrak{r}_j$ is the number of categories), then (NA is treated as a separate, lowest category)
 $$
-d({x_{ij}}^',x_{ij})=\frac{\mathfrak{r}(x_{ij}}^',x_{ij})}{\mathfrak{r}_j-1}, (3.5.8)
+d({x_{ij}}^{\prime},x_{ij})=\frac{\mathfrak{r}(x_{ij}}^{\prime},x_{ij})}{\mathfrak{r}_j-1}, (3.5.8)
 $$
-where $\mathfrak{r}(x_{ij}}^',x_{ij})$ is the absolute difference in categories between $x_{ij}}^'$ and $x_{ij}$. These partial distances take always values from [0,1]. There are, however, some problems with using them, especially if recoding is applied. The number of categories of a recoded variable in the original set and in the set after SDC will be different. Therefore, in the first place, it should be ensured that the numbers of the categories left unchanged are identical in both variants. For example, if before recoding the variable $X_j$ had $\mathfrak{r}_j$=8 categories marked as 1,2,3,4,5,6,7,8 and as a result of recoding categories 2 and 3 and 6 and 7 were combined, then the new categories should have respectively numbers 1,2,4,5,6,8. Then the option (3.5.8) for categorical variables applies in this case as well.
+where $\mathfrak{r}(x_{ij}}^{\prime},x_{ij})$ is the absolute difference in categories between $x_{ij}}^{\prime}$ and $x_{ij}$. These partial distances take always values from [0,1]. There are, however, some problems with using them, especially if recoding is applied. The number of categories of a recoded variable in the original set and in the set after SDC will be different. Therefore, in the first place, it should be ensured that the numbers of the categories left unchanged are identical in both variants. For example, if before recoding the variable $X_j$ had $\mathfrak{r}_j$=8 categories marked as 1,2,3,4,5,6,7,8 and as a result of recoding categories 2 and 3 and 6 and 7 were combined, then the new categories should have respectively numbers 1,2,4,5,6,8. Then the option (3.5.8) for categorical variables applies in this case as well.
 
-Much more complicated situation occurs for continuous variables. Młodak (2020) proposed several options is this respect, e.g. normalized absolute value or normalized square of difference between ${x_{ij}}^'$ and $x_{ij}$, i.e. 
-$$d({x_{ij}}^',x_{ij})=|{x_{ij}}^'-x_{ij}|/\max_{k=1,2,\ldots,n}⁡|{x_{kj}}^'-x_{kj}|,$$ (3.5.9)
+Much more complicated situation occurs for continuous variables. Młodak (2020) proposed several options is this respect, e.g. normalized absolute value or normalized square of difference between ${x_{ij}}^{\prime}$ and $x_{ij}$, i.e. 
+$$d({x_{ij}}^{\prime},x_{ij})=|{x_{ij}}^{\prime}-x_{ij}|/\max_{k=1,2,\ldots,n}⁡|{x_{kj}}^{\prime}-x_{kj}|,$$ (3.5.9)
 or
-$$d({x_{ij}}^',x_{ij})=({x_{ij}}^'-x_{ij})^2/\max_(k=1,2,\lots,n)⁡({x_{kj}}^'-x_{kj})^2,$$ (3.5.10)
+$$d({x_{ij}}^{\prime},x_{ij})=({x_{ij}}^{\prime}-x_{ij})^2/\max_(k=1,2,\lots,n)⁡({x_{kj}}^{\prime}-x_{kj})^2,$$ (3.5.10)
 $i=1,2,\ldots,n$, $j=1,2,\ldots,m_c$, where $n$ is the number of records and $m_c$ - the number of continuous variables.
 
-Measures (3.5.8) and (3.5.9) also have another significant weakness. The measure of information loss should be an increasing function due to individual partial information losses. This means that, for example, if for some $i\in\{1,2,\ldots,n\}$ the value $|x_{ij}^'-x_{ij}|$ will increase and all $|x_{hj}^'-x_{hj}|$ for $h\ne i$ remain the same, the value of the distance should increase. Meanwhile, in the case of formulas (3.5.9) and (3.5.10), this will not be the case. If, for the same, the indicated absolute difference (or the square of the difference, respectively) between the original value and the value after SDC reaches a maximum, then the partial loss of information for $i$ will remain unchanged - it will be 1, and for the others it will turn out to be smaller. As a result, we get a smaller metric value, while the information loss actually increased.
+Measures (3.5.8) and (3.5.9) also have another significant weakness. The measure of information loss should be an increasing function due to individual partial information losses. This means that, for example, if for some $i\in\{1,2,\ldots,n\}$ the value $|x_{ij}^{\prime}-x_{ij}|$ will increase and all $|x_{hj}^{\prime}-x_{hj}|$ for $h\ne i$ remain the same, the value of the distance should increase. Meanwhile, in the case of formulas (3.5.9) and (3.5.10), this will not be the case. If, for the same, the indicated absolute difference (or the square of the difference, respectively) between the original value and the value after SDC reaches a maximum, then the partial loss of information for $i$ will remain unchanged - it will be 1, and for the others it will turn out to be smaller. As a result, we get a smaller metric value, while the information loss actually increased.
 
 Taking the aforementioned observations into account Młodak (2020) proposed in the discussed case the distance of the form: 
 $$
-d({x_{ij}}^',x_{ij})=\frac{2}{\pi}\arctan|{x_{ij}}^'-x_{ij}|.  (3.5.11)
+d({x_{ij}}^{\prime},x_{ij})=\frac{2}{\pi}\arctan|{x_{ij}}^{\prime}-x_{ij}|.  (3.5.11)
 $$
-The arcus tangens (arctan) function was used to ensure that the distance between original and perturbed values takes values from $[0,1]$. To achieve this, an ascending function bounded on both sides (both from the top and from the bottom) should be applied. The arctan seems to be a good solution and is also easy to compute. Of course -- like any function of this type -- it is not perfect: for larger absolute differences between original and perturbed values it tends to be close to $\frac{\pi}{2}$ (and, in consequence, $d(x_{ij}^',x_{ij})$ to be close to 1). On the other hand, owing to this property it exhibits more clearly all information losses due to perturbation.
+The arcus tangens (arctan) function was used to ensure that the distance between original and perturbed values takes values from $[0,1]$. To achieve this, an ascending function bounded on both sides (both from the top and from the bottom) should be applied. The arctan seems to be a good solution and is also easy to compute. Of course -- like any function of this type -- it is not perfect: for larger absolute differences between original and perturbed values it tends to be close to $\frac{\pi}{2}$ (and, in consequence, $d(x_{ij}^{\prime},x_{ij})$ to be close to 1). On the other hand, owing to this property it exhibits more clearly all information losses due to perturbation.
 
 The complex measure of distribution disturbance is given by (cf. Młodak, Pietrzak and Józefowski (2022)):
 $$
-\lambda=\sum_{j=1}^m{\sum_{i=1}^n{\frac{d(x_{ij}^',x_{ij})}{mn}}}\in [0,1],   (3.5.12)
+\lambda=\sum_{j=1}^m{\sum_{i=1}^n{\frac{d(x_{ij}^{\prime},x_{ij})}{mn}}}\in [0,1],   (3.5.12)
 $$
 where $d(\cdot,\cdot)\in [0,1]$ is measure of distance according to the formulas (3.5.7), (3.5.8) or (3.5.11) according to the measurement scale of a given value.
 
 Authors of the aforementioned paper indicated also than one can measure the contribution of particular variables $X_j$ to total information loss as follows  
 $$
-\lambda_j=\sum_{i=1}^n{\frac{d(x_{ij}^',x_{ij})}{n}}\in [0,1],    (3.5.13)
+\lambda_j=\sum_{i=1}^n{\frac{d(x_{ij}^{\prime},x_{ij})}{n}}\in [0,1],    (3.5.13)
 $$
 $j=1,2,\ldots,m$.
 
-An additional problem occurs if non-perturbative SDC tools are used. In this case the original values are either suppressed or remained unchanged. How to proceed in this case during computation of the measures (3.5.10) and (3.5.11) also depends on the measurement scale of the variables. The used If $X_j$ is nominal, then if $x_{ij}^'$ is hidden then one should assume $d(x_{ij}^',x_{ij})=1$; if $X_j$ is ordinal, then we assign $x_{ij}^':=1$ if $x_{ij}$ is closer to $\mathfrak{r}_j$ or $x_{ij}^':=\mathfrak{r}_j$ if $X_j$ is closer to 1; if $X_j$ is continuous, then
+An additional problem occurs if non-perturbative SDC tools are used. In this case the original values are either suppressed or remained unchanged. How to proceed in this case during computation of the measures (3.5.10) and (3.5.11) also depends on the measurement scale of the variables. The used If $X_j$ is nominal, then if $x_{ij}^{\prime}$ is hidden then one should assume $d(x_{ij}^{\prime},x_{ij})=1$; if $X_j$ is ordinal, then we assign $x_{ij}^{\prime}:=1$ if $x_{ij}$ is closer to $\mathfrak{r}_j$ or $x_{ij}^{\prime}:=\mathfrak{r}_j$ if $X_j$ is closer to 1; if $X_j$ is continuous, then
 $$
-x_{ij}^':=\begin{cases}
+x_{ij}^{\prime}:=\begin{cases}
 \max\limits_{h=1,2,\ldots,n}{x_{hj}}&\textmd{if}\quad x_{ij}\le\med_{h=1,2,\ldots,n}{x_{hj}},\\
 \min\limits_{h=1,2,\ldots,n}{x_{hj}}&\textmd{if}\quad x_{ij}>\med_{h=1,2,\ldots,n}{x_{hj}}.
 \end{cases}
