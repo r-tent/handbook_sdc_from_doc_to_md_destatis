@@ -125,7 +125,7 @@ where $c$ is a category in an original record and $c^{\prime}$ is the category w
 
 For an ordinal variable $V$ (a categorical variable taking values over a totally ordered set), let $\leq V$ be the total order operator over the range $D(V)$ of $V$. Define the distance between categories $c$ and $c^{\prime}$ as the number of categories between the minimum and the maximum of $c$ and $c^{\prime}$ divided by the cardinality of the range:
 
-$$\text{dc}\left(c,c^{\prime}\right)=\frac{\left|c^{\dprime}\text{:min}\left(c,c^{\prime}\right)\leq c^{\dprime}<\text{max}\left(c,c^{\prime}\right)\right|}{\left|D(V)\right|}$$ (3.5.2)
+$$\text{dc}\left(c,c^{\prime}\right)=\frac{\left|c^{\prime\prime}\text{:min}\left(c,c^{\prime}\right)\leq c^{\prime\prime}<\text{max}\left(c,c^{\prime}\right)\right|}{\left|D(V)\right|}$$ (3.5.2)
 :::
 
 #### Comparison of contingency tables
