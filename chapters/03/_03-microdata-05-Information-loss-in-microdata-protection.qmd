@@ -201,7 +201,8 @@ The above presented concepts of information loss prompt the question whether it 
 $$
 d({x_{ij}}^{\prime},x_{ij})=\begin{cases}
 1&\text{if}\;{x_{ij}}^{\prime}=x_{ij},\cr
-0&\text{if}\;{x_{ij}}^{\prime}\ne x_{ij}. (3.5.7)
+0&\text{if}\;{x_{ij}}^{\prime}\ne x_{ij}.
+\end{cases} (3.5.7)
 $$
 If $X_j$ is ordinal (assuming for simplification and without loss of generality that categories are numbered from 1 to $\mathfrak{r}_j$, where $\mathfrak{r}_j$ is the number of categories), then (NA is treated as a separate, lowest category)
 $$
