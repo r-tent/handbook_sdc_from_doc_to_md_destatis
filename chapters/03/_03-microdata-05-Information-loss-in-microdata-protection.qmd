@@ -184,7 +184,6 @@ Matrix discrepancy can be measured in at least three ways:
 
 Table 1 summarizes the measures proposed in Domingo-Ferrer, Mateo-Sanz and Torra (2001) and Domingo-Ferrer and V. Torra (2001). In this table, $p$ is the number of variables, $n$ - the number of records, and components of matrices are represented by the corresponding lowercase letters (*e.g.* $x_{\text{ij}}$ is a component of matrix $X$). Regarding $X-X^{\prime}$ measures, it makes also sense to compute those on the averages of variables rather than on all data (call this variant $\overline{X} - \overline{X^{\prime}}$. Similarly, for $V-V^{\prime}$ measures, it would also be sensible to use them to compare only the variances of the variables, *i.e.* to compare the diagonals of the covariance matrices rather than the whole matrices (call this variant $S-S^{\prime}$).
 
-Table 1. Examples of measures of information loss for continuous variables.  
 
 |          	|                                  Mean square error                                  	|                                   Mean abs. error                                   	|                                             Mean variation                                             	|
 |:--------:	|:-----------------------------------------------------------------------------------:	|:-----------------------------------------------------------------------------------:	|:------------------------------------------------------------------------------------------------------:	|
@@ -195,6 +194,7 @@ Table 1. Examples of measures of information loss for continuous variables.
 |  $C-C'$  	|                       $\frac{\sum_{i=1}^{p}(c_i-c_i')^2}{p}$                      	|                       $\frac{\sum_{i=1}^{p}|c_i-c_i'|}{p}$                      	|                       $\frac{\sum_{i=1}^{p}\frac{|c_i-c_{i}'|}{|c_i|}}{p}$                       	|
 |  $F-F'$  	|          $\frac{\sum_{j=1}^{p}w_j\sum_{i=1}^{p}(f_{ij}-f_{ij}')^2}{p^2}$          	|          $\frac{\sum_{j=1}^{p}w_j\sum_{i=1}^{p}|f_{ij}-f_{ij}'|}{p^2}$          	|         $\frac{\sum_{j=1}^{p} w_j\sum_{i=1}^{p}\frac{|f_{ij}-f_{ij}'|}{|f_{ij}|}}{p^2}$         	|
 
+: Examples of measures of information loss for continuous variables. {#tbl-loss-information}
 Source: Domingo-Ferrer, Mateo-Sanz and Torra (2001).
 
 In Yancey, Winkler and Creecy (2002), it is observed that dividing by $x_{\text{ij}}$ causes the $X-X^{\prime}$ mean variation to rise sharply when the original value $x_{\text{ij}}$ is close to 0. This dependency on the particular original value being undesirable in an information loss measure, Yancey, Winkler and Creecy (2002) propose to replace the mean variation of $X-X^{\prime}$ by the more stable measure
