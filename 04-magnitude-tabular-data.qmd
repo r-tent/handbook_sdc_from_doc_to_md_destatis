@@ -10,6 +10,7 @@
 
 {{< include chapters/04/_04-magnitude-tabular-data-05-Controlled-Tabular-AdjustmentControlled-Tabular-Adjustment.qmd >}}
 
-{{< include chapters/04/_04-magnitude-tabular-data-06-References.qmd >}}
+{{< include chapters/04/_04-magnitude-tabular-data-06-CKM.qmd >}}
 
+{{< include chapters/04/_04-magnitude-tabular-data-07-References.qmd >}}
 
