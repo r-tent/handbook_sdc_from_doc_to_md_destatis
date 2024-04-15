@@ -34,7 +34,11 @@ De Wolf, P.P. (2007), '*Cell suppression in a special class of linked tables*', 
 
 De Wolf, P.P., Giessing, S. (2008) *How to make the τ‑ARGUS Modular Method Applicable to Linked Tables*. In: Domingo-Ferrer, Josep; Saygin, Yücel (Eds.): Privacy in Statistical Databases 2008, Lecture Notes in Computer Science , Vol. 5262, Springer, Heidelberg (2008), p.227-238.
 
+Enderle, T., Giessing, S., Tent, R. (2018), '*Designing Confidentiality on the Fly Methodology – Three Aspects'*, In: Domingo-Ferrer, J., Montes, F. (eds) Privacy in Statistical Databases. PSD 2018. Lecture Notes in Computer Science(), vol 11126. Springer, Cham. [[https://doi.org/10.1007/978-3-319-99771-1_3]{.underline}](https://doi.org/10.1007/978-3-319-99771-1_3)
+
 EU (2004), *Community statistics relating to the trading of goods between Member States,* [[http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32004R0638:EN:HTML]{.underline}](http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32004R0638:EN:HTML)
+
+Fraser, Bruce/Wooton, Janice (2005), '*A proposed method for confidentialising tabular output to protect against differencing'* Work session on Statistical Data Confidentiality, [[http://www.unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2005/wp.35.e.pdf]{.underline}](http://www.unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2005/wp.35.e.pdf)
 
 Geurts, J. (1992), *'Heuristics for Cell Suppression in Tables'*, working paper, Netherlands Central Bureau of Statistics
 
@@ -61,6 +65,10 @@ Salazar, J.J. (2003) \"*Partial Cell Suppression: a New Methodology for Statisti
 Repsilber, R. D. (1994), '*Preservation of Confidentiality in Aggregated data'*, paper presented at the Second International Seminar on Statistical Confidentiality, Luxembourg, 1994
 
 Repsilber, D. (2002), '*Sicherung persönlicher Angaben in Tabellendaten'* - in Statistische Analysen und Studien Nordrhein-Westfalen, Landesamt für Datenverarbeitung und Statistik NRW, Ausgabe 1/2002 (in German)
+
+Thompson, Gwenda/Broadfoot, Stephen/Elazar, Daniel (2013), '*Methodology for the Automatic Confidentialisation of Statistical Outputs from Remote Servers at the Australian Bureau of Statistics'*, Paper presented at the Joint UNECE/Eurostat Work Session on
+Statistical Data Confidentiality. Ottawa 2013. [Zugriff am 1. November 2019]. Verfüg-
+bar unter: http://www.unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2013/Topic_1_ABS.pdf
 
 Van der Meijden, R., (2006) ‚*Improving confidentiality with τ‑ARGUS by focussing on clever usage of microdata'*, in Monographs of Official Statistics. Work session on Statistical Data Confidentiality, Eurostat-Office for Official Publications of the European Communities, Luxembourg, 2006, pp. 363-370
 
