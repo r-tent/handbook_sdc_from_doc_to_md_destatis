@@ -8,10 +8,12 @@
 
 {{< include chapters/05/_05-frequency-tables-04-Rounding.qmd >}}
 
-{{< include chapters/05/_05-frequency-tables-05-Information-loss.qmd >}}
+{{< include chapters/05/_05-frequency-tables-05-CKM.qmd >}}
 
-{{< include chapters/05/_05-frequency-tables-06-Software.qmd >}}
+{{< include chapters/05/_05-frequency-tables-06-Information-loss.qmd >}}
 
-{{< include chapters/05/_05-frequency-tables-07-References.qmd >}}
+{{< include chapters/05/_05-frequency-tables-07-Software.qmd >}}
+
+{{< include chapters/05/_05-frequency-tables-08-References.qmd >}}
 
 
