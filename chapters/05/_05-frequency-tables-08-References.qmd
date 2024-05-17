@@ -6,11 +6,13 @@ Doyle, P., Lane, J.I., Theeuwes, J.J.M. and Zayatz, (2001). *Confidentiality, Di
 
 Duke-Williams, O. and Rees, P., (1998) *Can Census Offices publish statistics for more than one small area geography? An analysis of the differencing problem in statistical disclosure*, International Journal of Geographical Information Science 12, 579-605
 
+Enderle, T., Giessing, S., Tent, R., (2020) *Calculation of Risk Probabilities for the Cell Key Method. In: Domingo-Ferrer, J., Muralidhar, K. (eds) Privacy in Statistical Databases*, Lecture Notes in Computer Science(), vol 12276. Springer, Cham. [[https://doi.org/10.1007/978-3-030-57521-2_11]{.underline}](https://doi.org/10.1007/978-3-030-57521-2_11)
+
 Gomatam, S. and A. Karr (2003), *Distortion Measures for Categorical Data Swapping,* Technical Report Number 131, National Institute of Statistical Sciences.
 
 Salazar, JJ, Staggermeier, A and Bycroft, C, (2005) *Controlled rounding implementation*, Proceeding of the Joint UNECE/Eurostat Work Session on Statistical Data Confidentiality, Geneva
 
-Shlomo, N. (2007) Statistical Disclosure Control Methods for Census Frequency Tables.[[International Statistical Review]{.underline}](http://www.ingentaconnect.com/content/bpl/iinsr;jsessionid=2i0ojl04la3hm.alice), Volume 75, Number 2, August 2007 , pp. 199-217(19) Blackwell Publishing.
+Shlomo, N. (2007) Statistical Disclosure Control Methods for Census Frequency Tables. International Statistical Review, Volume 75, Number 2, August 2007 , pp. 199-217(19) Blackwell Publishing.
 
 Shlomo, N. and Young, C. (2005) *Information Loss Measures for Frequency Tables,* Proceeding of the Joint UNECE/Eurostat Work Session on Statistical Data Confidentiality, Geneva.
 

@@ -32,9 +32,13 @@ De Wolf, P.P. (2007), '*Cell suppression in a special class of linked tables*', 
 
 > [[http://epp.eurostat.ec.europa.eu/portal/page?\_pageid=3154,70730193,3154_70730647&\_dad=portal&\_schema=PORTAL]{.underline}](http://epp.eurostat.ec.europa.eu/portal/page?_pageid=3154,70730193,3154_70730647&_dad=portal&_schema=PORTAL).
 
-De Wolf, P.P., Giessing, S. (2008) *How to make the $\tau$‑ARGUS Modular Method Applicable to Linked Tables*. In: Domingo-Ferrer, Josep; Saygin, Yücel (Eds.): Privacy in Statistical Databases 2008, Lecture Notes in Computer Science , Vol. 5262, Springer, Heidelberg (2008), p.227-238.
+De Wolf, P.P., Giessing, S. (2008) *How to make the τ‑ARGUS Modular Method Applicable to Linked Tables*. In: Domingo-Ferrer, Josep; Saygin, Yücel (Eds.): Privacy in Statistical Databases 2008, Lecture Notes in Computer Science , Vol. 5262, Springer, Heidelberg (2008), p.227-238.
+
+Enderle, T., Giessing, S., Tent, R. (2018), '*Designing Confidentiality on the Fly Methodology – Three Aspects'*, In: Domingo-Ferrer, J., Montes, F. (eds) Privacy in Statistical Databases. PSD 2018. Lecture Notes in Computer Science(), vol 11126. Springer, Cham. [[https://doi.org/10.1007/978-3-319-99771-1_3]{.underline}](https://doi.org/10.1007/978-3-319-99771-1_3)
 
 EU (2004), *Community statistics relating to the trading of goods between Member States,* [[http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32004R0638:EN:HTML]{.underline}](http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=CELEX:32004R0638:EN:HTML)
+
+Fraser, Bruce/Wooton, Janice (2005), '*A proposed method for confidentialising tabular output to protect against differencing'* Work session on Statistical Data Confidentiality, [[http://www.unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2005/wp.35.e.pdf]{.underline}](http://www.unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2005/wp.35.e.pdf)
 
 Geurts, J. (1992), *'Heuristics for Cell Suppression in Tables'*, working paper, Netherlands Central Bureau of Statistics
 
@@ -48,7 +52,7 @@ Giessing, S., Hundepool, A., Castro, J. (2007) *Rounding Methods for Protecting 
 
 Fischetti, M, Salazar Gonzales, J.J. (2000), '*Models and Algorithms for Optimizing Cell Suppression Problem in Tabular Data with Linear Constraints'*, in Journal of the American Statistical Association, Vol. 95, pp 916
 
-Hundepool, A, Wetering, A van de, Ramaswamy, R, Wolf, PP de, Giessing, S, Fischetti, M, Salazar, JJ, Castro, J, Lowthian, P, (2005), $\tau$-ARGUS 3.1 user manual, Statistics Netherlands, Voorburg NL, Feb. 2005. [[http://neon.vb.cbs.nl/casc]{.underline}](http://neon.vb.cbs.nl/CENEX/Software/TauManualV31.pdf).
+Hundepool, A, Wetering, A van de, Ramaswamy, R, Wolf, PP de, Giessing, S, Fischetti, M, Salazar, JJ, Castro, J, Lowthian, P, (2005), τ-ARGUS 3.1 user manual, Statistics Netherlands, Voorburg NL, Feb. 2005. [[http://neon.vb.cbs.nl/casc]{.underline}](http://neon.vb.cbs.nl/CENEX/Software/TauManualV31.pdf).
 
 Ichim, D., Franconi, L. (2006), *Calibration estimator for magnitude tabular data protection,* Proceedings of the conference Privacy in Statistical Databases 2006, December 2006, Rome, Italy.
 
@@ -62,7 +66,11 @@ Repsilber, R. D. (1994), '*Preservation of Confidentiality in Aggregated data'*,
 
 Repsilber, D. (2002), '*Sicherung persönlicher Angaben in Tabellendaten'* - in Statistische Analysen und Studien Nordrhein-Westfalen, Landesamt für Datenverarbeitung und Statistik NRW, Ausgabe 1/2002 (in German)
 
-Van der Meijden, R., (2006) ‚*Improving confidentiality with $\tau$‑ARGUS by focussing on clever usage of microdata'*, in Monographs of Official Statistics. Work session on Statistical Data Confidentiality, Eurostat-Office for Official Publications of the European Communities, Luxembourg, 2006, pp. 363-370
+Thompson, Gwenda/Broadfoot, Stephen/Elazar, Daniel (2013), '*Methodology for the Automatic Confidentialisation of Statistical Outputs from Remote Servers at the Australian Bureau of Statistics'*, Paper presented at the Joint UNECE/Eurostat Work Session on
+Statistical Data Confidentiality. Ottawa 2013. [Zugriff am 1. November 2019]. Verfüg-
+bar unter: http://www.unece.org/fileadmin/DAM/stats/documents/ece/ces/ge.46/2013/Topic_1_ABS.pdf
+
+Van der Meijden, R., (2006) ‚*Improving confidentiality with τ‑ARGUS by focussing on clever usage of microdata'*, in Monographs of Official Statistics. Work session on Statistical Data Confidentiality, Eurostat-Office for Official Publications of the European Communities, Luxembourg, 2006, pp. 363-370
 
 Wolf, P.P. de (2002). *HiTaS: a heuristic approach to cell suppression in hierarchical tables.* Proceedings of the AMRADS meeting in Luxembourg.
 

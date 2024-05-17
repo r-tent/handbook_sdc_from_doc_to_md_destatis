@@ -2,9 +2,9 @@
 
 ### Introduction
 
-$\tau$‑ARGUS (Hunderpool et al, 2005) is a software package which provides tools to protect tables against the risk of statistical disclosure ($\tau$‑ARGUS is also discussed in Chapter 4). Controlled rounding is easy to use in $\tau$‑ARGUS and the controlled rounding procedure (CRP) was developed by JJ Salazar. This procedure is based on optimisation techniques similar to the procedure developed for cell suppression. The CRP yields additive rounded tables, where the rounded values add up to the rounded totals and sub-totals shown in the table. This means realistic tables are produced and it makes it impossible to reduce the protection by "unpicking" the original values by exploiting the differences in the sums of the rounded values. The CRP implemented in $\tau$‑ARGUS also allows the specification of hierarchical structures within the table variables.
+τ‑ARGUS (Hunderpool et al, 2005) is a software package which provides tools to protect tables against the risk of statistical disclosure (τ‑ARGUS is also discussed in Chapter 4). Controlled rounding is easy to use in τ‑ARGUS and the controlled rounding procedure (CRP) was developed by JJ Salazar. This procedure is based on optimisation techniques similar to the procedure developed for cell suppression. The CRP yields additive rounded tables, where the rounded values add up to the rounded totals and sub-totals shown in the table. This means realistic tables are produced and it makes it impossible to reduce the protection by "unpicking" the original values by exploiting the differences in the sums of the rounded values. The CRP implemented in τ‑ARGUS also allows the specification of hierarchical structures within the table variables.
 
-Controlled rounding gives sufficient protection to small frequencies and creates uncertainty about the zero values (*i.e.* empty cells). (This is not the case for suppression in terms of how it is now implemented in $\tau$‑ARGUS).
+Controlled rounding gives sufficient protection to small frequencies and creates uncertainty about the zero values (*i.e.* empty cells). (This is not the case for suppression in terms of how it is now implemented in τ‑ARGUS).
 
 In Zero-restricted Controlled Rounding cell counts are left unchanged if they are multiples of the rounding base or shifted to one of the adjacent multiples of the rounding base. The modified values are chosen so that the sum of the absolute differences between the original values and the rounded ones are minimized (under an additivity constraint). Therefore, some values will be rounded up or down to the most distant multiple of the base in order to help satisfy these constraints. In most cases a solution can be found, but in some cases it cannot and the zero-restriction constraint in CRP can be relaxed to allow the cell values to be rounded to a nonadjacent multiple of the base. This relaxation is controlled by allowing the procedure to take a maximum number of *steps*.
 
@@ -16,11 +16,18 @@ where $ub$ is the lower adjacent multiple of $b$ (hence $u$ is the floor value o
 
 
 \begin{align}
-a = \begin{cases}
-ub &\text{if}\quad r=0 \\
-(u+1)b &\text{if}\quad r\neq0
+a = 
+\begin{cases}
+  a = ub &\text{if}\quad r=0 
+  \\
+  a=
+  \begin{cases}
+    ub  \\
+    (u+1)b
+  \end{cases} &\text{if}\quad r\neq0.
 \end{cases}
 \end{align}
+
 
 
 If $K$ steps are allowed, then $a$, can take values:
@@ -36,11 +43,11 @@ a = \begin{cases}
 
 
 
-$\left\{ \begin{array} { l } a = \max \{ 0 , ( u + j ) \} b , j = - K , \ldots , K , \text { if } r = 0 \\ a = \max \{ 0 , ( u + j ) \} b , j = - K , \ldots , ( K + 1 ) , \text { if } r \neq 0 \end{array} \right.$)
+
 
 ### Optimal, first feasible and RAPID solutions
 
-For a given table there can exist more than one controlled rounded solution, and any of these solutions is a *feasible* solution. The Controlled Rounding Program embedded in $\tau$‑ARGUS determines the *optimal* solution by minimising the sum of the absolute distances of the rounded values, from the original ones. Denoting the cell values, including the totals and sub-totals, with *z*~i~ and the corresponding rounded values with *a*~i~, the function that is minimised is
+For a given table there can exist more than one controlled rounded solution, and any of these solutions is a *feasible* solution. The Controlled Rounding Program embedded in τ‑ARGUS determines the *optimal* solution by minimising the sum of the absolute distances of the rounded values, from the original ones. Denoting the cell values, including the totals and sub-totals, with *z*~i~ and the corresponding rounded values with *a*~i~, the function that is minimised is
 
 $$
 \sum\limits_{i = 1}^{N} \left| z_{i}-a_{i} \right| \quad ,
@@ -48,7 +55,7 @@ $$
 
 where $N$ is the number of cells in a table (including the marginal ones). The optimisation procedure for controlled rounding is a rather complex one (*NP*-complete program), so finding the optimal solution may take a long time for large tables. In fact, the algorithm iteratively builds different rounded tables until it finds the optimal solution. In order to limit the time required to obtain a solution, the algorithm can be stopped when the first feasible solution is found. In many cases, this solution is quite close to the optimal one and it can be found in significantly less time.
 
-The RAPID solution is produced by CRP as an approximated solution when a feasible one cannot be found. This solution is obtained by rounding the internal cells to the closest multiple of the base and then computing the marginal cells by addition. This means that the computed marginal values can be many jumps away from the original value. However, a RAPID solution is produced at each iteration of the search for an optimal solution, and it will improve (in terms of the loss function) over time. $\tau$‑ARGUS allows the user to stop CRP after the first RAPID solution is produced, but this is likely to be very far away from the optimal one.
+The RAPID solution is produced by CRP as an approximated solution when a feasible one cannot be found. This solution is obtained by rounding the internal cells to the closest multiple of the base and then computing the marginal cells by addition. This means that the computed marginal values can be many jumps away from the original value. However, a RAPID solution is produced at each iteration of the search for an optimal solution, and it will improve (in terms of the loss function) over time. τ‑ARGUS allows the user to stop CRP after the first RAPID solution is produced, but this is likely to be very far away from the optimal one.
 
 ### Protection provided by controlled rounding
 
@@ -70,6 +77,7 @@ z \in \begin{cases}
 For example, if the rounding base is $b=5$ and the rounded value is $a=0$, a user can determine that the original value is between $0$ and $4$. If the rounded value is not $0$, then users can determine that the true value is between $\pm 4$ units from the published value.
 
 **K-step rounding**
+
 As mentioned above, it is assumed that the number of steps allowed is released together with the rounded table. Let $K$* be the number of steps allowed, then an intruder can compute the following existence intervals for the true value $z$:
 
 
@@ -85,5 +93,6 @@ z \in \begin{cases}
 For example, assume that for controlled rounding with $b=5$ and $K=1$, $a=15$, then a user can determine that $z \in [ 6,24 ]$.
 
 **Very large tables**
-The procedure implemented in $\tau$‑ARGUS is capable of rounding tables up to 150K cells on an average computer. However for larger tables a partitioning procedure is available, which allows much larger tables to be rounded. Tables with over six million cells have been successfully rounded this way.
+
+The procedure implemented in τ‑ARGUS is capable of rounding tables up to 150K cells on an average computer. However for larger tables a partitioning procedure is available, which allows much larger tables to be rounded. Tables with over six million cells have been successfully rounded this way.
 
