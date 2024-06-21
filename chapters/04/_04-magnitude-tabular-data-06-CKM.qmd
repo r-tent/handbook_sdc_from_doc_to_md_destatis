@@ -1,15 +1,11 @@
 
-## Cell Key Method
+## Cell Key Method for Magnitude Tables
 
 The '*Cell Key Method*' (CKM) was initially developed by the Australian Bureau of Statistics (Fraser/ Wooton (2016); Thompson et al. (2013)) and hence is sometimes referred to as '*ABS method*'. It is a post tabular perturbative method that maintains consistency between all tables that use the same microdata and configuration. This method adds sufficient '*noise*' to each cell so if an intruder tried to gather information by differencing, they would not be able to obtain the real data. It is one of the SDC methods recommended by Eurostat for the population and housing censuses 2021.
 In order to keep consistency between tables every record of the underlying microdata is equipped with a randomly generated number, the so called '*Record Key*'. This step is performed just once such that afterwards the Record Key is a fixed component of the microdata that is to be used for every subsequent evaluation. Now whenever the microdata are aggregated to form a table cell, the corresponding Record Keys are aggregated as well, forming the eponymous '*Cell Key*'.
 Using said Cell Key and a predefined table that encodes a probability distribution, which is tailored to the data/purpose, the corresponding noise can be looked up and added to the original cell value, before dissemination. 
 
 For more general information about the Cell Key Method please see @sec-CKM_freq.
-
-
-### CKM for Magnitude Tables
-
 
 The Cell Key Method was initially developed to protect frequency tables. By adding a controlled integer noise $v$ to a table cell $n$ a perturbed value $\hat{n}=n+v$ is generated. By applying this procedure to each table cell uncertainty about the real cell value is created. In this respect, this method has similar effects as rounding, but is unbiased and provides a higher level of protection when compared to a variant with similar level of information loss. A short comparison can be found in Enderle et al. (2018).
 
